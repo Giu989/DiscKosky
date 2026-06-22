@@ -17,6 +17,7 @@ With[{pac = PacletFind["DiscKosky"]},
     version = ("Version" //ReplaceAll[pac[[1]][[1]]]);
   ];
 ];
+pacletInstallLocation = PacletFind["DiscKosky"][[1,1]]["Location"];
 
 
 (*load in source code*)

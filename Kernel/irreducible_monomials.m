@@ -29,7 +29,7 @@ GroebnerBasisMS[ideal_,vars_,opts:OptionsPattern[]]:=Module[
 	idealInput = idealProcessed // Map[InputForm]// Map[ToString] // StringRiffle[#,",\n"]&;
 	fullInput = variablesInput<>modulusInput<>idealInput;
 
-	file=File[CreateFile[]];
+	file=File[CreateFile[pacletInstallLocation<>"/Kernel/msolve_tmp/gbout"<>ToString[Unique["comp"]]]];
 	WriteString[file,fullInput];
 	inf=file[[1]];
 	outf = inf <> "out.txt";
