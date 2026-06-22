@@ -9,106 +9,204 @@ leadingExps[gb_,vars_,ord_]:=Exponent[First@MonomialList[#,vars,ord],vars]&/@gb;
 dividesQ[e_,m_]:=And@@Thread[m>=e];
 
 
-Options[GroebnerBasisMS]={"Modulus"->0,"LeadingMonomialsOnly"->False,"MonomialOrder"->DegreeReverseLexicographic,"debug"->False};
-GroebnerBasisMS[ideal_,vars_,opts:OptionsPattern[]]:=Module[
+Options[GroebnerBasisMS]={
+	"Modulus"->0,
+	"LeadingMonomialsOnly"->False,
+	"MonomialOrder"->DegreeReverseLexicographic,
+	"debug"->False,
+	"MSolveJobs"->Automatic,
+	"MSolveThreads"->1,
+	"MSolveBatchDirectory"->Automatic,
+	"MSolveKeepFiles"->False,
+	"MSolveProgress"->True
+};
+
+shellQuoteMS[s_String]:="'"<>StringReplace[s,"'"->"'\\''"]<>"'";
+
+normaliseGroebnerBasisMSJob[job_Association]:=Module[{ideal,vars},
+	ideal = Lookup[job,"Ideal",Lookup[job,"System",Missing["Ideal"]]];
+	vars = Lookup[job,"Variables",Lookup[job,"Vars",Missing["Variables"]]];
+	If[MemberQ[{ideal,vars},_Missing],
+		$Failed
+	,
+		<|"Ideal"->ideal,"Variables"->vars|>
+	]
+];
+normaliseGroebnerBasisMSJob[{ideal_,vars_}]:=<|"Ideal"->ideal,"Variables"->vars|>;
+normaliseGroebnerBasisMSJob[_]:=$Failed;
+
+msolveInputString[ideal_,vars_,modulus_]:=Module[
+	{idealProcessed,polys,variablesInput,modulusInput,idealInput},
+
+	(*msolve is very sensitive to the ideal input and will give incorrect results if this is not exactly in the way it wants*)
+	idealProcessed = ideal // PolynomialMod[#,modulus]& // Together // Numerator // Expand;
+	polys = If[ListQ[idealProcessed],idealProcessed,{idealProcessed}];
+	variablesInput = vars // Map[ToString] // StringRiffle[#,","]&//StringJoin[#,"\n"]&;
+	modulusInput = modulus // ToString // StringJoin[#,"\n"]&;
+	idealInput = polys // Map[InputForm]// Map[ToString] // StringRiffle[#,",\n"]&;
+	variablesInput<>modulusInput<>idealInput
+];
+
+parseMsolveOutput[out_String]:=Check[
+	out//StringCases[#,Shortest["["~~x__~~"]"]:>x]&//First//StringDelete[#,"\n"]&//StringSplit[#,","]&//Map[ToExpression],
+	Print["Error: msolve output is not of expected shape"];
+	$Failed
+];
+
+GroebnerBasisMS[ideal_,vars_List,opts:OptionsPattern[]]:=Module[{res},
+	res = GroebnerBasisMS[{<|"Ideal"->ideal,"Variables"->vars|>},opts];
+	If[res===$Failed,$Failed,First[res]]
+];
+
+GroebnerBasisMS[jobs_List,opts:OptionsPattern[]]:=Module[
 	{
-		idealProcessed,variablesInput,modulusInput,idealInput,fullInput,file,inf,outf,msolveFlag,runstr,exitCode,out,processed
+		modulus,normalised,threadCount,jobCount,baseDir,runDir,inputDir,outputDir,logDir,doneDir,
+		workerFile,jobsFile,runnerFile,ids,gbFlag,runner,worker,exitCode,
+		outputFiles,outputs,processed,keepFiles,finishedJobs,totalJobs,exitCodeFile,startCode
 	},
 
+	If[jobs==={},Return[{}]];
 	If[msolveExec===$Failed,Print["Error: could not find msolve executable"];Return[$Failed]];
 	If[OptionValue["MonomialOrder"]=!=DegreeReverseLexicographic,Print["Error: only DegreeReverseLexicographic order is supported"];Return[$Failed]];
-	If[OptionValue["Modulus"]>2147483647,Print["Error: modulus too large for msolve"];Return[$Failed];];
-	If[And[!PrimeQ[OptionValue["Modulus"]],OptionValue["Modulus"]=!=0],Print["Error: modulus must be a prime"];Return[$Failed];];
-	If[!SubsetQ[vars,ideal//Variables],Print["Error: parameters not supported"];Return[$Failed];];
+	modulus = OptionValue["Modulus"];
+	If[modulus>2147483647,Print["Error: modulus too large for msolve"];Return[$Failed];];
+	If[And[!PrimeQ[modulus],modulus=!=0],Print["Error: modulus must be a prime"];Return[$Failed];];
 
-	(*msolve is very sensetive to the ideal input and will give incorrect results if this is not exactly in the way it wants*)
-	idealProcessed = ideal // PolynomialMod[#,OptionValue["Modulus"]]& // Together // Numerator // Expand;
-	
-	variablesInput = vars // Map[ToString] // StringRiffle[#,","]&//StringJoin[#,"\n"]&;
-	modulusInput = OptionValue["Modulus"] // ToString // StringJoin[#,"\n"]&;
-	idealInput = idealProcessed // Map[InputForm]// Map[ToString] // StringRiffle[#,",\n"]&;
-	fullInput = variablesInput<>modulusInput<>idealInput;
+	normalised = normaliseGroebnerBasisMSJob /@ jobs;
+	If[MemberQ[normalised,$Failed],Print["Error: malformed GroebnerBasisMS batch job"];Return[$Failed]];
+	If[!And@@(SubsetQ[#["Variables"],#["Ideal"]//Variables]& /@ normalised),Print["Error: parameters not supported"];Return[$Failed];];
 
-	file=File[CreateFile[pacletInstallLocation<>"/Kernel/msolve_tmp/gbout"<>ToString[Unique["comp"]]]];
-	WriteString[file,fullInput];
-	inf=file[[1]];
-	outf = inf <> "out.txt";
+	threadCount = OptionValue["MSolveThreads"] /. Automatic->1;
+	If[!IntegerQ[threadCount] || threadCount<1,Print["Error: \"MSolveThreads\" must be a positive integer"];Return[$Failed]];
+	jobCount = OptionValue["MSolveJobs"] /. Automatic->Max[1,Floor[$ProcessorCount/threadCount]];
+	If[!IntegerQ[jobCount] || jobCount<1,Print["Error: \"MSolveJobs\" must be a positive integer"];Return[$Failed]];
+	jobCount = Min[jobCount,Length[normalised]];
+	keepFiles = TrueQ[OptionValue["debug"]] || TrueQ[OptionValue["MSolveKeepFiles"]];
 
-	msolveFlag = If[OptionValue["LeadingMonomialsOnly"]," -g 1 -f "," -g 2 -f "];
-	runstr = msolveExec<>msolveFlag<>inf<>" -o "<>outf;
-
-	exitCode = Run[runstr];
-	If[exitCode=!=0,Print["Error: msolve returned an error when computing the Groebner Basis"];DeleteFile[inf];DeleteFile[outf];Return[$Failed];];
-
-	out = Import[outf];
-	If[OptionValue["debug"],Print[outf]];
-	
-	processed = Check[
-		out//StringCases[#,Shortest["["~~x__~~"]"]:>x]&//First//StringDelete[#,"\n"]&//StringSplit[#,","]&//Map[ToExpression],
-		Print["Error: msolve output is not of expected shape"];
-		Return[$Failed]
+	baseDir = If[OptionValue["MSolveBatchDirectory"]===Automatic,
+		$TemporaryDirectory,
+		If[DirectoryQ[OptionValue["MSolveBatchDirectory"]],
+			OptionValue["MSolveBatchDirectory"],
+			CreateDirectory[OptionValue["MSolveBatchDirectory"],CreateIntermediateDirectories->True]
+		]
 	];
-	
-	If[!OptionValue["debug"],DeleteFile[inf];DeleteFile[outf];];
-	
+	runDir = CreateDirectory[FileNameJoin[{baseDir,"DiscKosky-msolve-"<>StringDelete[CreateUUID[],"-"]}]];
+	inputDir = CreateDirectory[FileNameJoin[{runDir,"input"}]];
+	outputDir = CreateDirectory[FileNameJoin[{runDir,"output"}]];
+	logDir = CreateDirectory[FileNameJoin[{runDir,"log"}]];
+	doneDir = CreateDirectory[FileNameJoin[{runDir,"done"}]];
+	ids = IntegerString[#,10,8]& /@ Range[Length[normalised]];
+	totalJobs = Length[normalised];
+	finishedJobs = 0;
+
+	MapThread[
+		Function[{job,id},
+			Module[{stream,file},
+				file = FileNameJoin[{inputDir,id<>".ms"}];
+				stream = OpenWrite[file];
+				WriteString[stream,msolveInputString[job["Ideal"],job["Variables"],modulus]];
+				Close[stream];
+			]
+		],
+		{normalised,ids}
+	];
+
+	gbFlag = If[OptionValue["LeadingMonomialsOnly"],1,2];
+	workerFile = FileNameJoin[{runDir,"run-one-msolve.sh"}];
+	jobsFile = FileNameJoin[{runDir,"jobs.txt"}];
+	runnerFile = FileNameJoin[{runDir,"run-msolve-batch.sh"}];
+	exitCodeFile = FileNameJoin[{runDir,"exit-code.txt"}];
+	worker =
+		"#!/bin/bash\n"<>
+		"set -u\n"<>
+		"idx=\"$1\"\n"<>
+		"if "<>shellQuoteMS[msolveExec]<>" -g "<>ToString[gbFlag]<>" -t "<>ToString[threadCount]<>
+			" -f "<>shellQuoteMS[inputDir]<>"/\"${idx}.ms\""<>
+			" -o "<>shellQuoteMS[outputDir]<>"/\"${idx}.out\""<>
+			" > "<>shellQuoteMS[logDir]<>"/\"${idx}.log\" 2>&1; then\n"<>
+		"  touch "<>shellQuoteMS[doneDir]<>"/\"${idx}.ok\"\n"<>
+		"  exit 0\n"<>
+		"else\n"<>
+		"  status=\"$?\"\n"<>
+		"  touch "<>shellQuoteMS[doneDir]<>"/\"${idx}.fail\"\n"<>
+		"  exit \"$status\"\n"<>
+		"fi\n";
+	runner =
+		"#!/bin/bash\n"<>
+		"set -u\n"<>
+		"set +e\n"<>
+		"xargs -n 1 -P "<>ToString[jobCount]<>" /bin/bash "<>shellQuoteMS[workerFile]<>" < "<>shellQuoteMS[jobsFile]<>"\n"<>
+		"status=\"$?\"\n"<>
+		"echo \"$status\" > "<>shellQuoteMS[exitCodeFile]<>"\n"<>
+		"exit \"$status\"\n";
+	Export[workerFile,worker,"Text"];
+	Export[jobsFile,StringRiffle[ids,"\n"]<>"\n","Text"];
+	Export[runnerFile,runner,"Text"];
+
+	If[OptionValue["debug"],Print["msolve batch directory: "<>runDir]];
+	If[TrueQ[OptionValue["MSolveProgress"]],
+		Monitor[
+			startCode = Run["/bin/bash "<>shellQuoteMS[runnerFile]<>" &"];
+			If[startCode=!=0,
+				exitCode = startCode;
+			,
+				While[!FileExistsQ[exitCodeFile],
+					finishedJobs = Length[FileNames["*.ok",doneDir]] + Length[FileNames["*.fail",doneDir]];
+					Pause[0.25];
+				];
+				finishedJobs = Length[FileNames["*.ok",doneDir]] + Length[FileNames["*.fail",doneDir]];
+				exitCode = ToExpression[StringTrim[Import[exitCodeFile,"Text"]]];
+			];
+			,
+			"Finished msolve jobs "<>ToString[finishedJobs]<>"/"<>ToString[totalJobs]
+		];
+	,
+		exitCode = Run["/bin/bash "<>shellQuoteMS[runnerFile]];
+	];
+	If[exitCode=!=0,
+		Print["Error: msolve returned an error when computing the Groebner Basis batch"];
+		If[!keepFiles,DeleteDirectory[runDir,DeleteContents->True]];
+		Return[$Failed];
+	];
+
+	outputFiles = FileNameJoin[{outputDir,#<>".out"}]& /@ ids;
+	If[!And@@(FileExistsQ /@ outputFiles),
+		Print["Error: at least one msolve output file is missing"];
+		If[!keepFiles,DeleteDirectory[runDir,DeleteContents->True]];
+		Return[$Failed];
+	];
+	outputs = Import[#,"Text"]& /@ outputFiles;
+	processed = parseMsolveOutput /@ outputs;
+	If[MemberQ[processed,$Failed],
+		If[!keepFiles,DeleteDirectory[runDir,DeleteContents->True]];
+		Return[$Failed];
+	];
+	If[!keepFiles,DeleteDirectory[runDir,DeleteContents->True]];
 	Return[processed]
 ];
 
-
-(*finding irreducible monomials for a system of equations*)
-Options[findIrreducibleMonomials] = {"MonomialOrder" -> DegreeReverseLexicographic,"Sort"->True,"PrimeIndex"->Random,"msolve"->Automatic};
-findIrreducibleMonomials[polySystem_,vars1_, opts:OptionsPattern[]]:=Module[{useMsolve,ord,params,paramsNsub,gb,lt,n,pure,bounds,todo,seen=<||>,res={},v,vv,i,prime,vars},
-	
-	useMsolve = OptionValue["msolve"];
-	If[And[useMsolve,msolveExec===$Failed],Print["Error: msolve requested but executable not found"];Return[$Failed];];
-	
-	If[OptionValue["msolve"]===Automatic,
-		If[msolveExec===$Failed,
-			useMsolve=False
-		,
-			useMsolve=True
-		]
-	];
-	
-	If[And[useMsolve,OptionValue["MonomialOrder"]=!=DegreeReverseLexicographic],Print["Error: msolve only supports DegreeReverseLexicographic order"];Return[$Failed];];
-	
+prepareIrreducibleMonomialJob[polySystem_,vars1_,prime_,opts:OptionsPattern[{"MonomialOrder" -> DegreeReverseLexicographic,"Sort"->True,"PrimeIndex"->Random,"msolve"->Automatic}]]:=Module[
+	{ord,params,paramsNsub,vars,systemSub},
 	ord = OptionValue["MonomialOrder"];
-	If[OptionValue["PrimeIndex"]===Random,
-		prime = RandomSample[primeList,1][[1]];
-	,
-		prime = primeList[[1+OptionValue["PrimeIndex"]]];
-	];
-	(*numerical substitution of the parameters*)
 	params = Complement[polySystem // Variables,vars1];
 	paramsNsub = Thread[params->(RandomInteger[{1,primeList[[-1]]},params//Length])];
-	
+	systemSub = polySystem // ReplaceAll[paramsNsub];
 	If[OptionValue["Sort"],
-		vars = GroebnerBasis`DistributedTermsList[polySystem // ReplaceAll[paramsNsub],vars1,MonomialOrder->OptionValue["MonomialOrder"],CoefficientDomain->RationalFunctions,Modulus->prime,Sort->True]//Last;
-		,
+		vars = GroebnerBasis`DistributedTermsList[systemSub,vars1,MonomialOrder->ord,CoefficientDomain->RationalFunctions,Modulus->prime,Sort->True]//Last;
+	,
 		vars = vars1;
 	];
-	
-	If[useMsolve,
-		gb = GroebnerBasisMS[polySystem // ReplaceAll[paramsNsub],vars,"Modulus"->prime,"LeadingMonomialsOnly"->True];
-	,
-		gb = GroebnerBasis[polySystem // ReplaceAll[paramsNsub],vars,MonomialOrder->OptionValue["MonomialOrder"],CoefficientDomain->RationalFunctions,Modulus->prime];
-	];
-	
+	<|"Ideal"->systemSub,"Variables"->vars,"MonomialOrder"->ord|>
+];
+
+irreducibleMonomialsFromGroebnerBasis[gb_,vars_,ord_]:=Module[
+	{lt,n,pure,bounds,todo,seen=<||>,res={},v,vv,i},
 	lt = MonomialList[gb, vars, ord][[;;, 1]] // Map[Exponent[#, vars]&];
 	n = Length[vars];
-	
 	pure=Table[Select[lt,#[[i]]>0&&Total[Drop[#,{i}]]==0&],{i,n}];
-	
-	(*check if non zero dimensional ideal*)
-	(*If[MemberQ[pure,{}],Return[\[Infinity]]];*)
 	If[Select[lt,(Length[DeleteCases[#,0]]==1)&] // Apply[Plus] // MemberQ[#,0]&, Return[\[Infinity]]];
-	
-	(*coordinate bounds on dimensions: minimal pure powers + 1*)
 	bounds=(Min/@MapThread[#1[[All,#2]]&,{pure,Range[n]}])-1;
-	
 	todo={ConstantArray[0,n]};
-	
-	(*breadth first staircase walk*)
 	While[todo=!={},
 		v=First@todo;
 		todo=Rest@todo;
@@ -126,4 +224,40 @@ findIrreducibleMonomials[polySystem_,vars1_, opts:OptionsPattern[]]:=Module[{use
 		];
 	];
 	Return[MonomialList[Plus@@res,vars,ord]//DeleteCases[0]];
+];
+
+
+(*finding irreducible monomials for a system of equations*)
+Options[findIrreducibleMonomials] = {"MonomialOrder" -> DegreeReverseLexicographic,"Sort"->True,"PrimeIndex"->Random,"msolve"->Automatic};
+findIrreducibleMonomials[polySystem_,vars1_, opts:OptionsPattern[]]:=Module[{useMsolve,ord,gb,prime,job,vars},
+
+	useMsolve = OptionValue["msolve"];
+	If[And[useMsolve,msolveExec===$Failed],Print["Error: msolve requested but executable not found"];Return[$Failed];];
+
+	If[OptionValue["msolve"]===Automatic,
+		If[msolveExec===$Failed,
+			useMsolve=False
+		,
+			useMsolve=True
+		]
+	];
+
+	If[And[useMsolve,OptionValue["MonomialOrder"]=!=DegreeReverseLexicographic],Print["Error: msolve only supports DegreeReverseLexicographic order"];Return[$Failed];];
+
+	ord = OptionValue["MonomialOrder"];
+	If[OptionValue["PrimeIndex"]===Random,
+		prime = RandomSample[primeList,1][[1]];
+	,
+		prime = primeList[[1+OptionValue["PrimeIndex"]]];
+	];
+	job = prepareIrreducibleMonomialJob[polySystem,vars1,prime,Sequence@@FilterRules[{opts},Options[findIrreducibleMonomials]]];
+	vars = job["Variables"];
+
+	If[useMsolve,
+		gb = GroebnerBasisMS[job["Ideal"],vars,"Modulus"->prime,"LeadingMonomialsOnly"->True];
+	,
+		gb = GroebnerBasis[job["Ideal"],vars,MonomialOrder->OptionValue["MonomialOrder"],CoefficientDomain->RationalFunctions,Modulus->prime];
+	];
+	If[gb===$Failed,Return[$Failed]];
+	Return[irreducibleMonomialsFromGroebnerBasis[gb,vars,ord]];
 ];

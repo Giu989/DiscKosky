@@ -7,9 +7,12 @@ gpol = x1 x3+x2 x3+x1 x4+x2 x4+x1 x5+x2 x5+s34 x1 x3 x5+s34 x2 x3 x5+x3 x6+s12 x
 gpolVars = {x1,x2,x3,x4,x5,x6,x7,x8,x9};
 
 
-{timing,numb} = CountSectorsUnregulated[gpol,gpolVars,{},"msolve"->True][[1]] // AbsoluteTiming
+{timing,numb} = CountSectorsUnregulated[gpol,gpolVars,{},"msolve"->True,"MSolveJobs"->Automatic,"MSolveProgress"->False][[1]] // AbsoluteTiming
 numb == 631
 timing
+
+
+CountSectorsUnregulated//Options
 
 
 numb2 = CountSectorsUnregulated[(Times@@gpolVars)gpol,gpolVars,{},"msolve"->True][[1]]; // AbsoluteTiming
