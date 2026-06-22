@@ -1,0 +1,70 @@
+<|
+    "Files"
+    ->
+    {
+        <|
+            "File"
+            ->
+            File[
+                "Kernel/DiscKosky.wl"
+            ]
+            ,
+            "Hash"
+            ->
+            "8fb79abd012470461e226fa971dbc7dfb2349bf2a6302e109b7f7a267dab0717"
+                
+        |>
+        ,
+        <|
+            "File"
+            ->
+            File[
+                "Kernel/discontinuities.m"
+            ]
+            ,
+            "Hash"
+            ->
+            "100a795f8afea5833741fb4d2affcc140c26d59bcc94cd6c7824c277bbc8e631"
+                
+        |>
+        ,
+        <|
+            "File"
+            ->
+            File[
+                "Kernel/.DS_Store"
+            ]
+            ,
+            "Hash"
+            ->
+            "bfb6ca0a48ec06a4c7f9de6952f20c4fbe18c03685f541370cc17b812d4d6413"
+                
+        |>
+        ,
+        <|
+            "File"
+            ->
+            File[
+                "Kernel/euler_characteristic.m"
+            ]
+            ,
+            "Hash"
+            ->
+            "aff2dcd915fdfa85eb0f6e9972deb316726c6d01999f47a5b0c2289f4c409633"
+                
+        |>
+        ,
+        <|
+            "File"
+            ->
+            File[
+                "Kernel/irreducible_monomials.m"
+            ]
+            ,
+            "Hash"
+            ->
+            "35e9e3043c22f769169bee328488acc1f675455a93d9cbd1a8efca91cddfc145"
+                
+        |>
+    }
+|>
