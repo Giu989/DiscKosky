@@ -4,6 +4,7 @@ BeginPackage["DiscKosky`"(*,{}*)];
 
 
 CountSectorsUnregulated::usage = "to add";
+CountSectorsRegulated::usage = "CountSectorsRegulated[gpol, vars, cut] computes the number of irreducible monomials for the regulated critical-point ideal. Use {} for no cut variables. The option \"UseSameRho\" -> True uses one shared rho parameter for all nu_i.";
 CheckDoubleDiscontinuities::usage = "to add";
 GroebnerBasisMS::usage = "to add";
 DiscKoskyExtraVar::usage = "extra internal variable required for critical point ideals";
@@ -43,6 +44,7 @@ End[]
 SetAttributes[
 	{
 		CountSectorsUnregulated,
+		CountSectorsRegulated,
 		CheckDoubleDiscontinuities,
 		GroebnerBasisMS,
 		DiscKoskyExtraVar

@@ -2,3 +2,5 @@
 DB_*cuts*.wl
 savefile.wl
 garage/
+tests/
+dev_tests/
