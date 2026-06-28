@@ -18,7 +18,8 @@ Options[GroebnerBasisMS]={
 	"MSolveThreads"->1,
 	"MSolveBatchDirectory"->Automatic,
 	"MSolveKeepFiles"->False,
-	"MSolveProgress"->True
+	"MSolveProgress"->Automatic,
+	"MSolveProgressInterval"->0.008
 };
 
 shellQuoteMS[s_String]:="'"<>StringReplace[s,"'"->"'\\''"]<>"'";
@@ -60,9 +61,11 @@ GroebnerBasisMS[ideal_,vars_List,opts:OptionsPattern[]]:=Module[{res},
 
 GroebnerBasisMS[jobs_List,opts:OptionsPattern[]]:=Module[
 	{
-		modulus,normalised,threadCount,jobCount,baseDir,runDir,inputDir,outputDir,logDir,doneDir,
-		workerFile,jobsFile,runnerFile,ids,gbFlag,runner,worker,exitCode,
-		outputFiles,outputs,processed,keepFiles,finishedJobs,totalJobs,exitCodeFile,startCode
+		modulus,normalised,threadCount,jobCount,baseDir,runDir,inputDir,outputDir,logDir,
+		workerFile,jobsFile,runnerFile,backgroundRunnerFile,runnerLogFile,exitCodeFile,
+		ids,gbFlag,runner,worker,backgroundRunner,exitCode,outputFiles,outputs,processed,
+		keepFiles,progressEnabled,showNotebookProgress,finishedJobs,totalJobs,progressFile,
+		progressInterval,launchCode,runProgressBatch,readExitCode
 	},
 
 	If[jobs==={},Return[{}]];
@@ -81,7 +84,11 @@ GroebnerBasisMS[jobs_List,opts:OptionsPattern[]]:=Module[
 	jobCount = OptionValue["MSolveJobs"] /. Automatic->Max[1,Floor[$ProcessorCount/threadCount]];
 	If[!IntegerQ[jobCount] || jobCount<1,Print["Error: \"MSolveJobs\" must be a positive integer"];Return[$Failed]];
 	jobCount = Min[jobCount,Length[normalised]];
+	progressInterval = OptionValue["MSolveProgressInterval"];
+	If[!NumericQ[progressInterval] || progressInterval<=0,Print["Error: \"MSolveProgressInterval\" must be a positive number"];Return[$Failed]];
 	keepFiles = TrueQ[OptionValue["debug"]] || TrueQ[OptionValue["MSolveKeepFiles"]];
+	progressEnabled = Replace[OptionValue["MSolveProgress"],Automatic:>TrueQ[$Notebooks]];
+	showNotebookProgress = TrueQ[progressEnabled] && TrueQ[$Notebooks];
 
 	baseDir = If[OptionValue["MSolveBatchDirectory"]===Automatic,
 		$TemporaryDirectory,
@@ -94,7 +101,6 @@ GroebnerBasisMS[jobs_List,opts:OptionsPattern[]]:=Module[
 	inputDir = CreateDirectory[FileNameJoin[{runDir,"input"}]];
 	outputDir = CreateDirectory[FileNameJoin[{runDir,"output"}]];
 	logDir = CreateDirectory[FileNameJoin[{runDir,"log"}]];
-	doneDir = CreateDirectory[FileNameJoin[{runDir,"done"}]];
 	ids = IntegerString[#,10,8]& /@ Range[Length[normalised]];
 	totalJobs = Length[normalised];
 	finishedJobs = 0;
@@ -115,8 +121,11 @@ GroebnerBasisMS[jobs_List,opts:OptionsPattern[]]:=Module[
 	workerFile = FileNameJoin[{runDir,"run-one-msolve.sh"}];
 	jobsFile = FileNameJoin[{runDir,"jobs.txt"}];
 	runnerFile = FileNameJoin[{runDir,"run-msolve-batch.sh"}];
+	backgroundRunnerFile = FileNameJoin[{runDir,"run-msolve-batch-background.sh"}];
+	runnerLogFile = FileNameJoin[{logDir,"runner.log"}];
 	exitCodeFile = FileNameJoin[{runDir,"exit-code.txt"}];
-	worker =
+	progressFile = FileNameJoin[{runDir,"progress.txt"}];
+	worker = If[TrueQ[progressEnabled],
 		"#!/bin/bash\n"<>
 		"set -u\n"<>
 		"idx=\"$1\"\n"<>
@@ -124,41 +133,72 @@ GroebnerBasisMS[jobs_List,opts:OptionsPattern[]]:=Module[
 			" -f "<>shellQuoteMS[inputDir]<>"/\"${idx}.ms\""<>
 			" -o "<>shellQuoteMS[outputDir]<>"/\"${idx}.out\""<>
 			" > "<>shellQuoteMS[logDir]<>"/\"${idx}.log\" 2>&1; then\n"<>
-		"  touch "<>shellQuoteMS[doneDir]<>"/\"${idx}.ok\"\n"<>
+		"  printf . >> "<>shellQuoteMS[progressFile]<>"\n"<>
 		"  exit 0\n"<>
 		"else\n"<>
 		"  status=\"$?\"\n"<>
-		"  touch "<>shellQuoteMS[doneDir]<>"/\"${idx}.fail\"\n"<>
+		"  printf . >> "<>shellQuoteMS[progressFile]<>"\n"<>
 		"  exit \"$status\"\n"<>
-		"fi\n";
+		"fi\n"
+	,
+		"#!/bin/bash\n"<>
+		"set -u\n"<>
+		"idx=\"$1\"\n"<>
+		shellQuoteMS[msolveExec]<>" -g "<>ToString[gbFlag]<>" -t "<>ToString[threadCount]<>
+			" -f "<>shellQuoteMS[inputDir]<>"/\"${idx}.ms\""<>
+			" -o "<>shellQuoteMS[outputDir]<>"/\"${idx}.out\""<>
+			" > "<>shellQuoteMS[logDir]<>"/\"${idx}.log\" 2>&1\n"
+	];
 	runner =
 		"#!/bin/bash\n"<>
 		"set -u\n"<>
 		"set +e\n"<>
 		"xargs -n 1 -P "<>ToString[jobCount]<>" /bin/bash "<>shellQuoteMS[workerFile]<>" < "<>shellQuoteMS[jobsFile]<>"\n"<>
 		"status=\"$?\"\n"<>
-		"echo \"$status\" > "<>shellQuoteMS[exitCodeFile]<>"\n"<>
+		"exit \"$status\"\n";
+	backgroundRunner =
+		"#!/bin/bash\n"<>
+		"set +e\n"<>
+		"/bin/bash "<>shellQuoteMS[runnerFile]<>" > "<>shellQuoteMS[runnerLogFile]<>" 2>&1\n"<>
+		"status=\"$?\"\n"<>
+		"printf '%s\\n' \"$status\" > "<>shellQuoteMS[exitCodeFile]<>"\n"<>
 		"exit \"$status\"\n";
 	Export[workerFile,worker,"Text"];
 	Export[jobsFile,StringRiffle[ids,"\n"]<>"\n","Text"];
 	Export[runnerFile,runner,"Text"];
+	Export[backgroundRunnerFile,backgroundRunner,"Text"];
+	If[TrueQ[progressEnabled],Export[progressFile,"","Text"]];
 
 	If[OptionValue["debug"],Print["msolve batch directory: "<>runDir]];
-	If[TrueQ[OptionValue["MSolveProgress"]],
-		Monitor[
-			startCode = Run["/bin/bash "<>shellQuoteMS[runnerFile]<>" &"];
-			If[startCode=!=0,
-				exitCode = startCode;
+	If[TrueQ[progressEnabled],
+		readExitCode := Module[{text,code},
+			If[!FileExistsQ[exitCodeFile],Return[$Failed]];
+			text = StringTrim[Import[exitCodeFile,"Text"]];
+			If[text==="",Return[$Failed]];
+			code = Quiet[Check[ToExpression[text],$Failed]];
+			If[IntegerQ[code],code,$Failed]
+		];
+		runProgressBatch := (
+			launchCode = Run["/bin/bash "<>shellQuoteMS[backgroundRunnerFile]<>" > /dev/null 2>&1 &"];
+			If[launchCode=!=0,
+				exitCode = launchCode
 			,
-				While[!FileExistsQ[exitCodeFile],
-					finishedJobs = Length[FileNames["*.ok",doneDir]] + Length[FileNames["*.fail",doneDir]];
-					Pause[0.25];
+				exitCode = readExitCode;
+				While[exitCode===$Failed,
+					finishedJobs = FileByteCount[progressFile];
+					Pause[progressInterval];
+					exitCode = readExitCode;
 				];
-				finishedJobs = Length[FileNames["*.ok",doneDir]] + Length[FileNames["*.fail",doneDir]];
-				exitCode = ToExpression[StringTrim[Import[exitCodeFile,"Text"]]];
-			];
-			,
-			"Finished msolve jobs "<>ToString[finishedJobs]<>"/"<>ToString[totalJobs]
+				finishedJobs = FileByteCount[progressFile];
+			]
+		);
+		If[showNotebookProgress,
+			Monitor[
+				runProgressBatch,
+				"Finished msolve jobs "<>ToString[finishedJobs]<>"/"<>ToString[totalJobs]
+			]
+		,
+			runProgressBatch
 		];
 	,
 		exitCode = Run["/bin/bash "<>shellQuoteMS[runnerFile]];
@@ -225,6 +265,45 @@ irreducibleMonomialsFromGroebnerBasis[gb_,vars_,ord_]:=Module[
 	];
 	Return[MonomialList[Plus@@res,vars,ord]//DeleteCases[0]];
 ];
+
+irreducibleMonomialCountFromLeadingExponents[lt_,n_Integer]:=Module[
+	{pureExponents,bounds,gens,todo,seen=<||>,count=0,position=1,v,vv,i},
+	If[MemberQ[lt,ConstantArray[0,n]],Return[0]];
+	pureExponents=Table[Cases[lt,e_/;e[[i]]>0&&Total[Drop[e,{i}]]==0:>e[[i]]],{i,n}];
+	If[MemberQ[pureExponents,{}],Return[\[Infinity]]];
+	bounds=(Min /@ pureExponents)-1;
+	gens=Select[lt,Total[#]>0&&And@@Thread[#<=bounds]&];
+	If[gens==={},Return[Times@@(bounds+1)]];
+	todo={ConstantArray[0,n]};
+	While[position<=Length[todo],
+		v=todo[[position]];
+		position++;
+		If[!KeyExistsQ[seen,v],
+			seen[v]=True;
+			If[NoneTrue[gens,dividesQ[#,v]&],
+				count++;
+				Do[
+					If[v[[i]]<bounds[[i]],
+						vv=ReplacePart[v,i->v[[i]]+1];
+						If[!KeyExistsQ[seen,vv],AppendTo[todo,vv]]
+					]
+					,{i,n}
+				]
+			]
+		]
+	];
+	Return[count];
+];
+
+irreducibleMonomialCountFromLeadingMonomials[{},vars_]:=
+	irreducibleMonomialCountFromLeadingExponents[{},Length[vars]];
+irreducibleMonomialCountFromLeadingMonomials[leadingMonomials_,vars_]:=
+	irreducibleMonomialCountFromLeadingExponents[Exponent[#,vars]& /@ MonomialList[leadingMonomials,vars,DegreeReverseLexicographic][[;;,1]],Length[vars]];
+
+irreducibleMonomialCountFromGroebnerBasis[{},vars_,ord_]:=
+	irreducibleMonomialCountFromLeadingExponents[{},Length[vars]];
+irreducibleMonomialCountFromGroebnerBasis[gb_,vars_,ord_]:=
+	irreducibleMonomialCountFromLeadingExponents[leadingExps[gb,vars,ord],Length[vars]];
 
 
 (*finding irreducible monomials for a system of equations*)
