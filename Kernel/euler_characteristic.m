@@ -154,6 +154,35 @@ prepareCountInSectorMS[twistPoly_,propagatorVariables_,specialization_Associatio
 	<|"Job"->job,"Variables"->job["Variables"],"MonomialOrder"->job["MonomialOrder"],"ExponentFactor"->specialization["ExponentFactor"]|>
 ];
 
+prepareCountRegulatedMS[twistPoly_,propagatorVariables_,propagatorVariablesCut_,useSameRho_,specialization_Association,prime_,opts : OptionsPattern[countInSector]]:=Module[
+	{
+	cutVariables,activeProduct,dParam,rhoParam,nuParams,numerators,denominator,
+	system,systemVariables,job
+	},
+
+	cutVariables = DeleteDuplicates[propagatorVariablesCut];
+	activeProduct = Times@@Complement[propagatorVariables,cutVariables];
+	dParam = Unique["DiscKoskyD$"];
+	rhoParam = Unique["DiscKoskyRho$"];
+	nuParams = If[TrueQ[useSameRho],
+		ConstantArray[rhoParam,Length[propagatorVariables]]
+	,
+		Table[Unique["DiscKoskyNu$"],{Length[propagatorVariables]}]
+	];
+	numerators = MapThread[
+		If[MemberQ[cutVariables,#1],
+			D[twistPoly,#1],
+			#2*twistPoly - dParam*#1*D[twistPoly,#1]/2
+		]&,
+		{propagatorVariables,nuParams}
+	] // DeleteCases[0];
+	denominator = activeProduct*twistPoly;
+	system = Join[specialization["ConstraintSystem"],numerators,{1-DiscKoskyExtraVar*denominator}] // DeleteCases[0];
+	systemVariables = Join[specialization["VariablePrefix"],propagatorVariables]//Flatten;
+	job = prepareIrreducibleMonomialJob[system,systemVariables,prime,Sequence@@FilterRules[{opts},Options[findIrreducibleMonomials]]];
+	<|"Job"->job,"Variables"->job["Variables"],"MonomialOrder"->job["MonomialOrder"],"ExponentFactor"->specialization["ExponentFactor"]|>
+];
+
 
 	(*count number of master integrals in all sectors*)
 Options[CountSectorsUnregulated]={
@@ -258,4 +287,61 @@ CountSectorsUnregulated[lpPoly_,physicalPropagators_List,physicalPropagatorsCut_
 	(*postprocessing for output*)
 	totalSum = sectorCounting // Apply[Plus];
 	Return[{totalSum,sectorCounting,sectorsLP}];
+];
+
+Options[CountSectorsRegulated]=Join[Options[CountSectorsUnregulated],{"UseSameRho"->False}];
+CountSectorsRegulated[lpPoly_,physicalPropagators_List]:=
+	CountSectorsRegulated[lpPoly,physicalPropagators,{}];
+CountSectorsRegulated[lpPoly_,physicalPropagators_List,physicalPropagatorsCut_List,opts : OptionsPattern[]]:=Module[
+	{
+	useMsolve,useSameRho,primeIndex,prime,specialization,specializedPoly,
+	prepared,gb,monomials,masterCount
+	},
+
+	If[!SubsetQ[physicalPropagators,physicalPropagatorsCut],
+		Print["Error: cut variables must be a subset of variables"];
+		Return[$Failed]
+	];
+	If[!MemberQ[{True,False},OptionValue["UseSameRho"]],
+		Print["Error: \"UseSameRho\" must be True or False"];
+		Return[$Failed]
+	];
+	useSameRho = TrueQ[OptionValue["UseSameRho"]];
+	useMsolve = OptionValue["msolve"];
+	If[And[useMsolve,msolveExec===$Failed],Print["Error: msolve requested but executable not found"];Return[$Failed];];
+	If[OptionValue["msolve"]===Automatic,
+		If[msolveExec===$Failed,
+			useMsolve=False
+		,
+			useMsolve=True
+		]
+	];
+	If[And[useMsolve,OptionValue["MonomialOrder"]=!=DegreeReverseLexicographic],Print["Error: msolve only supports DegreeReverseLexicographic order"];Return[$Failed];];
+
+	primeIndex = resolvePrimeIndex[OptionValue["PrimeIndex"]];
+	If[primeIndex===$Failed,Return[$Failed]];
+	prime = primeList[[1+primeIndex]];
+	specialization = prepareKinematicSpecializationMS[lpPoly,physicalPropagators,prime,Sequence@@FilterRules[{opts},Options[countInSector]]];
+	If[specialization===$Failed,Return[$Failed]];
+	specializedPoly = specialization["Polynomial"];
+	prepared = prepareCountRegulatedMS[specializedPoly,physicalPropagators,physicalPropagatorsCut,useSameRho,specialization,prime,Sequence@@FilterRules[{opts},Options[countInSector]]];
+	If[prepared===$Failed,Return[$Failed]];
+
+	If[useMsolve,
+		gb = GroebnerBasisMS[prepared["Job"]["Ideal"],prepared["Variables"],
+			"Modulus"->prime,
+			"LeadingMonomialsOnly"->True,
+			Sequence@@FilterRules[{opts},Options[GroebnerBasisMS]]
+		];
+	,
+		gb = GroebnerBasis[prepared["Job"]["Ideal"],prepared["Variables"],
+			MonomialOrder->prepared["MonomialOrder"],
+			CoefficientDomain->RationalFunctions,
+			Modulus->prime
+		];
+	];
+	If[gb===$Failed,Return[$Failed]];
+	monomials = irreducibleMonomialsFromGroebnerBasis[gb,prepared["Variables"],prepared["MonomialOrder"]];
+	masterCount = If[monomials===\[Infinity],Indeterminate,(monomials // Length)/prepared["ExponentFactor"]];
+	Return[masterCount]
 ];
