@@ -204,8 +204,8 @@ Options[CountSectorsUnregulated]={
 CountSectorsUnregulated[lpPoly_,physicalPropagators_List,physicalPropagatorsCut_List,opts : OptionsPattern[]]:=Module[
 	{
 	sectors,sectorsLP,effectivePoly,effectiveVars,totalSum,sectorCounting,i,
-	useMsolve,primeIndex,prime,specialization,specializedPoly,prepared,jobs,gbs,gbCounter,prep,
-	monomialCount,showNotebookProgress,prepareSectorCounts
+	useMsolve,primeIndex,prime,specialization,specializedPoly,prepared,jobs,gbs,gbCounter,prep,monomialCount,showNotebookProgress,
+	prepareSectorCounts
 	},
 
 	sectors = Complement[physicalPropagators,physicalPropagatorsCut] // Subsets;
@@ -309,8 +309,7 @@ CountSectorsRegulated[lpPoly_,physicalPropagators_List]:=
 	CountSectorsRegulated[lpPoly,physicalPropagators,{}];
 CountSectorsRegulated[lpPoly_,physicalPropagators_List,physicalPropagatorsCut_List,opts : OptionsPattern[]]:=Module[
 	{
-	useMsolve,useSameRho,primeIndex,prime,specialization,specializedPoly,
-	prepared,gb,monomialCount,masterCount
+	useMsolve,useSameRho,primeIndex,prime,specialization,specializedPoly,prepared,gb,monomialCount
 	},
 
 	If[!SubsetQ[physicalPropagators,physicalPropagatorsCut],
@@ -356,9 +355,12 @@ CountSectorsRegulated[lpPoly_,physicalPropagators_List,physicalPropagatorsCut_Li
 			CoefficientDomain->RationalFunctions,
 			Modulus->prime
 		];
-		If[gb===$Failed,Return[$Failed]];
 		monomialCount = irreducibleMonomialCountFromGroebnerBasis[gb,prepared["Variables"],prepared["MonomialOrder"]];
 	];
-	masterCount = If[monomialCount===\[Infinity],Indeterminate,monomialCount/prepared["ExponentFactor"]];
-	Return[masterCount]
+
+	If[monomialCount===\[Infinity],
+		Return[Indeterminate]
+	,
+		Return[monomialCount/prepared["ExponentFactor"]]
+	]
 ];

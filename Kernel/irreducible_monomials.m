@@ -8,7 +8,6 @@ leadingExps[gb_,vars_,ord_]:=Exponent[First@MonomialList[#,vars,ord],vars]&/@gb;
 (*coordinate-wise divisibility test for exponent vectors*)
 dividesQ[e_,m_]:=And@@Thread[m>=e];
 
-
 Options[GroebnerBasisMS]={
 	"Modulus"->0,
 	"LeadingMonomialsOnly"->False,
@@ -62,10 +61,9 @@ GroebnerBasisMS[ideal_,vars_List,opts:OptionsPattern[]]:=Module[{res},
 GroebnerBasisMS[jobs_List,opts:OptionsPattern[]]:=Module[
 	{
 		modulus,normalised,threadCount,jobCount,baseDir,runDir,inputDir,outputDir,logDir,
-		workerFile,jobsFile,runnerFile,backgroundRunnerFile,runnerLogFile,exitCodeFile,
-		ids,gbFlag,runner,worker,backgroundRunner,exitCode,outputFiles,outputs,processed,
-		keepFiles,progressEnabled,showNotebookProgress,finishedJobs,totalJobs,progressFile,
-		progressInterval,launchCode,runProgressBatch,readExitCode
+		workerFile,jobsFile,runnerFile,backgroundRunnerFile,runnerLogFile,exitCodeFile,ids,gbFlag,runner,worker,backgroundRunner,exitCode,
+		outputFiles,outputs,processed,keepFiles,progressEnabled,showNotebookProgress,finishedJobs,totalJobs,progressFile,progressInterval,launchCode,
+		runProgressBatch,readExitCode
 	},
 
 	If[jobs==={},Return[{}]];
