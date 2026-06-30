@@ -122,7 +122,7 @@ prepareKinematicSpecializationMS[lpPoly_,physicalPropagators_,prime_,opts : Opti
 				inst=FindInstance[kinPolyN==0,{mandelstamVar},Modulus->prime];
 				If[Length[inst]>0,found=True;Break[]];
 				,
-				{attempt,1,50}
+				{attempt,1,400}
 			];
 			If[!found,Print["Error: Diophantine solution not found. Try running again with \"Diophantine\"->False"]; Return[$Failed]];
 			polySpecialized = lpPoly // ReplaceAll[paramsNsub] // ReplaceAll[inst//Flatten];
