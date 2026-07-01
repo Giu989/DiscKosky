@@ -11,10 +11,12 @@ dividesQ[e_,m_]:=And@@Thread[m>=e];
 Options[GroebnerBasisMS]={
 	"Modulus"->0,
 	"LeadingMonomialsOnly"->False,
+	"EliminateVariables"->{},
 	"MonomialOrder"->DegreeReverseLexicographic,
 	"debug"->False,
 	"MSolveJobs"->Automatic,
 	"MSolveThreads"->1,
+	"msolveParallelThreads"->1,
 	"MSolveBatchDirectory"->Automatic,
 	"MSolveKeepFiles"->False,
 	"MSolveProgress"->Automatic,
@@ -61,9 +63,9 @@ GroebnerBasisMS[ideal_,vars_List,opts:OptionsPattern[]]:=Module[{res},
 GroebnerBasisMS[jobs_List,opts:OptionsPattern[]]:=Module[
 	{
 		modulus,normalised,threadCount,jobCount,baseDir,runDir,inputDir,outputDir,logDir,
-		workerFile,jobsFile,runnerFile,backgroundRunnerFile,runnerLogFile,exitCodeFile,ids,gbFlag,runner,worker,backgroundRunner,exitCode,
+		workerFile,jobsFile,runnerFile,backgroundRunnerFile,runnerLogFile,exitCodeFile,ids,gbFlag,eliminateVariables,eliminatePattern,eliminateCount,eliminateFlag,runner,worker,backgroundRunner,exitCode,
 		outputFiles,outputs,processed,keepFiles,progressEnabled,showNotebookProgress,finishedJobs,totalJobs,progressFile,progressInterval,launchCode,
-		runProgressBatch,readExitCode
+		runProgressBatch,readExitCode,explicitThreadOptions
 	},
 
 	If[jobs==={},Return[{}]];
@@ -76,9 +78,37 @@ GroebnerBasisMS[jobs_List,opts:OptionsPattern[]]:=Module[
 	normalised = normaliseGroebnerBasisMSJob /@ jobs;
 	If[MemberQ[normalised,$Failed],Print["Error: malformed GroebnerBasisMS batch job"];Return[$Failed]];
 	If[!And@@(SubsetQ[#["Variables"],#["Ideal"]//Variables]& /@ normalised),Print["Error: parameters not supported"];Return[$Failed];];
+	eliminateVariables = OptionValue["EliminateVariables"];
+	If[!ListQ[eliminateVariables],Print["Error: \"EliminateVariables\" must be a list"];Return[$Failed]];
+	eliminateVariables = DeleteDuplicates[eliminateVariables];
+	If[eliminateVariables=!={},
+		If[!And@@(SubsetQ[#["Variables"],eliminateVariables]& /@ normalised),
+			Print["Error: all \"EliminateVariables\" must appear in every variable list"];
+			Return[$Failed];
+		];
+		If[!And@@(Length[eliminateVariables]<Length[#["Variables"]]& /@ normalised),
+			Print["Error: \"EliminateVariables\" must leave at least one variable"];
+			Return[$Failed];
+		];
+		normalised = Map[
+			Function[job,
+				Join[
+					job,
+					<|"Variables"->Join[
+						Select[job["Variables"],MemberQ[eliminateVariables,#]&],
+						Select[job["Variables"],!MemberQ[eliminateVariables,#]&]
+					]|>
+				]
+			],
+			normalised
+		];
+	];
+	eliminateCount = Length[eliminateVariables];
+	eliminateFlag = If[eliminateCount>0," -e "<>ToString[eliminateCount],""];
 
-	threadCount = OptionValue["MSolveThreads"] /. Automatic->1;
-	If[!IntegerQ[threadCount] || threadCount<1,Print["Error: \"MSolveThreads\" must be a positive integer"];Return[$Failed]];
+	explicitThreadOptions = Cases[{opts},HoldPattern[Rule["msolveParallelThreads",value_]|RuleDelayed["msolveParallelThreads",value_]]:>value];
+	threadCount = If[explicitThreadOptions==={},OptionValue["MSolveThreads"],Last[explicitThreadOptions]] /. Automatic->1;
+	If[!IntegerQ[threadCount] || threadCount<1,Print["Error: \"msolveParallelThreads\" must be a positive integer"];Return[$Failed]];
 	jobCount = OptionValue["MSolveJobs"] /. Automatic->Max[1,Floor[$ProcessorCount/threadCount]];
 	If[!IntegerQ[jobCount] || jobCount<1,Print["Error: \"MSolveJobs\" must be a positive integer"];Return[$Failed]];
 	jobCount = Min[jobCount,Length[normalised]];
@@ -128,6 +158,7 @@ GroebnerBasisMS[jobs_List,opts:OptionsPattern[]]:=Module[
 		"set -u\n"<>
 		"idx=\"$1\"\n"<>
 		"if "<>shellQuoteMS[msolveExec]<>" -g "<>ToString[gbFlag]<>" -t "<>ToString[threadCount]<>
+			eliminateFlag<>
 			" -f "<>shellQuoteMS[inputDir]<>"/\"${idx}.ms\""<>
 			" -o "<>shellQuoteMS[outputDir]<>"/\"${idx}.out\""<>
 			" > "<>shellQuoteMS[logDir]<>"/\"${idx}.log\" 2>&1; then\n"<>
@@ -143,6 +174,7 @@ GroebnerBasisMS[jobs_List,opts:OptionsPattern[]]:=Module[
 		"set -u\n"<>
 		"idx=\"$1\"\n"<>
 		shellQuoteMS[msolveExec]<>" -g "<>ToString[gbFlag]<>" -t "<>ToString[threadCount]<>
+			eliminateFlag<>
 			" -f "<>shellQuoteMS[inputDir]<>"/\"${idx}.ms\""<>
 			" -o "<>shellQuoteMS[outputDir]<>"/\"${idx}.out\""<>
 			" > "<>shellQuoteMS[logDir]<>"/\"${idx}.log\" 2>&1\n"
@@ -218,6 +250,11 @@ GroebnerBasisMS[jobs_List,opts:OptionsPattern[]]:=Module[
 	If[MemberQ[processed,$Failed],
 		If[!keepFiles,DeleteDirectory[runDir,DeleteContents->True]];
 		Return[$Failed];
+	];
+	If[eliminateVariables=!={},
+		(* Over prime fields msolve -e prints a block-order basis; the elimination ideal is the part free of the eliminated variables. *)
+		eliminatePattern = Alternatives@@eliminateVariables;
+		processed = Select[#,FreeQ[#,eliminatePattern]&]& /@ processed;
 	];
 	If[!keepFiles,DeleteDirectory[runDir,DeleteContents->True]];
 	Return[processed]
