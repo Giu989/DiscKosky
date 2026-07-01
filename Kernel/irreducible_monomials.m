@@ -16,6 +16,7 @@ Options[GroebnerBasisMS]={
 	"debug"->False,
 	"MSolveJobs"->Automatic,
 	"MSolveThreads"->1,
+	"msolveParallelThreads"->1,
 	"MSolveBatchDirectory"->Automatic,
 	"MSolveKeepFiles"->False,
 	"MSolveProgress"->Automatic,
@@ -64,7 +65,7 @@ GroebnerBasisMS[jobs_List,opts:OptionsPattern[]]:=Module[
 		modulus,normalised,threadCount,jobCount,baseDir,runDir,inputDir,outputDir,logDir,
 		workerFile,jobsFile,runnerFile,backgroundRunnerFile,runnerLogFile,exitCodeFile,ids,gbFlag,eliminateVariables,eliminatePattern,eliminateCount,eliminateFlag,runner,worker,backgroundRunner,exitCode,
 		outputFiles,outputs,processed,keepFiles,progressEnabled,showNotebookProgress,finishedJobs,totalJobs,progressFile,progressInterval,launchCode,
-		runProgressBatch,readExitCode
+		runProgressBatch,readExitCode,explicitThreadOptions
 	},
 
 	If[jobs==={},Return[{}]];
@@ -105,8 +106,9 @@ GroebnerBasisMS[jobs_List,opts:OptionsPattern[]]:=Module[
 	eliminateCount = Length[eliminateVariables];
 	eliminateFlag = If[eliminateCount>0," -e "<>ToString[eliminateCount],""];
 
-	threadCount = OptionValue["MSolveThreads"] /. Automatic->1;
-	If[!IntegerQ[threadCount] || threadCount<1,Print["Error: \"MSolveThreads\" must be a positive integer"];Return[$Failed]];
+	explicitThreadOptions = Cases[{opts},HoldPattern[Rule["msolveParallelThreads",value_]|RuleDelayed["msolveParallelThreads",value_]]:>value];
+	threadCount = If[explicitThreadOptions==={},OptionValue["MSolveThreads"],Last[explicitThreadOptions]] /. Automatic->1;
+	If[!IntegerQ[threadCount] || threadCount<1,Print["Error: \"msolveParallelThreads\" must be a positive integer"];Return[$Failed]];
 	jobCount = OptionValue["MSolveJobs"] /. Automatic->Max[1,Floor[$ProcessorCount/threadCount]];
 	If[!IntegerQ[jobCount] || jobCount<1,Print["Error: \"MSolveJobs\" must be a positive integer"];Return[$Failed]];
 	jobCount = Min[jobCount,Length[normalised]];

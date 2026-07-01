@@ -195,6 +195,7 @@ Options[CountSectorsUnregulated]={
 	"PrimeIndex"->Random,
 	"MSolveJobs"->Automatic,
 	"MSolveThreads"->1,
+	"msolveParallelThreads"->1,
 	"MSolveBatchDirectory"->Automatic,
 	"MSolveKeepFiles"->False,
 	"MSolveProgress"->Automatic,
