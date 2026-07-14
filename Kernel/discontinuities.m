@@ -35,21 +35,40 @@ checkDoubleDiscontinuity[fullCountings_,index1_,index2_]:=Module[
 ];
 
 
-CheckDoubleDiscontinuities[gpol_,variables_,singList_]:=Module[
+ClearAll[buildEulerChiData];
+Options[buildEulerChiData] = {"CheckCriticalPointValidity"->True};
+buildEulerChiData[gpol_,variables_,singList_,opts:OptionsPattern[]]:= buildEulerChiData[gpol,variables,singList,opts] = Module[
 	{
-		eulerChi,index,i,j,singularitieseulerChi,fulleulerChi,dropMatrix
+		eulerChi,index,i,j,singularitieseulerChi,fulleulerChi,eulerChiReg
 	},
 	
-	PrintTemporary["Computing the Generic Euler Characteristic"];
+	PrintTemporary["First run, computing singularity structure data"];
+	PrintTemporary["Computing critical points sector by sector"];
 	eulerChi = CountSectorsUnregulated[gpol,variables,{}];
 	
 	If[First[eulerChi]===Indeterminate,
 		Print["Error: At least one (sub)sector has non isolated critical points. Cannot compute the Euler characteristic with this method. Run the command CountSectorsUnregulated[] for more information on the degenerate sectors."];
 		Return[$Failed];
 	];
-	PrintTemporary["Generic Euler Characteristic = ", eulerChi // First];
+	PrintTemporary["Sector by sector critical points characteristic = ", eulerChi // First];
+	If[OptionValue["CheckCriticalPointValidity"],
+		PrintTemporary["Computing the generic Euler characteristic regulated \[LongDash] this may take a while..."];
+		eulerChiReg = CountSectorsRegulated[gpol,variables,{}];
+		PrintTemporary["Regulated Euler Characteristic = ", eulerChiReg];
+		If[First[eulerChi]===eulerChiReg,
+			PrintTemporary["Euler characteristics agree, proceeding"];
+		,
+			Print["Error: The sector by sector euler characteristic does not agree with the regulated euler characteristic"];
+			Print["Sector by sector Euler characteristic = ", eulerChi // First];
+			Print["Regulated Euler characteristic = ", eulerChiReg];
+			Print["Incorrect predictions will be generated"];
+			Return[$Failed];
+		];
+	,
+		PrintTemporary["Warning: Skipping regulated Euler characteristic check"];
+	];
 	
-	PrintTemporary["Computing the Euler characteristic for each singularity"];
+	PrintTemporary["Computing critical points on the support of each singularity"];
 	singularitieseulerChi = Monitor[
 		Table[
 			CountSectorsUnregulated[gpol,variables,{},"Constraint"->singList[[index]]]
@@ -61,9 +80,58 @@ CheckDoubleDiscontinuities[gpol_,variables_,singList_]:=Module[
 	];
 	
 	fulleulerChi = Join[singularitieseulerChi,{eulerChi}];
+	Return[fulleulerChi];
+];
+
+
+findNewTrueCuts[fullCountings_,data1_,index2_]:=Module[
+	{
+		data2,max1,trueData,indData
+	},
+	
+	data2 = findCutsIndex[fullCountings,index2];
+	max1 = deleteSupersets@DeleteDuplicates@Flatten[data1,1];
+	trueData = Select[data2[[1]],Function[c2,AnyTrue[max1,SubsetQ[c2,#]&]]];
+	indData = Select[data2[[2]],Function[c2,AnyTrue[max1,SubsetQ[c2,#]&]]];
+	Return[{trueData,indData}];
+];
+
+
+Options[CheckRepeatedDiscontinuity] = Options[buildEulerChiData];
+CheckRepeatedDiscontinuity[gpol_,variables_,singList_,indexList_,opts:OptionsPattern[]]:=Module[
+	{
+		data1,outTrueCut,fullCountings
+	},
+	
+	fullCountings = buildEulerChiData[gpol,variables,singList,opts];
+	If[fullCountings===$Failed,Return[$Failed]];
+	
+	data1 = findCutsIndex[fullCountings,indexList[[1]]];
+	outTrueCut = Fold[findNewTrueCuts[fullCountings,#1,#2]&,data1,indexList[[2;;]]];
+	
+	
+	If[Length[outTrueCut[[1]]]>0,
+		Return[True];
+	];
+	
+	If[Length[outTrueCut[[2]]]>0,
+		Return[Indeterminate];
+	];
+	
+	Return[False];
+];
+
+
+Options[CheckDoubleDiscontinuities] = Options[buildEulerChiData];
+CheckDoubleDiscontinuities[gpol_,variables_,singList_,opts:OptionsPattern[]]:=Module[
+	{
+		eulerChi,index,i,j,singularitieseulerChi,fulleulerChi,dropMatrix
+	},
+	
+	If[buildEulerChiData[gpol,variables,singList,opts]===$Failed,Return[$Failed]];
 	
 	PrintTemporary["Building the double discontinuity matrix"];
-	dropMatrix = Monitor[Table[checkDoubleDiscontinuity[fulleulerChi,i,j],{i,1,Length[singList]},{j,1,Length[singList]}],{ToString[i]<>"/"<>ToString[Length[singList]],ToString[j]<>"/"<>ToString[Length[singList]]}];
+	dropMatrix = Monitor[Table[CheckRepeatedDiscontinuity[gpol,variables,singList,{i,j},opts],{i,1,Length[singList]},{j,1,Length[singList]}],{ToString[i]<>"/"<>ToString[Length[singList]],ToString[j]<>"/"<>ToString[Length[singList]]}];
 	
 	Return[dropMatrix];
 ];
