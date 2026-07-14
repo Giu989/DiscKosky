@@ -36,7 +36,11 @@ checkDoubleDiscontinuity[fullCountings_,index1_,index2_]:=Module[
 
 
 ClearAll[buildEulerChiData];
-Options[buildEulerChiData] = {"CheckCriticalPointValidity"->True};
+Options[buildEulerChiData] = Join[
+	{"CheckCriticalPointValidity"->True},
+	DeleteCases[Options[CountSectorsRegulated],"Constraint"->_]
+];
+countSectorsOptions[head_,opts_List]:=FilterRules[opts,DeleteCases[Options[head],"Constraint"->_]];
 buildEulerChiData[gpol_,variables_,singList_,opts:OptionsPattern[]]:= buildEulerChiData[gpol,variables,singList,opts] = Module[
 	{
 		eulerChi,index,i,j,singularitieseulerChi,fulleulerChi,eulerChiReg
@@ -44,7 +48,7 @@ buildEulerChiData[gpol_,variables_,singList_,opts:OptionsPattern[]]:= buildEuler
 	
 	PrintTemporary["First run, computing singularity structure data"];
 	PrintTemporary["Computing critical points sector by sector"];
-	eulerChi = CountSectorsUnregulated[gpol,variables,{}];
+	eulerChi = CountSectorsUnregulated[gpol,variables,{},Sequence@@countSectorsOptions[CountSectorsUnregulated,{opts}]];
 	
 	If[First[eulerChi]===Indeterminate,
 		Print["Error: At least one (sub)sector has non isolated critical points. Cannot compute the Euler characteristic with this method. Run the command CountSectorsUnregulated[] for more information on the degenerate sectors."];
@@ -53,7 +57,7 @@ buildEulerChiData[gpol_,variables_,singList_,opts:OptionsPattern[]]:= buildEuler
 	PrintTemporary["Sector by sector critical points characteristic = ", eulerChi // First];
 	If[OptionValue["CheckCriticalPointValidity"],
 		PrintTemporary["Computing the generic Euler characteristic regulated \[LongDash] this may take a while..."];
-		eulerChiReg = CountSectorsRegulated[gpol,variables,{}];
+		eulerChiReg = CountSectorsRegulated[gpol,variables,{},Sequence@@countSectorsOptions[CountSectorsRegulated,{opts}]];
 		PrintTemporary["Regulated Euler Characteristic = ", eulerChiReg];
 		If[First[eulerChi]===eulerChiReg,
 			PrintTemporary["Euler characteristics agree, proceeding"];
@@ -71,7 +75,7 @@ buildEulerChiData[gpol_,variables_,singList_,opts:OptionsPattern[]]:= buildEuler
 	PrintTemporary["Computing critical points on the support of each singularity"];
 	singularitieseulerChi = Monitor[
 		Table[
-			CountSectorsUnregulated[gpol,variables,{},"Constraint"->singList[[index]]]
+			CountSectorsUnregulated[gpol,variables,{},Sequence@@countSectorsOptions[CountSectorsUnregulated,{opts}],"Constraint"->singList[[index]]]
 		,
 			{index,1,singList//Length}
 		]
