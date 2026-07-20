@@ -16,22 +16,7 @@ findCutsIndex[fullCountings_,index_]:=findCutsIndex[fullCountings,index]=Module[
 
 	(*If[(cuts2//Length)=!=0,Print["Indeterminate sector found"]];*)
 
-	Return[{cuts,cuts2}];
-];
-
-
-checkDoubleDiscontinuity[fullCountings_,index1_,index2_]:=Module[
-	{
-		data1,data2,max1,superDrop,indDrop
-	},
-	
-	data1=findCutsIndex[fullCountings,index1];
-	data2=findCutsIndex[fullCountings,index2];
-	max1=deleteSupersets@DeleteDuplicates@Flatten[data1,1];
-	superDrop=AnyTrue[data2[[1]],Function[c2,AnyTrue[max1,SubsetQ[c2,#]&]]];
-	indDrop=AnyTrue[data2[[2]],Function[c2,AnyTrue[max1,SubsetQ[c2,#]&]]];
-	
-	Return[superDrop||Replace[indDrop,True->Indeterminate]];
+	Return[<|"data"->{cuts,cuts2},"index"->index|>];
 ];
 
 
@@ -88,32 +73,39 @@ buildEulerChiData[gpol_,variables_,singList_,opts:OptionsPattern[]]:= buildEuler
 ];
 
 
-findNewTrueCuts[fullCountings_,data1_,index2_]:=Module[
+Options[findNewTrueCuts] = {"RefineIndeterminates"->False};
+findNewTrueCuts[fullCountings_,data1_,index2_,opts:OptionsPattern[]]:=Module[
 	{
-		data2,max1,trueData,indData
+		data2,max1,trueData,indData,zeroSectorIndeterminates
 	},
 	
-	data2 = findCutsIndex[fullCountings,index2];
-	max1 = deleteSupersets@DeleteDuplicates@Flatten[data1,1];
+	data2 = findCutsIndex[fullCountings,index2]["data"];
+	max1 = deleteSupersets@DeleteDuplicates@Flatten[data1["data"],1];
 	trueData = Select[data2[[1]],Function[c2,AnyTrue[max1,SubsetQ[c2,#]&]]];
 	indData = Select[data2[[2]],Function[c2,AnyTrue[max1,SubsetQ[c2,#]&]]];
-	Return[{trueData,indData}];
+	
+	If[OptionValue["RefineIndeterminates"],
+		zeroSectorIndeterminates = sectorZeroIndeterminateLabels[fullCountings];
+		indData = indData // DeleteCases[#,_?(SubsetQ[ReplaceAll[#,zeroSectorIndeterminates],{data1["index"]}] &)]&;
+	];
+	
+	Return[<|"data"->{trueData,indData},"index"->index2|>];
+	(*Return[{trueData,indData}];*)
 ];
 
 
-Options[CheckRepeatedDiscontinuity] = Options[buildEulerChiData];
+Options[CheckRepeatedDiscontinuity] = Join[Options[findNewTrueCuts],Options[buildEulerChiData]];
 CheckRepeatedDiscontinuity[gpol_,variables_,singList_,indexList_,opts:OptionsPattern[]]:=Module[
 	{
 		data1,outTrueCut,fullCountings
 	},
 	
-	fullCountings = buildEulerChiData[gpol,variables,singList,opts];
+	fullCountings = buildEulerChiData[gpol,variables,singList,Sequence@@FilterRules[{opts},Options[buildEulerChiData]]];
 	If[fullCountings===$Failed,Return[$Failed]];
 	
 	data1 = findCutsIndex[fullCountings,indexList[[1]]];
-	outTrueCut = Fold[findNewTrueCuts[fullCountings,#1,#2]&,data1,indexList[[2;;]]];
-	
-	
+	outTrueCut = Fold[findNewTrueCuts[fullCountings,#1,#2,Sequence@@FilterRules[{opts},Options[findNewTrueCuts]]]&,data1,indexList[[2;;]]]["data"];
+
 	If[Length[outTrueCut[[1]]]>0,
 		Return[True];
 	];
@@ -126,13 +118,13 @@ CheckRepeatedDiscontinuity[gpol_,variables_,singList_,indexList_,opts:OptionsPat
 ];
 
 
-Options[CheckDoubleDiscontinuities] = Options[buildEulerChiData];
+Options[CheckDoubleDiscontinuities] = Options[CheckRepeatedDiscontinuity];
 CheckDoubleDiscontinuities[gpol_,variables_,singList_,opts:OptionsPattern[]]:=Module[
 	{
 		eulerChi,index,i,j,singularitieseulerChi,fulleulerChi,dropMatrix
 	},
 	
-	If[buildEulerChiData[gpol,variables,singList,opts]===$Failed,Return[$Failed]];
+	If[buildEulerChiData[gpol,variables,singList,Sequence@@FilterRules[{opts},Options[buildEulerChiData]]]===$Failed,Return[$Failed]];
 	
 	PrintTemporary["Building the double discontinuity matrix"];
 	dropMatrix = Monitor[Table[CheckRepeatedDiscontinuity[gpol,variables,singList,{i,j},opts],{i,1,Length[singList]},{j,1,Length[singList]}],{ToString[i]<>"/"<>ToString[Length[singList]],ToString[j]<>"/"<>ToString[Length[singList]]}];

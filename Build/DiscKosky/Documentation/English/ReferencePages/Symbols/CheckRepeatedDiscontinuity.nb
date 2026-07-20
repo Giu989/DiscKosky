@@ -1,0 +1,1081 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[     41788,       1072]
+NotebookOptionsPosition[     33733,        918]
+NotebookOutlinePosition[     36315,        982]
+CellTagsIndexPosition[     36230,        977]
+WindowTitle->CheckRepeatedDiscontinuity
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {GridBox[{
+      {
+       ItemBox[Cell[BoxData[
+         RowBox[{
+          TemplateBox[{12},
+           "Spacer1"], Cell["DISC KOSKY SYMBOL", "PacletNameCell",
+           TextAlignment->Center,ExpressionUUID->
+           "05e3afff-3083-4a0d-8470-e6af4f421d08"], 
+          TemplateBox[{8},
+           "Spacer1"]}]],
+         TextAlignment->Center,ExpressionUUID->
+         "db81aed5-8c9e-4f53-86ad-7bd6d350293b"],
+        Background->LightDarkSwitched[
+          RGBColor[0.490196, 0.576471, 0.690196]],
+        ItemSize->Full], ""}
+     },
+     GridBoxAlignment->{"Rows" -> {{Center}}},
+     GridBoxItemSize->{"Columns" -> {Full, 
+         Scaled[0.02]}, "Rows" -> {{2.5}}}], Cell[TextData[{
+     Cell[BoxData[
+      TagBox[
+       ActionMenuBox[
+        FrameBox[Cell[TextData[{
+          "See Also",
+          " ",
+          Cell[BoxData[
+           GraphicsBox[
+            {GrayLevel[0.66667], Thickness[0.13], 
+             LineBox[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]},
+            AspectRatio->1,
+            ImageSize->20,
+            PlotRange->{{-3, 4}, {-1, 1}}]],ExpressionUUID->
+           "079c549f-4cfc-4299-a845-e64ca4f107af"]
+         }],ExpressionUUID->"6c921543-f224-42e2-8efb-5f8a0e3d60aa"],
+         StripOnInput->False],{
+        StyleBox[
+          "\"CheckDoubleDiscontinuities\"", "SeeAlsoRelated", StripOnInput -> 
+           False] :> Documentation`HelpLookup[
+          "paclet:DiscKosky/ref/CheckDoubleDiscontinuities"], 
+         StyleBox[
+          "\"CountSectorsUnregulated\"", "SeeAlsoRelated", StripOnInput -> 
+           False] :> Documentation`HelpLookup[
+          "paclet:DiscKosky/ref/CountSectorsUnregulated"], 
+         StyleBox[
+          "\"CountSectorsRegulated\"", "SeeAlsoRelated", StripOnInput -> 
+           False] :> Documentation`HelpLookup[
+          "paclet:DiscKosky/ref/CountSectorsRegulated"], 
+         StyleBox[
+          "\"SectorDropGraph\"", "SeeAlsoRelated", StripOnInput -> False] :> 
+         Documentation`HelpLookup["paclet:DiscKosky/ref/SectorDropGraph"]},
+        Appearance->None,
+        MenuAppearance->Automatic,
+        MenuStyle->"SeeAlso"],
+       MouseAppearanceTag["LinkHand"]]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "dad056ae-c9d1-4b31-aa7e-b136516ec0de"],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      TagBox[
+       ActionMenuBox[
+        FrameBox[Cell[TextData[{
+          "Related Guides",
+          " ",
+          Cell[BoxData[
+           GraphicsBox[
+            {GrayLevel[0.66667], Thickness[0.13], 
+             LineBox[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]},
+            AspectRatio->1,
+            ImageSize->20,
+            PlotRange->{{-3, 4}, {-1, 1}}]],ExpressionUUID->
+           "4ca7f3f1-7ce8-4c2a-a29b-cf5d11e2bbfe"]
+         }],ExpressionUUID->"d9f7d146-09f2-415d-95df-1c4890049e6c"],
+         StripOnInput->False],{
+        "\"DiscKosky Documentation\"" :> 
+         Documentation`HelpLookup["paclet:DiscKosky/guide/DiscKosky"]},
+        Appearance->None,
+        MenuAppearance->Automatic,
+        MenuStyle->"MoreAbout"],
+       MouseAppearanceTag["LinkHand"]]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "c2c9fc22-7f89-46fe-9ca1-60d78f9545db"],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      TagBox[
+       ActionMenuBox[
+        FrameBox[Cell[TextData[{
+          "Tech Notes",
+          " ",
+          Cell[BoxData[
+           GraphicsBox[
+            {GrayLevel[0.66667], Thickness[0.13], 
+             LineBox[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]},
+            AspectRatio->1,
+            ImageSize->20,
+            PlotRange->{{-3, 4}, {-1, 1}}]],ExpressionUUID->
+           "6dd2d300-e172-40b6-9e27-3622c1bbb82c"]
+         }],ExpressionUUID->"e9c825dc-75e8-4f5e-a193-a0b8e0e5458b"],
+         StripOnInput->False],{
+        "\"Using DiscKosky\"" :> 
+         Documentation`HelpLookup["paclet:DiscKosky/tutorial/UsingDiscKosky"]},
+        Appearance->None,
+        MenuAppearance->Automatic,
+        MenuStyle->"Tutorials"],
+       MouseAppearanceTag["LinkHand"]]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "fffda99b-7771-4e53-832f-4ec703170217"],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      TagBox[
+       ActionMenuBox[
+        FrameBox[Cell[TextData[{
+          "URL",
+          " ",
+          Cell[BoxData[
+           GraphicsBox[
+            {GrayLevel[0.66667], Thickness[0.13], 
+             LineBox[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]},
+            AspectRatio->1,
+            ImageSize->20,
+            PlotRange->{{-3, 4}, {-1, 1}}]],ExpressionUUID->
+           "288f4888-f17a-4a7e-bbd5-e82cbb5340b1"]
+         }],ExpressionUUID->"ad59ca94-3894-43bb-9db8-e2c7215974da"],
+         StripOnInput->False],{
+        "\"DiscKosky/ref/CheckRepeatedDiscontinuity\"" :> None, 
+         "\"Copy Wolfram Documentation Center URL\"" :> 
+         CopyToClipboard["DiscKosky/ref/CheckRepeatedDiscontinuity"], 
+         Delimiter, "\"Copy web URL\"" :> 
+         Module[{DocumentationSearch`Private`nb$}, 
+           DocumentationSearch`Private`nb$ = 
+            NotebookPut[
+             Notebook[{
+               Cell[BoxData[
+                 MakeBoxes[
+                  Hyperlink[
+                   "http://reference.wolfram.com/language/DiscKosky/ref/\
+CheckRepeatedDiscontinuity.html"], StandardForm]], "Input", TextClipboardType -> 
+                 "PlainText"]}, Visible -> False]]; 
+           SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+           FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+           NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+         "\"Go to web URL\"" :> 
+         FrontEndExecute[{
+           NotebookLocate[{
+             URL[(If[TrueQ[False], 
+                  "http://reference.wolfram.com/system-modeler/", 
+                  "http://reference.wolfram.com/language/"] <> 
+                "DiscKosky/ref/CheckRepeatedDiscontinuity") <> ".html"], 
+              None}]}]},
+        Appearance->None,
+        MenuAppearance->Automatic,
+        MenuStyle->"URLMenu"],
+       MouseAppearanceTag["LinkHand"]]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "56303ab9-cb31-48bb-a503-ab4cdf8849ce"]
+    }], "AnchorBar",
+     CacheGraphics->False,ExpressionUUID->
+     "30f9e421-42cc-45b2-ab20-9663cf7ffcdb"]}
+  }]], "AnchorBarGrid",
+ CellID->1,ExpressionUUID->"c8f43252-b747-4dd9-95d3-11f7d5979e97"],
+
+Cell["DiscKosky`", "ContextNameCell",ExpressionUUID->"9313e9aa-f6e8-4384-9eb1-cc675768b102"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[GridBox[{
+   {Cell[TextData[{
+     Cell[
+     "CheckRepeatedDiscontinuity", "ObjectName",ExpressionUUID->
+      "aec0050e-1a33-4159-8f75-b4c478a355b5"],
+     Cell[BoxData[
+      TemplateBox[{8},
+       "Spacer1"]],ExpressionUUID->"7222204a-b6a3-4334-b530-f67be7a33702"],
+     Cell[BoxData[
+     ""], "ObjectNameTranslation",ExpressionUUID->
+      "3902f025-45d4-4916-95c5-15f72f20a6c2"]
+    }],ExpressionUUID->"8d399957-7f83-4b20-81ba-866361a1e268"], 
+    "\[SpanFromLeft]"}
+  }]], "ObjectNameGrid",ExpressionUUID->"ea15b696-6d70-4630-b6bf-\
+b7f8fdddc908"],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{
+       TemplateBox[{
+         Cell[
+          TextData["CheckRepeatedDiscontinuity"]], 
+         "paclet:DiscKosky/ref/CheckRepeatedDiscontinuity", 
+         "DiscKosky Package Symbol"},
+        "PackageLink",
+        BaseStyle->"InlineFormula"], "[", 
+       RowBox[{
+        StyleBox["gpol", "TI"], ",", 
+        StyleBox["vars", "TI"], ",", 
+        StyleBox["singList", "TI"], ",", 
+        StyleBox["indexList", "TI"]}], "]"}]], "InlineFormula",
+      FontFamily->"Source Sans Pro",ExpressionUUID->
+      "177832f8-a7a4-4250-ab58-cd5cb65e9f42"],
+     "\[LineSeparator]",
+     "tests whether the ordered singularities in ",
+     Cell[BoxData[
+      StyleBox["\"\<indexList\>\"", "TI",
+       StripOnInput->False]], "InlineFormula",
+      FontFamily->"Source Sans Pro",ExpressionUUID->
+      "40e219f3-07e2-4b4d-a574-5903caa5f10a"],
+     " support a repeated discontinuity."
+    }],ExpressionUUID->"218489a8-ca83-46b8-b752-b22df4992dbf"]}
+  }]], "Usage",
+ CellID->139271287,ExpressionUUID->"0dfe8eb0-ab7a-43cf-a47d-6e8d6c631a28"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    DynamicBox[ToBoxes[
+      If[CurrentValue[
+         EvaluationCell[], "CellGroupOpen"] =!= Closed, 
+       Style[
+        Graphics[{
+          Thickness[0.18], 
+          RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+          Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+         PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+        0.68 Inherited], 
+       Rotate[
+        Style[
+         Graphics[{
+           Thickness[0.18], 
+           RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+           Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+          PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+         0.68 Inherited], Rational[1, 2] Pi, {-1.65, -1}]]]]],ExpressionUUID->
+    "285a912f-9e3c-4c7d-86ed-1c9f3c80cd18"],
+   Cell[BoxData[
+    TemplateBox[{1},
+     "Spacer1"]],ExpressionUUID->"1a9f4484-1991-4ab3-8587-aef9ee34517a"],
+   "Details and Options"
+  }], "NotesFrameText",ExpressionUUID->"ad58c258-8bce-4bee-b3b2-4c5de22e7126"],
+  Appearance->{Automatic, None, "Normal", Automatic},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->
+   "Preemptive"]],ExpressionUUID->"038f90b4-4327-48dd-a428-7090f4b78d7a"]], \
+"NotesSection",
+ ShowGroupOpener->"Thumbnail",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CacheGraphics->False,
+ CellID->123275378,ExpressionUUID->"fb3404b4-e7c4-4ce5-879c-c0ca7b016dc2"],
+
+Cell["\<\
+singList is an ordered list of singularity polynomials. Entries in indexList \
+are positions in that list.\
+\>", "Notes",
+ CellID->1642487768,ExpressionUUID->"e159ad30-411b-470d-9b38-67b7fa814973"],
+
+Cell["\<\
+The function first builds Euler-characteristic data from sector counts, and \
+by default checks the generic sector count against the regulated count.\
+\>", "Notes",
+ CellID->1926924262,ExpressionUUID->"dd52cfbc-8aa3-435a-b7bd-4833426d9d37"],
+
+Cell["The result is True, False, Indeterminate, or $Failed.", "Notes",
+ CellID->1843868183,ExpressionUUID->"2420db53-df4e-4bd1-9d3b-7280a5f167be"],
+
+Cell["The following options can be given:", "Notes",
+ CellID->1353201756,ExpressionUUID->"71752d09-48ab-4121-b2d9-79d27b566022"],
+
+Cell[BoxData[GridBox[{
+   {Cell["      ", "TableRowIcon",ExpressionUUID->
+     "525718eb-ca45-4094-9d1a-f78f4abd0e4e"], "\"\<CheckCriticalPointValidity\
+\>\"", 
+    TemplateBox[{
+      Cell[
+       TextData["True"]], "paclet:ref/True"},
+     "RefLink",
+     BaseStyle->{"3ColumnTableMod"}], Cell["\<\
+whether to compare the generic unregulated count against the regulated count \
+before continuing\
+\>", "TableText",ExpressionUUID->"32b79262-648e-4764-9a79-554e8d2b379b"]},
+   {Cell["      ", "TableRowIcon",ExpressionUUID->
+     "220446f8-8fe9-4495-8be6-81070ffcce1d"], "\"\<msolve\>\"", 
+    TemplateBox[{
+      Cell[
+       TextData["Automatic"]], "paclet:ref/Automatic"},
+     "RefLink",
+     BaseStyle->{"3ColumnTableMod"}], Cell[
+    "whether to use msolve for the underlying sector counts", "TableText",
+     ExpressionUUID->"b9afe29b-6361-4192-9720-7ffae4599d91"]},
+   {Cell["      ", "TableRowIcon",ExpressionUUID->
+     "f4995335-2a9d-4b1b-9022-fa1ad078dbb0"], "\"\<MSolveJobs\>\"", 
+    TemplateBox[{
+      Cell[
+       TextData["Automatic"]], "paclet:ref/Automatic"},
+     "RefLink",
+     BaseStyle->{"3ColumnTableMod"}], Cell[
+    "number of parallel msolve jobs", "TableText",ExpressionUUID->
+     "53c6a514-d9bd-4672-9b72-1d5b32736a04"]},
+   {Cell["      ", "TableRowIcon",ExpressionUUID->
+     "254c7aac-8c8f-43a7-bb04-ee33c664951e"], "\"\<msolveParallelThreads\>\"", 
+    TemplateBox[{
+      Cell[
+       TextData["Automatic"]], "paclet:ref/Automatic"},
+     "RefLink",
+     BaseStyle->{"3ColumnTableMod"}], Cell[
+    "thread count passed to each msolve job", "TableText",ExpressionUUID->
+     "49c46bb0-76f2-4546-9a03-5370337d4bae"]}
+  }]], "3ColumnTableMod",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "Rows" -> {None, None, None, {None}}},
+ GridBoxDividers->{"Rows" -> {{True, True, True, True, True}}}},
+ CellID->1275250774,ExpressionUUID->"080f3d78-be6d-467f-9b70-d4cdb1d8110d"]
+}, Dynamic[CurrentValue[
+ EvaluationNotebook[], {TaggingRules, "Openers", "NotesSection"}, Closed]]]],
+
+Cell["", "PageDelimiter",ExpressionUUID->"944aa6de-b3d4-4b1f-8d76-d85c91f01cfa"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  DynamicBox[ToBoxes[
+    If[
+     MatchQ[
+      CurrentValue[
+       EvaluationNotebook[], {
+       TaggingRules, "Openers", "PrimaryExamplesSection"}, Open], 
+      Alternatives[True, Open]], 
+     Style[
+      Graphics[{
+        Thickness[0.18], 
+        RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+        Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+       PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+      0.68 Inherited], 
+     Rotate[
+      Style[
+       Graphics[{
+         Thickness[0.18], 
+         RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+         Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+        PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+       0.68 Inherited], Rational[1, 2] Pi, {-1.65, -1}]]]]],ExpressionUUID->
+  "40fc1202-bad0-40c7-a732-957da0ce112f"],
+ Cell[BoxData[
+  TemplateBox[{1},
+   "Spacer1"]],ExpressionUUID->"33089ae5-603b-46e3-b92c-6d4ec6dfc983"],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(5)", "ExampleCount",ExpressionUUID->
+  "7af333bf-c4a7-4c83-9aaf-25539ab3a31b"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CacheGraphics->False,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1715042338,ExpressionUUID->"17300def-7e28-49bc-a0af-44deed1c022a"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<DiscKosky`\>\"", "]"}]], "Input", "ExampleInitialization",
+ CellLabel->"In[1]:=",
+ CellID->1936782871,ExpressionUUID->"51cb4f95-269b-4691-95fd-ec27d54007f3"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  DynamicBox[ToBoxes[
+    If[
+     MatchQ[
+      CurrentValue[
+       EvaluationNotebook[], {TaggingRules, "Openers", "ExampleSection", "0"},
+        Closed], 
+      Alternatives[Open, True]], 
+     Style[
+      Graphics[{
+        Thickness[0.18], 
+        RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+        Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+       PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+      0.68 Inherited], 
+     Rotate[
+      Style[
+       Graphics[{
+         Thickness[0.18], 
+         RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+         Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+        PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+       0.68 Inherited], Rational[1, 2] Pi, {-1.65, -1}]]]]],ExpressionUUID->
+  "ee102c1e-506c-498e-9884-133967f27442"],
+ Cell[BoxData[
+  TemplateBox[{1},
+   "Spacer1"]],ExpressionUUID->"86352b1a-3b42-4ca9-b829-0f3cae83ed53"],
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "1a313623-091c-4c62-8daa-7609eb74ff45"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CacheGraphics->False,
+ CellID->1191064732,ExpressionUUID->"1bfbe463-5e2d-4e57-bbd4-2e844db69f74"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"gpol", "=", 
+   RowBox[{"x1", "+", "x2", "+", "x3", "-", 
+    RowBox[{"s23", " ", "x1", " ", "x3"}], "-", 
+    RowBox[{
+     SuperscriptBox["m2", "2"], " ", "x2", " ", "x3"}], "+", "x4", "-", 
+    RowBox[{
+     SuperscriptBox["m1", "2"], " ", "x1", " ", "x4"}], "-", 
+    RowBox[{"s12", " ", "x2", " ", "x4"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"vars", "=", 
+   RowBox[{"{", 
+    RowBox[{"x1", ",", "x2", ",", "x3", ",", "x4"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"rationalAlphabet", "=", 
+   RowBox[{"{", 
+    RowBox[{"s23", ",", "m1", ",", "m2", ",", "s12", ",", 
+     RowBox[{
+      RowBox[{"-", 
+       SuperscriptBox["m1", "2"]}], "+", "s23"}], ",", 
+     RowBox[{
+      RowBox[{"-", 
+       SuperscriptBox["m2", "2"]}], "+", "s23"}], ",", 
+     RowBox[{
+      RowBox[{"-", 
+       SuperscriptBox["m2", "2"]}], "+", "s12"}], ",", 
+     RowBox[{
+      RowBox[{"-", 
+       SuperscriptBox["m1", "2"]}], "+", "s12"}], ",", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["m1", "2"], " ", 
+       SuperscriptBox["m2", "2"]}], "-", 
+      RowBox[{"s12", " ", "s23"}]}], ",", 
+     RowBox[{
+      RowBox[{"-", 
+       SuperscriptBox["m1", "2"]}], "-", 
+      SuperscriptBox["m2", "2"], "+", "s12", "+", "s23"}]}], "}"}]}], 
+  ";"}]}], "Input",
+ CellProlog:>Needs["DiscKosky`"],
+ CellLabel->"In[1]:=",
+ CellID->496265211,ExpressionUUID->"5887a27c-caf9-4243-abd9-386e3190ba70"],
+
+Cell["\<\
+Test a repeated discontinuity using singularities 1 and 9 of the alphabet.\
+\>", "Notes",
+ CellID->762589467,ExpressionUUID->"826cd246-aa54-4900-aab3-6b38c3901c01"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CheckRepeatedDiscontinuity", "[", 
+  RowBox[{"gpol", ",", "vars", ",", "rationalAlphabet", ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "9"}], "}"}]}], "]"}]], "Input",
+ CellProlog:>Needs["DiscKosky`"],
+ CellLabel->"In[2]:=",
+ CellID->390303097,ExpressionUUID->"c3306eb7-f6e8-46c1-916c-2f2797bc9e28"],
+
+Cell[BoxData["True"], "Output",
+ CellLabel->"Out[2]=",
+ CellID->687780818,ExpressionUUID->"ddddf236-c4c4-4143-8482-daa5f09be439"]
+}, Open  ]],
+
+Cell["\<\
+Longer lists test higher repeated discontinuities in the specified order.\
+\>", "Notes",
+ CellID->741114365,ExpressionUUID->"cfc45a63-85a8-4159-a242-99db0f54a3ac"],
+
+Cell[BoxData[
+ RowBox[{"CheckRepeatedDiscontinuity", "[", 
+  RowBox[{"gpol", ",", "vars", ",", "rationalAlphabet", ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "9", ",", "4"}], "}"}]}], "]"}]], "Input",
+ CellProlog:>Needs["DiscKosky`"],
+ CellLabel->"In[3]:=",
+ CellID->1402452419,ExpressionUUID->"92360946-7a3f-4d3f-8cba-a0978a1fc24d"]
+}, Dynamic[CurrentValue[
+ EvaluationNotebook[], {TaggingRules, "Openers", "ExampleSection", "0"}, 
+  Closed]]]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  DynamicBox[ToBoxes[
+    If[
+     MatchQ[
+      CurrentValue[
+       EvaluationNotebook[], {TaggingRules, "Openers", "ExampleSection", "1"},
+        Closed], 
+      Alternatives[Open, True]], 
+     Style[
+      Graphics[{
+        Thickness[0.18], 
+        RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+        Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+       PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+      0.68 Inherited], 
+     Rotate[
+      Style[
+       Graphics[{
+         Thickness[0.18], 
+         RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+         Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+        PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+       0.68 Inherited], Rational[1, 2] Pi, {-1.65, -1}]]]]],ExpressionUUID->
+  "eb6b852d-be33-40ea-b2be-6870775e05fb"],
+ Cell[BoxData[
+  TemplateBox[{1},
+   "Spacer1"]],ExpressionUUID->"4c4298c3-3c3c-4b66-995d-d3c6386621ee"],
+ "Options",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(4)", "ExampleCount",ExpressionUUID->
+  "d159b4ac-0b6c-42d5-a97a-4123a91bfcaf"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CacheGraphics->False,
+ CellID->1452908804,ExpressionUUID->"ef8911c5-42db-4f4e-bff1-a4f48a1c117c"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  DynamicBox[ToBoxes[
+    If[
+     MatchQ[
+      CurrentValue[
+       EvaluationNotebook[], {
+       TaggingRules, "Openers", "ExampleSubsection", "0"}, Closed], 
+      Alternatives[Open, True]], 
+     Style[
+      Graphics[{
+        Thickness[0.18], 
+        RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+        Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+       PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+      0.68 Inherited], 
+     Rotate[
+      Style[
+       Graphics[{
+         Thickness[0.18], 
+         RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+         Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+        PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+       0.68 Inherited], Rational[1, 2] Pi, {-1.65, -1}]]]]],ExpressionUUID->
+  "f5cefb63-bea7-4566-a8f3-89da8ec9d8d6"],
+ Cell[BoxData[
+  TemplateBox[{1},
+   "Spacer1"]],ExpressionUUID->"e262ad06-9b9f-4d63-9094-af353fbdb89f"],
+ "\"CheckCriticalPointValidity\"",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "35ef2508-1066-4172-bb90-fcbf04f76474"]
+}], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CacheGraphics->False,
+ CellID->1863234492,ExpressionUUID->"67a1fec1-56e9-4b75-9799-a8b7df30ac08"],
+
+Cell["\<\
+Skip the generic regulated-count comparison when that check has already been \
+performed separately.\
+\>", "Notes",
+ CellID->1004996851,ExpressionUUID->"a6fee84a-e4fa-472b-b6f2-d4fb751c9e48"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CheckRepeatedDiscontinuity", "[", 
+  RowBox[{"gpol", ",", "vars", ",", "rationalAlphabet", ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "9"}], "}"}], ",", 
+   RowBox[{"\"\<CheckCriticalPointValidity\>\"", "\[Rule]", "False"}]}], 
+  "]"}]], "Input",
+ CellProlog:>Needs["DiscKosky`"],
+ CellLabel->"In[1]:=",
+ CellID->1309203781,ExpressionUUID->"de50da98-b489-414f-b724-bf7605fe88b1"],
+
+Cell[BoxData["True"], "Output",
+ CellLabel->"Out[1]=",
+ CellID->1464416091,ExpressionUUID->"3a1cf671-23ba-483c-aee8-1eb4555b4b19"]
+}, Open  ]]
+}, Dynamic[CurrentValue[
+ EvaluationNotebook[], {TaggingRules, "Openers", "ExampleSubsection", "0"}, 
+  Closed]]]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  DynamicBox[ToBoxes[
+    If[
+     MatchQ[
+      CurrentValue[
+       EvaluationNotebook[], {
+       TaggingRules, "Openers", "ExampleSubsection", "1"}, Closed], 
+      Alternatives[Open, True]], 
+     Style[
+      Graphics[{
+        Thickness[0.18], 
+        RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+        Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+       PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+      0.68 Inherited], 
+     Rotate[
+      Style[
+       Graphics[{
+         Thickness[0.18], 
+         RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+         Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+        PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+       0.68 Inherited], Rational[1, 2] Pi, {-1.65, -1}]]]]],ExpressionUUID->
+  "32d3ba78-3996-48d8-8182-fd7176e8bba9"],
+ Cell[BoxData[
+  TemplateBox[{1},
+   "Spacer1"]],ExpressionUUID->"5cbe5003-cfb1-4d16-8d51-1058051c3919"],
+ "\"msolve\"",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "a35ee95c-3ba8-479d-8a99-82306a750ae0"]
+}], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CacheGraphics->False,
+ CellID->1245861320,ExpressionUUID->"046c6770-e973-47c5-9d6e-8ceebb669efe"],
+
+Cell["\<\
+Force the underlying sector counts to use Mathematica's built-in \
+GroebnerBasis workflow.\
+\>", "Notes",
+ CellID->883500421,ExpressionUUID->"44c86bc4-b23a-49f4-be2b-ab829cd1ed42"],
+
+Cell[BoxData[
+ RowBox[{"CheckRepeatedDiscontinuity", "[", 
+  RowBox[{"gpol", ",", "vars", ",", "rationalAlphabet", ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "9"}], "}"}], ",", 
+   RowBox[{"\"\<CheckCriticalPointValidity\>\"", "\[Rule]", "False"}], ",", 
+   RowBox[{"\"\<msolve\>\"", "\[Rule]", "False"}]}], "]"}]], "Input",
+ CellProlog:>Needs["DiscKosky`"],
+ CellLabel->"In[1]:=",
+ CellID->181526147,ExpressionUUID->"4b8e5ceb-4cd5-4af6-8115-b253a153d562"]
+}, Dynamic[CurrentValue[
+ EvaluationNotebook[], {TaggingRules, "Openers", "ExampleSubsection", "1"}, 
+  Closed]]]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  DynamicBox[ToBoxes[
+    If[
+     MatchQ[
+      CurrentValue[
+       EvaluationNotebook[], {
+       TaggingRules, "Openers", "ExampleSubsection", "2"}, Closed], 
+      Alternatives[Open, True]], 
+     Style[
+      Graphics[{
+        Thickness[0.18], 
+        RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+        Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+       PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+      0.68 Inherited], 
+     Rotate[
+      Style[
+       Graphics[{
+         Thickness[0.18], 
+         RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+         Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+        PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+       0.68 Inherited], Rational[1, 2] Pi, {-1.65, -1}]]]]],ExpressionUUID->
+  "e719aff5-3d8e-47a8-867f-e9b28883a799"],
+ Cell[BoxData[
+  TemplateBox[{1},
+   "Spacer1"]],ExpressionUUID->"8d6a8138-f8a3-4db6-b1f4-883777b470a8"],
+ "\"MSolveJobs\"",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "796fc214-1035-441c-915b-a0c5ceb53e81"]
+}], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CacheGraphics->False,
+ CellID->1102797867,ExpressionUUID->"d8362f2b-48d4-4745-8519-dce286b59aef"],
+
+Cell["\<\
+Limit the number of msolve jobs used while building Euler-characteristic data.\
+\>", "Notes",
+ CellID->1713343018,ExpressionUUID->"05293cd8-b1bc-4736-9d22-1d87290630ee"],
+
+Cell[BoxData[
+ RowBox[{"CheckRepeatedDiscontinuity", "[", 
+  RowBox[{"gpol", ",", "vars", ",", "rationalAlphabet", ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "9"}], "}"}], ",", 
+   RowBox[{"\"\<MSolveJobs\>\"", "\[Rule]", "1"}]}], "]"}]], "Input",
+ CellProlog:>Needs["DiscKosky`"],
+ CellLabel->"In[1]:=",
+ CellID->1511730891,ExpressionUUID->"21a4e077-c2b5-4af4-8540-f1d10c399bed"]
+}, Dynamic[CurrentValue[
+ EvaluationNotebook[], {TaggingRules, "Openers", "ExampleSubsection", "2"}, 
+  Closed]]]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  DynamicBox[ToBoxes[
+    If[
+     MatchQ[
+      CurrentValue[
+       EvaluationNotebook[], {
+       TaggingRules, "Openers", "ExampleSubsection", "3"}, Closed], 
+      Alternatives[Open, True]], 
+     Style[
+      Graphics[{
+        Thickness[0.18], 
+        RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+        Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+       PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+      0.68 Inherited], 
+     Rotate[
+      Style[
+       Graphics[{
+         Thickness[0.18], 
+         RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+         Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+        PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+       0.68 Inherited], Rational[1, 2] Pi, {-1.65, -1}]]]]],ExpressionUUID->
+  "f0411af6-487c-43b6-ab5b-5d8f2f89585a"],
+ Cell[BoxData[
+  TemplateBox[{1},
+   "Spacer1"]],ExpressionUUID->"61024c78-8500-43a6-9f1a-272cf9162a02"],
+ "\"msolveParallelThreads\"",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "da5e97e7-3115-498a-b78b-0f16952971eb"]
+}], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CacheGraphics->False,
+ CellID->1868409851,ExpressionUUID->"c5511ea7-7ead-42bd-9196-3401866abbfd"],
+
+Cell["Limit the thread count passed to each msolve job.", "Notes",
+ CellID->1741157807,ExpressionUUID->"53fbd4fd-baaf-4aa1-8247-0cfca38b2dc3"],
+
+Cell[BoxData[
+ RowBox[{"CheckRepeatedDiscontinuity", "[", 
+  RowBox[{"gpol", ",", "vars", ",", "rationalAlphabet", ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "9"}], "}"}], ",", 
+   RowBox[{"\"\<msolveParallelThreads\>\"", "\[Rule]", "1"}]}], 
+  "]"}]], "Input",
+ CellProlog:>Needs["DiscKosky`"],
+ CellLabel->"In[1]:=",
+ CellID->564501192,ExpressionUUID->"116be14f-46d7-49cf-b0f4-c71f4d3ba519"]
+}, Dynamic[CurrentValue[
+ EvaluationNotebook[], {TaggingRules, "Openers", "ExampleSubsection", "3"}, 
+  Closed]]]]
+}, Dynamic[CurrentValue[
+ EvaluationNotebook[], {TaggingRules, "Openers", "ExampleSection", "1"}, 
+  Closed]]]]
+}, Dynamic[CurrentValue[
+ EvaluationNotebook[], {TaggingRules, "Openers", "PrimaryExamplesSection"}, 
+  Closed]]]],
+
+Cell[BoxData[GridBox[{
+   {
+    DynamicBox[FEPrivate`ImportImage[
+      FrontEnd`FileName[{"Documentation", "FooterIcons"}, 
+       "RelatedFunction.png"]],
+     ImageSizeCache->{50., {26.47265625, 33.52734375}}], GridBox[{
+      {
+       StyleBox[
+        RowBox[{"See", " ", "Also"}], "SeeAlsoSection"]},
+      {Cell[TextData[{
+        Cell[BoxData[
+         TemplateBox[{
+           Cell[
+            TextData["CheckDoubleDiscontinuities"]], 
+           "paclet:DiscKosky/ref/CheckDoubleDiscontinuities", 
+           "DiscKosky Package Symbol"},
+          "PackageLink",
+          BaseStyle->"InlineFormula"]], "InlineFormula",
+         FontFamily->"Source Sans Pro",
+         CellTags->"47424dd1-46f4-479d-9149-96ec96855873",ExpressionUUID->
+         "5470e8b3-87ff-4d85-8b12-5456c7f77d8d"],
+        "\[NonBreakingSpace]",
+        StyleBox[
+        "\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+         "InlineSeparator"],
+        " ",
+        Cell[BoxData[
+         TemplateBox[{
+           Cell[
+            TextData["CountSectorsUnregulated"]], 
+           "paclet:DiscKosky/ref/CountSectorsUnregulated", 
+           "DiscKosky Package Symbol"},
+          "PackageLink",
+          BaseStyle->"InlineFormula"]], "InlineFormula",
+         FontFamily->"Source Sans Pro",
+         CellTags->"ca4eaf97-3681-4056-b9f3-998c1fa814e8",ExpressionUUID->
+         "34bc509c-25e5-4126-a3c8-db0f45f03467"],
+        "\[NonBreakingSpace]",
+        StyleBox[
+        "\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+         "InlineSeparator"],
+        " ",
+        Cell[BoxData[
+         TemplateBox[{
+           Cell[
+            TextData["CountSectorsRegulated"]], 
+           "paclet:DiscKosky/ref/CountSectorsRegulated", 
+           "DiscKosky Package Symbol"},
+          "PackageLink",
+          BaseStyle->"InlineFormula"]], "InlineFormula",
+         FontFamily->"Source Sans Pro",
+         CellTags->"c95e5263-c842-4f53-8d7f-4b6fb28c2e47",ExpressionUUID->
+         "f2250c5a-7154-4adf-b8a3-076b105df22a"],
+        "\[NonBreakingSpace]",
+        StyleBox[
+        "\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+         "InlineSeparator"],
+        " ",
+        Cell[BoxData[
+         TemplateBox[{
+           Cell[
+            TextData["SectorDropGraph"]], 
+           "paclet:DiscKosky/ref/SectorDropGraph", "DiscKosky Package Symbol"},
+          "PackageLink",
+          BaseStyle->"InlineFormula"]], "InlineFormula",
+         FontFamily->"Source Sans Pro",
+         CellTags->"8bde1711-693f-4fb3-99d1-f2b1030e9850",ExpressionUUID->
+         "8b8e5f79-1613-427a-8e74-d15da423db53"]
+       }], "SeeAlso",ExpressionUUID->"fe239995-bd1b-4714-a58c-facc444e7ec2"]}
+     }]}
+  }]], "SeeAlsoSection",ExpressionUUID->"c8c9189b-673c-424d-8a82-\
+068d028d369f"],
+
+Cell[BoxData[GridBox[{
+   {
+    DynamicBox[FEPrivate`ImportImage[
+      FrontEnd`FileName[{"Documentation", "FooterIcons"}, 
+       "RelatedTechNote.png"]],
+     ImageSizeCache->{50., {26.47265625, 33.52734375}}], GridBox[{
+      {
+       StyleBox[
+        RowBox[{"Tech", " ", "Notes"}], "TechNotesSection"]},
+      {
+       RowBox[{"\[FilledVerySmallSquare]", Cell[BoxData[
+         TemplateBox[{
+           Cell[
+            TextData["Using DiscKosky"]], 
+           "paclet:DiscKosky/tutorial/UsingDiscKosky"},
+          "RefLinkPlain",
+          BaseStyle->{"Tutorials"}]], "Tutorials",ExpressionUUID->
+         "0abe58b6-6b9c-406d-b000-b918cb5439d1"]}]}
+     }]}
+  }]], "TechNotesSection",ExpressionUUID->"8e9b0a93-96b0-46e0-a68a-\
+0c64fa7723b0"],
+
+Cell[BoxData[GridBox[{
+   {
+    DynamicBox[FEPrivate`ImportImage[
+      FrontEnd`FileName[{"Documentation", "FooterIcons"}, "RelatedGuide.png"]],
+     ImageSizeCache->{50., {26.47265625, 33.52734375}}], GridBox[{
+      {
+       StyleBox[
+        RowBox[{"Related", " ", "Guides"}], "MoreAboutSection"]},
+      {
+       RowBox[{"\[FilledVerySmallSquare]", Cell[BoxData[
+         TemplateBox[{
+           Cell[
+            TextData["DiscKosky Documentation"]], 
+           "paclet:DiscKosky/guide/DiscKosky"},
+          "RefLinkPlain",
+          BaseStyle->{"MoreAbout"}]], "MoreAbout",ExpressionUUID->
+         "536a2edd-060f-4d67-bbbf-f30f517d0dec"]}]}
+     }]}
+  }]], "MoreAboutSection",ExpressionUUID->"c3aa2126-d606-4514-96a4-\
+09f915eb8fa9"],
+
+Cell[" ", "FooterCell",ExpressionUUID->"7747e782-bf3a-4119-b466-678609aaec95"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{900, 830},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"CheckRepeatedDiscontinuity",
+Visible->True,
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "", "LinkTrails" -> "", 
+  "ExampleCounter" -> 1, 
+  "Openers" -> {
+   "PrimaryExamplesSection" -> Open, 
+    "ExampleSection" -> {"0" -> Open, "1" -> Closed}, "AllOptsTable" -> 
+    Closed, "NotesSection" -> Closed, 
+    "ExampleSubsection" -> {
+     "0" -> Closed, "1" -> Closed, "2" -> Closed, "3" -> Closed}}, 
+  "NewStyles" -> True, "CitationPopupData" -> $Failed, "ShowCitation" -> 
+  False, "HasOptions" -> True, "RootCaptions" -> "", 
+  "HeaderCoreAreaLink" -> {}, 
+  "Metadata" -> {
+   "built" -> "{2026, 7, 16, 14, 13, 20.184174}", 
+    "history" -> {"XX", "", "", ""}, "context" -> "DiscKosky`", 
+    "keywords" -> {
+     "repeated discontinuity singularities alphabet Euler characteristic \
+sectors"}, "specialkeywords" -> {}, "tutorialcollectionlinks" -> {}, "index" -> 
+    True, "label" -> "Disc Kosky Symbol", "language" -> "en", "paclet" -> 
+    "DiscKosky", "status" -> "None", "summary" -> 
+    "CheckRepeatedDiscontinuity[gpol, vars, singList, indexList] tests \
+whether the ordered singularities in StyleBox[\"indexList\", TI, \
+StripOnInput->False] support a repeated discontinuity. ", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "CheckRepeatedDiscontinuity", 
+    "titlemodifier" -> "", "metadescription" -> "", "windowtitle" -> 
+    "CheckRepeatedDiscontinuity", "type" -> "Symbol", "uri" -> 
+    "DiscKosky/ref/CheckRepeatedDiscontinuity"}},
+CellContext->"Global`",
+FrontEndVersion->"14.3 for Mac OS X ARM (64-bit) (July 8, 2025)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "14.3 for Mac OS X ARM (64-bit) (July 8, 2025)", 
+  StyleDefinitions -> "PrivateStylesheetFormatting.nb"],
+ExpressionUUID->"ba3c9505-207b-42f1-b0a8-7337d6fd17c4"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[13624, 353, 1354, 36, 70, "PrimaryExamplesSection",ExpressionUUID->"17300def-7e28-49bc-a0af-44deed1c022a",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1715042338]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 36029, 970}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[594, 21, 6550, 162, 70, "AnchorBarGrid",ExpressionUUID->"c8f43252-b747-4dd9-95d3-11f7d5979e97",
+ CellID->1],
+Cell[7147, 185, 92, 0, 70, "ContextNameCell",ExpressionUUID->"9313e9aa-f6e8-4384-9eb1-cc675768b102"],
+Cell[CellGroupData[{
+Cell[7264, 189, 569, 14, 70, "ObjectNameGrid",ExpressionUUID->"ea15b696-6d70-4630-b6bf-b7f8fdddc908"],
+Cell[7836, 205, 1113, 28, 70, "Usage",ExpressionUUID->"0dfe8eb0-ab7a-43cf-a47d-6e8d6c631a28",
+ CellID->139271287]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8986, 238, 1759, 43, 70, "NotesSection",ExpressionUUID->"fb3404b4-e7c4-4ce5-879c-c0ca7b016dc2",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->123275378],
+Cell[10748, 283, 207, 4, 70, "Notes",ExpressionUUID->"e159ad30-411b-470d-9b38-67b7fa814973",
+ CellID->1642487768],
+Cell[10958, 289, 250, 4, 70, "Notes",ExpressionUUID->"dd52cfbc-8aa3-435a-b7bd-4833426d9d37",
+ CellID->1926924262],
+Cell[11211, 295, 146, 1, 70, "Notes",ExpressionUUID->"2420db53-df4e-4bd1-9d3b-7280a5f167be",
+ CellID->1843868183],
+Cell[11360, 298, 128, 1, 70, "Notes",ExpressionUUID->"71752d09-48ab-4121-b2d9-79d27b566022",
+ CellID->1353201756],
+Cell[11491, 301, 1923, 44, 70, "3ColumnTableMod",ExpressionUUID->"080f3d78-be6d-467f-9b70-d4cdb1d8110d",
+ CellID->1275250774]
+}, Dynamic[CurrentValue[EvaluationNotebook[], {TaggingRules, "Openers", "NotesSection"}, Closed]]]],
+Cell[13519, 349, 80, 0, 70, "PageDelimiter",ExpressionUUID->"944aa6de-b3d4-4b1f-8d76-d85c91f01cfa"],
+Cell[CellGroupData[{
+Cell[13624, 353, 1354, 36, 70, "PrimaryExamplesSection",ExpressionUUID->"17300def-7e28-49bc-a0af-44deed1c022a",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1715042338],
+Cell[14981, 391, 199, 3, 70, "Input",ExpressionUUID->"51cb4f95-269b-4691-95fd-ec27d54007f3",
+ CellID->1936782871],
+Cell[CellGroupData[{
+Cell[15205, 398, 1332, 35, 70, "ExampleSection",ExpressionUUID->"1bfbe463-5e2d-4e57-bbd4-2e844db69f74",
+ CellID->1191064732],
+Cell[16540, 435, 1460, 42, 70, "Input",ExpressionUUID->"5887a27c-caf9-4243-abd9-386e3190ba70",
+ CellID->496265211],
+Cell[18003, 479, 174, 3, 70, "Notes",ExpressionUUID->"826cd246-aa54-4900-aab3-6b38c3901c01",
+ CellID->762589467],
+Cell[CellGroupData[{
+Cell[18202, 486, 324, 7, 70, "Input",ExpressionUUID->"c3306eb7-f6e8-46c1-916c-2f2797bc9e28",
+ CellID->390303097],
+Cell[18529, 495, 129, 2, 70, "Output",ExpressionUUID->"ddddf236-c4c4-4143-8482-daa5f09be439",
+ CellID->687780818]
+}, Open  ]],
+Cell[18673, 500, 173, 3, 70, "Notes",ExpressionUUID->"cfc45a63-85a8-4159-a242-99db0f54a3ac",
+ CellID->741114365],
+Cell[18849, 505, 335, 7, 70, "Input",ExpressionUUID->"92360946-7a3f-4d3f-8cba-a0978a1fc24d",
+ CellID->1402452419]
+}, Dynamic[CurrentValue[EvaluationNotebook[], {TaggingRules, "Openers", "ExampleSection", "0"}, Closed]]]],
+Cell[CellGroupData[{
+Cell[19321, 519, 1325, 35, 70, "ExampleSection",ExpressionUUID->"ef8911c5-42db-4f4e-bff1-a4f48a1c117c",
+ CellID->1452908804],
+Cell[CellGroupData[{
+Cell[20671, 558, 1357, 35, 70, "ExampleSubsection",ExpressionUUID->"67a1fec1-56e9-4b75-9799-a8b7df30ac08",
+ CellID->1863234492],
+Cell[22031, 595, 201, 4, 70, "Notes",ExpressionUUID->"a6fee84a-e4fa-472b-b6f2-d4fb751c9e48",
+ CellID->1004996851],
+Cell[CellGroupData[{
+Cell[22257, 603, 405, 9, 70, "Input",ExpressionUUID->"de50da98-b489-414f-b724-bf7605fe88b1",
+ CellID->1309203781],
+Cell[22665, 614, 130, 2, 70, "Output",ExpressionUUID->"3a1cf671-23ba-483c-aee8-1eb4555b4b19",
+ CellID->1464416091]
+}, Open  ]]
+}, Dynamic[CurrentValue[EvaluationNotebook[], {TaggingRules, "Openers", "ExampleSubsection", "0"}, Closed]]]],
+Cell[CellGroupData[{
+Cell[22947, 624, 1337, 35, 70, "ExampleSubsection",ExpressionUUID->"046c6770-e973-47c5-9d6e-8ceebb669efe",
+ CellID->1245861320],
+Cell[24287, 661, 190, 4, 70, "Notes",ExpressionUUID->"44c86bc4-b23a-49f4-be2b-ab829cd1ed42",
+ CellID->883500421],
+Cell[24480, 667, 458, 9, 70, "Input",ExpressionUUID->"4b8e5ceb-4cd5-4af6-8115-b253a153d562",
+ CellID->181526147]
+}, Dynamic[CurrentValue[EvaluationNotebook[], {TaggingRules, "Openers", "ExampleSubsection", "1"}, Closed]]]],
+Cell[CellGroupData[{
+Cell[25078, 683, 1341, 35, 70, "ExampleSubsection",ExpressionUUID->"d8362f2b-48d4-4745-8519-dce286b59aef",
+ CellID->1102797867],
+Cell[26422, 720, 179, 3, 70, "Notes",ExpressionUUID->"05293cd8-b1bc-4736-9d22-1d87290630ee",
+ CellID->1713343018],
+Cell[26604, 725, 382, 8, 70, "Input",ExpressionUUID->"21a4e077-c2b5-4af4-8540-f1d10c399bed",
+ CellID->1511730891]
+}, Dynamic[CurrentValue[EvaluationNotebook[], {TaggingRules, "Openers", "ExampleSubsection", "2"}, Closed]]]],
+Cell[CellGroupData[{
+Cell[27126, 740, 1352, 35, 70, "ExampleSubsection",ExpressionUUID->"c5511ea7-7ead-42bd-9196-3401866abbfd",
+ CellID->1868409851],
+Cell[28481, 777, 142, 1, 70, "Notes",ExpressionUUID->"53fbd4fd-baaf-4aa1-8247-0cfca38b2dc3",
+ CellID->1741157807],
+Cell[28626, 780, 395, 9, 70, "Input",ExpressionUUID->"116be14f-46d7-49cf-b0f4-c71f4d3ba519",
+ CellID->564501192]
+}, Dynamic[CurrentValue[EvaluationNotebook[], {TaggingRules, "Openers", "ExampleSubsection", "3"}, Closed]]]]
+}, Dynamic[CurrentValue[EvaluationNotebook[], {TaggingRules, "Openers", "ExampleSection", "1"}, Closed]]]]
+}, Dynamic[CurrentValue[EvaluationNotebook[], {TaggingRules, "Openers", "PrimaryExamplesSection"}, Closed]]]],
+Cell[29366, 800, 2779, 71, 70, "SeeAlsoSection",ExpressionUUID->"c8c9189b-673c-424d-8a82-068d028d369f"],
+Cell[32148, 873, 752, 20, 70, "TechNotesSection",ExpressionUUID->"8e9b0a93-96b0-46e0-a68a-0c64fa7723b0"],
+Cell[32903, 895, 745, 19, 70, "MoreAboutSection",ExpressionUUID->"c3aa2126-d606-4514-96a4-09f915eb8fa9"],
+Cell[33651, 916, 78, 0, 70, "FooterCell",ExpressionUUID->"7747e782-bf3a-4119-b466-678609aaec95"]
+}
+]
+*)
+
+(* End of internal cache information *)

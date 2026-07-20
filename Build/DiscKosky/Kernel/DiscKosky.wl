@@ -6,6 +6,9 @@ BeginPackage["DiscKosky`"(*,{}*)];
 CountSectorsUnregulated::usage = "CountSectorsUnregulated[gpol, vars, cut] counts irreducible monomials sector by sector and returns {total, sectorCounts, sectors}. Use {} for no cut variables. With msolve enabled, \"MSolveJobs\" -> Automatic launches as many parallel msolve jobs as possible, and \"msolveParallelThreads\" -> Automatic asks each msolve job to use all available processor threads; set either option to a positive integer to override.";
 CountSectorsRegulated::usage = "CountSectorsRegulated[gpol, vars, cut] computes the number of irreducible monomials for the regulated critical-point ideal. Use {} for no cut variables. The option \"UseSameRho\" -> True uses one shared rho parameter for all nu_i. With msolve enabled, \"MSolveJobs\" -> Automatic launches as many parallel msolve jobs as possible, and \"msolveParallelThreads\" -> Automatic asks each msolve job to use all available processor threads; set either option to a positive integer to override.";
 CheckDoubleDiscontinuities::usage = "to add";
+CheckRepeatedDiscontinuity::usage = "to add";
+SectorDropGraph::usage = "SectorDropGraph[gpol, vars, singList] builds a directed sector graph whose vertices are sectors and whose vertex labels are the indices of singularities for which the sector count drops or becomes Indeterminate. With \"RefineIndeterminates\" -> True, generic-zero sectors that become Indeterminate move those singularity labels from the node to the outgoing arrows toward immediate larger sectors. With \"DeleteEmptyNodes\" -> True, a node is kept when it or one of its subsectors has an associated singularity.";
+SectorDropGraphData::usage = "SectorDropGraphData[gpol, vars, singList] builds the Euler characteristic data used by SectorDropGraph and returns an association containing sectors, graph vertices, singularity labels, edges, and edge labels. With \"RefineIndeterminates\" -> True, generic-zero sectors that become Indeterminate move those singularity labels from the node to the outgoing arrows toward immediate larger sectors. With \"DeleteEmptyNodes\" -> True, a node is kept when it or one of its subsectors has an associated singularity.";
 GroebnerBasisMS::usage = "GroebnerBasisMS[ideal, vars] computes a Groebner basis of ideal in the variables vars using msolve.\nGroebnerBasisMS[jobs] computes a batch of Groebner bases, where each job is <|\"Ideal\" -> ideal, \"Variables\" -> vars|> or {ideal, vars}.\nOptions include \"Modulus\" -> p for computations over the prime field GF(p), \"LeadingMonomialsOnly\" -> True to return the leading ideal instead of the full Groebner basis, and \"EliminateVariables\" -> {x1, ...} to return the requested Groebner-basis operation for the elimination ideal in the remaining variables. Variables listed in \"EliminateVariables\" must appear in every job and at least one variable must remain.\nmsolve batch options include \"MSolveJobs\", \"msolveParallelThreads\" -> 1 to set msolve's -t thread count, \"MSolveBatchDirectory\", \"MSolveKeepFiles\", \"MSolveProgress\", and \"MSolveProgressInterval\". The older \"MSolveThreads\" option is still accepted as an alias.";
 DiscKoskyExtraVar::usage = "extra internal variable required for critical point ideals";
 
@@ -26,6 +29,7 @@ Get[FileNameJoin[{DirectoryName[$InputFileName], "paths.m"}]];
 Get[FileNameJoin[{DirectoryName[$InputFileName], "irreducible_monomials.m"}]];
 Get[FileNameJoin[{DirectoryName[$InputFileName], "euler_characteristic.m"}]];
 Get[FileNameJoin[{DirectoryName[$InputFileName], "discontinuities.m"}]];
+Get[FileNameJoin[{DirectoryName[$InputFileName], "graphics.m"}]];
 
 
 (*finding the msolve executable*)
@@ -46,6 +50,9 @@ SetAttributes[
 		CountSectorsUnregulated,
 		CountSectorsRegulated,
 		CheckDoubleDiscontinuities,
+		CheckRepeatedDiscontinuity,
+		SectorDropGraph,
+		SectorDropGraphData,
 		GroebnerBasisMS,
 		DiscKoskyExtraVar
 		,
