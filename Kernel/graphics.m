@@ -18,7 +18,7 @@ sectorDropLabels[fullCountings_,refineIndeterminates_:False]:=Module[
 	
 	sectors = fullCountings // Last // Last;
 	singularityCount = Length[fullCountings]-1;
-	dropData = findCutsIndex[fullCountings,#]& /@ Range[singularityCount];
+	dropData = findCutsIndex[fullCountings,#]["data"]& /@ Range[singularityCount];
 	labels = sectorAssociation[
 		sectors,
 		Table[

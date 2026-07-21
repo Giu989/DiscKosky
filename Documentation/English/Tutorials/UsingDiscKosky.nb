@@ -183,7 +183,7 @@ Cell["Checking Discontinuities", "Section",
  CellID->1669212534,ExpressionUUID->"26734dd5-2bed-42fc-86a9-0dd61b7d0cf2"],
 
 Cell["\<\
-CheckRepeatedDiscontinuity tests an ordered sequence of singularity indices. \
+CheckSequentialDiscontinuity tests an ordered sequence of singularity indices. \
 CheckDoubleDiscontinuities builds the pairwise matrix.\
 \>", "Text",
  CellID->1457276726,ExpressionUUID->"28714ba4-abe1-4481-a673-bbaa2d261764"],
@@ -191,7 +191,7 @@ CheckDoubleDiscontinuities builds the pairwise matrix.\
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"CheckRepeatedDiscontinuity", "[", 
+ RowBox[{"CheckSequentialDiscontinuity", "[", 
   RowBox[{"gpol", ",", "vars", ",", "rationalAlphabet", ",", 
    RowBox[{"{", 
     RowBox[{"1", ",", "9"}], "}"}], ",", 

@@ -149,9 +149,9 @@ Cell[TextData[{
   "14984c22-5c19-4e40-ad41-89f3612e6c49"],
  StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
  Cell[BoxData[
-  ButtonBox["CheckRepeatedDiscontinuity",
+  ButtonBox["CheckSequentialDiscontinuity",
    BaseStyle->"Link",
-   ButtonData->"paclet:DiscKosky/ref/CheckRepeatedDiscontinuity"]], 
+   ButtonData->"paclet:DiscKosky/ref/CheckSequentialDiscontinuity"]], 
   "InlineSeeAlsoFunction",
   TaggingRules->{"PageType" -> "Function"},
   CellTags->"fa0da85f-f276-4595-9a7a-6a67d611a6d2",ExpressionUUID->

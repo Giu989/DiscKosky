@@ -20,16 +20,16 @@ WindowFrame->Normal*)
 Notebook[{
 
 Cell[CellGroupData[{
-Cell["CheckRepeatedDiscontinuity", "ObjectName",
+Cell["CheckSequentialDiscontinuity", "ObjectName",
  CellID->433740186,ExpressionUUID->"ea42bb03-fe5f-4169-95d0-9b83c828c0c7"],
 
 Cell[TextData[{
  Cell["   ", "ModInfo",ExpressionUUID->"bc2f14f3-3fc8-462d-9864-60de59d462e4"],
  Cell[BoxData[
   RowBox[{
-   ButtonBox["CheckRepeatedDiscontinuity",
+   ButtonBox["CheckSequentialDiscontinuity",
     BaseStyle->"Link",
-    ButtonData->"paclet:DiscKosky/ref/CheckRepeatedDiscontinuity"], "[", 
+    ButtonData->"paclet:DiscKosky/ref/CheckSequentialDiscontinuity"], "[", 
    RowBox[{
     StyleBox["gpol", "TI"], ",", 
     StyleBox["vars", "TI"], ",", 
@@ -42,7 +42,7 @@ Cell[TextData[{
   StyleBox["\"\<indexList\>\"", "TI",
    StripOnInput->False]], "InlineFormula",ExpressionUUID->
   "4e251884-3c9e-4374-9a58-00c2af4a3056"],
- " support a repeated discontinuity.",
+ " support a sequential discontinuity.",
  "\n"
 }], "Usage",
  CellID->139271287,ExpressionUUID->"bdc72e65-372b-4130-ac7e-78eb8a07ad81"],
@@ -281,14 +281,14 @@ Cell[BoxData[{
  CellID->496265211,ExpressionUUID->"95b0c81a-b7d2-411c-ad80-28dbddd33e53"],
 
 Cell["\<\
-Test a repeated discontinuity using singularities 1 and 9 of the alphabet.\
+Test a sequential discontinuity using singularities 1 and 9 of the alphabet.\
 \>", "Notes",
  CellID->762589467,ExpressionUUID->"e48595f0-2e90-4067-bd28-e8bc4fc1f935"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"CheckRepeatedDiscontinuity", "[", 
+ RowBox[{"CheckSequentialDiscontinuity", "[", 
   RowBox[{"gpol", ",", "vars", ",", "rationalAlphabet", ",", 
    RowBox[{"{", 
     RowBox[{"1", ",", "9"}], "}"}]}], "]"}]], "Input",
@@ -301,12 +301,12 @@ Cell[BoxData["True"], "Output",
 }, Open  ]],
 
 Cell["\<\
-Longer lists test higher repeated discontinuities in the specified order.\
+Longer lists test longer sequential discontinuities in the specified order.\
 \>", "Notes",
  CellID->741114365,ExpressionUUID->"a1f80ec9-e745-4d48-9ed0-b55dab1a5cef"],
 
 Cell[BoxData[
- RowBox[{"CheckRepeatedDiscontinuity", "[", 
+ RowBox[{"CheckSequentialDiscontinuity", "[", 
   RowBox[{"gpol", ",", "vars", ",", "rationalAlphabet", ",", 
    RowBox[{"{", 
     RowBox[{"1", ",", "9", ",", "4"}], "}"}]}], "]"}]], "Input",
@@ -372,7 +372,7 @@ performed separately.\
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"CheckRepeatedDiscontinuity", "[", 
+ RowBox[{"CheckSequentialDiscontinuity", "[", 
   RowBox[{"gpol", ",", "vars", ",", "rationalAlphabet", ",", 
    RowBox[{"{", 
     RowBox[{"1", ",", "9"}], "}"}], ",", 
@@ -403,7 +403,7 @@ GroebnerBasis workflow.\
  CellID->883500421,ExpressionUUID->"85e3c6cc-d0cc-433e-aa06-650443023506"],
 
 Cell[BoxData[
- RowBox[{"CheckRepeatedDiscontinuity", "[", 
+ RowBox[{"CheckSequentialDiscontinuity", "[", 
   RowBox[{"gpol", ",", "vars", ",", "rationalAlphabet", ",", 
    RowBox[{"{", 
     RowBox[{"1", ",", "9"}], "}"}], ",", 
@@ -428,7 +428,7 @@ Limit the number of msolve jobs used while building Euler-characteristic data.\
  CellID->1713343018,ExpressionUUID->"75c75cbf-c60f-4f1d-98d7-9c29f16b60c3"],
 
 Cell[BoxData[
- RowBox[{"CheckRepeatedDiscontinuity", "[", 
+ RowBox[{"CheckSequentialDiscontinuity", "[", 
   RowBox[{"gpol", ",", "vars", ",", "rationalAlphabet", ",", 
    RowBox[{"{", 
     RowBox[{"1", ",", "9"}], "}"}], ",", 
@@ -450,7 +450,7 @@ Cell["Limit the thread count passed to each msolve job.", "Notes",
  CellID->1741157807,ExpressionUUID->"db0323ad-b52e-4a56-95cb-3f68a7bfec43"],
 
 Cell[BoxData[
- RowBox[{"CheckRepeatedDiscontinuity", "[", 
+ RowBox[{"CheckSequentialDiscontinuity", "[", 
   RowBox[{"gpol", ",", "vars", ",", "rationalAlphabet", ",", 
    RowBox[{"{", 
     RowBox[{"1", ",", "9"}], "}"}], ",", 
@@ -475,7 +475,7 @@ Cell["Refine the handling of indeterminate singularities.", "Notes",
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"CheckRepeatedDiscontinuity", "[", 
+ RowBox[{"CheckSequentialDiscontinuity", "[", 
   RowBox[{"gpol", ",", "vars", ",", "rationalAlphabet", ",", 
    RowBox[{"{", 
     RowBox[{"1", ",", "9"}], "}"}], ",", 
@@ -569,7 +569,7 @@ Cell["DiscKosky`", "Categorization",
  CellLabel->"Context",
  CellID->702183832,ExpressionUUID->"17b45cee-ed2e-41cb-a23f-bcb36dd27f67"],
 
-Cell["DiscKosky/ref/CheckRepeatedDiscontinuity", "Categorization",
+Cell["DiscKosky/ref/CheckSequentialDiscontinuity", "Categorization",
  CellLabel->"URI",
  CellID->976627848,ExpressionUUID->"963245a0-3008-4697-a1c8-d396f78b4670"]
 }, Closed]],
@@ -580,7 +580,7 @@ Cell["Keywords", "KeywordsSection",
  CellID->1946165304,ExpressionUUID->"1de2a3b5-bd6f-4b40-9326-c67baab84e75"],
 
 Cell["\<\
-repeated discontinuity singularities alphabet Euler characteristic sectors\
+sequential discontinuity singularities alphabet Euler characteristic sectors\
 \>", "Keywords",
  CellID->1325735612,ExpressionUUID->"c29c90fb-efc9-4df7-9c78-1ef085ba5326"]
 }, Closed]],

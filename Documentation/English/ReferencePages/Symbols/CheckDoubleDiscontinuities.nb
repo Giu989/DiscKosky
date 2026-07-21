@@ -51,7 +51,7 @@ Cell["Rows and columns are indexed by positions in singList.", "Notes",
  CellID->1142919505,ExpressionUUID->"0b278fea-3451-43c7-ae09-4b076ebcdfcb"],
 
 Cell["\<\
-The {i,j} entry is the result of CheckRepeatedDiscontinuity for the ordered \
+The {i,j} entry is the result of CheckSequentialDiscontinuity for the ordered \
 pair {i,j}.\
 \>", "Notes",
  CellID->443982688,ExpressionUUID->"571f33c3-b8a2-4b83-aa1f-d527fa2e9c5a"],
@@ -127,9 +127,9 @@ Cell[TextData[{
 
 Cell[TextData[{
  Cell[BoxData[
-  ButtonBox["CheckRepeatedDiscontinuity",
+  ButtonBox["CheckSequentialDiscontinuity",
    BaseStyle->"Link",
-   ButtonData->"paclet:DiscKosky/ref/CheckRepeatedDiscontinuity"]], 
+   ButtonData->"paclet:DiscKosky/ref/CheckSequentialDiscontinuity"]], 
   "InlineSeeAlsoFunction",
   TaggingRules->{"PageType" -> "Function"},
   CellTags->"2871110a-be89-40ac-9fd3-8e5817ae32c0",ExpressionUUID->

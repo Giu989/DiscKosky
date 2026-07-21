@@ -94,8 +94,8 @@ findNewTrueCuts[fullCountings_,data1_,index2_,opts:OptionsPattern[]]:=Module[
 ];
 
 
-Options[CheckRepeatedDiscontinuity] = Join[Options[findNewTrueCuts],Options[buildEulerChiData]];
-CheckRepeatedDiscontinuity[gpol_,variables_,singList_,indexList_,opts:OptionsPattern[]]:=Module[
+Options[CheckSequentialDiscontinuity] = Join[Options[findNewTrueCuts],Options[buildEulerChiData]];
+CheckSequentialDiscontinuity[gpol_,variables_,singList_,indexList_,opts:OptionsPattern[]]:=Module[
 	{
 		data1,outTrueCut,fullCountings
 	},
@@ -118,7 +118,7 @@ CheckRepeatedDiscontinuity[gpol_,variables_,singList_,indexList_,opts:OptionsPat
 ];
 
 
-Options[CheckDoubleDiscontinuities] = Options[CheckRepeatedDiscontinuity];
+Options[CheckDoubleDiscontinuities] = Options[CheckSequentialDiscontinuity];
 CheckDoubleDiscontinuities[gpol_,variables_,singList_,opts:OptionsPattern[]]:=Module[
 	{
 		eulerChi,index,i,j,singularitieseulerChi,fulleulerChi,dropMatrix
@@ -127,7 +127,7 @@ CheckDoubleDiscontinuities[gpol_,variables_,singList_,opts:OptionsPattern[]]:=Mo
 	If[buildEulerChiData[gpol,variables,singList,Sequence@@FilterRules[{opts},Options[buildEulerChiData]]]===$Failed,Return[$Failed]];
 	
 	PrintTemporary["Building the double discontinuity matrix"];
-	dropMatrix = Monitor[Table[CheckRepeatedDiscontinuity[gpol,variables,singList,{i,j},opts],{i,1,Length[singList]},{j,1,Length[singList]}],{ToString[i]<>"/"<>ToString[Length[singList]],ToString[j]<>"/"<>ToString[Length[singList]]}];
+	dropMatrix = Monitor[Table[CheckSequentialDiscontinuity[gpol,variables,singList,{i,j},opts],{i,1,Length[singList]},{j,1,Length[singList]}],{ToString[i]<>"/"<>ToString[Length[singList]],ToString[j]<>"/"<>ToString[Length[singList]]}];
 	
 	Return[dropMatrix];
 ];

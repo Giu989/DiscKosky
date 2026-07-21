@@ -11,7 +11,7 @@
             ,
             "Hash"
             ->
-            "9382a60d7b669e5de38558d556d351865709e38406476cbf408b26eaed488e46"
+            "aff3ca3986fdc554e9cf5fb73c3876bb57df993480bf1a633036d7cefdafd3db"
                 
         |>
         ,
@@ -24,7 +24,7 @@
             ,
             "Hash"
             ->
-            "d600c2536e47fff77af40f699f890575b4618ac4cb95fc4caaab9dbd4434bbe9"
+            "b6a17c69604ace6f4e156d4fa9bc5935cc370d71c6d6e35a4dfd7ec9fc2891f4"
                 
         |>
         ,
@@ -50,7 +50,7 @@
             ,
             "Hash"
             ->
-            "16cb52011c0ad57fa9d4af9e0316c3a89a6f7383e025d9a39f9701c124b16e38"
+            "6529413d8efa2c276a6b2b5dfbe671d6bbada87b5a8fdbc117b3f5605b6e9440"
                 
         |>
         ,
@@ -89,7 +89,7 @@
             ,
             "Hash"
             ->
-            "bdee09d3816428998dcc096a035843296d148cf0eb89b281155fe61b0fddc757"
+            "5dfa86ed89607e466edfa799ba9e10b51e15fb4dcd36bcfc5dbab02c203c3b0b"
                 
         |>
         ,
@@ -103,7 +103,7 @@
             ,
             "Hash"
             ->
-            "6a7228d713f642b2cd04ec8e734234c7c87452c347397a78027305ceeb681294"
+            "a51e3f696264cb611e52cf2df492e20a1abea9cb5980a0bf9a093815b903e33b"
                 
         |>
         ,
@@ -111,13 +111,13 @@
             "File"
             ->
             File[
-                "Documentation/English/ReferencePages/Symbols/CheckRepeatedDiscontinuity.nb"
+                "Documentation/English/ReferencePages/Symbols/CheckSequentialDiscontinuity.nb"
                     
             ]
             ,
             "Hash"
             ->
-            "7ec820e6e5162c60844db2ed450582fdb8194bb521dc9123d17e413e30e388ac"
+            "54ac6ef8f53998be3cdb925eed1bb8dbfe661d279c115131387a5009e0e5e76a"
                 
         |>
         ,
@@ -131,7 +131,7 @@
             ,
             "Hash"
             ->
-            "99c3562b67c6eaaa6fe1489eabb5da90e2a1c0307304bac3c8c2712bbaff6449"
+            "528bca43967798ebb7a5c5bfe47a2cc71cfade5fe44effec8a8fcf9a45bcdd68"
                 
         |>
         ,
@@ -145,7 +145,7 @@
             ,
             "Hash"
             ->
-            "cd5134cb5b5220eb1d40314ec95b8465ae78dfb8502ac04ac7d5b1ca3bcca495"
+            "a0a657b7845b557f1fca26d1743147e3effeca9ddcec4186001449f353a8487b"
                 
         |>
         ,
@@ -173,7 +173,7 @@
             ,
             "Hash"
             ->
-            "d8e8315965eb89729afd52ddbc3dfbeef4981e981a1c44e01722a860b852e4b6"
+            "992c23b3b697c19ea864c79b9e1b83127db406d7f677e4bbff986f63c69335c4"
                 
         |>
         ,
@@ -186,7 +186,7 @@
             ,
             "Hash"
             ->
-            "0209aef49179b6cdd512299a040b81136579ef900bfe100ebb0dcc6bc4ca7038"
+            "198bb6af7a0fa3e8ab64e5d08e6862b935e9d2520480ba9ab5c574a7c66b6eaa"
                 
         |>
     }

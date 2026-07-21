@@ -1,32 +1,32 @@
 <|"English/ReferencePages/Symbols/CheckDoubleDiscontinuities.nb" -> 
   <|"Result" -> Success["ProcessedNotebook", <|"Action" -> "Build", 
-      "Time" -> Quantity[7.677441, "Seconds"]|>], 
-   "FileHash" -> "Oq40H3KH5BpXgNhi8Wjj+BHi1mPh+LjG3qbuX7QVLHQ="|>, 
- "English/ReferencePages/Symbols/CheckRepeatedDiscontinuity.nb" -> 
+      "Time" -> Quantity[0.956992, "Seconds"]|>], 
+   "FileHash" -> "zc0vJH2PM2Ked2Q0eJe0UJ37BZ/0S0cnrJ2tc1RtRkk="|>, 
+ "English/ReferencePages/Symbols/CheckSequentialDiscontinuity.nb" -> 
   <|"Result" -> Success["ProcessedNotebook", <|"Action" -> "Build", 
-      "Time" -> Quantity[0.745403, "Seconds"]|>], 
-   "FileHash" -> "IBG9aaKFvKV7TifYe0tc8No7cA+YEs8E8SSEtxVFel4="|>, 
+      "Time" -> Quantity[1.016056, "Seconds"]|>], 
+   "FileHash" -> "J/2nh4x8hIsy/tgKV6O+RQffnvSKyqUnbkm87xevq9Q="|>, 
  "English/ReferencePages/Symbols/CountSectorsRegulated.nb" -> 
   <|"Result" -> Success["ProcessedNotebook", <|"Action" -> "Build", 
-      "Time" -> Quantity[0.955013, "Seconds"]|>], 
-   "FileHash" -> "k2nbG1yIav4Hsd+N+NHtw5c9Z/zbruE7ZcDj4ygT7mE="|>, 
+      "Time" -> Quantity[1.1221, "Seconds"]|>], 
+   "FileHash" -> "Z9kdITfmYthQdmrc5VY5Mbs8m5MB0ZTPJ7H1RCRhq+U="|>, 
  "English/ReferencePages/Symbols/CountSectorsUnregulated.nb" -> 
   <|"Result" -> Success["ProcessedNotebook", <|"Action" -> "Build", 
-      "Time" -> Quantity[0.876127, "Seconds"]|>], 
-   "FileHash" -> "kBzFKZpy2YiVgyqavs087uKC+UO8f2i8ddco1WwbS7E="|>, 
+      "Time" -> Quantity[0.909862, "Seconds"]|>], 
+   "FileHash" -> "9loa253rURabYUb3NLVXgZZWrUgFtgeZQ+lFltFgK4Y="|>, 
  "English/ReferencePages/Symbols/GroebnerBasisMS.nb" -> 
   <|"Result" -> Success["ProcessedNotebook", <|"Action" -> "Build", 
       "Time" -> Quantity[0.829603, "Seconds"]|>], 
    "FileHash" -> "s77czfbhKAIHiZZMmNKKONnDUXtSAZVxQmbfnNm5vFo="|>, 
  "English/ReferencePages/Symbols/SectorDropGraph.nb" -> 
   <|"Result" -> Success["ProcessedNotebook", <|"Action" -> "Build", 
-      "Time" -> Quantity[0.693452, "Seconds"]|>], 
-   "FileHash" -> "XXkakORrLHFaBgFzAaXH5Naq5YsuRODuSCVg0aIsKB0="|>, 
+      "Time" -> Quantity[0.974422, "Seconds"]|>], 
+   "FileHash" -> "4yJZD/y2Sv1r7RE7Yj8gtEDA7eiyscS7RLxssSvQCmU="|>, 
  "English/Tutorials/UsingDiscKosky.nb" -> 
   <|"Result" -> Success["ProcessedNotebook", <|"Action" -> "Build", 
-      "Time" -> Quantity[0.539016, "Seconds"]|>], 
-   "FileHash" -> "Rdqqrx7s2uqjpjs1Tm1OWlgYkgestV6TV00YiQKz4lE="|>, 
+      "Time" -> Quantity[0.57896, "Seconds"]|>], 
+   "FileHash" -> "9gWCoFCecT7kwa+l8yCd103No2/8GJ2ew2ZshyAs07U="|>, 
  "English/Guides/DiscKosky.nb" -> 
   <|"Result" -> Success["ProcessedNotebook", <|"Action" -> "Build", 
-      "Time" -> Quantity[8.098597, "Seconds"]|>], 
-   "FileHash" -> "d3Qvzq6C4QMs8oRrngeiSVSrJLEtn4zBUu993iAA+BY="|>|>
+      "Time" -> Quantity[8.7744, "Seconds"]|>], 
+   "FileHash" -> "o+dO7/Iq8Mri6Mi1zkfGgVZLlb2NSbWQCO8kgoBfR2c="|>|>

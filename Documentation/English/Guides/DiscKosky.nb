@@ -89,9 +89,9 @@ Cell["Discontinuity Checks", "GuideFunctionsSection",
 
 Cell[TextData[{
  Cell[BoxData[
-  ButtonBox["CheckRepeatedDiscontinuity",
+  ButtonBox["CheckSequentialDiscontinuity",
    BaseStyle->"Link",
-   ButtonData->"paclet:DiscKosky/ref/CheckRepeatedDiscontinuity"]], 
+   ButtonData->"paclet:DiscKosky/ref/CheckSequentialDiscontinuity"]], 
   "InlineGuideFunction",
   TaggingRules->{"PageType" -> "Function"},
   CellTags->"8d87b45c-3e2b-4c5d-be7c-49523989355e",ExpressionUUID->
