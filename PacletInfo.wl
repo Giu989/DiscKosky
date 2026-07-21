@@ -3,7 +3,7 @@
 PacletObject[
     <|
         "Name" -> "DiscKosky",
-        "Version" -> "0.0.4",
+        "Version" -> "0.0.5",
         "WolframVersion" -> "13.1+",
         "Extensions" ->
             {

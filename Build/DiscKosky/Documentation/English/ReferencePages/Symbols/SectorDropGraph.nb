@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[     39646,       1015]
-NotebookOptionsPosition[     31980,        870]
-NotebookOutlinePosition[     34473,        933]
-CellTagsIndexPosition[     34388,        928]
+NotebookDataLength[     39257,       1006]
+NotebookOptionsPosition[     31707,        863]
+NotebookOutlinePosition[     34200,        926]
+CellTagsIndexPosition[     34115,        921]
 WindowTitle->SectorDropGraph
 WindowFrame->Normal*)
 
@@ -27,11 +27,11 @@ Cell[BoxData[GridBox[{
           TemplateBox[{12},
            "Spacer1"], Cell["DISC KOSKY SYMBOL", "PacletNameCell",
            TextAlignment->Center,ExpressionUUID->
-           "75335568-2fdd-4560-923e-055d71aef55e"], 
+           "b56db998-5e98-483a-9449-596a760f63c2"], 
           TemplateBox[{8},
            "Spacer1"]}]],
          TextAlignment->Center,ExpressionUUID->
-         "b0e59800-9f74-4fe9-9c44-4e7660c2b7f6"],
+         "99f4ab39-2356-4cc3-8ddc-33cf8524eb0d"],
         Background->LightDarkSwitched[
           RGBColor[0.490196, 0.576471, 0.690196]],
         ItemSize->Full], ""}
@@ -52,8 +52,8 @@ Cell[BoxData[GridBox[{
             AspectRatio->1,
             ImageSize->20,
             PlotRange->{{-3, 4}, {-1, 1}}]],ExpressionUUID->
-           "8752c31f-de65-464d-a3dc-3689b6fa1e24"]
-         }],ExpressionUUID->"86f1e968-adcb-4421-aa2d-9e0f18e60c3d"],
+           "c9bffa15-0740-4038-857c-43f1ac81cc54"]
+         }],ExpressionUUID->"f90ab9df-f840-4093-807c-fdff43050be7"],
          StripOnInput->False],{
         StyleBox[
           "\"CheckDoubleDiscontinuities\"", "SeeAlsoRelated", StripOnInput -> 
@@ -72,7 +72,7 @@ Cell[BoxData[GridBox[{
         MenuStyle->"SeeAlso"],
        MouseAppearanceTag["LinkHand"]]],
       LineSpacing->{1.4, 0},ExpressionUUID->
-      "0128ca52-7aac-4283-8c90-5658958398a7"],
+      "2db46988-96fc-4ac8-a911-c887e036c75d"],
      "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
 \[ThickSpace]",
      Cell[BoxData[
@@ -88,8 +88,8 @@ Cell[BoxData[GridBox[{
             AspectRatio->1,
             ImageSize->20,
             PlotRange->{{-3, 4}, {-1, 1}}]],ExpressionUUID->
-           "0afc5e45-b3ad-464f-b792-1d83728db007"]
-         }],ExpressionUUID->"a3d44891-7912-45fc-be80-2491746a0e53"],
+           "06c4c4f0-4cdf-4642-a0ca-7268961249c9"]
+         }],ExpressionUUID->"c190d0d7-5947-4848-a3f0-06a15c415962"],
          StripOnInput->False],{
         "\"DiscKosky Documentation\"" :> 
          Documentation`HelpLookup["paclet:DiscKosky/guide/DiscKosky"]},
@@ -98,7 +98,7 @@ Cell[BoxData[GridBox[{
         MenuStyle->"MoreAbout"],
        MouseAppearanceTag["LinkHand"]]],
       LineSpacing->{1.4, 0},ExpressionUUID->
-      "bd89caea-c6db-4da1-9082-cd8e1bef7dcb"],
+      "1173e806-7a61-473d-82e7-3f947fc2787e"],
      "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
 \[ThickSpace]",
      Cell[BoxData[
@@ -114,8 +114,8 @@ Cell[BoxData[GridBox[{
             AspectRatio->1,
             ImageSize->20,
             PlotRange->{{-3, 4}, {-1, 1}}]],ExpressionUUID->
-           "13c8686d-0249-4fff-88b5-8e32a932a3e9"]
-         }],ExpressionUUID->"57f9e582-7077-4dca-aa64-f505b9901204"],
+           "72beb891-a46f-448e-9504-576d5030b259"]
+         }],ExpressionUUID->"003581ab-4bcc-46f7-8831-20f83a5cda5c"],
          StripOnInput->False],{
         "\"Using DiscKosky\"" :> 
          Documentation`HelpLookup["paclet:DiscKosky/tutorial/UsingDiscKosky"]},
@@ -124,7 +124,7 @@ Cell[BoxData[GridBox[{
         MenuStyle->"Tutorials"],
        MouseAppearanceTag["LinkHand"]]],
       LineSpacing->{1.4, 0},ExpressionUUID->
-      "0f3cbdf0-2820-49a8-9cac-547254438e96"],
+      "3148a03d-2d93-4f6d-b540-8f806a88aa4a"],
      "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
 \[ThickSpace]",
      Cell[BoxData[
@@ -140,8 +140,8 @@ Cell[BoxData[GridBox[{
             AspectRatio->1,
             ImageSize->20,
             PlotRange->{{-3, 4}, {-1, 1}}]],ExpressionUUID->
-           "cf51220b-29bd-4006-b280-d5aef3f041f8"]
-         }],ExpressionUUID->"8f9a5149-638d-40b2-a189-a600079ccce6"],
+           "12627d71-a28a-43dc-85e7-1783e3da81bb"]
+         }],ExpressionUUID->"ad7c012a-ad5d-43fc-8861-d46ad76853fe"],
          StripOnInput->False],{
         "\"DiscKosky/ref/SectorDropGraph\"" :> None, 
          "\"Copy Wolfram Documentation Center URL\"" :> 
@@ -172,14 +172,14 @@ SectorDropGraph.html"], StandardForm]], "Input", TextClipboardType ->
         MenuStyle->"URLMenu"],
        MouseAppearanceTag["LinkHand"]]],
       LineSpacing->{1.4, 0},ExpressionUUID->
-      "aa5f7acf-cd2d-4d27-9d73-ddd71844f701"]
+      "e01523fd-4a58-45c1-a3be-b0358aed388d"]
     }], "AnchorBar",
      CacheGraphics->False,ExpressionUUID->
-     "29628b76-c92e-436d-beea-6cc43fca34fe"]}
+     "8518b51a-e211-43fa-a879-05007653a917"]}
   }]], "AnchorBarGrid",
- CellID->1,ExpressionUUID->"269c6d50-07f1-487c-b87b-c5fbccf14960"],
+ CellID->1,ExpressionUUID->"5f7670e9-ce47-4fb7-887a-093bbdfed2c8"],
 
-Cell["DiscKosky`", "ContextNameCell",ExpressionUUID->"b1a48f51-119c-4ebc-9188-10f93b3e950c"],
+Cell["DiscKosky`", "ContextNameCell",ExpressionUUID->"2b0cc78f-6c80-4aeb-a25b-af899181daa9"],
 
 Cell[CellGroupData[{
 
@@ -187,17 +187,17 @@ Cell[BoxData[GridBox[{
    {Cell[TextData[{
      Cell[
      "SectorDropGraph", "ObjectName",ExpressionUUID->
-      "d928de1d-f290-4a59-a52c-33177c996ee8"],
+      "3e1975c3-9848-4279-9abc-43356579e16d"],
      Cell[BoxData[
       TemplateBox[{8},
-       "Spacer1"]],ExpressionUUID->"32bfb00b-70a7-42d5-a4f4-d274e2cdae99"],
+       "Spacer1"]],ExpressionUUID->"6f980aae-2844-4919-9974-e2b9e314af19"],
      Cell[BoxData[
      ""], "ObjectNameTranslation",ExpressionUUID->
-      "b7fa26f6-c3a2-4e5b-9e07-f1a797fc85a2"]
-    }],ExpressionUUID->"79108441-60c6-4111-a953-7acc1b199695"], 
+      "acf0fcc8-389c-4d3e-ab73-1912460acf6a"]
+    }],ExpressionUUID->"88874ea2-f9bd-4765-abee-1dd6b5eeec12"], 
     "\[SpanFromLeft]"}
-  }]], "ObjectNameGrid",ExpressionUUID->"b9ca3e81-b071-42cd-9f7d-\
-c5ed65bd6489"],
+  }]], "ObjectNameGrid",ExpressionUUID->"28af5f60-7d56-4032-9b90-\
+0e77e335d54b"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -214,13 +214,13 @@ Cell[BoxData[GridBox[{
         StyleBox["vars", "TI"], ",", 
         StyleBox["singList", "TI"]}], "]"}]], "InlineFormula",
       FontFamily->"Source Sans Pro",ExpressionUUID->
-      "2fdfc13f-0fac-43a3-947c-bbba95d5d0c0"],
+      "e50f4fe6-275f-4be8-b093-d1cb9b36a937"],
      "\[LineSeparator]",
      "draws a directed sector graph labelled by singularity indices that \
 cause sector drops or Indeterminate sector counts."
-    }],ExpressionUUID->"b17d9705-d8ca-4804-9f4f-5a48bce542d6"]}
+    }],ExpressionUUID->"229bdee1-4e64-4dd8-a337-d36d78aa0b0b"]}
   }]], "Usage",
- CellID->1149527361,ExpressionUUID->"2deb5e98-64fc-4f6d-9487-ee6782e0e0ee"]
+ CellID->1149527361,ExpressionUUID->"63834ed2-6dc5-46f6-a8db-2a4e92540f22"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -246,12 +246,12 @@ Cell[TextData[Cell[BoxData[
            Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
           PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
          0.68 Inherited], Rational[1, 2] Pi, {-1.65, -1}]]]]],ExpressionUUID->
-    "986805f4-d485-4b4b-b783-6818b7658134"],
+    "b7a0fd09-fef0-460d-910c-7ca341a73b5b"],
    Cell[BoxData[
     TemplateBox[{1},
-     "Spacer1"]],ExpressionUUID->"29516b58-986f-4935-a3e3-99dd40bd59db"],
+     "Spacer1"]],ExpressionUUID->"7e886980-4dbb-4d05-89e9-427080b2ab35"],
    "Details and Options"
-  }], "NotesFrameText",ExpressionUUID->"529a3ebf-ac6b-4e2b-a845-62ef7271a0a7"],
+  }], "NotesFrameText",ExpressionUUID->"42dbd00b-bd98-4c2b-bdee-d6b58d9996ac"],
   Appearance->{Automatic, None, "Normal", Automatic},
   BaseStyle->None,
   ButtonFunction:>(FrontEndExecute[{
@@ -262,71 +262,64 @@ Cell[TextData[Cell[BoxData[
       FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
   Evaluator->None,
   Method->
-   "Preemptive"]],ExpressionUUID->"4c9ab673-ebc7-46e8-bd53-5ea5cd1b9bf9"]], \
+   "Preemptive"]],ExpressionUUID->"f29aabd8-fc67-470b-9d41-778823e77978"]], \
 "NotesSection",
  ShowGroupOpener->"Thumbnail",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
  CacheGraphics->False,
- CellID->1301516267,ExpressionUUID->"d4046c5c-3375-48b8-b1c4-6a1526f411f0"],
+ CellID->116170964,ExpressionUUID->"01c96e35-4506-4feb-808d-2178d16e091c"],
 
 Cell["\<\
 Vertices are sectors. Arrows point from subsectors to immediate supersectors.\
 \
 \>", "Notes",
- CellID->1500773682,ExpressionUUID->"9809375c-a542-4e99-9990-d21d1d33da35"],
+ CellID->1500773682,ExpressionUUID->"430c83e0-318e-479f-a05e-cc93056f35a6"],
 
 Cell["\<\
 The sector name is displayed above each node and the associated singularity \
 indices below it.\
 \>", "Notes",
- CellID->1443405534,ExpressionUUID->"8407ce8a-cf39-4868-9abf-d184c021ec85"],
+ CellID->1443405534,ExpressionUUID->"69ad8fe9-b3eb-429f-9544-55fd5c3e77ab"],
 
 Cell["\<\
 SectorDropGraph first builds Euler-characteristic data in the same way as \
 CheckDoubleDiscontinuities, so counting options are forwarded to the \
 underlying computations.\
 \>", "Notes",
- CellID->652195287,ExpressionUUID->"dd7d6c41-ac0c-4919-9da7-6370ece12afe"],
-
-Cell["\<\
-With \"RefineIndeterminates\" -> True, generic-zero sectors that become \
-Indeterminate move those labels to orange arrows toward immediate larger \
-sectors.\
-\>", "Notes",
- CellID->1612247117,ExpressionUUID->"c3e0ffd7-bf7c-4e7e-8f09-861a009d953b"],
+ CellID->652195287,ExpressionUUID->"382ddf8f-b959-495a-a38c-2a01d0a32112"],
 
 Cell["\<\
 With \"DeleteEmptyNodes\" -> True, a node is kept when it or one of its \
 subsectors has an associated singularity.\
 \>", "Notes",
- CellID->1845252834,ExpressionUUID->"02df4a9b-1a33-4dd3-badf-f3b992d86bdd"],
+ CellID->1845252834,ExpressionUUID->"330d894a-5461-4c9d-8e2e-3b8c3e643c28"],
 
 Cell["The following options can be given:", "Notes",
- CellID->151494426,ExpressionUUID->"26171563-504c-4c92-9622-0e7bf8b0f078"],
+ CellID->151494426,ExpressionUUID->"d0f7f723-33d6-4a06-89ee-bf43bef9c334"],
 
 Cell[BoxData[GridBox[{
    {Cell["      ", "TableRowIcon",ExpressionUUID->
-     "93b92968-87e4-4fd1-bbe1-9a72d3403269"], "\"\<RefineIndeterminates\>\"", 
+     "58b7fa05-d64d-4219-b2cd-1be59437d5b5"], "\"\<RefineIndeterminates\>\"", 
     
     TemplateBox[{
       Cell[
        TextData["False"]], "paclet:ref/False"},
      "RefLink",
-     BaseStyle->{"3ColumnTableMod"}], Cell["\<\
-whether to move zero-to-Indeterminate labels from nodes to outgoing edges\
-\>", "TableText",ExpressionUUID->"3ec4a752-7bc9-4e8e-92d2-0af69a8240c2"]},
+     BaseStyle->{"3ColumnTableMod"}], Cell[
+    "whether to refine the display of indeterminate singularities", 
+     "TableText",ExpressionUUID->"67b9caa2-094a-4a89-b414-68dd21585c3f"]},
    {Cell["      ", "TableRowIcon",ExpressionUUID->
-     "da425dba-5c5b-4dbf-83b0-5f2539574b33"], "\"\<DeleteEmptyNodes\>\"", 
+     "a6c76f77-49e7-4cee-ba60-cbf03284cbfc"], "\"\<DeleteEmptyNodes\>\"", 
     TemplateBox[{
       Cell[
        TextData["True"]], "paclet:ref/True"},
      "RefLink",
      BaseStyle->{"3ColumnTableMod"}], Cell["\<\
 whether to prune nodes whose subsectors have no associated singularities\
-\>", "TableText",ExpressionUUID->"f43ee600-388e-4f95-9eee-2357e4107193"]},
+\>", "TableText",ExpressionUUID->"2304dd68-d834-4be1-a7bc-a28557135cea"]},
    {Cell["      ", "TableRowIcon",ExpressionUUID->
-     "2bfea25d-67a5-4f64-b928-82547d336b61"], "\"\<CheckCriticalPointValidity\
+     "f574d170-127f-4f43-a72d-e53d2ed68e9f"], "\"\<CheckCriticalPointValidity\
 \>\"", 
     TemplateBox[{
       Cell[
@@ -335,26 +328,26 @@ whether to prune nodes whose subsectors have no associated singularities\
      BaseStyle->{"3ColumnTableMod"}], Cell["\<\
 whether to compare the generic unregulated count against the regulated count \
 before continuing\
-\>", "TableText",ExpressionUUID->"8536b962-1b4c-481a-ba08-5b3a5a63fc0b"]},
+\>", "TableText",ExpressionUUID->"aac8aad3-0106-4f6a-95bb-c731a96a972e"]},
    {Cell["      ", "TableRowIcon",ExpressionUUID->
-     "f59063c8-c50c-4bc4-994a-c862e2978e0a"], "\"\<msolve\>\"", 
+     "52228b2c-cdbd-4c78-822a-483f42b82e53"], "\"\<msolve\>\"", 
     TemplateBox[{
       Cell[
        TextData["Automatic"]], "paclet:ref/Automatic"},
      "RefLink",
      BaseStyle->{"3ColumnTableMod"}], Cell[
     "whether to use msolve for the underlying sector counts", "TableText",
-     ExpressionUUID->"325e8943-0b91-4d30-a84e-79e62d419c21"]}
+     ExpressionUUID->"9915c74c-a9e4-437b-8d97-46c5a31276fa"]}
   }]], "3ColumnTableMod",
  GridBoxOptions->{
  GridBoxBackground->{
   "Columns" -> {{None}}, "Rows" -> {None, None, None, {None}}},
  GridBoxDividers->{"Rows" -> {{True, True, True, True, True}}}},
- CellID->438679867,ExpressionUUID->"ad40a866-08a4-42bb-91f4-6510cc240891"]
+ CellID->438679867,ExpressionUUID->"1abfeebb-858b-465d-b0a3-57586cfd0310"]
 }, Dynamic[CurrentValue[
  EvaluationNotebook[], {TaggingRules, "Openers", "NotesSection"}, Closed]]]],
 
-Cell["", "PageDelimiter",ExpressionUUID->"ec7d17e8-405b-49f3-ac30-29fa27f7f858"],
+Cell["", "PageDelimiter",ExpressionUUID->"bf196534-b61b-4e3d-91c6-bf590d1be953"],
 
 Cell[CellGroupData[{
 
@@ -382,24 +375,24 @@ Cell[TextData[{
          Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
         PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
        0.68 Inherited], Rational[1, 2] Pi, {-1.65, -1}]]]]],ExpressionUUID->
-  "b126cfb9-61b4-4e19-822c-d044a7e19326"],
+  "b8430ab5-1ba6-4386-b8a5-9ad3b7afa333"],
  Cell[BoxData[
   TemplateBox[{1},
-   "Spacer1"]],ExpressionUUID->"58fabc44-669b-4c9a-9efb-efd835a3d649"],
+   "Spacer1"]],ExpressionUUID->"f9c6e640-0e37-4849-b6b0-3fc727c811f7"],
  "Examples",
  "\[NonBreakingSpace]\[NonBreakingSpace]",
  Cell["(5)", "ExampleCount",ExpressionUUID->
-  "8bff32f9-21a3-446e-b86e-95ebff155a1a"]
+  "bae31b88-e0b9-43ed-9760-cfda37e10fa2"]
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CacheGraphics->False,
  CellTags->"PrimaryExamplesSection",
- CellID->315471127,ExpressionUUID->"db6a29dd-3ffd-4cb4-a153-6c4d272b0d65"],
+ CellID->422756825,ExpressionUUID->"b48dca3d-ad11-46d4-b4d7-039514a4b5b1"],
 
 Cell[BoxData[
  RowBox[{"Needs", "[", "\"\<DiscKosky`\>\"", "]"}]], "Input", "ExampleInitialization",
  CellLabel->"In[1]:=",
- CellID->1955965034,ExpressionUUID->"6921950a-5929-4a8d-86f4-5766a098fecc"],
+ CellID->1955965034,ExpressionUUID->"6caac953-803e-46c0-bb81-55bb3e3bcf21"],
 
 Cell[CellGroupData[{
 
@@ -427,18 +420,18 @@ Cell[TextData[{
          Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
         PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
        0.68 Inherited], Rational[1, 2] Pi, {-1.65, -1}]]]]],ExpressionUUID->
-  "e314b9b0-6c2a-453f-bf58-5b7e7c17f273"],
+  "ee5af01b-f0f3-4fb3-9e60-6d85ca2e8b9e"],
  Cell[BoxData[
   TemplateBox[{1},
-   "Spacer1"]],ExpressionUUID->"f4d8b18d-136e-441d-8aab-091d45dedee1"],
+   "Spacer1"]],ExpressionUUID->"effe8b83-9399-423b-be43-e2b25ea4fab4"],
  "Basic Examples",
  "\[NonBreakingSpace]\[NonBreakingSpace]",
  Cell["(1)", "ExampleCount",ExpressionUUID->
-  "460c4188-e2b7-485e-8789-b1678592226e"]
+  "c6f889d4-e15d-4f70-92c4-e5eb9016827c"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
  CacheGraphics->False,
- CellID->2133590693,ExpressionUUID->"e8f6caff-485f-47eb-810d-70235738a3ae"],
+ CellID->1398053499,ExpressionUUID->"eedab537-9b9f-44a1-aaa7-9a4e7c4626cc"],
 
 Cell[BoxData[{
  RowBox[{
@@ -482,17 +475,17 @@ Cell[BoxData[{
   ";"}]}], "Input",
  CellProlog:>Needs["DiscKosky`"],
  CellLabel->"In[1]:=",
- CellID->1910047670,ExpressionUUID->"67a57f33-eb1b-4823-a826-4d7ced063e25"],
+ CellID->1910047670,ExpressionUUID->"3e8b0ac7-3130-400e-9a0e-e3981461309b"],
 
 Cell["Draw the default pruned sector graph.", "Notes",
- CellID->922319825,ExpressionUUID->"5ba6dac8-f1ae-4304-95b3-d3202a416cc3"],
+ CellID->922319825,ExpressionUUID->"93132585-0758-4a36-bf33-32dcf164f3e7"],
 
 Cell[BoxData[
  RowBox[{"SectorDropGraph", "[", 
   RowBox[{"gpol", ",", "vars", ",", "rationalAlphabet"}], "]"}]], "Input",
  CellProlog:>Needs["DiscKosky`"],
  CellLabel->"In[2]:=",
- CellID->406658803,ExpressionUUID->"d0bd7b29-3450-4268-81d8-3fae3ee8eadb"]
+ CellID->406658803,ExpressionUUID->"0648c255-5489-4d29-96f3-f12363d695a9"]
 }, Dynamic[CurrentValue[
  EvaluationNotebook[], {TaggingRules, "Openers", "ExampleSection", "0"}, 
   Closed]]]],
@@ -523,18 +516,18 @@ Cell[TextData[{
          Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
         PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
        0.68 Inherited], Rational[1, 2] Pi, {-1.65, -1}]]]]],ExpressionUUID->
-  "43d91976-5894-427b-9784-c7e5606c184f"],
+  "bcb80814-3de8-4f5e-9fbc-22bb15b739ea"],
  Cell[BoxData[
   TemplateBox[{1},
-   "Spacer1"]],ExpressionUUID->"8ff5f50e-9fde-4c4e-8740-52c7ebb48338"],
+   "Spacer1"]],ExpressionUUID->"2bfc4847-27ca-4bed-84e5-614240927a1e"],
  "Options",
  "\[NonBreakingSpace]\[NonBreakingSpace]",
  Cell["(4)", "ExampleCount",ExpressionUUID->
-  "3cdd41eb-282e-42d1-9520-78e38f9b48ea"]
+  "7665f73f-4f42-4190-a405-9f68bd58cdad"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
  CacheGraphics->False,
- CellID->150298669,ExpressionUUID->"20ac3225-0df2-43f5-9a71-0099eecbca5e"],
+ CellID->150298669,ExpressionUUID->"fed456de-1885-498a-a97c-23553f6e380d"],
 
 Cell[CellGroupData[{
 
@@ -562,23 +555,23 @@ Cell[TextData[{
          Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
         PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
        0.68 Inherited], Rational[1, 2] Pi, {-1.65, -1}]]]]],ExpressionUUID->
-  "6a4af579-3375-495a-9530-292c240d0c9e"],
+  "d8b45b2a-8277-4661-aa7f-e900d113c316"],
  Cell[BoxData[
   TemplateBox[{1},
-   "Spacer1"]],ExpressionUUID->"4067408c-fe82-4235-82ed-b5a7c59f74f3"],
+   "Spacer1"]],ExpressionUUID->"0250b5cc-bc81-4923-97a6-8d3eb16e95a5"],
  "\"RefineIndeterminates\"",
  "\[NonBreakingSpace]\[NonBreakingSpace]",
  Cell["(1)", "ExampleCount",ExpressionUUID->
-  "a0efdd4c-e164-4040-9577-31b30cba8aed"]
+  "51b4a2b9-08a1-4517-80ed-c06bcceb2f3a"]
 }], "ExampleSubsection", "ExampleSubsection",
  WholeCellGroupOpener->True,
  CacheGraphics->False,
- CellID->756015981,ExpressionUUID->"12e81128-5d71-4016-a1f5-3feb28ba3fb2"],
+ CellID->756015981,ExpressionUUID->"d1d2762f-8ef9-4795-aab4-b5bdf50084a6"],
 
 Cell["\<\
-Move zero-to-Indeterminate labels onto the corresponding orange arrows.\
+Refine the display of indeterminate singularities in the sector graph.\
 \>", "Notes",
- CellID->1250265471,ExpressionUUID->"3a79867d-e6a0-4fb2-a9d6-001bdb079106"],
+ CellID->1250265471,ExpressionUUID->"c2bc7db9-196d-46d8-8b66-0b3ccd5050bb"],
 
 Cell[BoxData[
  RowBox[{"SectorDropGraph", "[", 
@@ -587,7 +580,7 @@ Cell[BoxData[
   "]"}]], "Input",
  CellProlog:>Needs["DiscKosky`"],
  CellLabel->"In[1]:=",
- CellID->1903701423,ExpressionUUID->"98d50f33-9f8b-412c-acdc-774da31ba21e"]
+ CellID->1903701423,ExpressionUUID->"ddc9ea71-1fb3-42b0-aec2-687c7482f7f2"]
 }, Dynamic[CurrentValue[
  EvaluationNotebook[], {TaggingRules, "Openers", "ExampleSubsection", "0"}, 
   Closed]]]],
@@ -618,21 +611,21 @@ Cell[TextData[{
          Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
         PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
        0.68 Inherited], Rational[1, 2] Pi, {-1.65, -1}]]]]],ExpressionUUID->
-  "d8c39bd3-910d-4bc9-8a88-f818d61356b4"],
+  "155a6888-d274-4468-8b75-7e369adf2c59"],
  Cell[BoxData[
   TemplateBox[{1},
-   "Spacer1"]],ExpressionUUID->"b3ba5914-cea1-472b-8fa2-922005f24fc9"],
+   "Spacer1"]],ExpressionUUID->"9a862bf7-5d32-4d5e-8118-716ae53db307"],
  "\"DeleteEmptyNodes\"",
  "\[NonBreakingSpace]\[NonBreakingSpace]",
  Cell["(1)", "ExampleCount",ExpressionUUID->
-  "543789ec-e2ce-4383-a0ed-b27f5d110957"]
+  "669179e6-6cae-4bad-98a5-366b8148fa28"]
 }], "ExampleSubsection", "ExampleSubsection",
  WholeCellGroupOpener->True,
  CacheGraphics->False,
- CellID->1187023014,ExpressionUUID->"be4710d8-7553-4613-9aa9-6bbbcde4e846"],
+ CellID->1187023014,ExpressionUUID->"bca54e4e-5ee0-4e9c-8fd6-75fa18b4a2b5"],
 
 Cell["Draw every sector node by disabling pruning.", "Notes",
- CellID->342777323,ExpressionUUID->"cdb00ad7-0665-41dd-99ed-214716a9caf5"],
+ CellID->342777323,ExpressionUUID->"a57a7298-197c-4c9c-af11-f510e72bab14"],
 
 Cell[BoxData[
  RowBox[{"SectorDropGraph", "[", 
@@ -641,7 +634,7 @@ Cell[BoxData[
 
  CellProlog:>Needs["DiscKosky`"],
  CellLabel->"In[1]:=",
- CellID->1179187067,ExpressionUUID->"1252854c-e523-486f-a95f-74243193cd81"]
+ CellID->1179187067,ExpressionUUID->"4ed77552-2ecd-4470-adad-d9bb687cd91c"]
 }, Dynamic[CurrentValue[
  EvaluationNotebook[], {TaggingRules, "Openers", "ExampleSubsection", "1"}, 
   Closed]]]],
@@ -672,23 +665,23 @@ Cell[TextData[{
          Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
         PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
        0.68 Inherited], Rational[1, 2] Pi, {-1.65, -1}]]]]],ExpressionUUID->
-  "515e0225-5475-4c2e-8dda-917f5dfd5853"],
+  "b7c23a07-3729-4913-8115-86ddb9c727bc"],
  Cell[BoxData[
   TemplateBox[{1},
-   "Spacer1"]],ExpressionUUID->"cc567de0-033d-4c94-9412-15e97d9e8610"],
+   "Spacer1"]],ExpressionUUID->"bb56173b-c03b-496b-9599-745b44ed4958"],
  "\"CheckCriticalPointValidity\"",
  "\[NonBreakingSpace]\[NonBreakingSpace]",
  Cell["(1)", "ExampleCount",ExpressionUUID->
-  "c3e956b8-86c1-4b5f-ba65-194d538a6f24"]
+  "15e4a14f-f309-4ed2-8063-a095d2b9a7e7"]
 }], "ExampleSubsection", "ExampleSubsection",
  WholeCellGroupOpener->True,
  CacheGraphics->False,
- CellID->108782753,ExpressionUUID->"813eee2a-27d9-4c79-863b-778905fd7d1a"],
+ CellID->108782753,ExpressionUUID->"e15e4584-4a86-49cf-b83f-bfc228096f85"],
 
 Cell["\<\
 Skip the generic regulated-count comparison before drawing the graph.\
 \>", "Notes",
- CellID->1450518816,ExpressionUUID->"ad8ad310-17a7-4565-b05e-926245680cfa"],
+ CellID->1450518816,ExpressionUUID->"5f916212-4e9d-4a4d-a828-9def5d419f69"],
 
 Cell[BoxData[
  RowBox[{"SectorDropGraph", "[", 
@@ -697,7 +690,7 @@ Cell[BoxData[
   "]"}]], "Input",
  CellProlog:>Needs["DiscKosky`"],
  CellLabel->"In[1]:=",
- CellID->1549570136,ExpressionUUID->"9e63bf94-7137-4147-b4d1-6ec7dab7d54c"]
+ CellID->1549570136,ExpressionUUID->"ac43911e-99c8-4514-8080-281fa5c000f2"]
 }, Dynamic[CurrentValue[
  EvaluationNotebook[], {TaggingRules, "Openers", "ExampleSubsection", "2"}, 
   Closed]]]],
@@ -728,24 +721,24 @@ Cell[TextData[{
          Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
         PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
        0.68 Inherited], Rational[1, 2] Pi, {-1.65, -1}]]]]],ExpressionUUID->
-  "6d4046a7-96d0-4965-bfbc-38900e7b4205"],
+  "5c4277b7-bfdb-4c09-8189-87310038f62f"],
  Cell[BoxData[
   TemplateBox[{1},
-   "Spacer1"]],ExpressionUUID->"a846631d-d1d0-4ee3-8cef-2cc78de8b7b7"],
+   "Spacer1"]],ExpressionUUID->"63c2a2aa-d974-43fb-bc42-914ef545443f"],
  "\"msolve\"",
  "\[NonBreakingSpace]\[NonBreakingSpace]",
  Cell["(1)", "ExampleCount",ExpressionUUID->
-  "efe0bfd0-c974-4a39-9524-febe0c58b94a"]
+  "3cc57dc2-184e-4f34-a8ce-36093380638e"]
 }], "ExampleSubsection", "ExampleSubsection",
  WholeCellGroupOpener->True,
  CacheGraphics->False,
- CellID->1053719024,ExpressionUUID->"c5da8003-335b-40a6-9253-30ae2bf7f25e"],
+ CellID->1053719024,ExpressionUUID->"d89063ac-cfbd-425a-81d1-90032e335aae"],
 
 Cell["\<\
 Force the underlying sector counts to use Mathematica's built-in \
 GroebnerBasis workflow.\
 \>", "Notes",
- CellID->266238291,ExpressionUUID->"c3ad052a-0fd5-45a3-a786-f9ec1a47f0fd"],
+ CellID->266238291,ExpressionUUID->"3f4eda6a-5562-4415-aaaf-afdce7f93a56"],
 
 Cell[BoxData[
  RowBox[{"SectorDropGraph", "[", 
@@ -754,7 +747,7 @@ Cell[BoxData[
    RowBox[{"\"\<msolve\>\"", "\[Rule]", "False"}]}], "]"}]], "Input",
  CellProlog:>Needs["DiscKosky`"],
  CellLabel->"In[1]:=",
- CellID->1738441901,ExpressionUUID->"d471c527-e4c6-43b3-8f6d-fe5cd994953a"]
+ CellID->1738441901,ExpressionUUID->"74c2b5eb-81bb-43df-87e5-7cbd2c8d42be"]
 }, Dynamic[CurrentValue[
  EvaluationNotebook[], {TaggingRules, "Openers", "ExampleSubsection", "3"}, 
   Closed]]]]
@@ -785,7 +778,7 @@ Cell[BoxData[GridBox[{
           BaseStyle->"InlineFormula"]], "InlineFormula",
          FontFamily->"Source Sans Pro",
          CellTags->"5d56bca6-4668-46b2-b8a1-edb2d6f79288",ExpressionUUID->
-         "90777041-b86e-41ca-a135-e3754c014290"],
+         "0d264015-be0a-4d93-95b5-2bbe0e84020f"],
         "\[NonBreakingSpace]",
         StyleBox[
         "\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
@@ -801,7 +794,7 @@ Cell[BoxData[GridBox[{
           BaseStyle->"InlineFormula"]], "InlineFormula",
          FontFamily->"Source Sans Pro",
          CellTags->"f0b19365-e12c-43ac-abab-c0967f9a2414",ExpressionUUID->
-         "7460721a-9cd7-4f70-83c3-4f014fe262d8"],
+         "911108e4-eaa4-4402-99d6-08c009c6b5be"],
         "\[NonBreakingSpace]",
         StyleBox[
         "\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
@@ -817,11 +810,11 @@ Cell[BoxData[GridBox[{
           BaseStyle->"InlineFormula"]], "InlineFormula",
          FontFamily->"Source Sans Pro",
          CellTags->"4d03e2e5-d54e-4720-81a6-53a2b21e49c2",ExpressionUUID->
-         "24e9400a-43a2-441a-ac00-9ade739f473b"]
-       }], "SeeAlso",ExpressionUUID->"8cb69c87-5b6f-4d69-93f6-9d88de625032"]}
+         "a6fc5e64-3e73-4117-85a7-d77ba340e656"]
+       }], "SeeAlso",ExpressionUUID->"296a0971-eabc-462e-ad40-08a0c132a2e3"]}
      }]}
-  }]], "SeeAlsoSection",ExpressionUUID->"a1beb5eb-dd13-44e0-ade1-\
-799a80e52644"],
+  }]], "SeeAlsoSection",ExpressionUUID->"d032c8a4-db75-4ae1-a246-\
+e7e6036799da"],
 
 Cell[BoxData[GridBox[{
    {
@@ -840,10 +833,10 @@ Cell[BoxData[GridBox[{
            "paclet:DiscKosky/tutorial/UsingDiscKosky"},
           "RefLinkPlain",
           BaseStyle->{"Tutorials"}]], "Tutorials",ExpressionUUID->
-         "f14f0cce-9e3a-418d-89af-396fa6298a57"]}]}
+         "61fc5c35-be5f-4ebf-94dd-4e0981303bf1"]}]}
      }]}
-  }]], "TechNotesSection",ExpressionUUID->"6acfe6d5-5a9e-413b-98d6-\
-09b9750a8cdc"],
+  }]], "TechNotesSection",ExpressionUUID->"b71d67ab-fcfc-4dc9-92f5-\
+2cdb2943e394"],
 
 Cell[BoxData[GridBox[{
    {
@@ -861,12 +854,12 @@ Cell[BoxData[GridBox[{
            "paclet:DiscKosky/guide/DiscKosky"},
           "RefLinkPlain",
           BaseStyle->{"MoreAbout"}]], "MoreAbout",ExpressionUUID->
-         "5da84533-c776-447f-9691-6a32145710f4"]}]}
+         "e175d8de-7af6-4dc7-8333-c23e5f8a49ee"]}]}
      }]}
-  }]], "MoreAboutSection",ExpressionUUID->"327f7e11-e58b-4eb2-bd56-\
-2e209e2c9b93"],
+  }]], "MoreAboutSection",ExpressionUUID->"ca5f92e7-4e6e-4ad4-9001-\
+5a7eabdfa7bd"],
 
-Cell[" ", "FooterCell",ExpressionUUID->"5db377c0-8251-4559-a13b-e9660f236022"]
+Cell[" ", "FooterCell",ExpressionUUID->"8d2220f4-986a-419e-9206-4c052c5a0d8b"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
@@ -887,7 +880,7 @@ TaggingRules->{
   False, "HasOptions" -> True, "RootCaptions" -> "", 
   "HeaderCoreAreaLink" -> {}, 
   "Metadata" -> {
-   "built" -> "{2026, 7, 16, 14, 13, 23.619788}", 
+   "built" -> "{2026, 7, 21, 11, 30, 58.151956}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DiscKosky`", 
     "keywords" -> {
      "sector graph singularities directed graph indeterminate labels"}, 
@@ -912,7 +905,7 @@ StyleDefinitions->Notebook[{
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "14.3 for Mac OS X ARM (64-bit) (July 8, 2025)", 
   StyleDefinitions -> "PrivateStylesheetFormatting.nb"],
-ExpressionUUID->"ba3c9505-207b-42f1-b0a8-7337d6fd17c4"
+ExpressionUUID->"0d0f47b7-487e-4939-8b08-76cdd4a3ce40"
 ]
 (* End of Notebook Content *)
 
@@ -920,103 +913,101 @@ ExpressionUUID->"ba3c9505-207b-42f1-b0a8-7337d6fd17c4"
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[13717, 360, 1353, 36, 70, "PrimaryExamplesSection",ExpressionUUID->"db6a29dd-3ffd-4cb4-a153-6c4d272b0d65",
+  Cell[13445, 353, 1353, 36, 70, "PrimaryExamplesSection",ExpressionUUID->"b48dca3d-ad11-46d4-b4d7-039514a4b5b1",
    CellTags->"PrimaryExamplesSection",
-   CellID->315471127]}
+   CellID->422756825]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 34188, 921}
+ {"PrimaryExamplesSection", 33915, 914}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[583, 21, 6328, 158, 70, "AnchorBarGrid",ExpressionUUID->"269c6d50-07f1-487c-b87b-c5fbccf14960",
+Cell[583, 21, 6328, 158, 70, "AnchorBarGrid",ExpressionUUID->"5f7670e9-ce47-4fb7-887a-093bbdfed2c8",
  CellID->1],
-Cell[6914, 181, 92, 0, 70, "ContextNameCell",ExpressionUUID->"b1a48f51-119c-4ebc-9188-10f93b3e950c"],
+Cell[6914, 181, 92, 0, 70, "ContextNameCell",ExpressionUUID->"2b0cc78f-6c80-4aeb-a25b-af899181daa9"],
 Cell[CellGroupData[{
-Cell[7031, 185, 558, 14, 70, "ObjectNameGrid",ExpressionUUID->"b9ca3e81-b071-42cd-9f7d-c5ed65bd6489"],
-Cell[7592, 201, 864, 21, 70, "Usage",ExpressionUUID->"2deb5e98-64fc-4f6d-9487-ee6782e0e0ee",
+Cell[7031, 185, 558, 14, 70, "ObjectNameGrid",ExpressionUUID->"28af5f60-7d56-4032-9b90-0e77e335d54b"],
+Cell[7592, 201, 864, 21, 70, "Usage",ExpressionUUID->"63834ed2-6dc5-46f6-a8db-2a4e92540f22",
  CellID->1149527361]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8493, 227, 1760, 43, 70, "NotesSection",ExpressionUUID->"d4046c5c-3375-48b8-b1c4-6a1526f411f0",
+Cell[8493, 227, 1759, 43, 70, "NotesSection",ExpressionUUID->"01c96e35-4506-4feb-808d-2178d16e091c",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1301516267],
-Cell[10256, 272, 180, 4, 70, "Notes",ExpressionUUID->"9809375c-a542-4e99-9990-d21d1d33da35",
+ CellID->116170964],
+Cell[10255, 272, 180, 4, 70, "Notes",ExpressionUUID->"430c83e0-318e-479f-a05e-cc93056f35a6",
  CellID->1500773682],
-Cell[10439, 278, 196, 4, 70, "Notes",ExpressionUUID->"8407ce8a-cf39-4868-9abf-d184c021ec85",
+Cell[10438, 278, 196, 4, 70, "Notes",ExpressionUUID->"69ad8fe9-b3eb-429f-9544-55fd5c3e77ab",
  CellID->1443405534],
-Cell[10638, 284, 271, 5, 70, "Notes",ExpressionUUID->"dd7d6c41-ac0c-4919-9da7-6370ece12afe",
+Cell[10637, 284, 271, 5, 70, "Notes",ExpressionUUID->"382ddf8f-b959-495a-a38c-2a01d0a32112",
  CellID->652195287],
-Cell[10912, 291, 258, 5, 70, "Notes",ExpressionUUID->"c3e0ffd7-bf7c-4e7e-8f09-861a009d953b",
- CellID->1612247117],
-Cell[11173, 298, 216, 4, 70, "Notes",ExpressionUUID->"02df4a9b-1a33-4dd3-badf-f3b992d86bdd",
+Cell[10911, 291, 216, 4, 70, "Notes",ExpressionUUID->"330d894a-5461-4c9d-8e2e-3b8c3e643c28",
  CellID->1845252834],
-Cell[11392, 304, 127, 1, 70, "Notes",ExpressionUUID->"26171563-504c-4c92-9622-0e7bf8b0f078",
+Cell[11130, 297, 127, 1, 70, "Notes",ExpressionUUID->"d0f7f723-33d6-4a06-89ee-bf43bef9c334",
  CellID->151494426],
-Cell[11522, 307, 1985, 45, 70, "3ColumnTableMod",ExpressionUUID->"ad40a866-08a4-42bb-91f4-6510cc240891",
+Cell[11260, 300, 1975, 45, 70, "3ColumnTableMod",ExpressionUUID->"1abfeebb-858b-465d-b0a3-57586cfd0310",
  CellID->438679867]
 }, Dynamic[CurrentValue[EvaluationNotebook[], {TaggingRules, "Openers", "NotesSection"}, Closed]]]],
-Cell[13612, 356, 80, 0, 70, "PageDelimiter",ExpressionUUID->"ec7d17e8-405b-49f3-ac30-29fa27f7f858"],
+Cell[13340, 349, 80, 0, 70, "PageDelimiter",ExpressionUUID->"bf196534-b61b-4e3d-91c6-bf590d1be953"],
 Cell[CellGroupData[{
-Cell[13717, 360, 1353, 36, 70, "PrimaryExamplesSection",ExpressionUUID->"db6a29dd-3ffd-4cb4-a153-6c4d272b0d65",
+Cell[13445, 353, 1353, 36, 70, "PrimaryExamplesSection",ExpressionUUID->"b48dca3d-ad11-46d4-b4d7-039514a4b5b1",
  CellTags->"PrimaryExamplesSection",
- CellID->315471127],
-Cell[15073, 398, 199, 3, 70, "Input",ExpressionUUID->"6921950a-5929-4a8d-86f4-5766a098fecc",
+ CellID->422756825],
+Cell[14801, 391, 199, 3, 70, "Input",ExpressionUUID->"6caac953-803e-46c0-bb81-55bb3e3bcf21",
  CellID->1955965034],
 Cell[CellGroupData[{
-Cell[15297, 405, 1332, 35, 70, "ExampleSection",ExpressionUUID->"e8f6caff-485f-47eb-810d-70235738a3ae",
- CellID->2133590693],
-Cell[16632, 442, 1461, 42, 70, "Input",ExpressionUUID->"67a57f33-eb1b-4823-a826-4d7ced063e25",
+Cell[15025, 398, 1332, 35, 70, "ExampleSection",ExpressionUUID->"eedab537-9b9f-44a1-aaa7-9a4e7c4626cc",
+ CellID->1398053499],
+Cell[16360, 435, 1461, 42, 70, "Input",ExpressionUUID->"3e8b0ac7-3130-400e-9a0e-e3981461309b",
  CellID->1910047670],
-Cell[18096, 486, 129, 1, 70, "Notes",ExpressionUUID->"5ba6dac8-f1ae-4304-95b3-d3202a416cc3",
+Cell[17824, 479, 129, 1, 70, "Notes",ExpressionUUID->"93132585-0758-4a36-bf33-32dcf164f3e7",
  CellID->922319825],
-Cell[18228, 489, 254, 5, 70, "Input",ExpressionUUID->"d0bd7b29-3450-4268-81d8-3fae3ee8eadb",
+Cell[17956, 482, 254, 5, 70, "Input",ExpressionUUID->"0648c255-5489-4d29-96f3-f12363d695a9",
  CellID->406658803]
 }, Dynamic[CurrentValue[EvaluationNotebook[], {TaggingRules, "Openers", "ExampleSection", "0"}, Closed]]]],
 Cell[CellGroupData[{
-Cell[18619, 501, 1324, 35, 70, "ExampleSection",ExpressionUUID->"20ac3225-0df2-43f5-9a71-0099eecbca5e",
+Cell[18347, 494, 1324, 35, 70, "ExampleSection",ExpressionUUID->"fed456de-1885-498a-a97c-23553f6e380d",
  CellID->150298669],
 Cell[CellGroupData[{
-Cell[19968, 540, 1350, 35, 70, "ExampleSubsection",ExpressionUUID->"12e81128-5d71-4016-a1f5-3feb28ba3fb2",
+Cell[19696, 533, 1350, 35, 70, "ExampleSubsection",ExpressionUUID->"d1d2762f-8ef9-4795-aab4-b5bdf50084a6",
  CellID->756015981],
-Cell[21321, 577, 172, 3, 70, "Notes",ExpressionUUID->"3a79867d-e6a0-4fb2-a9d6-001bdb079106",
+Cell[21049, 570, 171, 3, 70, "Notes",ExpressionUUID->"c2bc7db9-196d-46d8-8b66-0b3ccd5050bb",
  CellID->1250265471],
-Cell[21496, 582, 328, 7, 70, "Input",ExpressionUUID->"98d50f33-9f8b-412c-acdc-774da31ba21e",
+Cell[21223, 575, 328, 7, 70, "Input",ExpressionUUID->"ddc9ea71-1fb3-42b0-aec2-687c7482f7f2",
  CellID->1903701423]
 }, Dynamic[CurrentValue[EvaluationNotebook[], {TaggingRules, "Openers", "ExampleSubsection", "0"}, Closed]]]],
 Cell[CellGroupData[{
-Cell[21964, 596, 1347, 35, 70, "ExampleSubsection",ExpressionUUID->"be4710d8-7553-4613-9aa9-6bbbcde4e846",
+Cell[21691, 589, 1347, 35, 70, "ExampleSubsection",ExpressionUUID->"bca54e4e-5ee0-4e9c-8fd6-75fa18b4a2b5",
  CellID->1187023014],
-Cell[23314, 633, 136, 1, 70, "Notes",ExpressionUUID->"cdb00ad7-0665-41dd-99ed-214716a9caf5",
+Cell[23041, 626, 136, 1, 70, "Notes",ExpressionUUID->"a57a7298-197c-4c9c-af11-f510e72bab14",
  CellID->342777323],
-Cell[23453, 636, 324, 7, 70, "Input",ExpressionUUID->"1252854c-e523-486f-a95f-74243193cd81",
+Cell[23180, 629, 324, 7, 70, "Input",ExpressionUUID->"4ed77552-2ecd-4470-adad-d9bb687cd91c",
  CellID->1179187067]
 }, Dynamic[CurrentValue[EvaluationNotebook[], {TaggingRules, "Openers", "ExampleSubsection", "1"}, Closed]]]],
 Cell[CellGroupData[{
-Cell[23917, 650, 1356, 35, 70, "ExampleSubsection",ExpressionUUID->"813eee2a-27d9-4c79-863b-778905fd7d1a",
+Cell[23644, 643, 1356, 35, 70, "ExampleSubsection",ExpressionUUID->"e15e4584-4a86-49cf-b83f-bfc228096f85",
  CellID->108782753],
-Cell[25276, 687, 170, 3, 70, "Notes",ExpressionUUID->"ad8ad310-17a7-4565-b05e-926245680cfa",
+Cell[25003, 680, 170, 3, 70, "Notes",ExpressionUUID->"5f916212-4e9d-4a4d-a828-9def5d419f69",
  CellID->1450518816],
-Cell[25449, 692, 335, 7, 70, "Input",ExpressionUUID->"9e63bf94-7137-4147-b4d1-6ec7dab7d54c",
+Cell[25176, 685, 335, 7, 70, "Input",ExpressionUUID->"ac43911e-99c8-4514-8080-281fa5c000f2",
  CellID->1549570136]
 }, Dynamic[CurrentValue[EvaluationNotebook[], {TaggingRules, "Openers", "ExampleSubsection", "2"}, Closed]]]],
 Cell[CellGroupData[{
-Cell[25924, 706, 1337, 35, 70, "ExampleSubsection",ExpressionUUID->"c5da8003-335b-40a6-9253-30ae2bf7f25e",
+Cell[25651, 699, 1337, 35, 70, "ExampleSubsection",ExpressionUUID->"d89063ac-cfbd-425a-81d1-90032e335aae",
  CellID->1053719024],
-Cell[27264, 743, 190, 4, 70, "Notes",ExpressionUUID->"c3ad052a-0fd5-45a3-a786-f9ec1a47f0fd",
+Cell[26991, 736, 190, 4, 70, "Notes",ExpressionUUID->"3f4eda6a-5562-4415-aaaf-afdce7f93a56",
  CellID->266238291],
-Cell[27457, 749, 389, 7, 70, "Input",ExpressionUUID->"d471c527-e4c6-43b3-8f6d-fe5cd994953a",
+Cell[27184, 742, 389, 7, 70, "Input",ExpressionUUID->"74c2b5eb-81bb-43df-87e5-7cbd2c8d42be",
  CellID->1738441901]
 }, Dynamic[CurrentValue[EvaluationNotebook[], {TaggingRules, "Openers", "ExampleSubsection", "3"}, Closed]]]]
 }, Dynamic[CurrentValue[EvaluationNotebook[], {TaggingRules, "Openers", "ExampleSection", "1"}, Closed]]]]
 }, Dynamic[CurrentValue[EvaluationNotebook[], {TaggingRules, "Openers", "PrimaryExamplesSection"}, Closed]]]],
-Cell[28191, 767, 2201, 56, 70, "SeeAlsoSection",ExpressionUUID->"a1beb5eb-dd13-44e0-ade1-799a80e52644"],
-Cell[30395, 825, 752, 20, 70, "TechNotesSection",ExpressionUUID->"6acfe6d5-5a9e-413b-98d6-09b9750a8cdc"],
-Cell[31150, 847, 745, 19, 70, "MoreAboutSection",ExpressionUUID->"327f7e11-e58b-4eb2-bd56-2e209e2c9b93"],
-Cell[31898, 868, 78, 0, 70, "FooterCell",ExpressionUUID->"5db377c0-8251-4559-a13b-e9660f236022"]
+Cell[27918, 760, 2201, 56, 70, "SeeAlsoSection",ExpressionUUID->"d032c8a4-db75-4ae1-a246-e7e6036799da"],
+Cell[30122, 818, 752, 20, 70, "TechNotesSection",ExpressionUUID->"b71d67ab-fcfc-4dc9-92f5-2cdb2943e394"],
+Cell[30877, 840, 745, 19, 70, "MoreAboutSection",ExpressionUUID->"ca5f92e7-4e6e-4ad4-9001-5a7eabdfa7bd"],
+Cell[31625, 861, 78, 0, 70, "FooterCell",ExpressionUUID->"8d2220f4-986a-419e-9206-4c052c5a0d8b"]
 }
 ]
 *)

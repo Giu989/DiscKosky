@@ -1,11 +1,11 @@
 <|"English/ReferencePages/Symbols/CheckDoubleDiscontinuities.nb" -> 
   <|"Result" -> Success["ProcessedNotebook", <|"Action" -> "Build", 
-      "Time" -> Quantity[0.936193, "Seconds"]|>], 
-   "FileHash" -> "s9S0Ehbj6mu9lzwsYlfvC/fs6g1Hy5orfoFI8BWIfv0="|>, 
+      "Time" -> Quantity[7.677441, "Seconds"]|>], 
+   "FileHash" -> "Oq40H3KH5BpXgNhi8Wjj+BHi1mPh+LjG3qbuX7QVLHQ="|>, 
  "English/ReferencePages/Symbols/CheckRepeatedDiscontinuity.nb" -> 
   <|"Result" -> Success["ProcessedNotebook", <|"Action" -> "Build", 
-      "Time" -> Quantity[0.805576, "Seconds"]|>], 
-   "FileHash" -> "b11CiXJKDlR2FbQA+wJpC/slUdGT8XJ/ktF2MwhZodA="|>, 
+      "Time" -> Quantity[0.745403, "Seconds"]|>], 
+   "FileHash" -> "IBG9aaKFvKV7TifYe0tc8No7cA+YEs8E8SSEtxVFel4="|>, 
  "English/ReferencePages/Symbols/CountSectorsRegulated.nb" -> 
   <|"Result" -> Success["ProcessedNotebook", <|"Action" -> "Build", 
       "Time" -> Quantity[0.955013, "Seconds"]|>], 
@@ -20,12 +20,12 @@
    "FileHash" -> "s77czfbhKAIHiZZMmNKKONnDUXtSAZVxQmbfnNm5vFo="|>, 
  "English/ReferencePages/Symbols/SectorDropGraph.nb" -> 
   <|"Result" -> Success["ProcessedNotebook", <|"Action" -> "Build", 
-      "Time" -> Quantity[0.623491, "Seconds"]|>], 
-   "FileHash" -> "I5LZLzjjfcQ7tUZlF3arjBsGnDLeMfxrdRxET1ejCvU="|>, 
+      "Time" -> Quantity[0.693452, "Seconds"]|>], 
+   "FileHash" -> "XXkakORrLHFaBgFzAaXH5Naq5YsuRODuSCVg0aIsKB0="|>, 
  "English/Tutorials/UsingDiscKosky.nb" -> 
   <|"Result" -> Success["ProcessedNotebook", <|"Action" -> "Build", 
-      "Time" -> Quantity[0.599769, "Seconds"]|>], 
-   "FileHash" -> "CNjghAr7o2VEQHckT7eskg7zC4rF5UynL61DsCzBd9s="|>, 
+      "Time" -> Quantity[0.539016, "Seconds"]|>], 
+   "FileHash" -> "Rdqqrx7s2uqjpjs1Tm1OWlgYkgestV6TV00YiQKz4lE="|>, 
  "English/Guides/DiscKosky.nb" -> 
   <|"Result" -> Success["ProcessedNotebook", <|"Action" -> "Build", 
       "Time" -> Quantity[8.098597, "Seconds"]|>], 
