@@ -100,6 +100,8 @@ CheckSequentialDiscontinuity[gpol_,variables_,singList_,indexList_,opts:OptionsP
 		data1,outTrueCut,fullCountings
 	},
 	
+	If[!((indexList//Max)<=Length[singList]//TrueQ),Print["Error: index out of bounds"]; Return[$Failed]];
+	
 	fullCountings = buildEulerChiData[gpol,variables,singList,Sequence@@FilterRules[{opts},Options[buildEulerChiData]]];
 	If[fullCountings===$Failed,Return[$Failed]];
 	

@@ -39,7 +39,10 @@ msolveExec = If[msolveData["ExitCode"]===0,msolveData["StandardOutput"]//StringD
 
 (*welcome message*)
 Print["DiscKosky " <> version <> ": Giulio Crisanti, Luke Lippstreu, Andrew J. McLeod and Maria Polackova (2026)"]
-If[msolveExec===$Failed,Print["Warning: could not find msolve executable \[LongDash]\[LongDash] automatic Groebner Basis runs will default to Mathematica built in functions\n using msolve is highly recommended especially if the (defualt) option \"CheckCriticalPointValidity\"->True is used"]]
+If[msolveExec===$Failed,
+	Print["Warning: could not find msolve executable \[LongDash]\[LongDash] automatic Groebner Basis runs will default to Mathematica built in functions. Using msolve is highly recommended especially if the (defualt) option \"CheckCriticalPointValidity\"->True is used"];
+	Print["The executable path can be set manually by editing: \n\n", ToString[pacletInstallLocation], "/Kernel/paths.m"];
+]
 
 
 (*catch if Mathematica bugs and cannot find the documentation files*)
