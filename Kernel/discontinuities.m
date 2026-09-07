@@ -112,6 +112,10 @@ CheckSequentialDiscontinuity[gpol_,variables_,singList_,indexList_,opts:OptionsP
 		Return[True];
 	];
 	
+	If[Length[outTrueCut[[2]]]>0 && OptionValue["RefineIndeterminates"], (*the indeterminates that could not be refined are set to true automatically enforcing the conservative condition*)
+		Return[True];
+	];
+	
 	If[Length[outTrueCut[[2]]]>0,
 		Return[Indeterminate];
 	];
