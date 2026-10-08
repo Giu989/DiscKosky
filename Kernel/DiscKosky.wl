@@ -11,11 +11,13 @@ SectorDropGraph::usage = "SectorDropGraph[gpol, vars, singList] builds a directe
 SectorDropGraphData::usage = "SectorDropGraphData[gpol, vars, singList] builds the Euler characteristic data used by SectorDropGraph and returns an association containing sectors, graph vertices, singularity labels, edges, and edge labels.";
 GroebnerBasisMS::usage = "GroebnerBasisMS[ideal, vars] computes a Groebner basis of ideal in the variables vars using msolve.\nGroebnerBasisMS[jobs] computes a batch of Groebner bases, where each job is <|\"Ideal\" -> ideal, \"Variables\" -> vars|> or {ideal, vars}.\nOptions include \"Modulus\" -> p for computations over the prime field GF(p), \"LeadingMonomialsOnly\" -> True to return the leading ideal instead of the full Groebner basis, and \"EliminateVariables\" -> {x1, ...} to return the requested Groebner-basis operation for the elimination ideal in the remaining variables. Variables listed in \"EliminateVariables\" must appear in every job and at least one variable must remain.\nmsolve batch options include \"MSolveJobs\", \"msolveParallelThreads\" -> 1 to set msolve's -t thread count, \"MSolveBatchDirectory\", \"MSolveKeepFiles\", \"MSolveProgress\", and \"MSolveProgressInterval\". The older \"MSolveThreads\" option is still accepted as an alias.";
 DiscKoskyExtraVar::usage = "extra internal variable required for critical point ideals";
+FindSingularitySectors::usage = "FindSingularitySectors[gpol, vars, singList, index] returns the list of sectors for which the singularity singList[[index]] causes a drop in the Euler Characteristic."
 
 
 Begin["`Private`"]
 
 
+(*detecting install version*)
 With[{pac = PacletFind["DiscKosky"]},
   If[Length[pac] > 0,
     version = ("Version" //ReplaceAll[pac[[1]][[1]]]);
@@ -38,6 +40,10 @@ msolveExec = If[msolveData["ExitCode"]===0,msolveData["StandardOutput"]//StringD
 
 
 (*welcome message*)
+logo = Import[FileNameJoin[{DirectoryName[$InputFileName], "logo.png"}]] // Image[#, ImageSize -> Large]&;
+(*If[$Notebooks, Show[logo, ImageSize->500]];*)
+If[$Notebooks, Print[logo]];
+
 Print["DiscKosky " <> version <> ": Giulio Crisanti, Luke Lippstreu, Andrew J. McLeod and Maria Polackova (2026)"]
 If[msolveExec===$Failed,
 	Print["Warning: could not find msolve executable \[LongDash]\[LongDash] automatic Groebner Basis runs will default to Mathematica built in functions. Using msolve is highly recommended especially if the (defualt) option \"CheckCriticalPointValidity\"->True is used"];
@@ -48,7 +54,7 @@ If[msolveExec===$Failed,
 (*catch if Mathematica bugs and cannot find the documentation files*)
 safeHelpLookup[p_]:=Module[{res},
 	res=Quiet@Check[Documentation`ResolveLink[p],$Failed];
-	If[res===$Failed||!StringQ[res],Print["Mathematica failed to link to the documentation. This is a Mathematica bug. Quitting the kernel and restarting the Mathematica application should fix this. Try also loading SPQR on the default kernel."];
+	If[res===$Failed||!StringQ[res],Print["Mathematica failed to link to the documentation. This is a Mathematica bug. Quitting the kernel and restarting the Mathematica application should fix this. Try also loading DiscKosky on the default kernel."];
 	$Failed,Documentation`HelpLookup[p]]
 ];
 (*documentation button*)
@@ -72,7 +78,8 @@ SetAttributes[
 		SectorDropGraph,
 		SectorDropGraphData,
 		GroebnerBasisMS,
-		DiscKoskyExtraVar
+		DiscKoskyExtraVar,
+		FindSingularitySectors
 		,
 		Nothing
 	}

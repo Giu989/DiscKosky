@@ -3,23 +3,6 @@
 deleteSupersets[list_]:=deleteSupersets[list]=Select[list,Function[x,!MemberQ[list,y_/;x=!=y&&SubsetQ[x,y]]]]
 
 
-ClearAll[findCutsIndex];
-findCutsIndex[fullCountings_,index_]:=findCutsIndex[fullCountings,index]=Module[{ans1,ans2,positions,positions2,cuts,cuts2},
-	ans1=fullCountings // Last;
-	ans2=fullCountings[[index]];
-
-
-	positions = Position[ans2[[2]]-ans1[[2]],_?(#<0&)]//Flatten;
-	positions2 = Position[ans2[[2]]-ans1[[2]],_?(#===Indeterminate&)]//Flatten;
-	cuts = ans1[[3]][[positions]];
-	cuts2 = ans1[[3]][[positions2]];
-
-	(*If[(cuts2//Length)=!=0,Print["Indeterminate sector found"]];*)
-
-	Return[<|"data"->{cuts,cuts2},"index"->index|>];
-];
-
-
 ClearAll[buildEulerChiData];
 Options[buildEulerChiData] = Join[
 	{"CheckCriticalPointValidity"->True},
@@ -73,6 +56,21 @@ buildEulerChiData[gpol_,variables_,singList_,opts:OptionsPattern[]]:= buildEuler
 ];
 
 
+ClearAll[findCutsIndex];
+findCutsIndex[fullCountings_,index_]:=findCutsIndex[fullCountings,index]=Module[{ans1,ans2,positions,positions2,cuts,cuts2},
+	ans1=fullCountings // Last;
+	ans2=fullCountings[[index]];
+
+
+	positions = Position[ans2[[2]]-ans1[[2]],_?(#<0&)]//Flatten;
+	positions2 = Position[ans2[[2]]-ans1[[2]],_?(#===Indeterminate&)]//Flatten;
+	cuts = ans1[[3]][[positions]];
+	cuts2 = ans1[[3]][[positions2]];
+
+	Return[<|"data"->{cuts,cuts2},"index"->index|>];
+];
+
+
 Options[findNewTrueCuts] = {"RefineIndeterminates"->False};
 findNewTrueCuts[fullCountings_,data1_,index2_,opts:OptionsPattern[]]:=Module[
 	{
@@ -91,6 +89,23 @@ findNewTrueCuts[fullCountings_,data1_,index2_,opts:OptionsPattern[]]:=Module[
 	
 	Return[<|"data"->{trueData,indData},"index"->index2|>];
 	(*Return[{trueData,indData}];*)
+];
+
+
+Options[FindSingularitySectors] = Options[buildEulerChiData];
+FindSingularitySectors[gpol_,variables_,singList_,index_,opts:OptionsPattern[]]:=Module[
+	{
+		data1,outTrueCut,fullCountings
+	},
+	
+	If[!(index<=Length[singList]//TrueQ),Print["Error: index out of bounds"]; Return[$Failed]];
+	
+	fullCountings = buildEulerChiData[gpol,variables,singList,Sequence@@FilterRules[{opts},Options[buildEulerChiData]]];
+	If[fullCountings===$Failed,Return[$Failed]];
+	
+	data1 = findCutsIndex[fullCountings,index];
+	
+	Return[data1["data"] // Apply[Join]];
 ];
 
 
@@ -133,7 +148,13 @@ CheckDoubleDiscontinuities[gpol_,variables_,singList_,opts:OptionsPattern[]]:=Mo
 	If[buildEulerChiData[gpol,variables,singList,Sequence@@FilterRules[{opts},Options[buildEulerChiData]]]===$Failed,Return[$Failed]];
 	
 	PrintTemporary["Building the double discontinuity matrix"];
-	dropMatrix = Monitor[Table[CheckSequentialDiscontinuity[gpol,variables,singList,{i,j},opts],{i,1,Length[singList]},{j,1,Length[singList]}],{ToString[i]<>"/"<>ToString[Length[singList]],ToString[j]<>"/"<>ToString[Length[singList]]}];
+	dropMatrix = Monitor[
+		Table[
+			CheckSequentialDiscontinuity[gpol,variables,singList,{i,j},opts],{i,1,Length[singList]},{j,1,Length[singList]}
+		]
+	,
+		{ToString[i]<>"/"<>ToString[Length[singList]],ToString[j]<>"/"<>ToString[Length[singList]]}
+	];
 	
 	Return[dropMatrix];
 ];
