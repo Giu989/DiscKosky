@@ -37,22 +37,63 @@ normaliseGroebnerBasisMSJob[job_Association]:=Module[{ideal,vars},
 normaliseGroebnerBasisMSJob[{ideal_,vars_}]:=<|"Ideal"->ideal,"Variables"->vars|>;
 normaliseGroebnerBasisMSJob[_]:=$Failed;
 
+(*msolve only ever sees the positional names v1, v2, ...: names such as x[1], Subscript[x,1] or a`b are not valid msolve variables, and msolve echoes the names back in its output header*)
+msolveVariableContext = "DiscKosky`Private`msolveVariables`";
+msolveVariableNames[n_Integer]:=Table["v"<>IntegerString[i],{i,n}];
+msolveVariableSymbols[n_Integer]:=Symbol[msolveVariableContext<>#]& /@ msolveVariableNames[n];
+
+(*writes every polynomial term by term with exactly one sign per term: msolve misreads doubled signs such as "-+5", and InputForm's "-(a*b)" is read as -1. All terms of the system are assembled in one pass for speed*)
+msolvePolynomialStrings[polys_List,vars_List,names_List]:=Module[
+	{distributed,terms,lengths,all,coefficients,signs,firstTerms,powers,termStrings},
+	distributed = GroebnerBasis`DistributedTermsList[polys,vars];
+	If[!MatchQ[distributed,{termLists_List,_}/;Length[termLists]===Length[polys]],Return[$Failed]];
+	terms = First[distributed];
+	lengths = Length /@ terms;
+	all = Join @@ terms;
+	If[all==={},Return[ConstantArray["0",Length[polys]]]];
+	coefficients = all[[All,2]];
+	If[!VectorQ[coefficients,IntegerQ],Return[$Failed]];
+	signs = Replace[Sign[coefficients],{-1->"-",_->"+"},{1}];
+	(*the first term of each polynomial carries no "+"*)
+	firstTerms = Pick[Most[Accumulate[Prepend[lengths,1]]],Positive[lengths]];
+	signs[[firstTerms]] = signs[[firstTerms]] /. "+"->"";
+	(*per variable, the strings "", "*name^1", "*name^2", ... picked by exponent*)
+	powers = MapThread[
+		Function[{name,exponents},Prepend[Table["*"<>name<>"^"<>IntegerString[k],{k,Max[exponents]}],""][[exponents+1]]],
+		{names,Transpose[all[[All,1]]]}
+	];
+	termStrings = StringJoin /@ Transpose[Join[{signs,IntegerString[Abs[coefficients]]},powers]];
+	Replace[StringJoin /@ TakeList[termStrings,lengths],""->"0",{1}]
+];
+
 msolveInputString[ideal_,vars_,modulus_]:=Module[
-	{idealProcessed,polys,variablesInput,modulusInput,idealInput},
+	{idealProcessed,polys,names,polyStrings},
 
 	(*msolve is very sensitive to the ideal input and will give incorrect results if this is not exactly in the way it wants*)
 	idealProcessed = ideal // PolynomialMod[#,modulus]& // Together // Numerator // Expand;
 	polys = If[ListQ[idealProcessed],idealProcessed,{idealProcessed}];
-	variablesInput = vars // Map[ToString] // StringRiffle[#,","]&//StringJoin[#,"\n"]&;
-	modulusInput = modulus // ToString // StringJoin[#,"\n"]&;
-	idealInput = polys // Map[InputForm]// Map[ToString] // StringRiffle[#,",\n"]&;
-	variablesInput<>modulusInput<>idealInput
+	names = msolveVariableNames[Length[vars]];
+	polyStrings = msolvePolynomialStrings[polys,vars,names];
+	If[!ListQ[polyStrings],Return[$Failed]];
+	StringRiffle[names,","]<>"\n"<>ToString[modulus]<>"\n"<>StringRiffle[polyStrings,",\n"]
 ];
 
-parseMsolveOutput[out_String]:=Check[
-	out//StringCases[#,Shortest["["~~x__~~"]"]:>x]&//First//StringDelete[#,"\n"]&//StringSplit[#,","]&//Map[ToExpression],
-	Print["Error: msolve output is not of expected shape"];
-	$Failed
+(*returns the basis in the msolve variable symbols. Comment lines start with # and are skipped, and the basis is located by position because a regular expression hits PCRE's recursion limit on large outputs*)
+parseMsolveOutput[out_String]:=Module[{body,open,close},
+	body = StringDelete[StringDelete[out,RegularExpression["(?m)^[ \\t]*#[^\\n]*"]],"\n"];
+	open = StringPosition[body,"[",1];
+	close = StringPosition[body,"]",1];
+	If[open==={} || close==={} || close[[1,1]]<open[[1,1]],
+		Print["Error: msolve output is not of expected shape"];
+		Return[$Failed]
+	];
+	Check[
+		Block[{$Context=msolveVariableContext,$ContextPath={}},
+			ToExpression /@ StringSplit[StringTake[body,{open[[1,1]]+1,close[[1,1]]-1}],","]
+		],
+		Print["Error: msolve output is not of expected shape"];
+		$Failed
+	]
 ];
 
 GroebnerBasisMS[ideal_,vars_List,opts:OptionsPattern[]]:=Module[{res},
@@ -65,7 +106,7 @@ GroebnerBasisMS[jobs_List,opts:OptionsPattern[]]:=Module[
 		modulus,normalised,threadCount,jobCount,baseDir,runDir,inputDir,outputDir,logDir,
 		workerFile,jobsFile,runnerFile,backgroundRunnerFile,runnerLogFile,exitCodeFile,ids,gbFlag,eliminateVariables,eliminatePattern,eliminateCount,eliminateFlag,runner,worker,backgroundRunner,exitCode,
 		outputFiles,outputs,processed,keepFiles,progressEnabled,showNotebookProgress,finishedJobs,totalJobs,progressFile,progressInterval,launchCode,
-		runProgressBatch,readExitCode,explicitThreadOptions
+		runProgressBatch,readExitCode,explicitThreadOptions,inputs
 	},
 
 	If[jobs==={},Return[{}]];
@@ -78,6 +119,7 @@ GroebnerBasisMS[jobs_List,opts:OptionsPattern[]]:=Module[
 	normalised = normaliseGroebnerBasisMSJob /@ jobs;
 	If[MemberQ[normalised,$Failed],Print["Error: malformed GroebnerBasisMS batch job"];Return[$Failed]];
 	If[!And@@(SubsetQ[#["Variables"],#["Ideal"]//Variables]& /@ normalised),Print["Error: parameters not supported"];Return[$Failed];];
+	If[!And@@(DuplicateFreeQ[#["Variables"]]& /@ normalised),Print["Error: variables must not be repeated"];Return[$Failed];];
 	eliminateVariables = OptionValue["EliminateVariables"];
 	If[!ListQ[eliminateVariables],Print["Error: \"EliminateVariables\" must be a list"];Return[$Failed]];
 	eliminateVariables = DeleteDuplicates[eliminateVariables];
@@ -105,6 +147,8 @@ GroebnerBasisMS[jobs_List,opts:OptionsPattern[]]:=Module[
 	];
 	eliminateCount = Length[eliminateVariables];
 	eliminateFlag = If[eliminateCount>0," -e "<>ToString[eliminateCount],""];
+	inputs = msolveInputString[#["Ideal"],#["Variables"],modulus]& /@ normalised;
+	If[MemberQ[inputs,$Failed],Print["Error: the ideal must consist of polynomials with rational coefficients, whose denominators are invertible modulo the prime"];Return[$Failed]];
 
 	explicitThreadOptions = Cases[{opts},HoldPattern[Rule["msolveParallelThreads",value_]|RuleDelayed["msolveParallelThreads",value_]]:>value];
 	threadCount = If[explicitThreadOptions==={},OptionValue["MSolveThreads"],Last[explicitThreadOptions]] /. Automatic->1;
@@ -134,15 +178,28 @@ GroebnerBasisMS[jobs_List,opts:OptionsPattern[]]:=Module[
 	finishedJobs = 0;
 
 	MapThread[
-		Function[{job,id},
+		Function[{input,id},
 			Module[{stream,file},
 				file = FileNameJoin[{inputDir,id<>".ms"}];
 				stream = OpenWrite[file];
-				WriteString[stream,msolveInputString[job["Ideal"],job["Variables"],modulus]];
+				WriteString[stream,input];
 				Close[stream];
 			]
 		],
-		{normalised,ids}
+		{inputs,ids}
+	];
+	(*kept files only contain v1, v2, ...: record which variable each name stands for*)
+	If[keepFiles,
+		MapThread[
+			Function[{job,id},
+				Export[
+					FileNameJoin[{inputDir,id<>".vars"}],
+					StringRiffle[MapThread[#1<>" = "<>ToString[#2,InputForm]&,{msolveVariableNames[Length[job["Variables"]]],job["Variables"]}],"\n"]<>"\n",
+					"Text"
+				]
+			],
+			{normalised,ids}
+		]
 	];
 
 	gbFlag = If[OptionValue["LeadingMonomialsOnly"],1,2];
@@ -252,10 +309,11 @@ GroebnerBasisMS[jobs_List,opts:OptionsPattern[]]:=Module[
 		Return[$Failed];
 	];
 	If[eliminateVariables=!={},
-		(* Over prime fields msolve -e prints a block-order basis; the elimination ideal is the part free of the eliminated variables. *)
-		eliminatePattern = Alternatives@@eliminateVariables;
+		(* Over prime fields msolve -e prints a block-order basis; the elimination ideal is the part free of the eliminated variables, which come first in the msolve variable order. *)
+		eliminatePattern = Alternatives@@msolveVariableSymbols[eliminateCount];
 		processed = Select[#,FreeQ[#,eliminatePattern]&]& /@ processed;
 	];
+	processed = MapThread[#1 /. Thread[msolveVariableSymbols[Length[#2["Variables"]]]->#2["Variables"]]&,{processed,normalised}];
 	If[!keepFiles,DeleteDirectory[runDir,DeleteContents->True]];
 	Return[processed]
 ];

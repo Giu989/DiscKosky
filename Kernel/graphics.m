@@ -148,6 +148,7 @@ SectorDropGraphData[gpol_,variables_,singList_,opts:OptionsPattern[]]:=Module[
 	
 	fullCountings = buildEulerChiData[gpol,variables,singList,Sequence@@FilterRules[{opts},Options[buildEulerChiData]]];
 	If[fullCountings===$Failed,Return[$Failed]];
+	If[!singularitiesComputedQ[fullCountings,Range[Length[singList]]],Return[$Failed]];
 	
 	sectors = fullCountings // Last // Last;
 	keepLabels = sectorDropLabels[fullCountings,False];

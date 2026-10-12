@@ -17,6 +17,7 @@ buildEulerChiData[gpol_,variables_,singList_,opts:OptionsPattern[]]:= buildEuler
 	PrintTemporary["First run, computing singularity structure data"];
 	PrintTemporary["Computing critical points sector by sector"];
 	eulerChi = CountSectorsUnregulated[gpol,variables,{},Sequence@@countSectorsOptions[CountSectorsUnregulated,{opts}]];
+	If[eulerChi===$Failed,Return[$Failed]];
 	
 	If[First[eulerChi]===Indeterminate,
 		Print["Error: At least one (sub)sector has non isolated critical points. Cannot compute the Euler characteristic with this method. Run the command CountSectorsUnregulated[] for more information on the degenerate sectors."];
@@ -26,6 +27,7 @@ buildEulerChiData[gpol_,variables_,singList_,opts:OptionsPattern[]]:= buildEuler
 	If[OptionValue["CheckCriticalPointValidity"],
 		PrintTemporary["Computing the generic Euler characteristic regulated \[LongDash] this may take a while..."];
 		eulerChiReg = CountSectorsRegulated[gpol,variables,{},Sequence@@countSectorsOptions[CountSectorsRegulated,{opts}]];
+		If[eulerChiReg===$Failed,Return[$Failed]];
 		PrintTemporary["Regulated Euler Characteristic = ", eulerChiReg];
 		If[First[eulerChi]===eulerChiReg,
 			PrintTemporary["Euler characteristics agree, proceeding"];
@@ -53,6 +55,14 @@ buildEulerChiData[gpol_,variables_,singList_,opts:OptionsPattern[]]:= buildEuler
 	
 	fulleulerChi = Join[singularitieseulerChi,{eulerChi}];
 	Return[fulleulerChi];
+];
+
+
+(*a singularity whose counting failed stays $Failed in the data, so only the queries that use it fail*)
+singularitiesComputedQ[fullCountings_,indices_List]:=Module[{failed},
+	failed = Select[DeleteDuplicates[indices],Function[i,fullCountings[[i]]===$Failed]];
+	If[failed=!={},Print["Error: the counting failed for singularity index(es) ",failed]];
+	failed==={}
 ];
 
 
@@ -102,6 +112,7 @@ FindSingularitySectors[gpol_,variables_,singList_,index_,opts:OptionsPattern[]]:
 	
 	fullCountings = buildEulerChiData[gpol,variables,singList,Sequence@@FilterRules[{opts},Options[buildEulerChiData]]];
 	If[fullCountings===$Failed,Return[$Failed]];
+	If[!singularitiesComputedQ[fullCountings,{index}],Return[$Failed]];
 	
 	data1 = findCutsIndex[fullCountings,index];
 	
@@ -119,6 +130,7 @@ CheckSequentialDiscontinuity[gpol_,variables_,singList_,indexList_,opts:OptionsP
 	
 	fullCountings = buildEulerChiData[gpol,variables,singList,Sequence@@FilterRules[{opts},Options[buildEulerChiData]]];
 	If[fullCountings===$Failed,Return[$Failed]];
+	If[!singularitiesComputedQ[fullCountings,indexList],Return[$Failed]];
 	
 	data1 = findCutsIndex[fullCountings,indexList[[1]]];
 	outTrueCut = Fold[findNewTrueCuts[fullCountings,#1,#2,Sequence@@FilterRules[{opts},Options[findNewTrueCuts]]]&,data1,indexList[[2;;]]]["data"];
@@ -142,15 +154,23 @@ CheckSequentialDiscontinuity[gpol_,variables_,singList_,indexList_,opts:OptionsP
 Options[CheckDoubleDiscontinuities] = Options[CheckSequentialDiscontinuity];
 CheckDoubleDiscontinuities[gpol_,variables_,singList_,opts:OptionsPattern[]]:=Module[
 	{
-		eulerChi,index,i,j,singularitieseulerChi,fulleulerChi,dropMatrix
+		eulerChi,index,i,j,singularitieseulerChi,fulleulerChi,dropMatrix,fullCountings,failed
 	},
 	
-	If[buildEulerChiData[gpol,variables,singList,Sequence@@FilterRules[{opts},Options[buildEulerChiData]]]===$Failed,Return[$Failed]];
+	fullCountings = buildEulerChiData[gpol,variables,singList,Sequence@@FilterRules[{opts},Options[buildEulerChiData]]];
+	If[fullCountings===$Failed,Return[$Failed]];
+	(*rows and columns of singularities whose counting failed are $Failed*)
+	failed = Select[Range[Length[singList]],Function[k,fullCountings[[k]]===$Failed]];
+	If[failed=!={},Print["Error: the counting failed for singularity index(es) ",failed]];
 	
 	PrintTemporary["Building the double discontinuity matrix"];
 	dropMatrix = Monitor[
 		Table[
-			CheckSequentialDiscontinuity[gpol,variables,singList,{i,j},opts],{i,1,Length[singList]},{j,1,Length[singList]}
+			If[MemberQ[failed,i] || MemberQ[failed,j],
+				$Failed
+			,
+				CheckSequentialDiscontinuity[gpol,variables,singList,{i,j},opts]
+			],{i,1,Length[singList]},{j,1,Length[singList]}
 		]
 	,
 		{ToString[i]<>"/"<>ToString[Length[singList]],ToString[j]<>"/"<>ToString[Length[singList]]}
