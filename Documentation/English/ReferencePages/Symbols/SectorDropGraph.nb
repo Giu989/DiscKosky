@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Wolfram 14.3' *)
+(* CreatedBy='Wolfram 15.0' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[     25652,        693]
-NotebookOptionsPosition[     17950,        529]
-NotebookOutlinePosition[     18719,        555]
-CellTagsIndexPosition[     18640,        550]
+NotebookDataLength[     90769,       2104]
+NotebookOptionsPosition[     82813,       1932]
+NotebookOutlinePosition[     83585,       1958]
+CellTagsIndexPosition[     83505,       1953]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -76,33 +76,35 @@ Cell[BoxData[GridBox[{
     
     ButtonBox["False",
      BaseStyle->"Link",
-     ButtonData->"paclet:ref/False"], Cell[
-    "whether to refine the display of indeterminate singularities", 
-     "TableText",ExpressionUUID->"acebd982-5cb8-44a1-aea0-ca0cf2a2e3f1"]},
+     ButtonData->"paclet:ref/False"], Cell["\<\
+apply the more refined algorithm for dealing with discontinuity sequences the \
+standard procedure cannot  resolve\
+\>", "TableText",ExpressionUUID->"acebd982-5cb8-44a1-aea0-ca0cf2a2e3f1"]},
    {Cell["   ", "ModInfo",ExpressionUUID->
      "7c4afad2-b0b2-4969-8051-5dfcba00bc2c"], "\"\<DeleteEmptyNodes\>\"", 
     ButtonBox["True",
      BaseStyle->"Link",
      ButtonData->"paclet:ref/True"], Cell["\<\
-whether to prune nodes whose subsectors have no associated singularities\
-\>", "TableText",ExpressionUUID->"71d02476-78c7-40a5-8829-beffc4d4d9c8"]},
+prune nodes whose subsectors have no associated singularities\
+\>", "TableText",ExpressionUUID->"760f9913-39dd-47e5-82d8-6cd0ecc86669"]},
    {Cell["   ", "ModInfo",ExpressionUUID->
      "e313a66e-ffae-4c8a-b266-518a1455ca72"], "\"\<CheckCriticalPointValidity\
 \>\"", 
     ButtonBox["True",
      BaseStyle->"Link",
-     ButtonData->"paclet:ref/True"], Cell["\<\
-whether to compare the generic unregulated count against the regulated count \
-before continuing\
-\>", "TableText",ExpressionUUID->"ce8f2782-7cfb-4c19-9fba-162cde80d57e"]},
+     ButtonData->"paclet:ref/True"], Cell[
+    "run the set of auomatic checks to certify the output", "TableText",
+     ExpressionUUID->"ce8f2782-7cfb-4c19-9fba-162cde80d57e"]},
    {Cell["   ", "ModInfo",ExpressionUUID->
      "183ee90e-cea9-4312-bf1d-fa7424dc81a1"], "\"\<msolve\>\"", 
     ButtonBox["Automatic",
      BaseStyle->"Link",
      ButtonData->"paclet:ref/Automatic"], Cell[
-    "whether to use msolve for the underlying sector counts", "TableText",
-     ExpressionUUID->"39b71455-5c03-4d42-8fa9-7ec30298a1d0"]}
+    "use msolve for the underlying sector counts", "TableText",ExpressionUUID->
+     "39b71455-5c03-4d42-8fa9-7ec30298a1d0"]}
   }]], "3ColumnTableMod",
+ CellChangeTimes->{{4.0014053962716837`*^9, 4.001405407031354*^9}, {
+  4.001405924759912*^9, 4.001405941018669*^9}},
  CellID->438679867,ExpressionUUID->"fade1daf-739f-4035-9be9-bccf3a8cd121"]
 }, Open  ]],
 
@@ -266,17 +268,323 @@ Cell[BoxData[{
        SuperscriptBox["m1", "2"]}], "-", 
       SuperscriptBox["m2", "2"], "+", "s12", "+", "s23"}]}], "}"}]}], 
   ";"}]}], "Input",
- CellLabel->"In[1]:=",
+ CellLabel->"In[43]:=",
  CellID->1910047670,ExpressionUUID->"1e16027f-7c7b-47a1-b910-892b629b286d"],
 
-Cell["Draw the default pruned sector graph.", "Notes",
+Cell["\<\
+Draw the default pruned sector graph. Allowed sequences of discontinuities \
+can be read off by either choosing a singularity at the current node, or one \
+that can can be reached by following any sequence of directed arrows.\
+\>", "Notes",
+ CellChangeTimes->{{4.0014055188978577`*^9, 4.001405525422042*^9}},
  CellID->922319825,ExpressionUUID->"e8c6e86f-9955-4ab5-a121-25d41ccb6049"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"SectorDropGraph", "[", 
   RowBox[{"gpol", ",", "vars", ",", "rationalAlphabet"}], "]"}]], "Input",
- CellLabel->"In[2]:=",
- CellID->406658803,ExpressionUUID->"5fcb77f1-9adb-4928-9a74-4c785740b88b"]
+ CellLabel->"In[46]:=",
+ CellID->406658803,ExpressionUUID->"5fcb77f1-9adb-4928-9a74-4c785740b88b"],
+
+Cell[BoxData[
+ GraphicsBox[
+  NamespaceBox["NetworkGraphics",
+   DynamicModuleBox[{Typeset`graph = HoldComplete[
+     Graph[{{1, 3}, {1, 4}, {2, 3}, {2, 4}, {1, 2, 3}, {1, 2, 4}, {1, 3, 4}, {
+       2, 3, 4}, {1, 2, 3, 4}}, {{{1, 5}, {1, 7}, {2, 6}, {2, 7}, {3, 5}, {3, 
+       8}, {4, 6}, {4, 8}, {5, 9}, {6, 9}, {7, 9}, {8, 9}}, Null}, {
+      GraphLayout -> "LayeredDigraphEmbedding", ImagePadding -> 40, ImageSize -> 
+       Large, VertexLabels -> {None}, VertexShapeFunction -> {
+         DiscKosky`Private`sectorVertexShape[<|{1, 
+            3} -> {$CellContext`x1, $CellContext`x3}, {1, 
+            4} -> {$CellContext`x1, $CellContext`x4}, {2, 
+            3} -> {$CellContext`x2, $CellContext`x3}, {2, 
+            4} -> {$CellContext`x2, $CellContext`x4}, {1, 2, 
+            3} -> {$CellContext`x1, $CellContext`x2, $CellContext`x3}, {1, 2, 
+            4} -> {$CellContext`x1, $CellContext`x2, $CellContext`x4}, {1, 3, 
+            4} -> {$CellContext`x1, $CellContext`x3, $CellContext`x4}, {2, 3, 
+            4} -> {$CellContext`x2, $CellContext`x3, $CellContext`x4}, {1, 2, 
+            3, 4} -> {$CellContext`x1, $CellContext`x2, $CellContext`x3, \
+$CellContext`x4}|>, <|{1, 3} -> {1}, {1, 4} -> {2}, {2, 3} -> {3}, {2, 4} -> {
+            4}, {1, 2, 3} -> {6}, {1, 2, 4} -> {8}, {1, 3, 4} -> {5}, {2, 3, 
+            4} -> {7}, {1, 2, 3, 4} -> {9, 10}|>]}}]]}, 
+    TagBox[GraphicsGroupBox[{
+       {Hue[0.6, 0.7, 0.7], Opacity[0.7], CapForm["Round"], Arrowheads[
+        Medium], 
+        ArrowBox[{
+         DynamicLocation["VertexID$1", Automatic, Center], DynamicLocation[
+          "VertexID$5", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$1", Automatic, Center], DynamicLocation[
+          "VertexID$7", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$2", Automatic, Center], DynamicLocation[
+          "VertexID$6", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$2", Automatic, Center], DynamicLocation[
+          "VertexID$7", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$3", Automatic, Center], DynamicLocation[
+          "VertexID$5", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$3", Automatic, Center], DynamicLocation[
+          "VertexID$8", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$4", Automatic, Center], DynamicLocation[
+          "VertexID$6", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$4", Automatic, Center], DynamicLocation[
+          "VertexID$8", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$5", Automatic, Center], DynamicLocation[
+          "VertexID$9", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$6", Automatic, Center], DynamicLocation[
+          "VertexID$9", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$7", Automatic, Center], DynamicLocation[
+          "VertexID$9", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$8", Automatic, Center], DynamicLocation[
+          "VertexID$9", Automatic, Center]}]}, 
+       {Hue[0.6, 0.5, 1.], EdgeForm[{GrayLevel[0], Opacity[0.7]}], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{0., 2.}, 0.030239520958083826], InsetBox[
+           StyleBox["\<\"{x1, x3}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {0., 2.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]], InsetBox[
+           StyleBox["\<\"{1}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]], Offset[{0, -14}, {0., 2.}],
+            NCache[ImageScaled[{Rational[1, 2], 1}], ImageScaled[{0.5, 1}]]]},
+         
+         "DynamicName",
+         BoxID -> "VertexID$1"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{1., 2.}, 0.030239520958083826], InsetBox[
+           StyleBox["\<\"{x1, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {1., 2.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]], InsetBox[
+           StyleBox["\<\"{2}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]], Offset[{0, -14}, {1., 2.}],
+            NCache[ImageScaled[{Rational[1, 2], 1}], ImageScaled[{0.5, 1}]]]},
+         
+         "DynamicName",
+         BoxID -> "VertexID$2"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{2., 2.}, 0.030239520958083826], InsetBox[
+           StyleBox["\<\"{x2, x3}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {2., 2.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]], InsetBox[
+           StyleBox["\<\"{3}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]], Offset[{0, -14}, {2., 2.}],
+            NCache[ImageScaled[{Rational[1, 2], 1}], ImageScaled[{0.5, 1}]]]},
+         
+         "DynamicName",
+         BoxID -> "VertexID$3"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{3., 2.}, 0.030239520958083826], InsetBox[
+           StyleBox["\<\"{x2, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {3., 2.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]], InsetBox[
+           StyleBox["\<\"{4}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]], Offset[{0, -14}, {3., 2.}],
+            NCache[ImageScaled[{Rational[1, 2], 1}], ImageScaled[{0.5, 1}]]]},
+         
+         "DynamicName",
+         BoxID -> "VertexID$4"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{1., 1.}, 0.030239520958083826], InsetBox[
+           StyleBox["\<\"{x1, x2, x3}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {1., 1.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]], InsetBox[
+           StyleBox["\<\"{6}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]], Offset[{0, -14}, {1., 1.}],
+            NCache[ImageScaled[{Rational[1, 2], 1}], ImageScaled[{0.5, 1}]]]},
+         
+         "DynamicName",
+         BoxID -> "VertexID$5"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{2., 1.}, 0.030239520958083826], InsetBox[
+           StyleBox["\<\"{x1, x2, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {2., 1.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]], InsetBox[
+           StyleBox["\<\"{8}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]], Offset[{0, -14}, {2., 1.}],
+            NCache[ImageScaled[{Rational[1, 2], 1}], ImageScaled[{0.5, 1}]]]},
+         
+         "DynamicName",
+         BoxID -> "VertexID$6"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{0., 1.}, 0.030239520958083826], InsetBox[
+           StyleBox["\<\"{x1, x3, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {0., 1.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]], InsetBox[
+           StyleBox["\<\"{5}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]], Offset[{0, -14}, {0., 1.}],
+            NCache[ImageScaled[{Rational[1, 2], 1}], ImageScaled[{0.5, 1}]]]},
+         
+         "DynamicName",
+         BoxID -> "VertexID$7"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{3., 1.}, 0.030239520958083826], InsetBox[
+           StyleBox["\<\"{x2, x3, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {3., 1.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]], InsetBox[
+           StyleBox["\<\"{7}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]], Offset[{0, -14}, {3., 1.}],
+            NCache[ImageScaled[{Rational[1, 2], 1}], ImageScaled[{0.5, 1}]]]},
+         
+         "DynamicName",
+         BoxID -> "VertexID$8"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{2., 0.}, 0.030239520958083826], InsetBox[
+           StyleBox["\<\"{x1, x2, x3, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {2., 0.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]], InsetBox[
+           StyleBox["\<\"{9, 10}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]], Offset[{0, -14}, {2., 0.}],
+            NCache[ImageScaled[{Rational[1, 2], 1}], ImageScaled[{0.5, 1}]]]},
+         
+         "DynamicName",
+         BoxID -> "VertexID$9"]}}],
+     MouseAppearanceTag["NetworkGraphics"]],
+    AllowKernelInitialization->False]],
+  DefaultBaseStyle->"NetworkGraphics",
+  FormatType->TraditionalForm,
+  FrameTicks->None,
+  ImagePadding->40,
+  ImageSize->Large]], "Output",
+ CellChangeTimes->{4.001405436283938*^9},
+ CellLabel->"Out[46]=",
+ CellID->54901448,ExpressionUUID->"00dac5ea-51d1-4ebf-84a8-f7adf6eecbae"]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -329,17 +637,355 @@ Cell[BoxData[
  CellID->756015981,ExpressionUUID->"f29549eb-f7de-4d97-88b3-e0b0f2aef7ee"],
 
 Cell["\<\
-Refine the display of indeterminate singularities in the sector graph.\
+Refine the display of indeterminate singularities in the sector graph. Non \
+repeating letters are marked in orange and are displayed on a node. This is \
+to indicate that, once a discontinuity has been taken with respect to that \
+variable, one is forced to leave that sector and move down the graph.\
 \>", "Notes",
+ CellChangeTimes->{{4.001405443499858*^9, 4.001405496865857*^9}},
  CellID->1250265471,ExpressionUUID->"9f57ec5c-e84b-45cd-8314-a1efc4667c85"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"SectorDropGraph", "[", 
   RowBox[{"gpol", ",", "vars", ",", "rationalAlphabet", ",", 
    RowBox[{"\"\<RefineIndeterminates\>\"", "\[Rule]", "True"}]}], 
   "]"}]], "Input",
- CellLabel->"In[1]:=",
- CellID->1903701423,ExpressionUUID->"c893619f-955c-4e95-b1c0-305b03240eb6"]
+ CellLabel->"In[47]:=",
+ CellID->1903701423,ExpressionUUID->"c893619f-955c-4e95-b1c0-305b03240eb6"],
+
+Cell[BoxData[
+ GraphicsBox[
+  NamespaceBox["NetworkGraphics",
+   DynamicModuleBox[{Typeset`graph = HoldComplete[
+     Graph[{{1, 3}, {1, 4}, {2, 3}, {2, 4}, {1, 2, 3}, {1, 2, 4}, {1, 3, 4}, {
+       2, 3, 4}, {1, 2, 3, 4}}, {{{1, 5}, {1, 7}, {2, 6}, {2, 7}, {3, 5}, {3, 
+       8}, {4, 6}, {4, 8}, {5, 9}, {6, 9}, {7, 9}, {8, 9}}, Null}, {
+      EdgeLabels -> {DirectedEdge[{2, 3, 4}, {1, 2, 3, 4}] -> Placed[
+           Style["{7}", 10, Bold, 
+            RGBColor[1, 0.5, 0]], Center], 
+         DirectedEdge[{1, 2, 4}, {1, 2, 3, 4}] -> Placed[
+           Style["{8}", 10, Bold, 
+            RGBColor[1, 0.5, 0]], Center], 
+         DirectedEdge[{1, 3, 4}, {1, 2, 3, 4}] -> Placed[
+           Style["{5}", 10, Bold, 
+            RGBColor[1, 0.5, 0]], Center], 
+         DirectedEdge[{1, 2, 3}, {1, 2, 3, 4}] -> Placed[
+           Style["{6}", 10, Bold, 
+            RGBColor[1, 0.5, 0]], Center]}, 
+       EdgeStyle -> {
+        DirectedEdge[{2, 3, 4}, {1, 2, 3, 4}] -> RGBColor[1, 0.5, 0], 
+         DirectedEdge[{1, 2, 4}, {1, 2, 3, 4}] -> RGBColor[1, 0.5, 0], 
+         DirectedEdge[{1, 3, 4}, {1, 2, 3, 4}] -> RGBColor[1, 0.5, 0], 
+         DirectedEdge[{1, 2, 3}, {1, 2, 3, 4}] -> RGBColor[1, 0.5, 0]}, 
+       GraphLayout -> "LayeredDigraphEmbedding", ImagePadding -> 40, 
+       ImageSize -> Large, VertexLabels -> {None}, VertexShapeFunction -> {
+         DiscKosky`Private`sectorVertexShape[<|{1, 
+            3} -> {$CellContext`x1, $CellContext`x3}, {1, 
+            4} -> {$CellContext`x1, $CellContext`x4}, {2, 
+            3} -> {$CellContext`x2, $CellContext`x3}, {2, 
+            4} -> {$CellContext`x2, $CellContext`x4}, {1, 2, 
+            3} -> {$CellContext`x1, $CellContext`x2, $CellContext`x3}, {1, 2, 
+            4} -> {$CellContext`x1, $CellContext`x2, $CellContext`x4}, {1, 3, 
+            4} -> {$CellContext`x1, $CellContext`x3, $CellContext`x4}, {2, 3, 
+            4} -> {$CellContext`x2, $CellContext`x3, $CellContext`x4}, {1, 2, 
+            3, 4} -> {$CellContext`x1, $CellContext`x2, $CellContext`x3, \
+$CellContext`x4}|>, <|{1, 3} -> {1}, {1, 4} -> {2}, {2, 3} -> {3}, {2, 4} -> {
+            4}, {1, 2, 3} -> {}, {1, 2, 4} -> {}, {1, 3, 4} -> {}, {2, 3, 
+            4} -> {}, {1, 2, 3, 4} -> {9, 10}|>]}}]]}, 
+    TagBox[GraphicsGroupBox[{
+       {Hue[0.6, 0.7, 0.7], Opacity[0.7], CapForm["Round"], Arrowheads[
+        Medium], 
+        ArrowBox[{
+         DynamicLocation["VertexID$1", Automatic, Center], DynamicLocation[
+          "VertexID$5", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$1", Automatic, Center], DynamicLocation[
+          "VertexID$7", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$2", Automatic, Center], DynamicLocation[
+          "VertexID$6", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$2", Automatic, Center], DynamicLocation[
+          "VertexID$7", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$3", Automatic, Center], DynamicLocation[
+          "VertexID$5", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$3", Automatic, Center], DynamicLocation[
+          "VertexID$8", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$4", Automatic, Center], DynamicLocation[
+          "VertexID$6", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$4", Automatic, Center], DynamicLocation[
+          "VertexID$8", Automatic, Center]}], {
+         TagBox[
+          {RGBColor[1, 0.5, 0], 
+           ArrowBox[{
+            DynamicLocation["VertexID$5", Automatic, Center], DynamicLocation[
+             "VertexID$9", Automatic, Center]}]},
+          "DynamicName",
+          BoxID -> "EdgeLabelID$9"], InsetBox[
+          StyleBox["\<\"{6}\"\>",
+           StripOnInput->False,
+           LineColor->RGBColor[1, 0.5, 0],
+           FrontFaceColor->RGBColor[1, 0.5, 0],
+           BackFaceColor->RGBColor[1, 0.5, 0],
+           GraphicsColor->RGBColor[1, 0.5, 0],
+           FontSize->10,
+           FontWeight->Bold,
+           FontColor->RGBColor[1, 0.5, 0]], DynamicLocation[
+          "EdgeLabelID$9", Center], ImageScaled[{0.5, 0.5}],
+          BaseStyle->"Graphics"]}, {
+         TagBox[
+          {RGBColor[1, 0.5, 0], 
+           ArrowBox[{
+            DynamicLocation["VertexID$6", Automatic, Center], DynamicLocation[
+             "VertexID$9", Automatic, Center]}]},
+          "DynamicName",
+          BoxID -> "EdgeLabelID$10"], InsetBox[
+          StyleBox["\<\"{8}\"\>",
+           StripOnInput->False,
+           LineColor->RGBColor[1, 0.5, 0],
+           FrontFaceColor->RGBColor[1, 0.5, 0],
+           BackFaceColor->RGBColor[1, 0.5, 0],
+           GraphicsColor->RGBColor[1, 0.5, 0],
+           FontSize->10,
+           FontWeight->Bold,
+           FontColor->RGBColor[1, 0.5, 0]], DynamicLocation[
+          "EdgeLabelID$10", Center], ImageScaled[{0.5, 0.5}],
+          BaseStyle->"Graphics"]}, {
+         TagBox[
+          {RGBColor[1, 0.5, 0], 
+           ArrowBox[{
+            DynamicLocation["VertexID$7", Automatic, Center], DynamicLocation[
+             "VertexID$9", Automatic, Center]}]},
+          "DynamicName",
+          BoxID -> "EdgeLabelID$11"], InsetBox[
+          StyleBox["\<\"{5}\"\>",
+           StripOnInput->False,
+           LineColor->RGBColor[1, 0.5, 0],
+           FrontFaceColor->RGBColor[1, 0.5, 0],
+           BackFaceColor->RGBColor[1, 0.5, 0],
+           GraphicsColor->RGBColor[1, 0.5, 0],
+           FontSize->10,
+           FontWeight->Bold,
+           FontColor->RGBColor[1, 0.5, 0]], DynamicLocation[
+          "EdgeLabelID$11", Center], ImageScaled[{0.5, 0.5}],
+          BaseStyle->"Graphics"]}, {
+         TagBox[
+          {RGBColor[1, 0.5, 0], 
+           ArrowBox[{
+            DynamicLocation["VertexID$8", Automatic, Center], DynamicLocation[
+             "VertexID$9", Automatic, Center]}]},
+          "DynamicName",
+          BoxID -> "EdgeLabelID$12"], InsetBox[
+          StyleBox["\<\"{7}\"\>",
+           StripOnInput->False,
+           LineColor->RGBColor[1, 0.5, 0],
+           FrontFaceColor->RGBColor[1, 0.5, 0],
+           BackFaceColor->RGBColor[1, 0.5, 0],
+           GraphicsColor->RGBColor[1, 0.5, 0],
+           FontSize->10,
+           FontWeight->Bold,
+           FontColor->RGBColor[1, 0.5, 0]], DynamicLocation[
+          "EdgeLabelID$12", Center], ImageScaled[{0.5, 0.5}],
+          BaseStyle->"Graphics"]}}, 
+       {Hue[0.6, 0.5, 1.], EdgeForm[{GrayLevel[0], Opacity[0.7]}], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{0., 2.}, 0.030239520958083826], InsetBox[
+           StyleBox["\<\"{x1, x3}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {0., 2.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]], InsetBox[
+           StyleBox["\<\"{1}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]], Offset[{0, -14}, {0., 2.}],
+            NCache[ImageScaled[{Rational[1, 2], 1}], ImageScaled[{0.5, 1}]]]},
+         
+         "DynamicName",
+         BoxID -> "VertexID$1"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{1., 2.}, 0.030239520958083826], InsetBox[
+           StyleBox["\<\"{x1, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {1., 2.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]], InsetBox[
+           StyleBox["\<\"{2}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]], Offset[{0, -14}, {1., 2.}],
+            NCache[ImageScaled[{Rational[1, 2], 1}], ImageScaled[{0.5, 1}]]]},
+         
+         "DynamicName",
+         BoxID -> "VertexID$2"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{2., 2.}, 0.030239520958083826], InsetBox[
+           StyleBox["\<\"{x2, x3}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {2., 2.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]], InsetBox[
+           StyleBox["\<\"{3}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]], Offset[{0, -14}, {2., 2.}],
+            NCache[ImageScaled[{Rational[1, 2], 1}], ImageScaled[{0.5, 1}]]]},
+         
+         "DynamicName",
+         BoxID -> "VertexID$3"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{3., 2.}, 0.030239520958083826], InsetBox[
+           StyleBox["\<\"{x2, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {3., 2.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]], InsetBox[
+           StyleBox["\<\"{4}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]], Offset[{0, -14}, {3., 2.}],
+            NCache[ImageScaled[{Rational[1, 2], 1}], ImageScaled[{0.5, 1}]]]},
+         
+         "DynamicName",
+         BoxID -> "VertexID$4"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{1., 1.}, 0.030239520958083826], InsetBox[
+           StyleBox["\<\"{x1, x2, x3}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {1., 1.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]]},
+         "DynamicName",
+         BoxID -> "VertexID$5"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{2., 1.}, 0.030239520958083826], InsetBox[
+           StyleBox["\<\"{x1, x2, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {2., 1.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]]},
+         "DynamicName",
+         BoxID -> "VertexID$6"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{0., 1.}, 0.030239520958083826], InsetBox[
+           StyleBox["\<\"{x1, x3, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {0., 1.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]]},
+         "DynamicName",
+         BoxID -> "VertexID$7"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{3., 1.}, 0.030239520958083826], InsetBox[
+           StyleBox["\<\"{x2, x3, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {3., 1.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]]},
+         "DynamicName",
+         BoxID -> "VertexID$8"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{2., 0.}, 0.030239520958083826], InsetBox[
+           StyleBox["\<\"{x1, x2, x3, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {2., 0.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]], InsetBox[
+           StyleBox["\<\"{9, 10}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]], Offset[{0, -14}, {2., 0.}],
+            NCache[ImageScaled[{Rational[1, 2], 1}], ImageScaled[{0.5, 1}]]]},
+         
+         "DynamicName",
+         BoxID -> "VertexID$9"]}}],
+     MouseAppearanceTag["NetworkGraphics"]],
+    AllowKernelInitialization->False]],
+  DefaultBaseStyle->"NetworkGraphics",
+  FormatType->TraditionalForm,
+  FrameTicks->None,
+  ImagePadding->40,
+  ImageSize->Large]], "Output",
+ CellChangeTimes->{4.001405439524251*^9},
+ CellLabel->"Out[47]=",
+ CellID->655012282,ExpressionUUID->"88003e0f-56fb-40dc-abc3-1ff80f5284b6"]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -351,16 +997,487 @@ Cell[BoxData[
   $Line = 0; Null]], "ExampleSubsection",
  CellID->1187023014,ExpressionUUID->"4f21ffc1-6dec-4b5b-9ece-50867154ccbc"],
 
-Cell["Draw every sector node by disabling pruning.", "Notes",
+Cell["\<\
+Draw every sector node including ones with no singularities and their \
+subsectors\
+\>", "Notes",
+ CellChangeTimes->{{4.0014059986278763`*^9, 4.001406046793117*^9}},
  CellID->342777323,ExpressionUUID->"49ed94a0-e8cd-4ab0-b73b-f28652eee3bb"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"SectorDropGraph", "[", 
   RowBox[{"gpol", ",", "vars", ",", "rationalAlphabet", ",", 
    RowBox[{"\"\<DeleteEmptyNodes\>\"", "\[Rule]", "False"}]}], "]"}]], "Input",\
 
- CellLabel->"In[1]:=",
- CellID->1179187067,ExpressionUUID->"35cce52f-d867-43c6-9cbd-abc95a70cd22"]
+ CellLabel->"In[48]:=",
+ CellID->1179187067,ExpressionUUID->"35cce52f-d867-43c6-9cbd-abc95a70cd22"],
+
+Cell[BoxData[
+ GraphicsBox[
+  NamespaceBox["NetworkGraphics",
+   DynamicModuleBox[{Typeset`graph = HoldComplete[
+     Graph[{{}, {1}, {2}, {3}, {4}, {1, 2}, {1, 3}, {1, 4}, {2, 3}, {2, 4}, {
+       3, 4}, {1, 2, 3}, {1, 2, 4}, {1, 3, 4}, {2, 3, 4}, {1, 2, 3, 4}}, {{{1,
+        2}, {1, 3}, {1, 4}, {1, 5}, {2, 6}, {2, 7}, {2, 8}, {3, 6}, {3, 9}, {
+       3, 10}, {4, 7}, {4, 9}, {4, 11}, {5, 8}, {5, 10}, {5, 11}, {6, 12}, {6,
+        13}, {7, 12}, {7, 14}, {8, 13}, {8, 14}, {9, 12}, {9, 15}, {10, 13}, {
+       10, 15}, {11, 14}, {11, 15}, {12, 16}, {13, 16}, {14, 16}, {15, 16}}, 
+       Null}, {GraphLayout -> "LayeredDigraphEmbedding", ImagePadding -> 40, 
+       ImageSize -> Large, VertexLabels -> {None}, VertexShapeFunction -> {
+         DiscKosky`Private`sectorVertexShape[<|{} -> {}, {
+            1} -> {$CellContext`x1}, {2} -> {$CellContext`x2}, {
+            3} -> {$CellContext`x3}, {4} -> {$CellContext`x4}, {1, 
+            2} -> {$CellContext`x1, $CellContext`x2}, {1, 
+            3} -> {$CellContext`x1, $CellContext`x3}, {1, 
+            4} -> {$CellContext`x1, $CellContext`x4}, {2, 
+            3} -> {$CellContext`x2, $CellContext`x3}, {2, 
+            4} -> {$CellContext`x2, $CellContext`x4}, {3, 
+            4} -> {$CellContext`x3, $CellContext`x4}, {1, 2, 
+            3} -> {$CellContext`x1, $CellContext`x2, $CellContext`x3}, {1, 2, 
+            4} -> {$CellContext`x1, $CellContext`x2, $CellContext`x4}, {1, 3, 
+            4} -> {$CellContext`x1, $CellContext`x3, $CellContext`x4}, {2, 3, 
+            4} -> {$CellContext`x2, $CellContext`x3, $CellContext`x4}, {1, 2, 
+            3, 4} -> {$CellContext`x1, $CellContext`x2, $CellContext`x3, \
+$CellContext`x4}|>, <|{} -> {}, {1} -> {}, {2} -> {}, {3} -> {}, {4} -> {}, {
+            1, 2} -> {}, {1, 3} -> {1}, {1, 4} -> {2}, {2, 3} -> {3}, {2, 
+            4} -> {4}, {3, 4} -> {}, {1, 2, 3} -> {6}, {1, 2, 4} -> {8}, {1, 
+            3, 4} -> {5}, {2, 3, 4} -> {7}, {1, 2, 3, 4} -> {9, 10}|>]}}]]}, 
+    TagBox[GraphicsGroupBox[{
+       {Hue[0.6, 0.7, 0.7], Opacity[0.7], CapForm["Round"], Arrowheads[
+        Medium], 
+        ArrowBox[{
+         DynamicLocation["VertexID$1", Automatic, Center], DynamicLocation[
+          "VertexID$2", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$1", Automatic, Center], DynamicLocation[
+          "VertexID$3", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$1", Automatic, Center], DynamicLocation[
+          "VertexID$4", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$1", Automatic, Center], DynamicLocation[
+          "VertexID$5", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$2", Automatic, Center], DynamicLocation[
+          "VertexID$6", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$2", Automatic, Center], DynamicLocation[
+          "VertexID$7", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$2", Automatic, Center], DynamicLocation[
+          "VertexID$8", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$3", Automatic, Center], DynamicLocation[
+          "VertexID$6", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$3", Automatic, Center], DynamicLocation[
+          "VertexID$9", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$3", Automatic, Center], DynamicLocation[
+          "VertexID$10", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$4", Automatic, Center], DynamicLocation[
+          "VertexID$7", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$4", Automatic, Center], DynamicLocation[
+          "VertexID$9", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$4", Automatic, Center], DynamicLocation[
+          "VertexID$11", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$5", Automatic, Center], DynamicLocation[
+          "VertexID$8", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$5", Automatic, Center], DynamicLocation[
+          "VertexID$10", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$5", Automatic, Center], DynamicLocation[
+          "VertexID$11", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$6", Automatic, Center], DynamicLocation[
+          "VertexID$12", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$6", Automatic, Center], DynamicLocation[
+          "VertexID$13", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$7", Automatic, Center], DynamicLocation[
+          "VertexID$12", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$7", Automatic, Center], DynamicLocation[
+          "VertexID$14", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$8", Automatic, Center], DynamicLocation[
+          "VertexID$13", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$8", Automatic, Center], DynamicLocation[
+          "VertexID$14", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$9", Automatic, Center], DynamicLocation[
+          "VertexID$12", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$9", Automatic, Center], DynamicLocation[
+          "VertexID$15", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$10", Automatic, Center], DynamicLocation[
+          "VertexID$13", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$10", Automatic, Center], DynamicLocation[
+          "VertexID$15", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$11", Automatic, Center], DynamicLocation[
+          "VertexID$14", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$11", Automatic, Center], DynamicLocation[
+          "VertexID$15", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$12", Automatic, Center], DynamicLocation[
+          "VertexID$16", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$13", Automatic, Center], DynamicLocation[
+          "VertexID$16", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$14", Automatic, Center], DynamicLocation[
+          "VertexID$16", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$15", Automatic, Center], DynamicLocation[
+          "VertexID$16", Automatic, Center]}]}, 
+       {Hue[0.6, 0.5, 1.], EdgeForm[{GrayLevel[0], Opacity[0.7]}], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{0., 4.}, 0.043048128342245986], InsetBox[
+           StyleBox["\<\"{}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {0., 4.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]]},
+         "DynamicName",
+         BoxID -> "VertexID$1"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{-2., 3.}, 0.043048128342245986], InsetBox[
+           StyleBox["\<\"{x1}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {-2., 3.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]]},
+         "DynamicName",
+         BoxID -> "VertexID$2"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{-1., 3.}, 0.043048128342245986], InsetBox[
+           StyleBox["\<\"{x2}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {-1., 3.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]]},
+         "DynamicName",
+         BoxID -> "VertexID$3"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{0., 3.}, 0.043048128342245986], InsetBox[
+           StyleBox["\<\"{x3}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {0., 3.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]]},
+         "DynamicName",
+         BoxID -> "VertexID$4"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{1., 3.}, 0.043048128342245986], InsetBox[
+           StyleBox["\<\"{x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {1., 3.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]]},
+         "DynamicName",
+         BoxID -> "VertexID$5"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{-3., 2.}, 0.043048128342245986], InsetBox[
+           StyleBox["\<\"{x1, x2}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {-3., 2.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]]},
+         "DynamicName",
+         BoxID -> "VertexID$6"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{-2., 2.}, 0.043048128342245986], InsetBox[
+           StyleBox["\<\"{x1, x3}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {-2., 2.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]], InsetBox[
+           StyleBox["\<\"{1}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]], 
+           Offset[{0, -14}, {-2., 2.}], NCache[
+           ImageScaled[{Rational[1, 2], 1}], ImageScaled[{0.5, 1}]]]},
+         "DynamicName",
+         BoxID -> "VertexID$7"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{-1., 2.}, 0.043048128342245986], InsetBox[
+           StyleBox["\<\"{x1, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {-1., 2.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]], InsetBox[
+           StyleBox["\<\"{2}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]], 
+           Offset[{0, -14}, {-1., 2.}], NCache[
+           ImageScaled[{Rational[1, 2], 1}], ImageScaled[{0.5, 1}]]]},
+         "DynamicName",
+         BoxID -> "VertexID$8"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{0., 2.}, 0.043048128342245986], InsetBox[
+           StyleBox["\<\"{x2, x3}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {0., 2.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]], InsetBox[
+           StyleBox["\<\"{3}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]], Offset[{0, -14}, {0., 2.}],
+            NCache[ImageScaled[{Rational[1, 2], 1}], ImageScaled[{0.5, 1}]]]},
+         
+         "DynamicName",
+         BoxID -> "VertexID$9"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{1., 2.}, 0.043048128342245986], InsetBox[
+           StyleBox["\<\"{x2, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {1., 2.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]], InsetBox[
+           StyleBox["\<\"{4}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]], Offset[{0, -14}, {1., 2.}],
+            NCache[ImageScaled[{Rational[1, 2], 1}], ImageScaled[{0.5, 1}]]]},
+         
+         "DynamicName",
+         BoxID -> "VertexID$10"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{2., 2.}, 0.043048128342245986], InsetBox[
+           StyleBox["\<\"{x3, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {2., 2.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]]},
+         "DynamicName",
+         BoxID -> "VertexID$11"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{-2., 1.}, 0.043048128342245986], InsetBox[
+           StyleBox["\<\"{x1, x2, x3}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {-2., 1.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]], InsetBox[
+           StyleBox["\<\"{6}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]], 
+           Offset[{0, -14}, {-2., 1.}], NCache[
+           ImageScaled[{Rational[1, 2], 1}], ImageScaled[{0.5, 1}]]]},
+         "DynamicName",
+         BoxID -> "VertexID$12"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{-1., 1.}, 0.043048128342245986], InsetBox[
+           StyleBox["\<\"{x1, x2, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {-1., 1.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]], InsetBox[
+           StyleBox["\<\"{8}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]], 
+           Offset[{0, -14}, {-1., 1.}], NCache[
+           ImageScaled[{Rational[1, 2], 1}], ImageScaled[{0.5, 1}]]]},
+         "DynamicName",
+         BoxID -> "VertexID$13"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{0., 1.}, 0.043048128342245986], InsetBox[
+           StyleBox["\<\"{x1, x3, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {0., 1.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]], InsetBox[
+           StyleBox["\<\"{5}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]], Offset[{0, -14}, {0., 1.}],
+            NCache[ImageScaled[{Rational[1, 2], 1}], ImageScaled[{0.5, 1}]]]},
+         
+         "DynamicName",
+         BoxID -> "VertexID$14"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{1., 1.}, 0.043048128342245986], InsetBox[
+           StyleBox["\<\"{x2, x3, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {1., 1.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]], InsetBox[
+           StyleBox["\<\"{7}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]], Offset[{0, -14}, {1., 1.}],
+            NCache[ImageScaled[{Rational[1, 2], 1}], ImageScaled[{0.5, 1}]]]},
+         
+         "DynamicName",
+         BoxID -> "VertexID$15"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{0., 0.}, 0.043048128342245986], InsetBox[
+           StyleBox["\<\"{x1, x2, x3, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {0., 0.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]], InsetBox[
+           StyleBox["\<\"{9, 10}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]], Offset[{0, -14}, {0., 0.}],
+            NCache[ImageScaled[{Rational[1, 2], 1}], ImageScaled[{0.5, 1}]]]},
+         
+         "DynamicName",
+         BoxID -> "VertexID$16"]}}],
+     MouseAppearanceTag["NetworkGraphics"]],
+    AllowKernelInitialization->False]],
+  DefaultBaseStyle->"NetworkGraphics",
+  FormatType->TraditionalForm,
+  FrameTicks->None,
+  ImagePadding->40,
+  ImageSize->Large]], "Output",
+ CellChangeTimes->{4.0014059680870533`*^9},
+ CellLabel->"Out[48]=",
+ CellID->1652293768,ExpressionUUID->"143c4966-1264-4d5e-894c-f117044f636f"]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -372,42 +1489,328 @@ Cell[BoxData[
   $Line = 0; Null]], "ExampleSubsection",
  CellID->108782753,ExpressionUUID->"4ca0ead0-9594-422f-9158-833c388d297a"],
 
-Cell["\<\
-Skip the generic regulated-count comparison before drawing the graph.\
-\>", "Notes",
- CellID->1450518816,ExpressionUUID->"600ccda5-9c5b-4ca5-970a-8628ec62d9e0"],
+Cell[TextData[{
+ "Skip the generic regulated-count comparison when building the pairwise \
+matrix. This is only recommended for very complicated examples where the \
+regulated ideal count from ",
+ Cell[BoxData[
+  ButtonBox["CountSectorsRegulated",
+   BaseStyle->"Link",
+   ButtonData->"paclet:DiscKosky/ref/CountSectorsRegulated"]], 
+  "InlineFormula",ExpressionUUID->"0ebe8cc7-bb6f-4796-8bb8-6d12ebe8017a"],
+ " stalls"
+}], "Notes",
+ CellChangeTimes->{{4.001404546116243*^9, 4.001404594806136*^9}},
+ CellID->476958408,ExpressionUUID->"a5af2a2a-84f7-43a0-a150-bb44a37d7bb8"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"SectorDropGraph", "[", 
   RowBox[{"gpol", ",", "vars", ",", "rationalAlphabet", ",", 
    RowBox[{"\"\<CheckCriticalPointValidity\>\"", "\[Rule]", "False"}]}], 
   "]"}]], "Input",
- CellLabel->"In[1]:=",
- CellID->1549570136,ExpressionUUID->"23808533-4ce7-4992-af90-3a8c3a033636"]
-}, Open  ]],
-
-Cell[CellGroupData[{
+ CellLabel->"In[49]:=",
+ CellID->1549570136,ExpressionUUID->"23808533-4ce7-4992-af90-3a8c3a033636"],
 
 Cell[BoxData[
- InterpretationBox[Cell[
-  "\"msolve\"", "ExampleSubsection",ExpressionUUID->
-   "3d2e8dbd-e027-4721-b0a9-4f3dceead2d3"],
-  $Line = 0; Null]], "ExampleSubsection",
- CellID->1053719024,ExpressionUUID->"8883bc9d-67a1-4cdf-ad94-421f9d9aa2da"],
-
-Cell["\<\
-Force the underlying sector counts to use Mathematica's built-in \
-GroebnerBasis workflow.\
-\>", "Notes",
- CellID->266238291,ExpressionUUID->"05c601c1-1e14-4168-afd7-5667e286e4e1"],
-
-Cell[BoxData[
- RowBox[{"SectorDropGraph", "[", 
-  RowBox[{"gpol", ",", "vars", ",", "rationalAlphabet", ",", 
-   RowBox[{"\"\<CheckCriticalPointValidity\>\"", "\[Rule]", "False"}], ",", 
-   RowBox[{"\"\<msolve\>\"", "\[Rule]", "False"}]}], "]"}]], "Input",
- CellLabel->"In[1]:=",
- CellID->1738441901,ExpressionUUID->"1516c1c8-b565-4079-a368-306363f9a660"]
+ GraphicsBox[
+  NamespaceBox["NetworkGraphics",
+   DynamicModuleBox[{Typeset`graph = HoldComplete[
+     Graph[{{1, 3}, {1, 4}, {2, 3}, {2, 4}, {1, 2, 3}, {1, 2, 4}, {1, 3, 4}, {
+       2, 3, 4}, {1, 2, 3, 4}}, {{{1, 5}, {1, 7}, {2, 6}, {2, 7}, {3, 5}, {3, 
+       8}, {4, 6}, {4, 8}, {5, 9}, {6, 9}, {7, 9}, {8, 9}}, Null}, {
+      GraphLayout -> "LayeredDigraphEmbedding", ImagePadding -> 40, ImageSize -> 
+       Large, VertexLabels -> {None}, VertexShapeFunction -> {
+         DiscKosky`Private`sectorVertexShape[<|{1, 
+            3} -> {$CellContext`x1, $CellContext`x3}, {1, 
+            4} -> {$CellContext`x1, $CellContext`x4}, {2, 
+            3} -> {$CellContext`x2, $CellContext`x3}, {2, 
+            4} -> {$CellContext`x2, $CellContext`x4}, {1, 2, 
+            3} -> {$CellContext`x1, $CellContext`x2, $CellContext`x3}, {1, 2, 
+            4} -> {$CellContext`x1, $CellContext`x2, $CellContext`x4}, {1, 3, 
+            4} -> {$CellContext`x1, $CellContext`x3, $CellContext`x4}, {2, 3, 
+            4} -> {$CellContext`x2, $CellContext`x3, $CellContext`x4}, {1, 2, 
+            3, 4} -> {$CellContext`x1, $CellContext`x2, $CellContext`x3, \
+$CellContext`x4}|>, <|{1, 3} -> {1}, {1, 4} -> {2}, {2, 3} -> {3}, {2, 4} -> {
+            4}, {1, 2, 3} -> {6}, {1, 2, 4} -> {8}, {1, 3, 4} -> {5}, {2, 3, 
+            4} -> {7}, {1, 2, 3, 4} -> {9, 10}|>]}}]]}, 
+    TagBox[GraphicsGroupBox[{
+       {Hue[0.6, 0.7, 0.7], Opacity[0.7], CapForm["Round"], Arrowheads[
+        Medium], 
+        ArrowBox[{
+         DynamicLocation["VertexID$1", Automatic, Center], DynamicLocation[
+          "VertexID$5", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$1", Automatic, Center], DynamicLocation[
+          "VertexID$7", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$2", Automatic, Center], DynamicLocation[
+          "VertexID$6", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$2", Automatic, Center], DynamicLocation[
+          "VertexID$7", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$3", Automatic, Center], DynamicLocation[
+          "VertexID$5", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$3", Automatic, Center], DynamicLocation[
+          "VertexID$8", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$4", Automatic, Center], DynamicLocation[
+          "VertexID$6", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$4", Automatic, Center], DynamicLocation[
+          "VertexID$8", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$5", Automatic, Center], DynamicLocation[
+          "VertexID$9", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$6", Automatic, Center], DynamicLocation[
+          "VertexID$9", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$7", Automatic, Center], DynamicLocation[
+          "VertexID$9", Automatic, Center]}], 
+        ArrowBox[{
+         DynamicLocation["VertexID$8", Automatic, Center], DynamicLocation[
+          "VertexID$9", Automatic, Center]}]}, 
+       {Hue[0.6, 0.5, 1.], EdgeForm[{GrayLevel[0], Opacity[0.7]}], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{0., 2.}, 0.030239520958083826], InsetBox[
+           StyleBox["\<\"{x1, x3}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {0., 2.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]], InsetBox[
+           StyleBox["\<\"{1}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]], Offset[{0, -14}, {0., 2.}],
+            NCache[ImageScaled[{Rational[1, 2], 1}], ImageScaled[{0.5, 1}]]]},
+         
+         "DynamicName",
+         BoxID -> "VertexID$1"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{1., 2.}, 0.030239520958083826], InsetBox[
+           StyleBox["\<\"{x1, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {1., 2.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]], InsetBox[
+           StyleBox["\<\"{2}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]], Offset[{0, -14}, {1., 2.}],
+            NCache[ImageScaled[{Rational[1, 2], 1}], ImageScaled[{0.5, 1}]]]},
+         
+         "DynamicName",
+         BoxID -> "VertexID$2"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{2., 2.}, 0.030239520958083826], InsetBox[
+           StyleBox["\<\"{x2, x3}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {2., 2.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]], InsetBox[
+           StyleBox["\<\"{3}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]], Offset[{0, -14}, {2., 2.}],
+            NCache[ImageScaled[{Rational[1, 2], 1}], ImageScaled[{0.5, 1}]]]},
+         
+         "DynamicName",
+         BoxID -> "VertexID$3"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{3., 2.}, 0.030239520958083826], InsetBox[
+           StyleBox["\<\"{x2, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {3., 2.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]], InsetBox[
+           StyleBox["\<\"{4}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]], Offset[{0, -14}, {3., 2.}],
+            NCache[ImageScaled[{Rational[1, 2], 1}], ImageScaled[{0.5, 1}]]]},
+         
+         "DynamicName",
+         BoxID -> "VertexID$4"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{1., 1.}, 0.030239520958083826], InsetBox[
+           StyleBox["\<\"{x1, x2, x3}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {1., 1.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]], InsetBox[
+           StyleBox["\<\"{6}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]], Offset[{0, -14}, {1., 1.}],
+            NCache[ImageScaled[{Rational[1, 2], 1}], ImageScaled[{0.5, 1}]]]},
+         
+         "DynamicName",
+         BoxID -> "VertexID$5"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{2., 1.}, 0.030239520958083826], InsetBox[
+           StyleBox["\<\"{x1, x2, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {2., 1.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]], InsetBox[
+           StyleBox["\<\"{8}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]], Offset[{0, -14}, {2., 1.}],
+            NCache[ImageScaled[{Rational[1, 2], 1}], ImageScaled[{0.5, 1}]]]},
+         
+         "DynamicName",
+         BoxID -> "VertexID$6"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{0., 1.}, 0.030239520958083826], InsetBox[
+           StyleBox["\<\"{x1, x3, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {0., 1.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]], InsetBox[
+           StyleBox["\<\"{5}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]], Offset[{0, -14}, {0., 1.}],
+            NCache[ImageScaled[{Rational[1, 2], 1}], ImageScaled[{0.5, 1}]]]},
+         
+         "DynamicName",
+         BoxID -> "VertexID$7"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{3., 1.}, 0.030239520958083826], InsetBox[
+           StyleBox["\<\"{x2, x3, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {3., 1.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]], InsetBox[
+           StyleBox["\<\"{7}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]], Offset[{0, -14}, {3., 1.}],
+            NCache[ImageScaled[{Rational[1, 2], 1}], ImageScaled[{0.5, 1}]]]},
+         
+         "DynamicName",
+         BoxID -> "VertexID$8"], 
+        TagBox[
+         {EdgeForm[GrayLevel[0.35]], FaceForm[GrayLevel[1]], 
+          DiskBox[{2., 0.}, 0.030239520958083826], InsetBox[
+           StyleBox["\<\"{x1, x2, x3, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]], Offset[{0, 14}, {2., 0.}], NCache[
+           ImageScaled[{Rational[1, 2], 0}], ImageScaled[{0.5, 0}]]], InsetBox[
+           StyleBox["\<\"{9, 10}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]], Offset[{0, -14}, {2., 0.}],
+            NCache[ImageScaled[{Rational[1, 2], 1}], ImageScaled[{0.5, 1}]]]},
+         
+         "DynamicName",
+         BoxID -> "VertexID$9"]}}],
+     MouseAppearanceTag["NetworkGraphics"]],
+    AllowKernelInitialization->False]],
+  DefaultBaseStyle->"NetworkGraphics",
+  FormatType->TraditionalForm,
+  FrameTicks->None,
+  ImagePadding->40,
+  ImageSize->Large]], "Output",
+ CellChangeTimes->{4.0014060601790953`*^9},
+ CellLabel->"Out[49]=",
+ CellID->1155792692,ExpressionUUID->"23ec598c-9898-4b4a-9e3a-5fab90e34536"]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
@@ -528,10 +1931,10 @@ Cell[BoxData[""], "Template",
 }, Open  ]]
 },
 WindowSize->{873, 901},
-WindowMargins->{{105, Automatic}, {Automatic, 4}},
+WindowMargins->{{Automatic, 209}, {Automatic, 11}},
 TaggingRules-><|"Paclet" -> "DiscKosky"|>,
 CellContext->"Global`",
-FrontEndVersion->"14.3 for Mac OS X ARM (64-bit) (July 8, 2025)",
+FrontEndVersion->"15.0 for Mac OS X ARM (64-bit) (July 2, 2026)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStylesExt.nb", 
   CharacterEncoding -> "UTF-8"],
 ExpressionUUID->"57d30272-6087-403b-9447-2a8cc4e846a1"
@@ -542,156 +1945,164 @@ ExpressionUUID->"57d30272-6087-403b-9447-2a8cc4e846a1"
 (*CellTagsOutline
 CellTagsIndex->{
  "ExtendedExamples"->{
-  Cell[9745, 283, 488, 13, 70, "ExtendedExamplesSection",ExpressionUUID->"fb48c983-2b88-4f5a-a812-eaf0ec2d3bd3",
+  Cell[23997, 591, 488, 13, 56, "ExtendedExamplesSection",ExpressionUUID->"fb48c983-2b88-4f5a-a812-eaf0ec2d3bd3",
    CellTags->"ExtendedExamples",
    CellID->1063217111]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"ExtendedExamples", 18446, 543}
+ {"ExtendedExamples", 83310, 1946}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[576, 22, 112, 1, 70, "ObjectName",ExpressionUUID->"2e8ec607-ef79-4090-a0b8-724aec7478f7",
+Cell[576, 22, 112, 1, 72, "ObjectName",ExpressionUUID->"2e8ec607-ef79-4090-a0b8-724aec7478f7",
  CellID->810310898],
-Cell[691, 25, 677, 17, 70, "Usage",ExpressionUUID->"e6737d33-0010-44fb-9f22-8f14a779e9fd",
+Cell[691, 25, 677, 17, 119, "Usage",ExpressionUUID->"e6737d33-0010-44fb-9f22-8f14a779e9fd",
  CellID->1149527361],
-Cell[1371, 44, 180, 4, 70, "Notes",ExpressionUUID->"a335ea28-e54b-4d1d-974d-499e02f4211f",
+Cell[1371, 44, 180, 4, 26, "Notes",ExpressionUUID->"a335ea28-e54b-4d1d-974d-499e02f4211f",
  CellID->1500773682],
-Cell[1554, 50, 196, 4, 70, "Notes",ExpressionUUID->"fba3fe6c-8a6c-4480-9278-5184021d1009",
+Cell[1554, 50, 196, 4, 26, "Notes",ExpressionUUID->"fba3fe6c-8a6c-4480-9278-5184021d1009",
  CellID->1443405534],
-Cell[1753, 56, 271, 5, 70, "Notes",ExpressionUUID->"3981a49f-dfc9-4c78-9591-4c522cc519ad",
+Cell[1753, 56, 271, 5, 43, "Notes",ExpressionUUID->"3981a49f-dfc9-4c78-9591-4c522cc519ad",
  CellID->652195287],
-Cell[2027, 63, 216, 4, 70, "Notes",ExpressionUUID->"9e76c8b4-10c4-45e9-9f11-9a590775d4ae",
+Cell[2027, 63, 216, 4, 43, "Notes",ExpressionUUID->"9e76c8b4-10c4-45e9-9f11-9a590775d4ae",
  CellID->1845252834],
-Cell[2246, 69, 127, 1, 70, "Notes",ExpressionUUID->"7ec75815-d8c7-4c4e-a0c9-74f91ffe077d",
+Cell[2246, 69, 127, 1, 26, "Notes",ExpressionUUID->"7ec75815-d8c7-4c4e-a0c9-74f91ffe077d",
  CellID->151494426],
-Cell[2376, 72, 1585, 33, 70, "3ColumnTableMod",ExpressionUUID->"fade1daf-739f-4035-9be9-bccf3a8cd121",
+Cell[2376, 72, 1690, 35, 146, "3ColumnTableMod",ExpressionUUID->"fade1daf-739f-4035-9be9-bccf3a8cd121",
  CellID->438679867]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3998, 110, 459, 13, 70, "SeeAlsoSection",ExpressionUUID->"25bfa231-fa24-4b7b-9bb3-eadc8c373f9e",
+Cell[4103, 112, 459, 13, 38, "SeeAlsoSection",ExpressionUUID->"25bfa231-fa24-4b7b-9bb3-eadc8c373f9e",
  CellID->1198927350],
-Cell[4460, 125, 1208, 28, 70, "SeeAlso",ExpressionUUID->"6eda6210-5cb4-438e-9ec8-04c49899a633",
+Cell[4565, 127, 1212, 28, 34, "SeeAlso",ExpressionUUID->"6eda6210-5cb4-438e-9ec8-04c49899a633",
  CellID->837879919]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5705, 158, 435, 12, 70, "TechNotesSection",ExpressionUUID->"a6a5f496-aa12-4968-88ab-843995713e8c",
+Cell[5814, 160, 435, 12, 39, "TechNotesSection",ExpressionUUID->"a6a5f496-aa12-4968-88ab-843995713e8c",
  CellID->699706483],
-Cell[6143, 172, 209, 3, 70, "Tutorials",ExpressionUUID->"03079052-b68f-4218-b04d-043bd21bce6e",
+Cell[6252, 174, 209, 3, 17, "Tutorials",ExpressionUUID->"03079052-b68f-4218-b04d-043bd21bce6e",
  CellID->550201938]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6389, 180, 117, 1, 70, "MoreAboutSection",ExpressionUUID->"c035de10-19ee-4c9a-a320-05ef644510c2",
+Cell[6498, 182, 117, 1, 37, "MoreAboutSection",ExpressionUUID->"c035de10-19ee-4c9a-a320-05ef644510c2",
  CellID->235489390],
-Cell[6509, 183, 196, 3, 70, "MoreAbout",ExpressionUUID->"ef99a21f-1056-42a1-bb5b-eda32a1fbfa0",
+Cell[6618, 185, 196, 3, 17, "MoreAbout",ExpressionUUID->"ef99a21f-1056-42a1-bb5b-eda32a1fbfa0",
  CellID->1466822841]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6742, 191, 531, 14, 70, "ExamplesInitializationSection",ExpressionUUID->"30849598-b208-48d4-b12a-8f03bd2d5ed3",
+Cell[6851, 193, 531, 14, 68, "ExamplesInitializationSection",ExpressionUUID->"30849598-b208-48d4-b12a-8f03bd2d5ed3",
  CellID->1769314055],
-Cell[7276, 207, 167, 2, 70, "ExampleInitialization",ExpressionUUID->"af9f68db-1b53-47dd-8a23-af3163dde042",
+Cell[7385, 209, 167, 2, 46, "ExampleInitialization",ExpressionUUID->"af9f68db-1b53-47dd-8a23-af3163dde042",
  CellID->1955965034]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7480, 214, 443, 12, 70, "PrimaryExamplesSection",ExpressionUUID->"c163f939-bbb8-4088-8dd4-865d233d1ced",
+Cell[7589, 216, 443, 12, 70, "PrimaryExamplesSection",ExpressionUUID->"c163f939-bbb8-4088-8dd4-865d233d1ced",
  CellID->1548924570],
-Cell[7926, 228, 1427, 41, 70, "Input",ExpressionUUID->"1e16027f-7c7b-47a1-b910-892b629b286d",
+Cell[8035, 230, 1428, 41, 86, "Input",ExpressionUUID->"1e16027f-7c7b-47a1-b910-892b629b286d",
  CellID->1910047670],
-Cell[9356, 271, 129, 1, 70, "Notes",ExpressionUUID->"e8c6e86f-9955-4ab5-a121-25d41ccb6049",
+Cell[9466, 273, 393, 6, 61, "Notes",ExpressionUUID->"e8c6e86f-9955-4ab5-a121-25d41ccb6049",
  CellID->922319825],
-Cell[9488, 274, 220, 4, 70, "Input",ExpressionUUID->"5fcb77f1-9adb-4928-9a74-4c785740b88b",
- CellID->406658803]
-}, Open  ]],
 Cell[CellGroupData[{
-Cell[9745, 283, 488, 13, 70, "ExtendedExamplesSection",ExpressionUUID->"fb48c983-2b88-4f5a-a812-eaf0ec2d3bd3",
- CellTags->"ExtendedExamples",
- CellID->1063217111],
-Cell[10236, 298, 242, 5, 70, "ExampleSection",ExpressionUUID->"41b29a89-1f07-4996-812b-1151411306c5",
- CellID->1946216620],
-Cell[10481, 305, 264, 5, 70, "ExampleSection",ExpressionUUID->"c68e884a-404a-48ec-988b-e20eb41ec2a9",
- CellID->357656354],
-Cell[CellGroupData[{
-Cell[10770, 314, 243, 5, 70, "ExampleSection",ExpressionUUID->"08b7d83e-ab59-43d1-98f1-f5f67b400c10",
- CellID->150298669],
-Cell[CellGroupData[{
-Cell[11038, 323, 266, 5, 70, "ExampleSubsection",ExpressionUUID->"f29549eb-f7de-4d97-88b3-e0b0f2aef7ee",
- CellID->756015981],
-Cell[11307, 330, 171, 3, 70, "Notes",ExpressionUUID->"9f57ec5c-e84b-45cd-8314-a1efc4667c85",
- CellID->1250265471],
-Cell[11481, 335, 294, 6, 70, "Input",ExpressionUUID->"c893619f-955c-4e95-b1c0-305b03240eb6",
- CellID->1903701423]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[11812, 346, 263, 5, 70, "ExampleSubsection",ExpressionUUID->"4f21ffc1-6dec-4b5b-9ece-50867154ccbc",
- CellID->1187023014],
-Cell[12078, 353, 136, 1, 70, "Notes",ExpressionUUID->"49ed94a0-e8cd-4ab0-b73b-f28652eee3bb",
- CellID->342777323],
-Cell[12217, 356, 290, 6, 70, "Input",ExpressionUUID->"35cce52f-d867-43c6-9cbd-abc95a70cd22",
- CellID->1179187067]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[12544, 367, 272, 5, 70, "ExampleSubsection",ExpressionUUID->"4ca0ead0-9594-422f-9158-833c388d297a",
- CellID->108782753],
-Cell[12819, 374, 170, 3, 70, "Notes",ExpressionUUID->"600ccda5-9c5b-4ca5-970a-8628ec62d9e0",
- CellID->1450518816],
-Cell[12992, 379, 301, 6, 70, "Input",ExpressionUUID->"23808533-4ce7-4992-af90-3a8c3a033636",
- CellID->1549570136]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[13330, 390, 253, 5, 70, "ExampleSubsection",ExpressionUUID->"8883bc9d-67a1-4cdf-ad94-421f9d9aa2da",
- CellID->1053719024],
-Cell[13586, 397, 190, 4, 70, "Notes",ExpressionUUID->"05c601c1-1e14-4168-afd7-5667e286e4e1",
- CellID->266238291],
-Cell[13779, 403, 355, 6, 70, "Input",ExpressionUUID->"1516c1c8-b565-4079-a368-306363f9a660",
- CellID->1738441901]
+Cell[9884, 283, 221, 4, 26, "Input",ExpressionUUID->"5fcb77f1-9adb-4928-9a74-4c785740b88b",
+ CellID->406658803],
+Cell[10108, 289, 13840, 296, 429, "Output",ExpressionUUID->"00dac5ea-51d1-4ebf-84a8-f7adf6eecbae",
+ CellID->54901448]
 }, Open  ]]
 }, Open  ]],
-Cell[14161, 413, 249, 5, 70, "ExampleSection",ExpressionUUID->"3ed85780-eb6a-4e70-87e9-b7704676cbac",
+Cell[CellGroupData[{
+Cell[23997, 591, 488, 13, 56, "ExtendedExamplesSection",ExpressionUUID->"fb48c983-2b88-4f5a-a812-eaf0ec2d3bd3",
+ CellTags->"ExtendedExamples",
+ CellID->1063217111],
+Cell[24488, 606, 242, 5, 32, "ExampleSection",ExpressionUUID->"41b29a89-1f07-4996-812b-1151411306c5",
+ CellID->1946216620],
+Cell[24733, 613, 264, 5, 20, "ExampleSection",ExpressionUUID->"c68e884a-404a-48ec-988b-e20eb41ec2a9",
+ CellID->357656354],
+Cell[CellGroupData[{
+Cell[25022, 622, 243, 5, 20, "ExampleSection",ExpressionUUID->"08b7d83e-ab59-43d1-98f1-f5f67b400c10",
+ CellID->150298669],
+Cell[CellGroupData[{
+Cell[25290, 631, 266, 5, 23, "ExampleSubsection",ExpressionUUID->"f29549eb-f7de-4d97-88b3-e0b0f2aef7ee",
+ CellID->756015981],
+Cell[25559, 638, 468, 7, 61, "Notes",ExpressionUUID->"9f57ec5c-e84b-45cd-8314-a1efc4667c85",
+ CellID->1250265471],
+Cell[CellGroupData[{
+Cell[26052, 649, 295, 6, 44, "Input",ExpressionUUID->"c893619f-955c-4e95-b1c0-305b03240eb6",
+ CellID->1903701423],
+Cell[26350, 657, 15039, 329, 429, "Output",ExpressionUUID->"88003e0f-56fb-40dc-abc3-1ff80f5284b6",
+ CellID->655012282]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[41438, 992, 263, 5, 23, "ExampleSubsection",ExpressionUUID->"4f21ffc1-6dec-4b5b-9ece-50867154ccbc",
+ CellID->1187023014],
+Cell[41704, 999, 250, 5, 26, "Notes",ExpressionUUID->"49ed94a0-e8cd-4ab0-b73b-f28652eee3bb",
+ CellID->342777323],
+Cell[CellGroupData[{
+Cell[41979, 1008, 291, 6, 26, "Input",ExpressionUUID->"35cce52f-d867-43c6-9cbd-abc95a70cd22",
+ CellID->1179187067],
+Cell[42273, 1016, 21641, 462, 491, "Output",ExpressionUUID->"143c4966-1264-4d5e-894c-f117044f636f",
+ CellID->1652293768]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[63963, 1484, 272, 5, 23, "ExampleSubsection",ExpressionUUID->"4ca0ead0-9594-422f-9158-833c388d297a",
+ CellID->108782753],
+Cell[64238, 1491, 573, 12, 43, "Notes",ExpressionUUID->"a5af2a2a-84f7-43a0-a150-bb44a37d7bb8",
+ CellID->476958408],
+Cell[CellGroupData[{
+Cell[64836, 1507, 302, 6, 44, "Input",ExpressionUUID->"23808533-4ce7-4992-af90-3a8c3a033636",
+ CellID->1549570136],
+Cell[65141, 1515, 13844, 296, 429, "Output",ExpressionUUID->"23ec598c-9898-4b4a-9e3a-5fab90e34536",
+ CellID->1155792692]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[79024, 1816, 249, 5, 32, "ExampleSection",ExpressionUUID->"3ed85780-eb6a-4e70-87e9-b7704676cbac",
  CellID->1931725127],
-Cell[14413, 420, 252, 5, 70, "ExampleSection",ExpressionUUID->"44cb23cf-a404-454b-bc08-4039b3ff8f5e",
+Cell[79276, 1823, 252, 5, 20, "ExampleSection",ExpressionUUID->"44cb23cf-a404-454b-bc08-4039b3ff8f5e",
  CellID->1662592894],
-Cell[14668, 427, 259, 5, 70, "ExampleSection",ExpressionUUID->"9b07f21b-c30a-495d-92c1-7153414e097f",
+Cell[79531, 1830, 259, 5, 20, "ExampleSection",ExpressionUUID->"9b07f21b-c30a-495d-92c1-7153414e097f",
  CellID->1699176669],
-Cell[14930, 434, 245, 5, 70, "ExampleSection",ExpressionUUID->"921299ad-7f77-456b-bee3-412644be3962",
+Cell[79793, 1837, 245, 5, 20, "ExampleSection",ExpressionUUID->"921299ad-7f77-456b-bee3-412644be3962",
  CellID->1725261534]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15212, 444, 111, 1, 70, "MetadataSection",ExpressionUUID->"426895fa-2176-45ca-afd5-e2496bc89ed5",
+Cell[80075, 1847, 111, 1, 71, "MetadataSection",ExpressionUUID->"426895fa-2176-45ca-afd5-e2496bc89ed5",
  CellID->1825045813],
-Cell[15326, 447, 476, 12, 70, "History",ExpressionUUID->"2cc051bb-b386-44be-9c9b-39b3d7a09d5b",
+Cell[80189, 1850, 476, 12, 25, "History",ExpressionUUID->"2cc051bb-b386-44be-9c9b-39b3d7a09d5b",
  CellID->160851381],
 Cell[CellGroupData[{
-Cell[15827, 463, 485, 13, 70, "CategorizationSection",ExpressionUUID->"e8f27ddb-60b0-4d27-b67c-04c15a4de5ea",
+Cell[80690, 1866, 485, 13, 20, "CategorizationSection",ExpressionUUID->"e8f27ddb-60b0-4d27-b67c-04c15a4de5ea",
  CellID->1740568972],
-Cell[16315, 478, 135, 2, 70, "Categorization",ExpressionUUID->"d83977c7-18c5-4d8b-857e-294bca330db2",
+Cell[81178, 1881, 135, 2, 70, "Categorization",ExpressionUUID->"d83977c7-18c5-4d8b-857e-294bca330db2",
  CellID->1862138175],
-Cell[16453, 482, 137, 2, 70, "Categorization",ExpressionUUID->"a547c857-c6e4-4566-a724-74c6e2d3a4cf",
+Cell[81316, 1885, 137, 2, 70, "Categorization",ExpressionUUID->"a547c857-c6e4-4566-a724-74c6e2d3a4cf",
  CellID->759325519],
-Cell[16593, 486, 135, 2, 70, "Categorization",ExpressionUUID->"57cb5c55-6c29-4b4a-affc-30a2a6e45389",
+Cell[81456, 1889, 135, 2, 70, "Categorization",ExpressionUUID->"57cb5c55-6c29-4b4a-affc-30a2a6e45389",
  CellID->1925853718],
-Cell[16731, 490, 150, 2, 70, "Categorization",ExpressionUUID->"1aa0e57e-ae58-437e-9896-6a202789e5e5",
+Cell[81594, 1893, 150, 2, 70, "Categorization",ExpressionUUID->"1aa0e57e-ae58-437e-9896-6a202789e5e5",
  CellID->1420310326]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[16918, 497, 110, 1, 70, "KeywordsSection",ExpressionUUID->"89f2c92b-65a8-4a58-850d-3eae99b2c486",
+Cell[81781, 1900, 110, 1, 20, "KeywordsSection",ExpressionUUID->"89f2c92b-65a8-4a58-850d-3eae99b2c486",
  CellID->675292631],
-Cell[17031, 500, 165, 3, 70, "Keywords",ExpressionUUID->"a6caf0f5-2ac2-47e0-9052-9f71f5640ded",
+Cell[81894, 1903, 165, 3, 70, "Keywords",ExpressionUUID->"a6caf0f5-2ac2-47e0-9052-9f71f5640ded",
  CellID->573718291]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[17233, 508, 119, 1, 70, "TemplatesSection",ExpressionUUID->"e912f373-8f5f-4b7e-a9f0-7d3505d7ae5b",
+Cell[82096, 1911, 119, 1, 20, "TemplatesSection",ExpressionUUID->"e912f373-8f5f-4b7e-a9f0-7d3505d7ae5b",
  CellID->564454175],
-Cell[17355, 511, 149, 2, 70, "Template",ExpressionUUID->"884a9bd8-874c-4615-a8f9-df0ca704b3a2",
+Cell[82218, 1914, 149, 2, 70, "Template",ExpressionUUID->"884a9bd8-874c-4615-a8f9-df0ca704b3a2",
  CellID->1136017593],
-Cell[17507, 515, 137, 2, 70, "Template",ExpressionUUID->"7ea4e72d-ebb4-4d42-be23-f82652e94cf5",
+Cell[82370, 1918, 137, 2, 70, "Template",ExpressionUUID->"7ea4e72d-ebb4-4d42-be23-f82652e94cf5",
  CellID->828357562],
-Cell[17647, 519, 135, 2, 70, "Template",ExpressionUUID->"6f615966-a3d4-4b56-a923-264f9418d674",
+Cell[82510, 1922, 135, 2, 70, "Template",ExpressionUUID->"6f615966-a3d4-4b56-a923-264f9418d674",
  CellID->402079280],
-Cell[17785, 523, 137, 2, 70, "Template",ExpressionUUID->"27d9bfdb-27e6-4712-9b35-e0f9d5c51e7c",
+Cell[82648, 1926, 137, 2, 70, "Template",ExpressionUUID->"27d9bfdb-27e6-4712-9b35-e0f9d5c51e7c",
  CellID->912291909]
 }, Closed]]
 }, Open  ]]
@@ -699,4 +2110,3 @@ Cell[17785, 523, 137, 2, 70, "Template",ExpressionUUID->"27d9bfdb-27e6-4712-9b35
 ]
 *)
 
-(* End of internal cache information *)
