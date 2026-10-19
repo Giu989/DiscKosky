@@ -3,7 +3,7 @@
 ClearAll[
 	sectorAssociation, sectorLookup, sectorRemoveLabels, sectorDropLabels,
 	sectorZeroIndeterminateLabels, sectorEdgeDropLabels, sectorCoverEdges,
-	sectorToIndexSector, sectorLabelText, sectorDropLabelText, sectorVertexShape,
+	sectorToIndexSector, sectorLabelText, sectorDropLabelText, sectorVertexLabel,
 	sectorFilterEmptyNodes
 ];
 
@@ -82,26 +82,22 @@ sectorDropLabelText[{}]:="";
 sectorDropLabelText[labels_]:=ToString[labels,InputForm];
 
 
-sectorVertexShape[sectorLabels_,dropLabels_][pos_,vertex_,size_]:=Module[
+(* Labels are VertexLabels rather than part of a VertexShapeFunction: Mathematica 15 clips edges to the full extent of a custom vertex shape, so arrows would stop at the label text instead of the node. *)
+sectorVertexLabel[sectorLabels_,dropLabels_][vertex_]:=Module[
 	{
-		sectorText,dropText,basePrimitives
+		sectorText,dropText,sectorLabel
 	},
 	
 	sectorText = sectorLabelText[sectorLookup[sectorLabels,vertex,vertex]];
 	dropText = sectorDropLabelText[sectorLookup[dropLabels,vertex]];
-	basePrimitives = {
-		EdgeForm[GrayLevel[0.35]],
-		FaceForm[White],
-		Disk[pos,size],
-		Text[Style[sectorText,10,GrayLevel[0.15]],Offset[{0,14},pos],{0,-1}]
-	};
+	sectorLabel = Pane[Style[sectorText,10,GrayLevel[0.15]],FrameMargins->{{0,0},{7,0}}];
 	
 	Return[
-		Join[
-			basePrimitives,
-			If[dropText==="",
-				{},
-				{Text[Style[dropText,10,Bold,RGBColor[0.55,0.1,0.08]],Offset[{0,-14},pos],{0,1}]}
+		If[dropText==="",
+			Placed[sectorLabel,Above],
+			Placed[
+				{sectorLabel,Pane[Style[dropText,10,Bold,RGBColor[0.55,0.1,0.08]],FrameMargins->{{0,0},{0,7}}]},
+				{Above,Below}
 			]
 		]
 	];
@@ -215,10 +211,11 @@ SectorDropGraph[gpol_,variables_,singList_,opts:OptionsPattern[]]:=Module[
 		Graph[
 			vertices,
 			data["Edges"],
-			VertexLabels->None,
+			VertexLabels->((#->sectorVertexLabel[sectorLabels,labels][#])& /@ vertices),
 			EdgeLabels->edgeLabelRules,
 			EdgeStyle->edgeStyleRules,
-			VertexShapeFunction->sectorVertexShape[sectorLabels,labels],
+			VertexShapeFunction->"Circle",
+			VertexStyle->Directive[White,EdgeForm[GrayLevel[0.35]]],
 			GraphLayout->"LayeredDigraphEmbedding",
 			ImagePadding->40,
 			ImageSize->Large
