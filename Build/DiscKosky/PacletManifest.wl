@@ -11,7 +11,7 @@
             ,
             "Hash"
             ->
-            "852e587990f7188ce3103a45954ec670167d85ae2d64ad95fb4197797894384a"
+            "77714a9fc4a23c5ee92aa77fd93458e6626c6cd95a1e939f2a64b56ba47cbc10"
                 
         |>
         ,
@@ -24,7 +24,20 @@
             ,
             "Hash"
             ->
-            "c0bc96d771bbd4f6b2f2ee0437c68986c51ec5c5d0c1414a2d31e2c466f7182a"
+            "02972cc09efb9f65044447d005bee991d82642bdbdeb1896afbadf0f53202796"
+                
+        |>
+        ,
+        <|
+            "File"
+            ->
+            File[
+                "Kernel/.DS_Store"
+            ]
+            ,
+            "Hash"
+            ->
+            "ebd036ec2dbe6d941644d46afa16867056765149440c834672d0dec781e40245"
                 
         |>
         ,
@@ -37,7 +50,7 @@
             ,
             "Hash"
             ->
-            "55ca1035a2e568221722113c943e496d0f02f64e0888918c10d9d77de20a91b9"
+            "88e874a889954cd4eb6d74a1974e89fdf775cd689281fc7b80ee5655a81cf85d"
                 
         |>
         ,
@@ -50,7 +63,7 @@
             ,
             "Hash"
             ->
-            "6529413d8efa2c276a6b2b5dfbe671d6bbada87b5a8fdbc117b3f5605b6e9440"
+            "89ddf240152a79a50ef3e04287eedc27e91dfa32c8f6797d265e5152d358dae1"
                 
         |>
         ,
@@ -63,7 +76,20 @@
             ,
             "Hash"
             ->
-            "daadecd29748349cb4ca0543828149031a77e7748891070189df1c5e83f0907e"
+            "bf3165eadb5384585eeb12d0101a22d247078346d37055b7c3521844554b40ff"
+                
+        |>
+        ,
+        <|
+            "File"
+            ->
+            File[
+                "Kernel/logo.png"
+            ]
+            ,
+            "Hash"
+            ->
+            "028640160e17266d0c0e202f332610762ac9f784a34554714662c88a0e7530b8"
                 
         |>
         ,
@@ -89,7 +115,7 @@
             ,
             "Hash"
             ->
-            "5dfa86ed89607e466edfa799ba9e10b51e15fb4dcd36bcfc5dbab02c203c3b0b"
+            "90e94ccbfd2672dd52fa2f9fc2cfb1ccf9636b8aae2e2d59d5d57aa2a9dad055"
                 
         |>
         ,
@@ -103,7 +129,7 @@
             ,
             "Hash"
             ->
-            "a51e3f696264cb611e52cf2df492e20a1abea9cb5980a0bf9a093815b903e33b"
+            "212696543addad51e28efada2751972ba6de77dd8dc4ba172738c92b13a82201"
                 
         |>
         ,
@@ -117,7 +143,7 @@
             ,
             "Hash"
             ->
-            "54ac6ef8f53998be3cdb925eed1bb8dbfe661d279c115131387a5009e0e5e76a"
+            "bb01450988c383c85065d1f84dc3a18721291301018f7c7102a9b71bcecc6c4a"
                 
         |>
         ,
@@ -131,7 +157,7 @@
             ,
             "Hash"
             ->
-            "528bca43967798ebb7a5c5bfe47a2cc71cfade5fe44effec8a8fcf9a45bcdd68"
+            "6f7c620ff25f78fcf9247155e840a671952b7f957af2166ab4a64d36ee069e65"
                 
         |>
         ,
@@ -145,7 +171,21 @@
             ,
             "Hash"
             ->
-            "a0a657b7845b557f1fca26d1743147e3effeca9ddcec4186001449f353a8487b"
+            "b82f3b4a012498983d4512d50fda372801d727ef357037804ba31130dfc9c3be"
+                
+        |>
+        ,
+        <|
+            "File"
+            ->
+            File[
+                "Documentation/English/ReferencePages/Symbols/FindSingularitySectors.nb"
+                    
+            ]
+            ,
+            "Hash"
+            ->
+            "a594d1c165e17cf1e7cafcd95bb103bcac0167c327e29db0b7d0ee54439f642a"
                 
         |>
         ,
@@ -173,7 +213,7 @@
             ,
             "Hash"
             ->
-            "992c23b3b697c19ea864c79b9e1b83127db406d7f677e4bbff986f63c69335c4"
+            "6932766b5e05ee5121555f8bee1324e0029090c99fd1024745892d95500fd8d4"
                 
         |>
         ,
@@ -186,7 +226,7 @@
             ,
             "Hash"
             ->
-            "198bb6af7a0fa3e8ab64e5d08e6862b935e9d2520480ba9ab5c574a7c66b6eaa"
+            "9a4dd77c8f46c44b915ba96666e70cc23bf648ab3d577382dc2e28b40202a1f1"
                 
         |>
     }

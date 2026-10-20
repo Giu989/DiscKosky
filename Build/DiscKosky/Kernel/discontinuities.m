@@ -3,23 +3,6 @@
 deleteSupersets[list_]:=deleteSupersets[list]=Select[list,Function[x,!MemberQ[list,y_/;x=!=y&&SubsetQ[x,y]]]]
 
 
-ClearAll[findCutsIndex];
-findCutsIndex[fullCountings_,index_]:=findCutsIndex[fullCountings,index]=Module[{ans1,ans2,positions,positions2,cuts,cuts2},
-	ans1=fullCountings // Last;
-	ans2=fullCountings[[index]];
-
-
-	positions = Position[ans2[[2]]-ans1[[2]],_?(#<0&)]//Flatten;
-	positions2 = Position[ans2[[2]]-ans1[[2]],_?(#===Indeterminate&)]//Flatten;
-	cuts = ans1[[3]][[positions]];
-	cuts2 = ans1[[3]][[positions2]];
-
-	(*If[(cuts2//Length)=!=0,Print["Indeterminate sector found"]];*)
-
-	Return[<|"data"->{cuts,cuts2},"index"->index|>];
-];
-
-
 ClearAll[buildEulerChiData];
 Options[buildEulerChiData] = Join[
 	{"CheckCriticalPointValidity"->True},
@@ -34,6 +17,7 @@ buildEulerChiData[gpol_,variables_,singList_,opts:OptionsPattern[]]:= buildEuler
 	PrintTemporary["First run, computing singularity structure data"];
 	PrintTemporary["Computing critical points sector by sector"];
 	eulerChi = CountSectorsUnregulated[gpol,variables,{},Sequence@@countSectorsOptions[CountSectorsUnregulated,{opts}]];
+	If[eulerChi===$Failed,Return[$Failed]];
 	
 	If[First[eulerChi]===Indeterminate,
 		Print["Error: At least one (sub)sector has non isolated critical points. Cannot compute the Euler characteristic with this method. Run the command CountSectorsUnregulated[] for more information on the degenerate sectors."];
@@ -43,6 +27,7 @@ buildEulerChiData[gpol_,variables_,singList_,opts:OptionsPattern[]]:= buildEuler
 	If[OptionValue["CheckCriticalPointValidity"],
 		PrintTemporary["Computing the generic Euler characteristic regulated \[LongDash] this may take a while..."];
 		eulerChiReg = CountSectorsRegulated[gpol,variables,{},Sequence@@countSectorsOptions[CountSectorsRegulated,{opts}]];
+		If[eulerChiReg===$Failed,Return[$Failed]];
 		PrintTemporary["Regulated Euler Characteristic = ", eulerChiReg];
 		If[First[eulerChi]===eulerChiReg,
 			PrintTemporary["Euler characteristics agree, proceeding"];
@@ -73,6 +58,29 @@ buildEulerChiData[gpol_,variables_,singList_,opts:OptionsPattern[]]:= buildEuler
 ];
 
 
+(*a singularity whose counting failed stays $Failed in the data, so only the queries that use it fail*)
+singularitiesComputedQ[fullCountings_,indices_List]:=Module[{failed},
+	failed = Select[DeleteDuplicates[indices],Function[i,fullCountings[[i]]===$Failed]];
+	If[failed=!={},Print["Error: the counting failed for singularity index(es) ",failed]];
+	failed==={}
+];
+
+
+ClearAll[findCutsIndex];
+findCutsIndex[fullCountings_,index_]:=findCutsIndex[fullCountings,index]=Module[{ans1,ans2,positions,positions2,cuts,cuts2},
+	ans1=fullCountings // Last;
+	ans2=fullCountings[[index]];
+
+
+	positions = Position[ans2[[2]]-ans1[[2]],_?(#<0&)]//Flatten;
+	positions2 = Position[ans2[[2]]-ans1[[2]],_?(#===Indeterminate&)]//Flatten;
+	cuts = ans1[[3]][[positions]];
+	cuts2 = ans1[[3]][[positions2]];
+
+	Return[<|"data"->{cuts,cuts2},"index"->index|>];
+];
+
+
 Options[findNewTrueCuts] = {"RefineIndeterminates"->False};
 findNewTrueCuts[fullCountings_,data1_,index2_,opts:OptionsPattern[]]:=Module[
 	{
@@ -94,6 +102,24 @@ findNewTrueCuts[fullCountings_,data1_,index2_,opts:OptionsPattern[]]:=Module[
 ];
 
 
+Options[FindSingularitySectors] = Options[buildEulerChiData];
+FindSingularitySectors[gpol_,variables_,singList_,index_,opts:OptionsPattern[]]:=Module[
+	{
+		data1,outTrueCut,fullCountings
+	},
+	
+	If[!(index<=Length[singList]//TrueQ),Print["Error: index out of bounds"]; Return[$Failed]];
+	
+	fullCountings = buildEulerChiData[gpol,variables,singList,Sequence@@FilterRules[{opts},Options[buildEulerChiData]]];
+	If[fullCountings===$Failed,Return[$Failed]];
+	If[!singularitiesComputedQ[fullCountings,{index}],Return[$Failed]];
+	
+	data1 = findCutsIndex[fullCountings,index];
+	
+	Return[data1["data"] // Apply[Join]];
+];
+
+
 Options[CheckSequentialDiscontinuity] = Join[Options[findNewTrueCuts],Options[buildEulerChiData]];
 CheckSequentialDiscontinuity[gpol_,variables_,singList_,indexList_,opts:OptionsPattern[]]:=Module[
 	{
@@ -104,11 +130,16 @@ CheckSequentialDiscontinuity[gpol_,variables_,singList_,indexList_,opts:OptionsP
 	
 	fullCountings = buildEulerChiData[gpol,variables,singList,Sequence@@FilterRules[{opts},Options[buildEulerChiData]]];
 	If[fullCountings===$Failed,Return[$Failed]];
+	If[!singularitiesComputedQ[fullCountings,indexList],Return[$Failed]];
 	
 	data1 = findCutsIndex[fullCountings,indexList[[1]]];
 	outTrueCut = Fold[findNewTrueCuts[fullCountings,#1,#2,Sequence@@FilterRules[{opts},Options[findNewTrueCuts]]]&,data1,indexList[[2;;]]]["data"];
 
 	If[Length[outTrueCut[[1]]]>0,
+		Return[True];
+	];
+	
+	If[Length[outTrueCut[[2]]]>0 && OptionValue["RefineIndeterminates"], (*the indeterminates that could not be refined are set to true automatically enforcing the conservative condition*)
 		Return[True];
 	];
 	
@@ -123,13 +154,27 @@ CheckSequentialDiscontinuity[gpol_,variables_,singList_,indexList_,opts:OptionsP
 Options[CheckDoubleDiscontinuities] = Options[CheckSequentialDiscontinuity];
 CheckDoubleDiscontinuities[gpol_,variables_,singList_,opts:OptionsPattern[]]:=Module[
 	{
-		eulerChi,index,i,j,singularitieseulerChi,fulleulerChi,dropMatrix
+		eulerChi,index,i,j,singularitieseulerChi,fulleulerChi,dropMatrix,fullCountings,failed
 	},
 	
-	If[buildEulerChiData[gpol,variables,singList,Sequence@@FilterRules[{opts},Options[buildEulerChiData]]]===$Failed,Return[$Failed]];
+	fullCountings = buildEulerChiData[gpol,variables,singList,Sequence@@FilterRules[{opts},Options[buildEulerChiData]]];
+	If[fullCountings===$Failed,Return[$Failed]];
+	(*rows and columns of singularities whose counting failed are $Failed*)
+	failed = Select[Range[Length[singList]],Function[k,fullCountings[[k]]===$Failed]];
+	If[failed=!={},Print["Error: the counting failed for singularity index(es) ",failed]];
 	
 	PrintTemporary["Building the double discontinuity matrix"];
-	dropMatrix = Monitor[Table[CheckSequentialDiscontinuity[gpol,variables,singList,{i,j},opts],{i,1,Length[singList]},{j,1,Length[singList]}],{ToString[i]<>"/"<>ToString[Length[singList]],ToString[j]<>"/"<>ToString[Length[singList]]}];
+	dropMatrix = Monitor[
+		Table[
+			If[MemberQ[failed,i] || MemberQ[failed,j],
+				$Failed
+			,
+				CheckSequentialDiscontinuity[gpol,variables,singList,{i,j},opts]
+			],{i,1,Length[singList]},{j,1,Length[singList]}
+		]
+	,
+		{ToString[i]<>"/"<>ToString[Length[singList]],ToString[j]<>"/"<>ToString[Length[singList]]}
+	];
 	
 	Return[dropMatrix];
 ];

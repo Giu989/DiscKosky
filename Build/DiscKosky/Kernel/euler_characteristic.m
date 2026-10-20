@@ -86,6 +86,14 @@ resolvePrimeIndex[primeIndex_]:=Module[{index},
 randomKinematicSubstitution[{}]:={};
 randomKinematicSubstitution[params_List]:=Thread[params->(RandomInteger[{1,10^8+(params//Length)},params//Length]//Map[Prime])];
 
+(*the kinematic substitution and the sector restriction are plain ReplaceAll, so no propagator or kinematic variable may occur inside another one (e.g. x together with x[1])*)
+nestedVariablesFreeQ[lpPoly_,propagators_List,constraint_]:=Module[{variables,nested},
+	variables = Union[propagators,Variables[{lpPoly,Numerator[Together[constraint]]}]];
+	nested = Select[variables,Function[inner,AnyTrue[DeleteCases[variables,inner],Function[outer,!FreeQ[outer,inner]]]]];
+	If[nested=!={},Print["Error: the variable(s) ",nested," also appear inside other propagator or kinematic variables (as x does in x[1]), please rename them"]];
+	nested==={}
+];
+
 prepareKinematicSpecializationMS[lpPoly_,physicalPropagators_,prime_,opts : OptionsPattern[countInSector]]:=Module[
 	{
 	params,paramsNsub,kinPoly,kinPolyVars,lowestPowerCoeff,kinPolyN,
@@ -245,6 +253,7 @@ CountSectorsUnregulated[lpPoly_,physicalPropagators_List,physicalPropagatorsCut_
 	prepareSectorCounts,msolveParallelThreads,msolveJobs,groebnerBasisMSOptions
 	},
 
+	If[!nestedVariablesFreeQ[lpPoly,physicalPropagators,OptionValue["Constraint"]],Return[$Failed]];
 	sectors = Complement[physicalPropagators,physicalPropagatorsCut] // Subsets;
 	sectorsLP = sectors // Map[Join[#,physicalPropagatorsCut]&] // Map[Sort];
 	showNotebookProgress = TrueQ[$Notebooks];
@@ -358,6 +367,7 @@ CountSectorsRegulated[lpPoly_,physicalPropagators_List,physicalPropagatorsCut_Li
 		Print["Error: cut variables must be a subset of variables"];
 		Return[$Failed]
 	];
+	If[!nestedVariablesFreeQ[lpPoly,physicalPropagators,OptionValue["Constraint"]],Return[$Failed]];
 	If[!MemberQ[{True,False},OptionValue["UseSameRho"]],
 		Print["Error: \"UseSameRho\" must be True or False"];
 		Return[$Failed]

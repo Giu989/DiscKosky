@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Wolfram 14.3' *)
+(* CreatedBy='Wolfram 15.0' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[     15369,        394]
-NotebookOptionsPosition[     12158,        326]
-NotebookOutlinePosition[     13952,        368]
-CellTagsIndexPosition[     13909,        365]
+NotebookDataLength[     15872,        405]
+NotebookOptionsPosition[     12541,        335]
+NotebookOutlinePosition[     14336,        377]
+CellTagsIndexPosition[     14293,        374]
 WindowTitle->DiscKosky Documentation
 WindowFrame->Normal*)
 
@@ -27,11 +27,11 @@ Cell[BoxData[GridBox[{
           TemplateBox[{12},
            "Spacer1"], Cell["DISC KOSKY GUIDE", "PacletNameCell",
            TextAlignment->Center,ExpressionUUID->
-           "7b33f657-b1c0-45b7-b74a-2e66b8765ee0"], 
+           "a2cb3f8b-6c26-4751-8553-aceae159f853"], 
           TemplateBox[{8},
            "Spacer1"]}]],
          TextAlignment->Center,ExpressionUUID->
-         "da4ab7c6-8154-43a7-a674-c640f601df9a"],
+         "1add825c-037e-4009-822b-a998b39131f3"],
         Background->LightDarkSwitched[
           RGBColor[0.85098, 0.396078, 0]],
         ItemSize->Full], ""}
@@ -52,8 +52,8 @@ Cell[BoxData[GridBox[{
             AspectRatio->1,
             ImageSize->20,
             PlotRange->{{-3, 4}, {-1, 1}}]],ExpressionUUID->
-           "f4a96b0a-2854-45a8-94e9-f2350521667e"]
-         }],ExpressionUUID->"cc25e08f-e50f-4b83-b2af-e909fb4a25bb"],
+           "4ef7cdd0-206f-4973-9ce3-743dad468896"]
+         }],ExpressionUUID->"8f5b1f34-8f62-4f74-ab8c-07f0ba8fa3dd"],
          StripOnInput->False],{
         StyleBox[
           "\"CheckDoubleDiscontinuities\"", "SeeAlsoRelated", StripOnInput -> 
@@ -82,7 +82,7 @@ Cell[BoxData[GridBox[{
         MenuStyle->"GuideFunction"],
        MouseAppearanceTag["LinkHand"]]],
       LineSpacing->{1.4, 0},ExpressionUUID->
-      "8c3c0947-69bb-4681-854f-7d4d8696f66e"],
+      "bef9ee13-f838-4f70-84ae-b22f8c188cfe"],
      "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
 \[ThickSpace]",
      Cell[BoxData[
@@ -98,8 +98,8 @@ Cell[BoxData[GridBox[{
             AspectRatio->1,
             ImageSize->20,
             PlotRange->{{-3, 4}, {-1, 1}}]],ExpressionUUID->
-           "769a7176-3801-4c24-8ba1-9c0c3484512f"]
-         }],ExpressionUUID->"eb7d6b8c-c0a6-4f84-a28b-9e29c8c25459"],
+           "60cdbfa9-4601-4975-b7e7-6ad2eb88582c"]
+         }],ExpressionUUID->"f0a8d324-6985-4579-a887-7e58635c62b9"],
          StripOnInput->False],{
         "\"Using DiscKosky\"" :> 
          Documentation`HelpLookup["paclet:DiscKosky/tutorial/UsingDiscKosky"]},
@@ -108,7 +108,7 @@ Cell[BoxData[GridBox[{
         MenuStyle->"GuideTutorial"],
        MouseAppearanceTag["LinkHand"]]],
       LineSpacing->{1.4, 0},ExpressionUUID->
-      "02c14424-9eae-4708-b724-106b7ac3f4ce"],
+      "2f502e17-9fa0-49c1-910d-ec819d16d1ee"],
      "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
 \[ThickSpace]",
      Cell[BoxData[
@@ -124,8 +124,8 @@ Cell[BoxData[GridBox[{
             AspectRatio->1,
             ImageSize->20,
             PlotRange->{{-3, 4}, {-1, 1}}]],ExpressionUUID->
-           "c080441a-cbb2-4172-9d0a-435b19c9905b"]
-         }],ExpressionUUID->"c85183ef-b046-4abd-8027-fb1336546173"],
+           "a5183605-6474-44df-a5f8-f187563567e1"]
+         }],ExpressionUUID->"82885c99-0755-466d-b3e2-249587b5c391"],
          StripOnInput->False],{
         "\"DiscKosky/guide/DiscKosky\"" :> None, 
          "\"Copy Wolfram Documentation Center URL\"" :> 
@@ -147,35 +147,35 @@ DiscKosky.html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]},
          "\"Go to web URL\"" :> 
          FrontEndExecute[{
            NotebookLocate[{
-             URL[(If[TrueQ[False], 
-                  "http://reference.wolfram.com/system-modeler/", 
-                  "http://reference.wolfram.com/language/"] <> 
-                "DiscKosky/guide/DiscKosky") <> ".html"], None}]}]},
+             URL[If[TrueQ[False], 
+                 "http://reference.wolfram.com/system-modeler/", 
+                 "http://reference.wolfram.com/language/"] <> 
+               "DiscKosky/guide/DiscKosky" <> ".html"], None}]}]},
         Appearance->None,
         MenuAppearance->Automatic,
         MenuStyle->"URLMenu"],
        MouseAppearanceTag["LinkHand"]]],
       LineSpacing->{1.4, 0},ExpressionUUID->
-      "124642e8-4cb0-4975-a891-160c52b8031f"]
+      "1d8646df-1527-41a0-a581-94e1fa075501"]
     }], "AnchorBar",
      CacheGraphics->False,ExpressionUUID->
-     "085227a8-2744-4e4a-8c24-c3370df204c7"]}
+     "7f63513f-f6bc-4a13-9a94-c5f262c71dc4"]}
   }]], "AnchorBarGrid",
- CellID->1,ExpressionUUID->"b63b51d3-130b-4954-bc58-0fe1734a3299"],
+ CellID->1,ExpressionUUID->"0a2c45e9-ea01-448a-a9c2-a44ddcdf218b"],
 
 Cell[CellGroupData[{
 
 Cell["DiscKosky Documentation", "GuideTitle",
- CellID->1439520439,ExpressionUUID->"612b2253-f64d-4b31-8016-321b453d4b04"],
+ CellID->1439520439,ExpressionUUID->"0b979b6f-277c-4960-8a89-56df74e5724f"],
 
 Cell["\<\
 DiscKosky provides tools for sector-by-sector critical point counts, repeated \
 discontinuity checks, and graph visualizations of sector drops. Use the \
 tutorial for a worked example and the symbol pages for detailed options.\
 \>", "GuideAbstract",
- CellID->1669521233,ExpressionUUID->"fe1a25de-d5a2-4b3c-8cbd-1bd38a21e435"],
+ CellID->1669521233,ExpressionUUID->"c044fbcc-d08f-41b7-91ce-7f7a515df7fe"],
 
-Cell["\t", "GuideDelimiterSubsection",ExpressionUUID->"61379496-5c0b-40fc-abdb-1a9c311158d4"]
+Cell["\t", "GuideDelimiterSubsection",ExpressionUUID->"51efbade-780d-485c-9bf7-8614db823861"]
 }, Open  ]],
 
 Cell[BoxData[GridBox[{
@@ -197,7 +197,7 @@ Cell[BoxData[GridBox[{
            "RefLinkPlain",
            BaseStyle->{"GuideTutorial"}]], "InlineFunctionSans",
           CellTags->"4a56cd45-bddd-4da6-8fd7-8fbb9bec3d17",ExpressionUUID->
-          "f031d91c-8d4a-4837-a015-5ed3ae501109"], "\n", 
+          "d7ca6259-6041-434d-beec-86a436bd33b1"], "\n", 
          RowBox[{" ", 
           RowBox[{"\[LongDash]", " ", 
            RowBox[{
@@ -206,15 +206,15 @@ Cell[BoxData[GridBox[{
            RowBox[{"discontinuity", " ", "checks"}], ",", " ", 
            RowBox[{"and", " ", "sector", " ", "drop", " ", "graphs"}]}]}]}], 
          "GuideTutorial",ExpressionUUID->
-         "443c772d-1564-4e94-982b-66f3958da743"]}]}
+         "0784d7e4-22ea-4b55-aed8-b69407b9f879"]}]}
      }]}
-  }]], "GuideTutorialsSection",ExpressionUUID->"c2f76ead-c712-48ae-9763-\
-2ea037879003"],
+  }]], "GuideTutorialsSection",ExpressionUUID->"6be83e97-9b47-4d16-8064-\
+d364a3a84187"],
 
 Cell[CellGroupData[{
 
 Cell["Sector Counting", "GuideFunctionsSection",
- CellID->927472655,ExpressionUUID->"fffe595c-88ba-4a57-a5ce-996277913308"],
+ CellID->927472655,ExpressionUUID->"c055dac2-f9e6-4e0c-a226-f10978bb1a15"],
 
 Cell[TextData[{
  Cell[BoxData[
@@ -226,12 +226,11 @@ Cell[TextData[{
    "PackageLink",
    BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans",
   CellTags->"f8d9936c-1d3c-4b79-b54e-e64289494975",ExpressionUUID->
-  "021dc79d-5b90-4571-b421-3069a1dde1bf"],
+  "86642857-7661-45ac-b851-525fbb07e8b0"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
  " counts critical points sector by sector and returns the total, sector \
-counts, and sectors",
- "\n",
+counts, and sectors\n",
  Cell[BoxData[
   TemplateBox[{
     Cell[
@@ -241,18 +240,28 @@ counts, and sectors",
    "PackageLink",
    BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans",
   CellTags->"407b3bc3-fb3b-4ca4-a7db-598c054766e9",ExpressionUUID->
-  "fec7a518-b5e2-4321-a5d7-4c1612505b4d"],
+  "472686fd-807e-4ef2-93b1-372a61624d6c"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
  " computes the regulated critical-point count"
 }], "GuideText",
- CellID->556024358,ExpressionUUID->"d6f2abf8-8541-4f66-80f9-7d8d4aecf7d4"]
+ CellID->556024358,ExpressionUUID->"be04d7d9-9721-4938-8403-a72f9b4b1461"],
+
+Cell[TextData[{
+ Cell["FindSingularitySectors", "InlineFunctionSansUnlinked",
+  CellTags->"407b3bc3-fb3b-4ca4-a7db-598c054766e9",ExpressionUUID->
+  "e5d2116d-5de0-4f26-ac42-482288aa33f1"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " finds the sectors associated to a given Landau singularity"
+}], "GuideText",
+ CellID->574484442,ExpressionUUID->"bb001a01-6e7f-457a-8628-81c92625045f"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["Discontinuity Checks", "GuideFunctionsSection",
- CellID->427259906,ExpressionUUID->"7fa4e35c-8c5c-46ec-9640-93cc99c658a4"],
+ CellID->427259906,ExpressionUUID->"6e4e006f-29d6-4fad-8e94-f2ffb27fa26a"],
 
 Cell[TextData[{
  Cell[BoxData[
@@ -264,7 +273,7 @@ Cell[TextData[{
    "PackageLink",
    BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans",
   CellTags->"8d87b45c-3e2b-4c5d-be7c-49523989355e",ExpressionUUID->
-  "d50325b5-d1c5-44bd-b6c0-4d1285d30cc1"],
+  "aaee6e6f-0d84-4311-94ab-271990d7f4aa"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
  " tests an ordered list of singularities for a repeated discontinuity",
@@ -278,7 +287,7 @@ Cell[TextData[{
    "PackageLink",
    BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans",
   CellTags->"9febd1f6-7216-4998-8c3b-167e5f77b214",ExpressionUUID->
-  "e727abf5-3d4d-45bc-9ff6-056d1486fbf9"],
+  "08973814-9014-46d8-911c-d2fe72cf4100"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
  " builds the pairwise double-discontinuity matrix",
@@ -291,19 +300,19 @@ Cell[TextData[{
    "PackageLink",
    BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans",
   CellTags->"bc45e374-dfd5-40c7-909c-cdff52134be9",ExpressionUUID->
-  "f891b045-2a66-455a-a1b7-aff945fbcdf8"],
+  "88b791e9-271e-4422-931a-ed49c3642d9c"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
  " draws the sector graph labelled by singularities that cause drops or \
 indeterminates"
 }], "GuideText",
- CellID->872998380,ExpressionUUID->"4be67e79-e8dd-4835-9fcb-588d19ef3215"]
+ CellID->872998380,ExpressionUUID->"ae27f2d1-12df-4499-9fac-8fc5133396dc"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["Groebner Basis Interface", "GuideFunctionsSection",
- CellID->1045149138,ExpressionUUID->"139750f8-ac24-4fe8-bdaa-8eb5f6299d04"],
+ CellID->1045149138,ExpressionUUID->"da7f5631-773f-4283-8693-da55fe9477cc"],
 
 Cell[TextData[{
  Cell[BoxData[
@@ -314,15 +323,15 @@ Cell[TextData[{
    "PackageLink",
    BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans",
   CellTags->"83d23657-adb7-477a-a398-519d9bef1c26",ExpressionUUID->
-  "3bc63383-3980-49c2-8487-183ba1ff32bd"],
+  "2d33abc8-df89-400a-96b3-2969d5af9e21"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
  " computes Groebner bases using msolve, including batch jobs"
 }], "GuideText",
- CellID->1043741233,ExpressionUUID->"0930712d-3db1-4692-8e70-9dd2d5c5367e"]
+ CellID->1043741233,ExpressionUUID->"95b45cee-7977-49e9-acfb-e38d2e6909be"]
 }, Open  ]],
 
-Cell[" ", "FooterCell",ExpressionUUID->"259eef5b-be57-4267-a995-dc1bdf250573"]
+Cell[" ", "FooterCell",ExpressionUUID->"0d065793-6d50-4af2-921c-72713b6f2511"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
@@ -338,7 +347,7 @@ TaggingRules->{
   "NewStyles" -> True, "CitationPopupData" -> {$Failed, ""}, "ShowCitation" -> 
   False, "RootCaptions" -> "", "HeaderCoreAreaLink" -> {}, 
   "Metadata" -> {
-   "built" -> "{2026, 7, 21, 12, 59, 25.517731}", 
+   "built" -> "{2026, 10, 20, 14, 53, 52.981479}", 
     "history" -> {"XX", "", "", ""}, "context" -> "DiscKosky`", 
     "keywords" -> {"DiscKosky critical points sectors discontinuities graph"},
      "specialkeywords" -> {}, "tutorialcollectionlinks" -> {}, "index" -> 
@@ -352,9 +361,9 @@ the tutorial for a worked example and the symbol pages for detailed options.",
      "windowtitle" -> "DiscKosky Documentation", "type" -> "Guide", "uri" -> 
     "DiscKosky/guide/DiscKosky"}},
 CacheGraphics->False,
-FrontEndVersion->"14.3 for Mac OS X ARM (64-bit) (July 8, 2025)",
+FrontEndVersion->"15.0 for Mac OS X ARM (64-bit) (July 2, 2026)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "Reference.nb"],
-ExpressionUUID->"409e9594-94ff-4cfb-a66a-34dee397075a"
+ExpressionUUID->"f57292d3-17bf-452f-8589-bbbe11d4947e"
 ]
 (* End of Notebook Content *)
 
@@ -367,35 +376,37 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[591, 21, 5874, 142, 70, "AnchorBarGrid",ExpressionUUID->"b63b51d3-130b-4954-bc58-0fe1734a3299",
+Cell[591, 21, 5869, 142, 70, "AnchorBarGrid",ExpressionUUID->"0a2c45e9-ea01-448a-a9c2-a44ddcdf218b",
  CellID->1],
 Cell[CellGroupData[{
-Cell[6490, 167, 121, 1, 70, "GuideTitle",ExpressionUUID->"612b2253-f64d-4b31-8016-321b453d4b04",
+Cell[6485, 167, 121, 1, 70, "GuideTitle",ExpressionUUID->"0b979b6f-277c-4960-8a89-56df74e5724f",
  CellID->1439520439],
-Cell[6614, 170, 335, 5, 70, "GuideAbstract",ExpressionUUID->"fe1a25de-d5a2-4b3c-8cbd-1bd38a21e435",
+Cell[6609, 170, 335, 5, 70, "GuideAbstract",ExpressionUUID->"c044fbcc-d08f-41b7-91ce-7f7a515df7fe",
  CellID->1669521233],
-Cell[6952, 177, 93, 0, 70, "GuideDelimiterSubsection",ExpressionUUID->"61379496-5c0b-40fc-abdb-1a9c311158d4"]
+Cell[6947, 177, 93, 0, 70, "GuideDelimiterSubsection",ExpressionUUID->"51efbade-780d-485c-9bf7-8614db823861"]
 }, Open  ]],
-Cell[7060, 180, 1331, 31, 70, "GuideTutorialsSection",ExpressionUUID->"c2f76ead-c712-48ae-9763-2ea037879003"],
+Cell[7055, 180, 1331, 31, 70, "GuideTutorialsSection",ExpressionUUID->"6be83e97-9b47-4d16-8064-d364a3a84187"],
 Cell[CellGroupData[{
-Cell[8416, 215, 123, 1, 70, "GuideFunctionsSection",ExpressionUUID->"fffe595c-88ba-4a57-a5ce-996277913308",
+Cell[8411, 215, 123, 1, 70, "GuideFunctionsSection",ExpressionUUID->"c055dac2-f9e6-4e0c-a226-f10978bb1a15",
  CellID->927472655],
-Cell[8542, 218, 1068, 30, 70, "GuideText",ExpressionUUID->"d6f2abf8-8541-4f66-80f9-7d8d4aecf7d4",
- CellID->556024358]
+Cell[8537, 218, 1063, 29, 70, "GuideText",ExpressionUUID->"be04d7d9-9721-4938-8403-a72f9b4b1461",
+ CellID->556024358],
+Cell[9603, 249, 390, 8, 70, "GuideText",ExpressionUUID->"bb001a01-6e7f-457a-8628-81c92625045f",
+ CellID->574484442]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9647, 253, 128, 1, 70, "GuideFunctionsSection",ExpressionUUID->"7fa4e35c-8c5c-46ec-9640-93cc99c658a4",
+Cell[10030, 262, 128, 1, 70, "GuideFunctionsSection",ExpressionUUID->"6e4e006f-29d6-4fad-8e94-f2ffb27fa26a",
  CellID->427259906],
-Cell[9778, 256, 1553, 43, 70, "GuideText",ExpressionUUID->"4be67e79-e8dd-4835-9fcb-588d19ef3215",
+Cell[10161, 265, 1553, 43, 70, "GuideText",ExpressionUUID->"ae27f2d1-12df-4499-9fac-8fc5133396dc",
  CellID->872998380]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11368, 304, 133, 1, 70, "GuideFunctionsSection",ExpressionUUID->"139750f8-ac24-4fe8-bdaa-8eb5f6299d04",
+Cell[11751, 313, 133, 1, 70, "GuideFunctionsSection",ExpressionUUID->"da7f5631-773f-4283-8693-da55fe9477cc",
  CellID->1045149138],
-Cell[11504, 307, 557, 14, 70, "GuideText",ExpressionUUID->"0930712d-3db1-4692-8e70-9dd2d5c5367e",
+Cell[11887, 316, 557, 14, 70, "GuideText",ExpressionUUID->"95b45cee-7977-49e9-acfb-e38d2e6909be",
  CellID->1043741233]
 }, Open  ]],
-Cell[12076, 324, 78, 0, 70, "FooterCell",ExpressionUUID->"259eef5b-be57-4267-a995-dc1bdf250573"]
+Cell[12459, 333, 78, 0, 70, "FooterCell",ExpressionUUID->"0d065793-6d50-4af2-921c-72713b6f2511"]
 }
 ]
 *)
