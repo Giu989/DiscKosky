@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Wolfram 14.3' *)
+(* CreatedBy='Wolfram 15.0' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[     10240,        279]
-NotebookOptionsPosition[      7141,        208]
-NotebookOutlinePosition[      7653,        226]
-CellTagsIndexPosition[      7610,        223]
+NotebookDataLength[     10895,        291]
+NotebookOptionsPosition[      7678,        218]
+NotebookOutlinePosition[      8190,        236]
+CellTagsIndexPosition[      8147,        233]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -67,8 +67,7 @@ Cell[TextData[{
   CellTags->"f8d9936c-1d3c-4b79-b54e-e64289494975",ExpressionUUID->
   "12d14d89-1b42-4468-89a7-0023c4017928"],
  " \[LongDash] counts critical points sector by sector and returns the total, \
-sector counts, and sectors",
- "\n",
+sector counts, and sectors\n",
  Cell[BoxData[
   ButtonBox["CountSectorsRegulated",
    BaseStyle->"Link",
@@ -79,7 +78,18 @@ sector counts, and sectors",
   "6d24a78c-6aa8-46da-9c2c-102b710e914f"],
  " \[LongDash] computes the regulated critical-point count"
 }], "GuideText",
- CellID->556024358,ExpressionUUID->"2cdf03de-215d-4387-8d88-abcf7cb8aafa"]
+ CellChangeTimes->{{4.001407505168309*^9, 4.001407506544628*^9}},
+ CellID->556024358,ExpressionUUID->"2cdf03de-215d-4387-8d88-abcf7cb8aafa"],
+
+Cell[TextData[{
+ Cell[BoxData["FindSingularitySectors"], "InlineGuideFunction",
+  TaggingRules->{"PageType" -> "Function"},
+  CellTags->"407b3bc3-fb3b-4ca4-a7db-598c054766e9",ExpressionUUID->
+  "16d3d873-107f-4e09-9c30-df9a251e5ced"],
+ " \[LongDash] finds the sectors associated to a given Landau singularity"
+}], "GuideText",
+ CellChangeTimes->{{4.001407530116002*^9, 4.0014075473703623`*^9}},
+ CellID->574484442,ExpressionUUID->"8c857629-f74c-459c-a322-8f844fab61ed"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -209,7 +219,7 @@ Cell["DiscKosky critical points sectors discontinuities graph", "Keywords",
 WindowSize->{988, 804},
 WindowMargins->{{222, Automatic}, {Automatic, 59}},
 TaggingRules-><|"Paclet" -> "DiscKosky"|>,
-FrontEndVersion->"14.3 for Mac OS X ARM (64-bit) (July 8, 2025)",
+FrontEndVersion->"15.0 for Mac OS X ARM (64-bit) (July 2, 2026)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "GuidePageStylesExt.nb", 
   CharacterEncoding -> "UTF-8"],
 ExpressionUUID->"e5d6e2c8-2a93-4bc3-9a28-113ab2eb6e5d"
@@ -226,58 +236,60 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[576, 22, 121, 1, 70, "GuideTitle",ExpressionUUID->"1ee5d3b0-d339-4f69-9220-fe8c69af1313",
+Cell[576, 22, 121, 1, 86, "GuideTitle",ExpressionUUID->"1ee5d3b0-d339-4f69-9220-fe8c69af1313",
  CellID->1439520439],
-Cell[700, 25, 335, 5, 70, "GuideAbstract",ExpressionUUID->"ce643523-a1fd-4a63-be50-1bcdb2899e36",
+Cell[700, 25, 335, 5, 63, "GuideAbstract",ExpressionUUID->"ce643523-a1fd-4a63-be50-1bcdb2899e36",
  CellID->1669521233]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1072, 35, 117, 1, 70, "GuideTutorialsSection",ExpressionUUID->"2b1a176f-5cac-4bc5-ae69-f4c7cf94a15a",
+Cell[1072, 35, 117, 1, 73, "GuideTutorialsSection",ExpressionUUID->"2b1a176f-5cac-4bc5-ae69-f4c7cf94a15a",
  CellID->1083753444],
-Cell[1192, 38, 547, 13, 70, "GuideTutorial",ExpressionUUID->"445e2891-29df-4049-9ffa-b5f18233dd60",
+Cell[1192, 38, 547, 13, 41, "GuideTutorial",ExpressionUUID->"445e2891-29df-4049-9ffa-b5f18233dd60",
  CellID->1831206437]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1776, 56, 123, 1, 70, "GuideFunctionsSection",ExpressionUUID->"11733be8-7652-43b6-9c59-1b116bde8a52",
+Cell[1776, 56, 123, 1, 71, "GuideFunctionsSection",ExpressionUUID->"11733be8-7652-43b6-9c59-1b116bde8a52",
  CellID->927472655],
-Cell[1902, 59, 923, 22, 70, "GuideText",ExpressionUUID->"2cdf03de-215d-4387-8d88-abcf7cb8aafa",
- CellID->556024358]
+Cell[1902, 59, 984, 22, 69, "GuideText",ExpressionUUID->"2cdf03de-215d-4387-8d88-abcf7cb8aafa",
+ CellID->556024358],
+Cell[2889, 83, 469, 8, 24, "GuideText",ExpressionUUID->"8c857629-f74c-459c-a322-8f844fab61ed",
+ CellID->574484442]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2862, 86, 128, 1, 70, "GuideFunctionsSection",ExpressionUUID->"1ef68336-9afd-4b26-95e9-d59c53752fd1",
+Cell[3395, 96, 128, 1, 71, "GuideFunctionsSection",ExpressionUUID->"1ef68336-9afd-4b26-95e9-d59c53752fd1",
  CellID->427259906],
-Cell[2993, 89, 1334, 32, 70, "GuideText",ExpressionUUID->"c45cdbbd-cd0d-4f29-a887-d0084b64e5e2",
+Cell[3526, 99, 1338, 32, 115, "GuideText",ExpressionUUID->"c45cdbbd-cd0d-4f29-a887-d0084b64e5e2",
  CellID->872998380]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4364, 126, 133, 1, 70, "GuideFunctionsSection",ExpressionUUID->"0b13eb27-806f-4e1b-948b-2893c17f893e",
+Cell[4901, 136, 133, 1, 71, "GuideFunctionsSection",ExpressionUUID->"0b13eb27-806f-4e1b-948b-2893c17f893e",
  CellID->1045149138],
-Cell[4500, 129, 486, 10, 70, "GuideText",ExpressionUUID->"480c9604-9be3-486b-bdfe-df3d0567725c",
+Cell[5037, 139, 486, 10, 24, "GuideText",ExpressionUUID->"480c9604-9be3-486b-bdfe-df3d0567725c",
  CellID->1043741233]
 }, Open  ]],
-Cell[5001, 142, 124, 1, 70, "GuideRelatedLinksSection",ExpressionUUID->"87c80d59-b447-48c9-8fc1-2ed9e2b06f57",
+Cell[5538, 152, 124, 1, 73, "GuideRelatedLinksSection",ExpressionUUID->"87c80d59-b447-48c9-8fc1-2ed9e2b06f57",
  CellID->530937193],
 Cell[CellGroupData[{
-Cell[5150, 147, 110, 1, 70, "MetadataSection",ExpressionUUID->"97455a83-ecf7-4184-bd13-e3d1abea6af2",
+Cell[5687, 157, 110, 1, 71, "MetadataSection",ExpressionUUID->"97455a83-ecf7-4184-bd13-e3d1abea6af2",
  CellID->773760643],
-Cell[5263, 150, 476, 12, 70, "History",ExpressionUUID->"d91b6493-03be-4905-9e49-a4ca4d824844",
+Cell[5800, 160, 476, 12, 25, "History",ExpressionUUID->"d91b6493-03be-4905-9e49-a4ca4d824844",
  CellID->829182204],
 Cell[CellGroupData[{
-Cell[5764, 166, 484, 13, 70, "CategorizationSection",ExpressionUUID->"41316600-5afc-4621-a584-da0fcdaa5586",
+Cell[6301, 176, 484, 13, 186, "CategorizationSection",ExpressionUUID->"41316600-5afc-4621-a584-da0fcdaa5586",
  CellID->627480215],
-Cell[6251, 181, 134, 2, 70, "Categorization",ExpressionUUID->"ce84fbdb-edc0-47e7-ba0a-e28d1b162cdc",
+Cell[6788, 191, 134, 2, 70, "Categorization",ExpressionUUID->"ce84fbdb-edc0-47e7-ba0a-e28d1b162cdc",
  CellID->1059075503],
-Cell[6388, 185, 138, 2, 70, "Categorization",ExpressionUUID->"5f291f29-2d91-4b8c-bbec-d90c95ba5995",
+Cell[6925, 195, 138, 2, 70, "Categorization",ExpressionUUID->"5f291f29-2d91-4b8c-bbec-d90c95ba5995",
  CellID->1765780629],
-Cell[6529, 189, 135, 2, 70, "Categorization",ExpressionUUID->"26a67e37-1ea3-4955-a0ad-8be114b25f71",
+Cell[7066, 199, 135, 2, 70, "Categorization",ExpressionUUID->"26a67e37-1ea3-4955-a0ad-8be114b25f71",
  CellID->1875116421],
-Cell[6667, 193, 145, 2, 70, "Categorization",ExpressionUUID->"070e40bc-b940-495a-a940-8dbe0415436b",
+Cell[7204, 203, 145, 2, 70, "Categorization",ExpressionUUID->"070e40bc-b940-495a-a940-8dbe0415436b",
  CellID->645142807]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[6849, 200, 110, 1, 70, "KeywordsSection",ExpressionUUID->"fae1e3f0-cf04-4df4-9f4a-2ba4ba6229a3",
+Cell[7386, 210, 110, 1, 20, "KeywordsSection",ExpressionUUID->"fae1e3f0-cf04-4df4-9f4a-2ba4ba6229a3",
  CellID->872322023],
-Cell[6962, 203, 151, 1, 70, "Keywords",ExpressionUUID->"08dfacc8-311b-46fd-98c0-1b055ce773fa",
+Cell[7499, 213, 151, 1, 70, "Keywords",ExpressionUUID->"08dfacc8-311b-46fd-98c0-1b055ce773fa",
  CellID->1437938788]
 }, Closed]]
 }, Open  ]]
@@ -286,3 +298,4 @@ Cell[6962, 203, 151, 1, 70, "Keywords",ExpressionUUID->"08dfacc8-311b-46fd-98c0-
 *)
 
 (* End of internal cache information *)
+
