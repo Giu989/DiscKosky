@@ -86,6 +86,14 @@ resolvePrimeIndex[primeIndex_]:=Module[{index},
 randomKinematicSubstitution[{}]:={};
 randomKinematicSubstitution[params_List]:=Thread[params->(RandomInteger[{1,10^8+(params//Length)},params//Length]//Map[Prime])];
 
+(*the kinematic substitution and the sector restriction are plain ReplaceAll, so no propagator or kinematic variable may occur inside another one (e.g. x together with x[1])*)
+nestedVariablesFreeQ[lpPoly_,propagators_List,constraint_]:=Module[{variables,nested},
+	variables = Union[propagators,Variables[{lpPoly,Numerator[Together[constraint]]}]];
+	nested = Select[variables,Function[inner,AnyTrue[DeleteCases[variables,inner],Function[outer,!FreeQ[outer,inner]]]]];
+	If[nested=!={},Print["Error: the variable(s) ",nested," also appear inside other propagator or kinematic variables (as x does in x[1]), please rename them"]];
+	nested==={}
+];
+
 prepareKinematicSpecializationMS[lpPoly_,physicalPropagators_,prime_,opts : OptionsPattern[countInSector]]:=Module[
 	{
 	params,paramsNsub,kinPoly,kinPolyVars,lowestPowerCoeff,kinPolyN,
@@ -194,20 +202,58 @@ Options[CountSectorsUnregulated]={
 	"msolve"->Automatic,
 	"PrimeIndex"->Random,
 	"MSolveJobs"->Automatic,
-	"MSolveThreads"->1,
+	"MSolveThreads"->Automatic,
+	"msolveParallelThreads"->Automatic,
 	"MSolveBatchDirectory"->Automatic,
 	"MSolveKeepFiles"->False,
 	"MSolveProgress"->Automatic,
 	"MSolveProgressInterval"->0.008,
 	"debug"->False
 };
+
+resolveCountSectorsMSolveParallelThreads[opts_List]:=Module[
+	{explicitThreads,explicitLegacyThreads,threadCount},
+	explicitThreads = Cases[opts,HoldPattern[Rule["msolveParallelThreads",value_]|RuleDelayed["msolveParallelThreads",value_]]:>value];
+	explicitLegacyThreads = Cases[opts,HoldPattern[Rule["MSolveThreads",value_]|RuleDelayed["MSolveThreads",value_]]:>value];
+	threadCount = Which[
+		explicitThreads=!={},Last[explicitThreads],
+		explicitLegacyThreads=!={},Last[explicitLegacyThreads],
+		True,Automatic
+	] /. Automatic->Max[1,$ProcessorCount];
+	If[!IntegerQ[threadCount] || threadCount<1,
+		Print["Error: \"msolveParallelThreads\" must be Automatic or a positive integer"];
+		Return[$Failed]
+	];
+	threadCount
+];
+
+resolveCountSectorsMSolveJobs[opts_List]:=Module[
+	{explicitJobs,jobCount},
+	explicitJobs = Cases[opts,HoldPattern[Rule["MSolveJobs",value_]|RuleDelayed["MSolveJobs",value_]]:>value];
+	jobCount = If[explicitJobs==={},Automatic,Last[explicitJobs]] /. Automatic->Max[1,$ProcessorCount];
+	If[!IntegerQ[jobCount] || jobCount<1,
+		Print["Error: \"MSolveJobs\" must be Automatic or a positive integer"];
+		Return[$Failed]
+	];
+	jobCount
+];
+
+countSectorsGroebnerBasisMSOptions[opts_List,threadCount_Integer,jobCount_Integer]:=Join[
+	{"MSolveJobs"->jobCount,"msolveParallelThreads"->threadCount},
+	FilterRules[
+		opts,
+		DeleteCases[Options[GroebnerBasisMS],("MSolveJobs"->_)|("msolveParallelThreads"->_)|("MSolveThreads"->_)]
+	]
+];
+
 CountSectorsUnregulated[lpPoly_,physicalPropagators_List,physicalPropagatorsCut_List,opts : OptionsPattern[]]:=Module[
 	{
 	sectors,sectorsLP,effectivePoly,effectiveVars,totalSum,sectorCounting,i,
 	useMsolve,primeIndex,prime,specialization,specializedPoly,prepared,jobs,gbs,gbCounter,prep,monomialCount,showNotebookProgress,
-	prepareSectorCounts
+	prepareSectorCounts,msolveParallelThreads,msolveJobs,groebnerBasisMSOptions
 	},
 
+	If[!nestedVariablesFreeQ[lpPoly,physicalPropagators,OptionValue["Constraint"]],Return[$Failed]];
 	sectors = Complement[physicalPropagators,physicalPropagatorsCut] // Subsets;
 	sectorsLP = sectors // Map[Join[#,physicalPropagatorsCut]&] // Map[Sort];
 	showNotebookProgress = TrueQ[$Notebooks];
@@ -221,10 +267,16 @@ CountSectorsUnregulated[lpPoly_,physicalPropagators_List,physicalPropagatorsCut_
 		]
 	];
 	If[And[useMsolve,OptionValue["MonomialOrder"]=!=DegreeReverseLexicographic],Print["Error: msolve only supports DegreeReverseLexicographic order"];Return[$Failed];];
+	(*validated for both paths, but only the msolve path uses one prime for all sectors*)
+	primeIndex = resolvePrimeIndex[OptionValue["PrimeIndex"]];
+	If[primeIndex===$Failed,Return[$Failed]];
 
 	If[useMsolve,
-		primeIndex = resolvePrimeIndex[OptionValue["PrimeIndex"]];
-		If[primeIndex===$Failed,Return[$Failed]];
+		msolveParallelThreads = resolveCountSectorsMSolveParallelThreads[{opts}];
+		If[msolveParallelThreads===$Failed,Return[$Failed]];
+		msolveJobs = resolveCountSectorsMSolveJobs[{opts}];
+		If[msolveJobs===$Failed,Return[$Failed]];
+		groebnerBasisMSOptions = countSectorsGroebnerBasisMSOptions[{opts},msolveParallelThreads,msolveJobs];
 		prime = primeList[[1+primeIndex]];
 		specialization = prepareKinematicSpecializationMS[lpPoly,physicalPropagators,prime,Sequence@@FilterRules[{opts},Options[countInSector]]];
 		If[specialization===$Failed,Return[$Failed]];
@@ -255,7 +307,7 @@ CountSectorsUnregulated[lpPoly_,physicalPropagators_List,physicalPropagatorsCut_
 		gbs = GroebnerBasisMS[jobs,
 			"Modulus"->prime,
 			"LeadingMonomialsOnly"->True,
-			Sequence@@FilterRules[{opts},Options[GroebnerBasisMS]]
+			Sequence@@groebnerBasisMSOptions
 		];
 		If[gbs===$Failed,Return[$Failed]];
 		gbCounter = 0;
@@ -305,17 +357,19 @@ CountSectorsUnregulated[lpPoly_,physicalPropagators_List,physicalPropagatorsCut_
 ];
 
 Options[CountSectorsRegulated]=Join[Options[CountSectorsUnregulated],{"UseSameRho"->False}];
-CountSectorsRegulated[lpPoly_,physicalPropagators_List]:=
-	CountSectorsRegulated[lpPoly,physicalPropagators,{}];
+(*options are matched as bare rules, since OptionsPattern[] would also match the cut list {} and recurse*)
+CountSectorsRegulated[lpPoly_,physicalPropagators_List,opts:(_Rule|_RuleDelayed)...]:=
+	CountSectorsRegulated[lpPoly,physicalPropagators,{},opts];
 CountSectorsRegulated[lpPoly_,physicalPropagators_List,physicalPropagatorsCut_List,opts : OptionsPattern[]]:=Module[
 	{
-	useMsolve,useSameRho,primeIndex,prime,specialization,specializedPoly,prepared,gb,monomialCount
+	useMsolve,useSameRho,primeIndex,prime,specialization,specializedPoly,prepared,gb,monomialCount,msolveParallelThreads,msolveJobs,groebnerBasisMSOptions
 	},
 
 	If[!SubsetQ[physicalPropagators,physicalPropagatorsCut],
 		Print["Error: cut variables must be a subset of variables"];
 		Return[$Failed]
 	];
+	If[!nestedVariablesFreeQ[lpPoly,physicalPropagators,OptionValue["Constraint"]],Return[$Failed]];
 	If[!MemberQ[{True,False},OptionValue["UseSameRho"]],
 		Print["Error: \"UseSameRho\" must be True or False"];
 		Return[$Failed]
@@ -342,10 +396,15 @@ CountSectorsRegulated[lpPoly_,physicalPropagators_List,physicalPropagatorsCut_Li
 	If[prepared===$Failed,Return[$Failed]];
 
 	If[useMsolve,
+		msolveParallelThreads = resolveCountSectorsMSolveParallelThreads[{opts}];
+		If[msolveParallelThreads===$Failed,Return[$Failed]];
+		msolveJobs = resolveCountSectorsMSolveJobs[{opts}];
+		If[msolveJobs===$Failed,Return[$Failed]];
+		groebnerBasisMSOptions = countSectorsGroebnerBasisMSOptions[{opts},msolveParallelThreads,msolveJobs];
 		gb = GroebnerBasisMS[prepared["Job"]["Ideal"],prepared["Variables"],
 			"Modulus"->prime,
 			"LeadingMonomialsOnly"->True,
-			Sequence@@FilterRules[{opts},Options[GroebnerBasisMS]]
+			Sequence@@groebnerBasisMSOptions
 		];
 		If[gb===$Failed,Return[$Failed]];
 		monomialCount = irreducibleMonomialCountFromLeadingMonomials[gb,prepared["Variables"]];

@@ -1,0 +1,2706 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[    111009,       2697]
+NotebookOptionsPosition[    103959,       2551]
+NotebookOutlinePosition[    106133,       2604]
+CellTagsIndexPosition[    106090,       2601]
+WindowTitle->SectorDropGraph
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {GridBox[{
+      {
+       ItemBox[Cell[BoxData[
+         RowBox[{
+          TemplateBox[{12},
+           "Spacer1"], Cell["DISC KOSKY SYMBOL", "PacletNameCell",
+           TextAlignment->Center,ExpressionUUID->
+           "34e1556a-4ade-4cb1-9501-d3b4c167c28e"], 
+          TemplateBox[{8},
+           "Spacer1"]}]],
+         TextAlignment->Center,ExpressionUUID->
+         "50d915fc-6072-43bc-b26f-d2e36df8bb28"],
+        Background->LightDarkSwitched[
+          RGBColor[0.490196, 0.576471, 0.690196]],
+        ItemSize->Full], ""}
+     },
+     GridBoxAlignment->{"Rows" -> {{Center}}},
+     GridBoxItemSize->{"Columns" -> {Full, 
+         Scaled[0.02]}, "Rows" -> {{2.5}}}], Cell[TextData[{
+     Cell[BoxData[
+      TagBox[
+       ActionMenuBox[
+        FrameBox[Cell[TextData[{
+          "See Also",
+          " ",
+          Cell[BoxData[
+           GraphicsBox[
+            {GrayLevel[0.66667], Thickness[0.13], 
+             LineBox[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]},
+            AspectRatio->1,
+            ImageSize->20,
+            PlotRange->{{-3, 4}, {-1, 1}}]],ExpressionUUID->
+           "d8665bb1-0048-4d77-93fd-01d26e2aa96c"]
+         }],ExpressionUUID->"e04f27ed-fe8c-405b-b8f6-a6f0072d20c8"],
+         StripOnInput->False],{
+        StyleBox[
+          "\"SectorDropGraphData\"", "SeeAlsoRelated", StripOnInput -> False] :> 
+         Documentation`HelpLookup["paclet:DiscKosky/ref/SectorDropGraphData"],
+          StyleBox[
+          "\"CheckDoubleDiscontinuities\"", "SeeAlsoRelated", StripOnInput -> 
+           False] :> Documentation`HelpLookup[
+          "paclet:DiscKosky/ref/CheckDoubleDiscontinuities"], 
+         StyleBox[
+          "\"CheckSequentialDiscontinuity\"", "SeeAlsoRelated", StripOnInput -> 
+           False] :> Documentation`HelpLookup[
+          "paclet:DiscKosky/ref/CheckSequentialDiscontinuity"], 
+         StyleBox[
+          "\"FindSingularitySectors\"", "SeeAlsoRelated", StripOnInput -> 
+           False] :> Documentation`HelpLookup[
+          "paclet:DiscKosky/ref/FindSingularitySectors"], 
+         StyleBox[
+          "\"CountSectorsUnregulated\"", "SeeAlsoRelated", StripOnInput -> 
+           False] :> Documentation`HelpLookup[
+          "paclet:DiscKosky/ref/CountSectorsUnregulated"], 
+         StyleBox[
+          "\"CountSectorsRegulated\"", "SeeAlsoRelated", StripOnInput -> 
+           False] :> Documentation`HelpLookup[
+          "paclet:DiscKosky/ref/CountSectorsRegulated"]},
+        Appearance->None,
+        MenuAppearance->Automatic,
+        MenuStyle->"SeeAlso"],
+       MouseAppearanceTag["LinkHand"]]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "a959dc4d-3b1c-4f45-8241-631873876c7c"],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      TagBox[
+       ActionMenuBox[
+        FrameBox[Cell[TextData[{
+          "Related Guides",
+          " ",
+          Cell[BoxData[
+           GraphicsBox[
+            {GrayLevel[0.66667], Thickness[0.13], 
+             LineBox[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]},
+            AspectRatio->1,
+            ImageSize->20,
+            PlotRange->{{-3, 4}, {-1, 1}}]],ExpressionUUID->
+           "5c5c3671-c38d-4160-91a9-3a84482c062b"]
+         }],ExpressionUUID->"1d4e8752-09a2-4331-8680-7ec0f9667368"],
+         StripOnInput->False],{
+        "\"DiscKosky Documentation\"" :> 
+         Documentation`HelpLookup["paclet:DiscKosky/guide/DiscKosky"]},
+        Appearance->None,
+        MenuAppearance->Automatic,
+        MenuStyle->"MoreAbout"],
+       MouseAppearanceTag["LinkHand"]]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "89366b07-6f18-4574-af69-8d8dd2bd5fa1"],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      TagBox[
+       ActionMenuBox[
+        FrameBox[Cell[TextData[{
+          "Tech Notes",
+          " ",
+          Cell[BoxData[
+           GraphicsBox[
+            {GrayLevel[0.66667], Thickness[0.13], 
+             LineBox[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]},
+            AspectRatio->1,
+            ImageSize->20,
+            PlotRange->{{-3, 4}, {-1, 1}}]],ExpressionUUID->
+           "e466c077-a0d9-4884-9c81-67c3040c66f7"]
+         }],ExpressionUUID->"bf0241e3-1738-4145-b685-79994dd8d91b"],
+         StripOnInput->False],{
+        "\"Using DiscKosky\"" :> 
+         Documentation`HelpLookup["paclet:DiscKosky/tutorial/UsingDiscKosky"]},
+        Appearance->None,
+        MenuAppearance->Automatic,
+        MenuStyle->"Tutorials"],
+       MouseAppearanceTag["LinkHand"]]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "858ee14b-108a-4ed5-bcfb-d6d1665a7717"],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      TagBox[
+       ActionMenuBox[
+        FrameBox[Cell[TextData[{
+          "URL",
+          " ",
+          Cell[BoxData[
+           GraphicsBox[
+            {GrayLevel[0.66667], Thickness[0.13], 
+             LineBox[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]},
+            AspectRatio->1,
+            ImageSize->20,
+            PlotRange->{{-3, 4}, {-1, 1}}]],ExpressionUUID->
+           "6ea83413-5355-40af-8064-e483168f6d5b"]
+         }],ExpressionUUID->"a4ce64b8-d12a-40aa-b335-1ac1092fc680"],
+         StripOnInput->False],{
+        "\"DiscKosky/ref/SectorDropGraph\"" :> None, 
+         "\"Copy Wolfram Documentation Center URL\"" :> 
+         CopyToClipboard["DiscKosky/ref/SectorDropGraph"], Delimiter, 
+         "\"Copy web URL\"" :> 
+         Module[{DocumentationSearch`Private`nb$}, 
+           DocumentationSearch`Private`nb$ = 
+            NotebookPut[
+             Notebook[{
+               Cell[BoxData[
+                 MakeBoxes[
+                  Hyperlink[
+                   "http://reference.wolfram.com/language/DiscKosky/ref/\
+SectorDropGraph.html"], StandardForm]], "Input", TextClipboardType -> 
+                 "PlainText"]}, Visible -> False]]; 
+           SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+           FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+           NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+         "\"Go to web URL\"" :> 
+         FrontEndExecute[{
+           NotebookLocate[{
+             URL[If[TrueQ[False], 
+                 "http://reference.wolfram.com/system-modeler/", 
+                 "http://reference.wolfram.com/language/"] <> 
+               "DiscKosky/ref/SectorDropGraph" <> ".html"], None}]}]},
+        Appearance->None,
+        MenuAppearance->Automatic,
+        MenuStyle->"URLMenu"],
+       MouseAppearanceTag["LinkHand"]]],
+      LineSpacing->{1.4, 0},ExpressionUUID->
+      "17f3e554-597c-43ad-a462-fb4b7941fbb7"]
+    }], "AnchorBar",
+     CacheGraphics->False,ExpressionUUID->
+     "ba96795a-9f2a-4c4a-a8ba-df13320ca8a7"]}
+  }]], "AnchorBarGrid",
+ CellID->1,ExpressionUUID->"47d99cb7-39a1-455d-b6e3-7df9e8f0a011"],
+
+Cell["DiscKosky`", "ContextNameCell",ExpressionUUID->"658e9356-1dec-40db-b713-62f1615d2bf8"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[GridBox[{
+   {Cell[TextData[{
+     Cell[
+     "SectorDropGraph", "ObjectName",ExpressionUUID->
+      "46fdb759-68ec-46a2-a089-d0a60b954b96"],
+     Cell[BoxData[
+      TemplateBox[{8},
+       "Spacer1"]],ExpressionUUID->"733de29a-e7d2-4204-9b0a-ca76e995a266"],
+     Cell[BoxData[
+     ""], "ObjectNameTranslation",ExpressionUUID->
+      "6a0bd683-544c-422f-b7a8-eedbdaab352e"]
+    }],ExpressionUUID->"4496696b-1685-4aca-b2ef-3b642ef78231"], 
+    "\[SpanFromLeft]"}
+  }]], "ObjectNameGrid",ExpressionUUID->"ba85bd03-cd13-43f9-bfba-\
+990c70117853"],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{
+       TemplateBox[{
+         Cell[
+          TextData["SectorDropGraph"]], 
+         "paclet:DiscKosky/ref/SectorDropGraph", "DiscKosky Package Symbol"},
+        "PackageLink",
+        BaseStyle->"InlineFormula"], "[", 
+       RowBox[{
+        StyleBox["gpol", "TI"], ",", 
+        StyleBox["vars", "TI"], ",", 
+        StyleBox["singList", "TI"]}], "]"}]], "InlineFormula",
+      FontFamily->"Source Sans Pro",ExpressionUUID->
+      "2d538cd8-7c65-4162-873e-6593ce81a994"],
+     "\[LineSeparator]",
+     "draws a directed graph of the sectors of ",
+     Cell[BoxData[
+      StyleBox["gpol", "TI"]], "InlineFormula",
+      FontFamily->"Source Sans Pro",ExpressionUUID->
+      "dc1ee441-73a3-4b89-ab43-fa580fbf6fdb"],
+     ", labeled by the indices of the singularities in ",
+     Cell[BoxData[
+      StyleBox["singList", "TI"]], "InlineFormula",
+      FontFamily->"Source Sans Pro",ExpressionUUID->
+      "cc847716-dd6a-4d09-9688-9fe77a4d43bb"],
+     " that cause sector drops or ",
+     Cell[BoxData[
+      TemplateBox[{
+        Cell[
+         TextData["Indeterminate"]], "paclet:ref/Indeterminate"},
+       "RefLink",
+       BaseStyle->{"InlineFormula"}]], "InlineFormula",
+      FontFamily->"Source Sans Pro",ExpressionUUID->
+      "3de8bfdd-fef5-4404-8830-6cc377a743c3"],
+     " sector counts."
+    }],ExpressionUUID->"d61e3ad8-e154-4205-854d-70f9ea120203"]}
+  }]], "Usage",
+ CellID->1149527361,ExpressionUUID->"4bb9be90-45a7-47a4-98cf-1cc98b244bba"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[Cell[TextData[{
+  Cell[BoxData[
+   DynamicBox[ToBoxes[
+     If[CurrentValue[
+        EvaluationCell[], "CellGroupOpen"] =!= Closed, 
+      Style[
+       Graphics[{
+         Thickness[0.18], 
+         RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+         Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+        PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+       0.68 Inherited], 
+      Rotate[
+       Style[
+        Graphics[{
+          Thickness[0.18], 
+          RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+          Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+         PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+        0.68 Inherited], Rational[1, 2] Pi, {-1.65, -1}]]],
+    ImageSizeCache->{
+     13.600000000000001`, {-0.1685058593749993, 13.768505859375}}]],
+   ExpressionUUID->"88bc226d-08ac-445d-a651-b9aff13e0e44"],
+  Cell[BoxData[
+   TemplateBox[{1},
+    "Spacer1"]],ExpressionUUID->"dea83cd9-e5e2-44f1-9314-72a1ac14611a"],
+  "Details and Options"
+ }], "NotesFrameText",ExpressionUUID->
+  "a809fd70-c2e5-46b9-bd5c-de71f582c2b3"]],ExpressionUUID->"21379339-5c6c-\
+428d-a9db-6b962bd1d9eb"]], "NotesSection",
+ ShowGroupOpener->"Thumbnail",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CacheGraphics->False,
+ CellID->386113552,ExpressionUUID->"2c3cd770-e57b-405e-92ac-d70bd7e4ee42"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  StyleBox["gpol", "TI"]], "InlineFormula",
+  FontFamily->"Source Sans Pro",ExpressionUUID->
+  "7879e1af-a1d0-4d3d-ae8f-67d2bd63ca89"],
+ " is the Lee\[Dash]Pomeransky polynomial of a Feynman integral, ",
+ Cell[BoxData[
+  StyleBox["vars", "TI"]], "InlineFormula",
+  FontFamily->"Source Sans Pro",ExpressionUUID->
+  "b7a7e890-299d-4ac3-958e-99f4954f3c60"],
+ " is the list of its integration variables, and ",
+ Cell[BoxData[
+  StyleBox["singList", "TI"]], "InlineFormula",
+  FontFamily->"Source Sans Pro",ExpressionUUID->
+  "f8b42a7d-5e64-46e2-bd69-a8da7a7c7417"],
+ " is a list of candidate singularities, given as polynomials in the external \
+kinematic parameters."
+}], "Notes",
+ CellID->1736969072,ExpressionUUID->"6bcf0d75-80f7-43e5-bdfc-de5d97682b62"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["SectorDropGraph"]], "paclet:DiscKosky/ref/SectorDropGraph", 
+    "DiscKosky Package Symbol"},
+   "PackageLink",
+   BaseStyle->"InlineFormula"]], "InlineFormula",
+  FontFamily->"Source Sans Pro",ExpressionUUID->
+  "f12b90df-d23e-44b2-9895-a00f7441ec9a"],
+ " returns a ",
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["Graph"]], "paclet:ref/Graph"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineFormula",
+  FontFamily->"Source Sans Pro",ExpressionUUID->
+  "0312d5dc-8431-49c3-97c3-71e3de74eb28"],
+ " whose vertices are the sectors of ",
+ Cell[BoxData[
+  StyleBox["gpol", "TI"]], "InlineFormula",
+  FontFamily->"Source Sans Pro",ExpressionUUID->
+  "5171de5f-55cd-48eb-925a-400535deacde"],
+ ", given as lists of positions in ",
+ Cell[BoxData[
+  StyleBox["vars", "TI"]], "InlineFormula",
+  FontFamily->"Source Sans Pro",ExpressionUUID->
+  "4d0b632e-cfea-4bfb-b980-0d7a2901b39e"],
+ ", with arrows pointing from subsectors to immediate supersectors. It \
+returns ",
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["$Failed"]], "paclet:ref/$Failed"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineFormula",
+  FontFamily->"Source Sans Pro",ExpressionUUID->
+  "4cb0a17b-edee-437c-9db4-e068f72f4571"],
+ " if the critical point counts cannot be computed or do not pass the \
+validity checks."
+}], "Notes",
+ CellID->1500773682,ExpressionUUID->"3201bac1-e58f-46e6-9ddb-bed75f859022"],
+
+Cell[TextData[{
+ "Above each node is its sector, given as the list of variables that are not \
+set to zero. Below it are the indices ",
+ Cell[BoxData[
+  StyleBox["i", "TI"]], "InlineFormula",
+  FontFamily->"Source Sans Pro",ExpressionUUID->
+  "b7d9e018-4a31-41b3-907a-77f13d5685a3"],
+ " of the singularities associated with that sector: those for which the \
+number of critical points in the sector drops, or becomes ",
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["Indeterminate"]], "paclet:ref/Indeterminate"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineFormula",
+  FontFamily->"Source Sans Pro",ExpressionUUID->
+  "41b1a4da-a06c-4997-b5d5-dc6d5c38a554"],
+ ", when ",
+ Cell[BoxData[
+  RowBox[{
+   StyleBox["singList", "TI"], "\[LeftDoubleBracket]", 
+   StyleBox["i", "TI"], "\[RightDoubleBracket]"}]], "InlineFormula",
+  FontFamily->"Source Sans Pro",ExpressionUUID->
+  "e8d00902-ae77-43df-8260-bca952d29994"],
+ " vanishes."
+}], "Notes",
+ CellID->1443405534,ExpressionUUID->"40a7bcc0-0b5f-4977-b3a2-b8c50ad81041"],
+
+Cell[TextData[{
+ "With the default settings, a discontinuity with respect to ",
+ Cell[BoxData[
+  RowBox[{
+   StyleBox["singList", "TI"], "\[LeftDoubleBracket]", 
+   StyleBox["j", "TI"], "\[RightDoubleBracket]"}]], "InlineFormula",
+  FontFamily->"Source Sans Pro",ExpressionUUID->
+  "0d4f900d-faf1-445e-b5ef-b1f729e528ed"],
+ " can follow one with respect to ",
+ Cell[BoxData[
+  RowBox[{
+   StyleBox["singList", "TI"], "\[LeftDoubleBracket]", 
+   StyleBox["i", "TI"], "\[RightDoubleBracket]"}]], "InlineFormula",
+  FontFamily->"Source Sans Pro",ExpressionUUID->
+  "b681086f-8e0e-4472-b562-c85d276d44a3"],
+ " only if ",
+ Cell[BoxData[
+  StyleBox["j", "TI"]], "InlineFormula",
+  FontFamily->"Source Sans Pro",ExpressionUUID->
+  "7e05eaa7-bf6a-451d-b284-c1f65284b22a"],
+ " appears at a node where ",
+ Cell[BoxData[
+  StyleBox["i", "TI"]], "InlineFormula",
+  FontFamily->"Source Sans Pro",ExpressionUUID->
+  "e969ea93-b178-462a-9749-93383c359dd4"],
+ " appears, or at a node reachable from it along the arrows. Otherwise, the \
+Feynman integral ",
+ Cell[BoxData[
+  FormBox["\[ScriptCapitalI]", TraditionalForm]], "InlineMath",ExpressionUUID->
+  "3394ebf6-e430-4f65-850c-5a5da568f3eb"],
+ " satisfies the genealogical constraint ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["Disc", 
+     RowBox[{
+      StyleBox["singList", "TI"], "\[LeftDoubleBracket]", "j", 
+      "\[RightDoubleBracket]"}]], "\[CenterEllipsis]", 
+    SubscriptBox["Disc", 
+     RowBox[{
+      StyleBox["singList", "TI"], "\[LeftDoubleBracket]", "i", 
+      "\[RightDoubleBracket]"}]], "\[CenterEllipsis]", "\[ScriptCapitalI]", "=",
+     "0"}], TraditionalForm]], "InlineMath",ExpressionUUID->
+  "21eee5fa-fd57-4807-a56c-da81dcbd0615"],
+ "."
+}], "Notes",
+ CellID->1156255091,ExpressionUUID->"f3ba9007-8a4d-4bda-94dd-9cc34e7b657d"],
+
+Cell["The following options can be given:", "Notes",
+ CellID->151494426,ExpressionUUID->"2478f241-c6a7-47d9-affc-a85a0f77e3a0"],
+
+Cell[BoxData[GridBox[{
+   {Cell["      ", "TableRowIcon",ExpressionUUID->
+     "55ef94d7-1da0-4c97-b0f2-e9bc18b210df"], "\"\<CheckCriticalPointValidity\
+\>\"", 
+    TemplateBox[{
+      Cell[
+       TextData["True"]], "paclet:ref/True"},
+     "RefLink",
+     BaseStyle->{"3ColumnTableMod"}], Cell["\<\
+whether to run automatic checks that certify the validity of the output\
+\>", "TableText",ExpressionUUID->"b4fb8bd0-52f3-4c77-a39a-24ff8bc60268"]},
+   {Cell["      ", "TableRowIcon",ExpressionUUID->
+     "20e7cffe-67a5-4f4a-9b7f-5185503740a8"], "\"\<RefineIndeterminates\>\"", 
+    
+    TemplateBox[{
+      Cell[
+       TextData["False"]], "paclet:ref/False"},
+     "RefLink",
+     BaseStyle->{"3ColumnTableMod"}], Cell["\<\
+whether to apply a more refined algorithm to discontinuity sequences that the \
+standard procedure cannot resolve\
+\>", "TableText",ExpressionUUID->"90065353-2b69-419e-a8ee-c61ea078b1d0"]},
+   {Cell["      ", "TableRowIcon",ExpressionUUID->
+     "cd1c8eeb-bac1-4e1d-b9c0-734193af77e9"], "\"\<DeleteEmptyNodes\>\"", 
+    TemplateBox[{
+      Cell[
+       TextData["True"]], "paclet:ref/True"},
+     "RefLink",
+     BaseStyle->{"3ColumnTableMod"}], Cell["\<\
+whether to remove nodes for which neither the sector nor any of its \
+subsectors has an associated singularity\
+\>", "TableText",ExpressionUUID->"2e17c1e7-1052-4d90-9849-c60659aebd35"]},
+   {Cell["      ", "TableRowIcon",ExpressionUUID->
+     "8c9ff9a7-2374-416d-9ee5-25a1c47db233"], "\"\<msolve\>\"", 
+    TemplateBox[{
+      Cell[
+       TextData["Automatic"]], "paclet:ref/Automatic"},
+     "RefLink",
+     BaseStyle->{"3ColumnTableMod"}], Cell["\<\
+whether to use msolve for the underlying Groebner basis computations\
+\>", "TableText",ExpressionUUID->"fa1f59e5-7326-41c8-ac0e-2cc38f825a9e"]}
+  }]], "3ColumnTableMod",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "Rows" -> {None, None, None, {None}}},
+ GridBoxDividers->{"Rows" -> {{True, True, True, True, True}}}},
+ CellID->438679867,ExpressionUUID->"8f010021-f4b5-4bce-b09d-db44f42af8c1"],
+
+Cell[TextData[{
+ "With the default setting ",
+ Cell[BoxData[
+  RowBox[{"\"\<DeleteEmptyNodes\>\"", "\[Rule]", 
+   TemplateBox[{
+     Cell[
+      TextData["True"]], "paclet:ref/True"},
+    "RefLink",
+    BaseStyle->{"InlineFormula"}]}]], "InlineFormula",
+  FontFamily->"Source Sans Pro",ExpressionUUID->
+  "34a39d38-90bb-44f5-951a-8489459faa28"],
+ ", a node is kept when it or one of its subsectors has an associated \
+singularity."
+}], "Notes",
+ CellID->1845252834,ExpressionUUID->"4c8f7ee4-8bce-439e-ba8f-e03753c9bc54"],
+
+Cell[TextData[{
+ "With ",
+ Cell[BoxData[
+  RowBox[{"\"\<RefineIndeterminates\>\"", "\[Rule]", 
+   TemplateBox[{
+     Cell[
+      TextData["True"]], "paclet:ref/True"},
+    "RefLink",
+    BaseStyle->{"InlineFormula"}]}]], "InlineFormula",
+  FontFamily->"Source Sans Pro",ExpressionUUID->
+  "3518d4ea-f1dc-47b5-ae85-b5252340e35c"],
+ ", singularities that make the critical point count ",
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["Indeterminate"]], "paclet:ref/Indeterminate"},
+   "RefLink",
+   BaseStyle->{"InlineFormula"}]], "InlineFormula",
+  FontFamily->"Source Sans Pro",ExpressionUUID->
+  "45fba298-d1f1-4d73-ac78-6f73ac7745aa"],
+ " in a sector with no critical points in generic kinematics are removed from \
+the node of that sector and shown in orange on the edges leaving it."
+}], "Notes",
+ CellID->1086880136,ExpressionUUID->"80ee490e-cbbf-4da6-96fe-947652ce1da0"]
+}, Closed]],
+
+Cell["", "PageDelimiter",ExpressionUUID->"8235cc54-7b41-4889-bf97-d764757d88c1"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  DynamicBox[ToBoxes[
+    If[
+     MatchQ[
+      CurrentValue[
+       EvaluationNotebook[], {
+       TaggingRules, "Openers", "PrimaryExamplesSection"}, Open], 
+      Alternatives[True, Open]], 
+     Style[
+      Graphics[{
+        Thickness[0.18], 
+        RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+        Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+       PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+      0.68 Inherited], 
+     Rotate[
+      Style[
+       Graphics[{
+         Thickness[0.18], 
+         RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+         Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+        PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+       0.68 Inherited], Rational[1, 2] Pi, {-1.65, -1}]]],
+   ImageSizeCache->{
+    13.600000000000001`, {4.251494140625001, 9.348505859375}}]],
+  ExpressionUUID->"6be5ec5c-0652-4f46-b3f0-11035aba2363"],
+ Cell[BoxData[
+  TemplateBox[{1},
+   "Spacer1"]],ExpressionUUID->"87945997-e5fe-4956-8e3b-a5b43b2556cc"],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(4)", "ExampleCount",ExpressionUUID->
+  "123c328d-5c3a-44d3-9ea3-a3eb7c5f9372"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CacheGraphics->False,
+ CellID->1862370877,ExpressionUUID->"67d559dd-5443-4a71-a7f8-ce6e344a7eec"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<DiscKosky`\>\"", "]"}]], "Input", "ExampleInitialization",
+ CellLabel->"In[1]:=",
+ CellID->1955965034,ExpressionUUID->"773ae7de-6a5d-4385-ad44-be7a1e435e65"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  DynamicBox[ToBoxes[
+    If[CurrentValue[
+       EvaluationCell[], "CellGroupOpen"] =!= Closed, 
+     Style[
+      Graphics[{
+        Thickness[0.18], 
+        RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+        Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+       PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+      0.68 Inherited], 
+     Rotate[
+      Style[
+       Graphics[{
+         Thickness[0.18], 
+         RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+         Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+        PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+       0.68 Inherited], Rational[1, 2] Pi, {-1.65, -1}]]]]],ExpressionUUID->
+  "7706c61a-0425-4b0e-9cb6-1032d2246c75"],
+ Cell[BoxData[
+  TemplateBox[{1},
+   "Spacer1"]],ExpressionUUID->"79f1685c-2b77-4ce8-9096-f1fbe45ea4ed"],
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "304d5913-abf5-4735-950a-54fe226004e6"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CacheGraphics->False,
+ CellID->1293174714,ExpressionUUID->"e25b8bbc-b757-45c1-b8a2-cb1503794074"],
+
+Cell["\<\
+Define the Lee\[Dash]Pomeransky polynomial of the one-loop two-mass easy box, \
+its integration variables, and a list of candidate singularities:\
+\>", "ExampleText",
+ CellID->179208092,ExpressionUUID->"b366d629-c84b-45d1-8e85-1928af25e298"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"gpol", "=", 
+   RowBox[{"x1", "+", "x2", "+", "x3", "-", 
+    RowBox[{"s23", " ", "x1", " ", "x3"}], "-", 
+    RowBox[{
+     SuperscriptBox["m2", "2"], " ", "x2", " ", "x3"}], "+", "x4", "-", 
+    RowBox[{
+     SuperscriptBox["m1", "2"], " ", "x1", " ", "x4"}], "-", 
+    RowBox[{"s12", " ", "x2", " ", "x4"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"vars", "=", 
+   RowBox[{"{", 
+    RowBox[{"x1", ",", "x2", ",", "x3", ",", "x4"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"rationalAlphabet", "=", 
+   RowBox[{"{", 
+    RowBox[{"s23", ",", "m1", ",", "m2", ",", "s12", ",", 
+     RowBox[{
+      RowBox[{"-", 
+       SuperscriptBox["m1", "2"]}], "+", "s23"}], ",", 
+     RowBox[{
+      RowBox[{"-", 
+       SuperscriptBox["m2", "2"]}], "+", "s23"}], ",", 
+     RowBox[{
+      RowBox[{"-", 
+       SuperscriptBox["m2", "2"]}], "+", "s12"}], ",", 
+     RowBox[{
+      RowBox[{"-", 
+       SuperscriptBox["m1", "2"]}], "+", "s12"}], ",", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["m1", "2"], " ", 
+       SuperscriptBox["m2", "2"]}], "-", 
+      RowBox[{"s12", " ", "s23"}]}], ",", 
+     RowBox[{
+      RowBox[{"-", 
+       SuperscriptBox["m1", "2"]}], "-", 
+      SuperscriptBox["m2", "2"], "+", "s12", "+", "s23"}]}], "}"}]}], 
+  ";"}]}], "Input",
+ CellProlog:>Needs["DiscKosky`"],
+ CellLabel->"In[1]:=",
+ CellID->1910047670,ExpressionUUID->"9f490047-f3d1-45e1-9ff8-ba17b61fdb05"],
+
+Cell["\<\
+Draw the default pruned sector graph. Allowed sequences of discontinuities \
+can be read off by either choosing a singularity at the current node, or one \
+that can be reached by following any sequence of directed arrows:\
+\>", "ExampleText",
+ CellID->922319825,ExpressionUUID->"26334266-977e-4449-9011-17b18498148a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SectorDropGraph", "[", 
+  RowBox[{"gpol", ",", "vars", ",", "rationalAlphabet"}], "]"}]], "Input",
+ CellProlog:>Needs["DiscKosky`"],
+ CellLabel->"In[2]:=",
+ CellID->406658803,ExpressionUUID->"84206648-4c1d-429d-a2cf-6e02a86a8e8a"],
+
+Cell[BoxData[
+ GraphicsBox[
+  NamespaceBox["NetworkGraphics",
+   DynamicModuleBox[{Typeset`graph = HoldComplete[
+     Graph[{{1, 3}, {1, 4}, {2, 3}, {2, 4}, {1, 2, 3}, {1, 2, 4}, {1, 3, 4}, {
+       2, 3, 4}, {1, 2, 3, 4}}, {{{1, 5}, {1, 7}, {2, 6}, {2, 7}, {3, 5}, {3, 
+       8}, {4, 6}, {4, 8}, {5, 9}, {6, 9}, {7, 9}, {8, 9}}, Null}, {
+      GraphLayout -> "LayeredDigraphEmbedding", ImagePadding -> 40, ImageSize -> 
+       Large, VertexLabels -> {{1, 2, 3} -> Placed[{
+            Pane[
+             Style["{x1, x2, x3}", 10, 
+              GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], 
+            Pane[
+             Style["{6}", 10, Bold, 
+              RGBColor[0.55, 0.1, 0.08]], 
+             FrameMargins -> {{0, 0}, {0, 7}}]}, {Above, Below}], {2, 3, 4} -> 
+         Placed[{
+            Pane[
+             Style["{x2, x3, x4}", 10, 
+              GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], 
+            Pane[
+             Style["{7}", 10, Bold, 
+              RGBColor[0.55, 0.1, 0.08]], 
+             FrameMargins -> {{0, 0}, {0, 7}}]}, {Above, Below}], {1, 2, 4} -> 
+         Placed[{
+            Pane[
+             Style["{x1, x2, x4}", 10, 
+              GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], 
+            Pane[
+             Style["{8}", 10, Bold, 
+              RGBColor[0.55, 0.1, 0.08]], 
+             FrameMargins -> {{0, 0}, {0, 7}}]}, {Above, Below}], {2, 3} -> 
+         Placed[{
+            Pane[
+             Style["{x2, x3}", 10, 
+              GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], 
+            Pane[
+             Style["{3}", 10, Bold, 
+              RGBColor[0.55, 0.1, 0.08]], 
+             FrameMargins -> {{0, 0}, {0, 7}}]}, {Above, Below}], {2, 4} -> 
+         Placed[{
+            Pane[
+             Style["{x2, x4}", 10, 
+              GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], 
+            Pane[
+             Style["{4}", 10, Bold, 
+              RGBColor[0.55, 0.1, 0.08]], 
+             FrameMargins -> {{0, 0}, {0, 7}}]}, {Above, Below}], {1, 2, 3, 
+          4} -> Placed[{
+            Pane[
+             Style["{x1, x2, x3, x4}", 10, 
+              GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], 
+            Pane[
+             Style["{9, 10}", 10, Bold, 
+              RGBColor[0.55, 0.1, 0.08]], 
+             FrameMargins -> {{0, 0}, {0, 7}}]}, {Above, Below}], {1, 3, 4} -> 
+         Placed[{
+            Pane[
+             Style["{x1, x3, x4}", 10, 
+              GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], 
+            Pane[
+             Style["{5}", 10, Bold, 
+              RGBColor[0.55, 0.1, 0.08]], 
+             FrameMargins -> {{0, 0}, {0, 7}}]}, {Above, Below}], {1, 4} -> 
+         Placed[{
+            Pane[
+             Style["{x1, x4}", 10, 
+              GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], 
+            Pane[
+             Style["{2}", 10, Bold, 
+              RGBColor[0.55, 0.1, 0.08]], 
+             FrameMargins -> {{0, 0}, {0, 7}}]}, {Above, Below}], {1, 3} -> 
+         Placed[{
+            Pane[
+             Style["{x1, x3}", 10, 
+              GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], 
+            Pane[
+             Style["{1}", 10, Bold, 
+              RGBColor[0.55, 0.1, 0.08]], 
+             FrameMargins -> {{0, 0}, {0, 7}}]}, {Above, Below}]}, 
+       VertexShapeFunction -> {"Circle"}, VertexStyle -> {
+         Directive[
+          GrayLevel[1], 
+          EdgeForm[
+           GrayLevel[0.35]]]}}]]}, 
+    TagBox[GraphicsGroupBox[{
+       {Hue[0.6, 0.7, 0.7], Opacity[0.7], CapForm["Round"], Arrowheads[
+        Medium], ArrowBox[{{0., 2.}, {1., 1.}}, 0.030239520958083826`], 
+        ArrowBox[{{0., 2.}, {0., 1.}}, 0.030239520958083826`], 
+        ArrowBox[{{1., 2.}, {2., 1.}}, 0.030239520958083826`], 
+        ArrowBox[{{1., 2.}, {0., 1.}}, 0.030239520958083826`], 
+        ArrowBox[{{2., 2.}, {1., 1.}}, 0.030239520958083826`], 
+        ArrowBox[{{2., 2.}, {3., 1.}}, 0.030239520958083826`], 
+        ArrowBox[{{3., 2.}, {2., 1.}}, 0.030239520958083826`], 
+        ArrowBox[{{3., 2.}, {3., 1.}}, 0.030239520958083826`], 
+        ArrowBox[{{1., 1.}, {2., 0.}}, 0.030239520958083826`], 
+        ArrowBox[{{2., 1.}, {2., 0.}}, 0.030239520958083826`], 
+        ArrowBox[{{0., 1.}, {2., 0.}}, 0.030239520958083826`], 
+        ArrowBox[{{3., 1.}, {2., 0.}}, 0.030239520958083826`]}, 
+       {GrayLevel[1], EdgeForm[{GrayLevel[0.35], Opacity[
+        0.7]}], {DiskBox[{0., 2.}, 0.030239520958083826], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x1, x3}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {0., 2.0302395209580837}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{1}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]],
+           FrameMargins->{{0, 0}, {0, 7}}], 
+          Offset[{0, -2}, {0., 1.969760479041916}], ImageScaled[{0.5, 1}],
+          BaseStyle->"Graphics"]}, {DiskBox[{1., 2.}, 0.030239520958083826], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x1, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {1., 2.0302395209580837}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{2}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]],
+           FrameMargins->{{0, 0}, {0, 7}}], 
+          Offset[{0, -2}, {1., 1.969760479041916}], ImageScaled[{0.5, 1}],
+          BaseStyle->"Graphics"]}, {DiskBox[{2., 2.}, 0.030239520958083826], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x2, x3}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {2., 2.0302395209580837}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{3}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]],
+           FrameMargins->{{0, 0}, {0, 7}}], 
+          Offset[{0, -2}, {2., 1.969760479041916}], ImageScaled[{0.5, 1}],
+          BaseStyle->"Graphics"]}, {DiskBox[{3., 2.}, 0.030239520958083826], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x2, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {3., 2.0302395209580837}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{4}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]],
+           FrameMargins->{{0, 0}, {0, 7}}], 
+          Offset[{0, -2}, {3., 1.969760479041916}], ImageScaled[{0.5, 1}],
+          BaseStyle->"Graphics"]}, {DiskBox[{1., 1.}, 0.030239520958083826], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x1, x2, x3}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {1., 1.030239520958084}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{6}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]],
+           FrameMargins->{{0, 0}, {0, 7}}], 
+          Offset[{0, -2}, {1., 0.9697604790419162}], ImageScaled[{0.5, 1}],
+          BaseStyle->"Graphics"]}, {DiskBox[{2., 1.}, 0.030239520958083826], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x1, x2, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {2., 1.030239520958084}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{8}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]],
+           FrameMargins->{{0, 0}, {0, 7}}], 
+          Offset[{0, -2}, {2., 0.9697604790419162}], ImageScaled[{0.5, 1}],
+          BaseStyle->"Graphics"]}, {DiskBox[{0., 1.}, 0.030239520958083826], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x1, x3, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {0., 1.030239520958084}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{5}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]],
+           FrameMargins->{{0, 0}, {0, 7}}], 
+          Offset[{0, -2}, {0., 0.9697604790419162}], ImageScaled[{0.5, 1}],
+          BaseStyle->"Graphics"]}, {DiskBox[{3., 1.}, 0.030239520958083826], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x2, x3, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {3., 1.030239520958084}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{7}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]],
+           FrameMargins->{{0, 0}, {0, 7}}], 
+          Offset[{0, -2}, {3., 0.9697604790419162}], ImageScaled[{0.5, 1}],
+          BaseStyle->"Graphics"]}, {DiskBox[{2., 0.}, 0.030239520958083826], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x1, x2, x3, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {2., 0.030239520958083826}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{9, 10}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]],
+           FrameMargins->{{0, 0}, {0, 7}}], 
+          Offset[{0, -2}, {2., -0.030239520958083826}], ImageScaled[{0.5, 1}],
+          
+          BaseStyle->"Graphics"]}}}],
+     MouseAppearanceTag["NetworkGraphics"]],
+    AllowKernelInitialization->False]],
+  DefaultBaseStyle->"NetworkGraphics",
+  FormatType->TraditionalForm,
+  FrameTicks->None,
+  ImagePadding->40,
+  ImageSize->Large]], "Output",
+ CellLabel->"Out[2]=",
+ CellID->764713011,ExpressionUUID->"c4ad3fa7-2c8e-4d72-bd0f-b1908072cfee"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  DynamicBox[ToBoxes[
+    If[CurrentValue[
+       EvaluationCell[], "CellGroupOpen"] =!= Closed, 
+     Style[
+      Graphics[{
+        Thickness[0.18], 
+        RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+        Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+       PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+      0.68 Inherited], 
+     Rotate[
+      Style[
+       Graphics[{
+         Thickness[0.18], 
+         RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+         Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+        PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+       0.68 Inherited], Rational[1, 2] Pi, {-1.65, -1}]]]]],ExpressionUUID->
+  "47c58b7b-1e51-4aa2-9436-b96882584173"],
+ Cell[BoxData[
+  TemplateBox[{1},
+   "Spacer1"]],ExpressionUUID->"0be0a9c4-d706-401d-be2e-f5313d5dbeb7"],
+ "Options",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(3)", "ExampleCount",ExpressionUUID->
+  "f4d1881c-786d-40a0-b5a4-e5eb02c85441"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CacheGraphics->False,
+ CellID->150298669,ExpressionUUID->"9bcbff92-4c3f-4a07-98ab-e20f9776d3f3"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  DynamicBox[ToBoxes[
+    If[CurrentValue[
+       EvaluationCell[], "CellGroupOpen"] =!= Closed, 
+     Style[
+      Graphics[{
+        Thickness[0.18], 
+        RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+        Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+       PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+      0.68 Inherited], 
+     Rotate[
+      Style[
+       Graphics[{
+         Thickness[0.18], 
+         RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+         Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+        PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+       0.68 Inherited], Rational[1, 2] Pi, {-1.65, -1}]]]]],ExpressionUUID->
+  "6f1b0c22-1073-4075-a772-2ab5fad039e3"],
+ Cell[BoxData[
+  TemplateBox[{1},
+   "Spacer1"]],ExpressionUUID->"6f78c94f-4f65-4333-8140-611d33fa262f"],
+ "\"RefineIndeterminates\"",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "b8fcc5fa-1b94-405c-b84f-943e9723eb2d"]
+}], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CacheGraphics->False,
+ CellID->756015981,ExpressionUUID->"72786b7f-8513-4877-a68b-ac40c92b1c77"],
+
+Cell["\<\
+Refine the display of indeterminate singularities in the sector graph. \
+Non-repeating singularities are marked in orange and displayed on the edges \
+leaving a node. This indicates that, once a discontinuity has been taken with \
+respect to that singularity, one is forced to leave that sector and move down \
+the graph:\
+\>", "ExampleText",
+ CellID->1250265471,ExpressionUUID->"cce91621-c64a-420b-a7e0-d9d428a19e83"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SectorDropGraph", "[", 
+  RowBox[{"gpol", ",", "vars", ",", "rationalAlphabet", ",", 
+   RowBox[{"\"\<RefineIndeterminates\>\"", "\[Rule]", "True"}]}], 
+  "]"}]], "Input",
+ CellProlog:>Needs["DiscKosky`"],
+ CellLabel->"In[1]:=",
+ CellID->1903701423,ExpressionUUID->"306a2318-d8a0-4f0b-8ff9-9aba477c8c9c"],
+
+Cell[BoxData[
+ GraphicsBox[
+  NamespaceBox["NetworkGraphics",
+   DynamicModuleBox[{Typeset`graph = HoldComplete[
+     Graph[{{1, 3}, {1, 4}, {2, 3}, {2, 4}, {1, 2, 3}, {1, 2, 4}, {1, 3, 4}, {
+       2, 3, 4}, {1, 2, 3, 4}}, {{{1, 5}, {1, 7}, {2, 6}, {2, 7}, {3, 5}, {3, 
+       8}, {4, 6}, {4, 8}, {5, 9}, {6, 9}, {7, 9}, {8, 9}}, Null}, {
+      EdgeLabels -> {DirectedEdge[{1, 3, 4}, {1, 2, 3, 4}] -> Placed[
+           Style["{5}", 10, Bold, 
+            RGBColor[1, 0.5, 0]], Center], 
+         DirectedEdge[{1, 2, 4}, {1, 2, 3, 4}] -> Placed[
+           Style["{8}", 10, Bold, 
+            RGBColor[1, 0.5, 0]], Center], 
+         DirectedEdge[{1, 2, 3}, {1, 2, 3, 4}] -> Placed[
+           Style["{6}", 10, Bold, 
+            RGBColor[1, 0.5, 0]], Center], 
+         DirectedEdge[{2, 3, 4}, {1, 2, 3, 4}] -> Placed[
+           Style["{7}", 10, Bold, 
+            RGBColor[1, 0.5, 0]], Center]}, 
+       EdgeStyle -> {
+        DirectedEdge[{1, 2, 3}, {1, 2, 3, 4}] -> RGBColor[1, 0.5, 0], 
+         DirectedEdge[{1, 3, 4}, {1, 2, 3, 4}] -> RGBColor[1, 0.5, 0], 
+         DirectedEdge[{2, 3, 4}, {1, 2, 3, 4}] -> RGBColor[1, 0.5, 0], 
+         DirectedEdge[{1, 2, 4}, {1, 2, 3, 4}] -> RGBColor[1, 0.5, 0]}, 
+       GraphLayout -> "LayeredDigraphEmbedding", ImagePadding -> 40, 
+       ImageSize -> Large, VertexLabels -> {{1, 3, 4} -> Placed[
+           Pane[
+            Style["{x1, x3, x4}", 10, 
+             GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], Above], {1, 
+          2, 3} -> Placed[
+           Pane[
+            Style["{x1, x2, x3}", 10, 
+             GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], Above], {1, 
+          2, 4} -> Placed[
+           Pane[
+            Style["{x1, x2, x4}", 10, 
+             GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], Above], {2, 
+          4} -> Placed[{
+            Pane[
+             Style["{x2, x4}", 10, 
+              GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], 
+            Pane[
+             Style["{4}", 10, Bold, 
+              RGBColor[0.55, 0.1, 0.08]], 
+             FrameMargins -> {{0, 0}, {0, 7}}]}, {Above, Below}], {2, 3, 4} -> 
+         Placed[
+           Pane[
+            Style["{x2, x3, x4}", 10, 
+             GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], Above], {1, 
+          3} -> Placed[{
+            Pane[
+             Style["{x1, x3}", 10, 
+              GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], 
+            Pane[
+             Style["{1}", 10, Bold, 
+              RGBColor[0.55, 0.1, 0.08]], 
+             FrameMargins -> {{0, 0}, {0, 7}}]}, {Above, Below}], {2, 3} -> 
+         Placed[{
+            Pane[
+             Style["{x2, x3}", 10, 
+              GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], 
+            Pane[
+             Style["{3}", 10, Bold, 
+              RGBColor[0.55, 0.1, 0.08]], 
+             FrameMargins -> {{0, 0}, {0, 7}}]}, {Above, Below}], {1, 4} -> 
+         Placed[{
+            Pane[
+             Style["{x1, x4}", 10, 
+              GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], 
+            Pane[
+             Style["{2}", 10, Bold, 
+              RGBColor[0.55, 0.1, 0.08]], 
+             FrameMargins -> {{0, 0}, {0, 7}}]}, {Above, Below}], {1, 2, 3, 
+          4} -> Placed[{
+            Pane[
+             Style["{x1, x2, x3, x4}", 10, 
+              GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], 
+            Pane[
+             Style["{9, 10}", 10, Bold, 
+              RGBColor[0.55, 0.1, 0.08]], 
+             FrameMargins -> {{0, 0}, {0, 7}}]}, {Above, Below}]}, 
+       VertexShapeFunction -> {"Circle"}, VertexStyle -> {
+         Directive[
+          GrayLevel[1], 
+          EdgeForm[
+           GrayLevel[0.35]]]}}]]}, 
+    TagBox[GraphicsGroupBox[{
+       {Hue[0.6, 0.7, 0.7], Opacity[0.7], CapForm["Round"], Arrowheads[
+        Medium], ArrowBox[{{0., 2.}, {1., 1.}}, 0.030239520958083826`], 
+        ArrowBox[{{0., 2.}, {0., 1.}}, 0.030239520958083826`], 
+        ArrowBox[{{1., 2.}, {2., 1.}}, 0.030239520958083826`], 
+        ArrowBox[{{1., 2.}, {0., 1.}}, 0.030239520958083826`], 
+        ArrowBox[{{2., 2.}, {1., 1.}}, 0.030239520958083826`], 
+        ArrowBox[{{2., 2.}, {3., 1.}}, 0.030239520958083826`], 
+        ArrowBox[{{3., 2.}, {2., 1.}}, 0.030239520958083826`], 
+        ArrowBox[{{3., 2.}, {3., 1.}}, 0.030239520958083826`], {
+         {RGBColor[1, 0.5, 0], 
+          ArrowBox[{{1., 1.}, {2., 0.}}, 0.030239520958083826`]}, InsetBox[
+          StyleBox["\<\"{6}\"\>",
+           StripOnInput->False,
+           LineColor->RGBColor[1, 0.5, 0],
+           FrontFaceColor->RGBColor[1, 0.5, 0],
+           BackFaceColor->RGBColor[1, 0.5, 0],
+           GraphicsColor->RGBColor[1, 0.5, 0],
+           FontSize->10,
+           FontWeight->Bold,
+           FontColor->RGBColor[1, 0.5, 0]], {1.5, 0.5}, ImageScaled[{0.5, 0.5}],
+          BaseStyle->"Graphics"]}, {
+         {RGBColor[1, 0.5, 0], 
+          ArrowBox[{{2., 1.}, {2., 0.}}, 0.030239520958083826`]}, InsetBox[
+          StyleBox["\<\"{8}\"\>",
+           StripOnInput->False,
+           LineColor->RGBColor[1, 0.5, 0],
+           FrontFaceColor->RGBColor[1, 0.5, 0],
+           BackFaceColor->RGBColor[1, 0.5, 0],
+           GraphicsColor->RGBColor[1, 0.5, 0],
+           FontSize->10,
+           FontWeight->Bold,
+           FontColor->RGBColor[1, 0.5, 0]], {2., 0.5}, ImageScaled[{0.5, 0.5}],
+          BaseStyle->"Graphics"]}, {
+         {RGBColor[1, 0.5, 0], 
+          ArrowBox[{{0., 1.}, {2., 0.}}, 0.030239520958083826`]}, InsetBox[
+          StyleBox["\<\"{5}\"\>",
+           StripOnInput->False,
+           LineColor->RGBColor[1, 0.5, 0],
+           FrontFaceColor->RGBColor[1, 0.5, 0],
+           BackFaceColor->RGBColor[1, 0.5, 0],
+           GraphicsColor->RGBColor[1, 0.5, 0],
+           FontSize->10,
+           FontWeight->Bold,
+           FontColor->RGBColor[1, 0.5, 0]], {1., 0.5}, ImageScaled[{0.5, 0.5}],
+          BaseStyle->"Graphics"]}, {
+         {RGBColor[1, 0.5, 0], 
+          ArrowBox[{{3., 1.}, {2., 0.}}, 0.030239520958083826`]}, InsetBox[
+          StyleBox["\<\"{7}\"\>",
+           StripOnInput->False,
+           LineColor->RGBColor[1, 0.5, 0],
+           FrontFaceColor->RGBColor[1, 0.5, 0],
+           BackFaceColor->RGBColor[1, 0.5, 0],
+           GraphicsColor->RGBColor[1, 0.5, 0],
+           FontSize->10,
+           FontWeight->Bold,
+           FontColor->RGBColor[1, 0.5, 0]], {2.5, 0.5}, ImageScaled[{0.5, 0.5}],
+          BaseStyle->"Graphics"]}}, 
+       {GrayLevel[1], EdgeForm[{GrayLevel[0.35], Opacity[
+        0.7]}], {DiskBox[{0., 2.}, 0.030239520958083826], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x1, x3}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {0., 2.0302395209580837}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{1}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]],
+           FrameMargins->{{0, 0}, {0, 7}}], 
+          Offset[{0, -2}, {0., 1.969760479041916}], ImageScaled[{0.5, 1}],
+          BaseStyle->"Graphics"]}, {DiskBox[{1., 2.}, 0.030239520958083826], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x1, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {1., 2.0302395209580837}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{2}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]],
+           FrameMargins->{{0, 0}, {0, 7}}], 
+          Offset[{0, -2}, {1., 1.969760479041916}], ImageScaled[{0.5, 1}],
+          BaseStyle->"Graphics"]}, {DiskBox[{2., 2.}, 0.030239520958083826], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x2, x3}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {2., 2.0302395209580837}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{3}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]],
+           FrameMargins->{{0, 0}, {0, 7}}], 
+          Offset[{0, -2}, {2., 1.969760479041916}], ImageScaled[{0.5, 1}],
+          BaseStyle->"Graphics"]}, {DiskBox[{3., 2.}, 0.030239520958083826], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x2, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {3., 2.0302395209580837}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{4}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]],
+           FrameMargins->{{0, 0}, {0, 7}}], 
+          Offset[{0, -2}, {3., 1.969760479041916}], ImageScaled[{0.5, 1}],
+          BaseStyle->"Graphics"]}, {DiskBox[{1., 1.}, 0.030239520958083826], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x1, x2, x3}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {1., 1.030239520958084}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"]}, {DiskBox[{2., 1.}, 0.030239520958083826], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x1, x2, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {2., 1.030239520958084}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"]}, {DiskBox[{0., 1.}, 0.030239520958083826], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x1, x3, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {0., 1.030239520958084}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"]}, {DiskBox[{3., 1.}, 0.030239520958083826], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x2, x3, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {3., 1.030239520958084}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"]}, {DiskBox[{2., 0.}, 0.030239520958083826], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x1, x2, x3, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {2., 0.030239520958083826}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{9, 10}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]],
+           FrameMargins->{{0, 0}, {0, 7}}], 
+          Offset[{0, -2}, {2., -0.030239520958083826}], ImageScaled[{0.5, 1}],
+          
+          BaseStyle->"Graphics"]}}}],
+     MouseAppearanceTag["NetworkGraphics"]],
+    AllowKernelInitialization->False]],
+  DefaultBaseStyle->"NetworkGraphics",
+  FormatType->TraditionalForm,
+  FrameTicks->None,
+  ImagePadding->40,
+  ImageSize->Large]], "Output",
+ CellLabel->"Out[1]=",
+ CellID->1499018051,ExpressionUUID->"f89e65ca-46a6-48d8-ada0-f3844cdee608"]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  DynamicBox[ToBoxes[
+    If[CurrentValue[
+       EvaluationCell[], "CellGroupOpen"] =!= Closed, 
+     Style[
+      Graphics[{
+        Thickness[0.18], 
+        RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+        Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+       PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+      0.68 Inherited], 
+     Rotate[
+      Style[
+       Graphics[{
+         Thickness[0.18], 
+         RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+         Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+        PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+       0.68 Inherited], Rational[1, 2] Pi, {-1.65, -1}]]]]],ExpressionUUID->
+  "715a574a-5690-4522-959c-c4cc8a9d4fb9"],
+ Cell[BoxData[
+  TemplateBox[{1},
+   "Spacer1"]],ExpressionUUID->"58050914-66f2-4c45-9b8e-0f3c8c3d1575"],
+ "\"DeleteEmptyNodes\"",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "7eecc9d0-e1e1-4427-aaa3-60a89bae777f"]
+}], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CacheGraphics->False,
+ CellID->1187023014,ExpressionUUID->"5d05d8fb-f0f9-4cad-86c3-32cf321207a2"],
+
+Cell["\<\
+Draw every sector node, including those for which neither the sector nor any \
+of its subsectors has an associated singularity:\
+\>", "ExampleText",
+ CellID->342777323,ExpressionUUID->"ea0c67a0-37e6-4260-95b6-62dd66ad9e5c"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SectorDropGraph", "[", 
+  RowBox[{"gpol", ",", "vars", ",", "rationalAlphabet", ",", 
+   RowBox[{"\"\<DeleteEmptyNodes\>\"", "\[Rule]", "False"}]}], "]"}]], "Input",\
+
+ CellProlog:>Needs["DiscKosky`"],
+ CellLabel->"In[1]:=",
+ CellID->1179187067,ExpressionUUID->"3eaed31a-8e88-449b-9310-5c868c680d6a"],
+
+Cell[BoxData[
+ GraphicsBox[
+  NamespaceBox["NetworkGraphics",
+   DynamicModuleBox[{Typeset`graph = HoldComplete[
+     Graph[{{}, {1}, {2}, {3}, {4}, {1, 2}, {1, 3}, {1, 4}, {2, 3}, {2, 4}, {
+       3, 4}, {1, 2, 3}, {1, 2, 4}, {1, 3, 4}, {2, 3, 4}, {1, 2, 3, 4}}, {{{1,
+        2}, {1, 3}, {1, 4}, {1, 5}, {2, 6}, {2, 7}, {2, 8}, {3, 6}, {3, 9}, {
+       3, 10}, {4, 7}, {4, 9}, {4, 11}, {5, 8}, {5, 10}, {5, 11}, {6, 12}, {6,
+        13}, {7, 12}, {7, 14}, {8, 13}, {8, 14}, {9, 12}, {9, 15}, {10, 13}, {
+       10, 15}, {11, 14}, {11, 15}, {12, 16}, {13, 16}, {14, 16}, {15, 16}}, 
+       Null}, {GraphLayout -> "LayeredDigraphEmbedding", ImagePadding -> 40, 
+       ImageSize -> Large, VertexLabels -> {{1, 3, 4} -> Placed[{
+            Pane[
+             Style["{x1, x3, x4}", 10, 
+              GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], 
+            Pane[
+             Style["{5}", 10, Bold, 
+              RGBColor[0.55, 0.1, 0.08]], 
+             FrameMargins -> {{0, 0}, {0, 7}}]}, {Above, Below}], {1, 2, 3} -> 
+         Placed[{
+            Pane[
+             Style["{x1, x2, x3}", 10, 
+              GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], 
+            Pane[
+             Style["{6}", 10, Bold, 
+              RGBColor[0.55, 0.1, 0.08]], 
+             FrameMargins -> {{0, 0}, {0, 7}}]}, {Above, Below}], {1, 2, 4} -> 
+         Placed[{
+            Pane[
+             Style["{x1, x2, x4}", 10, 
+              GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], 
+            Pane[
+             Style["{8}", 10, Bold, 
+              RGBColor[0.55, 0.1, 0.08]], 
+             FrameMargins -> {{0, 0}, {0, 7}}]}, {Above, Below}], {} -> Placed[
+           Pane[
+            Style["{}", 10, 
+             GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], Above], {2, 
+          4} -> Placed[{
+            Pane[
+             Style["{x2, x4}", 10, 
+              GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], 
+            Pane[
+             Style["{4}", 10, Bold, 
+              RGBColor[0.55, 0.1, 0.08]], 
+             FrameMargins -> {{0, 0}, {0, 7}}]}, {Above, Below}], {1, 2} -> 
+         Placed[
+           Pane[
+            Style["{x1, x2}", 10, 
+             GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], Above], {2, 
+          3, 4} -> Placed[{
+            Pane[
+             Style["{x2, x3, x4}", 10, 
+              GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], 
+            Pane[
+             Style["{7}", 10, Bold, 
+              RGBColor[0.55, 0.1, 0.08]], 
+             FrameMargins -> {{0, 0}, {0, 7}}]}, {Above, Below}], {2} -> 
+         Placed[
+           Pane[
+            Style["{x2}", 10, 
+             GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], Above], {1, 
+          3} -> Placed[{
+            Pane[
+             Style["{x1, x3}", 10, 
+              GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], 
+            Pane[
+             Style["{1}", 10, Bold, 
+              RGBColor[0.55, 0.1, 0.08]], 
+             FrameMargins -> {{0, 0}, {0, 7}}]}, {Above, Below}], {2, 3} -> 
+         Placed[{
+            Pane[
+             Style["{x2, x3}", 10, 
+              GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], 
+            Pane[
+             Style["{3}", 10, Bold, 
+              RGBColor[0.55, 0.1, 0.08]], 
+             FrameMargins -> {{0, 0}, {0, 7}}]}, {Above, Below}], {1} -> 
+         Placed[
+           Pane[
+            Style["{x1}", 10, 
+             GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], Above], {4} -> 
+         Placed[
+           Pane[
+            Style["{x4}", 10, 
+             GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], Above], {1, 
+          4} -> Placed[{
+            Pane[
+             Style["{x1, x4}", 10, 
+              GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], 
+            Pane[
+             Style["{2}", 10, Bold, 
+              RGBColor[0.55, 0.1, 0.08]], 
+             FrameMargins -> {{0, 0}, {0, 7}}]}, {Above, Below}], {1, 2, 3, 
+          4} -> Placed[{
+            Pane[
+             Style["{x1, x2, x3, x4}", 10, 
+              GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], 
+            Pane[
+             Style["{9, 10}", 10, Bold, 
+              RGBColor[0.55, 0.1, 0.08]], 
+             FrameMargins -> {{0, 0}, {0, 7}}]}, {Above, Below}], {3} -> 
+         Placed[
+           Pane[
+            Style["{x3}", 10, 
+             GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], Above], {3, 
+          4} -> Placed[
+           Pane[
+            Style["{x3, x4}", 10, 
+             GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], Above]}, 
+       VertexShapeFunction -> {"Circle"}, VertexStyle -> {
+         Directive[
+          GrayLevel[1], 
+          EdgeForm[
+           GrayLevel[0.35]]]}}]]}, 
+    TagBox[GraphicsGroupBox[{
+       {Hue[0.6, 0.7, 0.7], Opacity[0.7], CapForm["Round"], Arrowheads[
+        Medium], ArrowBox[{{0., 4.}, {-2., 3.}}, 0.043048128342245986`], 
+        ArrowBox[{{0., 4.}, {-1., 3.}}, 0.043048128342245986`], 
+        ArrowBox[{{0., 4.}, {0., 3.}}, 0.043048128342245986`], 
+        ArrowBox[{{0., 4.}, {1., 3.}}, 0.043048128342245986`], 
+        ArrowBox[{{-2., 3.}, {-3., 2.}}, 0.043048128342245986`], 
+        ArrowBox[{{-2., 3.}, {-2., 2.}}, 0.043048128342245986`], 
+        ArrowBox[{{-2., 3.}, {-1., 2.}}, 0.043048128342245986`], 
+        ArrowBox[{{-1., 3.}, {-3., 2.}}, 0.043048128342245986`], 
+        ArrowBox[{{-1., 3.}, {0., 2.}}, 0.043048128342245986`], 
+        ArrowBox[{{-1., 3.}, {1., 2.}}, 0.043048128342245986`], 
+        ArrowBox[{{0., 3.}, {-2., 2.}}, 0.043048128342245986`], 
+        ArrowBox[{{0., 3.}, {0., 2.}}, 0.043048128342245986`], 
+        ArrowBox[{{0., 3.}, {2., 2.}}, 0.043048128342245986`], 
+        ArrowBox[{{1., 3.}, {-1., 2.}}, 0.043048128342245986`], 
+        ArrowBox[{{1., 3.}, {1., 2.}}, 0.043048128342245986`], 
+        ArrowBox[{{1., 3.}, {2., 2.}}, 0.043048128342245986`], 
+        ArrowBox[{{-3., 2.}, {-2., 1.}}, 0.043048128342245986`], 
+        ArrowBox[{{-3., 2.}, {-1., 1.}}, 0.043048128342245986`], 
+        ArrowBox[{{-2., 2.}, {-2., 1.}}, 0.043048128342245986`], 
+        ArrowBox[{{-2., 2.}, {0., 1.}}, 0.043048128342245986`], 
+        ArrowBox[{{-1., 2.}, {-1., 1.}}, 0.043048128342245986`], 
+        ArrowBox[{{-1., 2.}, {0., 1.}}, 0.043048128342245986`], 
+        ArrowBox[{{0., 2.}, {-2., 1.}}, 0.043048128342245986`], 
+        ArrowBox[{{0., 2.}, {1., 1.}}, 0.043048128342245986`], 
+        ArrowBox[{{1., 2.}, {-1., 1.}}, 0.043048128342245986`], 
+        ArrowBox[{{1., 2.}, {1., 1.}}, 0.043048128342245986`], 
+        ArrowBox[{{2., 2.}, {0., 1.}}, 0.043048128342245986`], 
+        ArrowBox[{{2., 2.}, {1., 1.}}, 0.043048128342245986`], 
+        ArrowBox[{{-2., 1.}, {0., 0.}}, 0.043048128342245986`], 
+        ArrowBox[{{-1., 1.}, {0., 0.}}, 0.043048128342245986`], 
+        ArrowBox[{{0., 1.}, {0., 0.}}, 0.043048128342245986`], 
+        ArrowBox[{{1., 1.}, {0., 0.}}, 0.043048128342245986`]}, 
+       {GrayLevel[1], EdgeForm[{GrayLevel[0.35], Opacity[
+        0.7]}], {DiskBox[{0., 4.}, 0.043048128342245986], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {0., 4.043048128342246}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"]}, {DiskBox[{-2., 3.}, 0.043048128342245986], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x1}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {-2., 3.043048128342246}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"]}, {DiskBox[{-1., 3.}, 0.043048128342245986], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x2}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {-1., 3.043048128342246}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"]}, {DiskBox[{0., 3.}, 0.043048128342245986], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x3}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {0., 3.043048128342246}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"]}, {DiskBox[{1., 3.}, 0.043048128342245986], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {1., 3.043048128342246}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"]}, {DiskBox[{-3., 2.}, 0.043048128342245986], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x1, x2}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {-3., 2.043048128342246}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"]}, {DiskBox[{-2., 2.}, 0.043048128342245986], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x1, x3}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {-2., 2.043048128342246}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{1}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]],
+           FrameMargins->{{0, 0}, {0, 7}}], 
+          Offset[{0, -2}, {-2., 1.956951871657754}], ImageScaled[{0.5, 1}],
+          BaseStyle->"Graphics"]}, {DiskBox[{-1., 2.}, 0.043048128342245986], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x1, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {-1., 2.043048128342246}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{2}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]],
+           FrameMargins->{{0, 0}, {0, 7}}], 
+          Offset[{0, -2}, {-1., 1.956951871657754}], ImageScaled[{0.5, 1}],
+          BaseStyle->"Graphics"]}, {DiskBox[{0., 2.}, 0.043048128342245986], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x2, x3}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {0., 2.043048128342246}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{3}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]],
+           FrameMargins->{{0, 0}, {0, 7}}], 
+          Offset[{0, -2}, {0., 1.956951871657754}], ImageScaled[{0.5, 1}],
+          BaseStyle->"Graphics"]}, {DiskBox[{1., 2.}, 0.043048128342245986], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x2, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {1., 2.043048128342246}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{4}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]],
+           FrameMargins->{{0, 0}, {0, 7}}], 
+          Offset[{0, -2}, {1., 1.956951871657754}], ImageScaled[{0.5, 1}],
+          BaseStyle->"Graphics"]}, {DiskBox[{2., 2.}, 0.043048128342245986], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x3, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {2., 2.043048128342246}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"]}, {DiskBox[{-2., 1.}, 0.043048128342245986], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x1, x2, x3}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {-2., 1.043048128342246}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{6}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]],
+           FrameMargins->{{0, 0}, {0, 7}}], 
+          Offset[{0, -2}, {-2., 0.956951871657754}], ImageScaled[{0.5, 1}],
+          BaseStyle->"Graphics"]}, {DiskBox[{-1., 1.}, 0.043048128342245986], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x1, x2, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {-1., 1.043048128342246}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{8}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]],
+           FrameMargins->{{0, 0}, {0, 7}}], 
+          Offset[{0, -2}, {-1., 0.956951871657754}], ImageScaled[{0.5, 1}],
+          BaseStyle->"Graphics"]}, {DiskBox[{0., 1.}, 0.043048128342245986], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x1, x3, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {0., 1.043048128342246}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{5}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]],
+           FrameMargins->{{0, 0}, {0, 7}}], 
+          Offset[{0, -2}, {0., 0.956951871657754}], ImageScaled[{0.5, 1}],
+          BaseStyle->"Graphics"]}, {DiskBox[{1., 1.}, 0.043048128342245986], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x2, x3, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {1., 1.043048128342246}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{7}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]],
+           FrameMargins->{{0, 0}, {0, 7}}], 
+          Offset[{0, -2}, {1., 0.956951871657754}], ImageScaled[{0.5, 1}],
+          BaseStyle->"Graphics"]}, {DiskBox[{0., 0.}, 0.043048128342245986], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x1, x2, x3, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {0., 0.043048128342245986}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{9, 10}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]],
+           FrameMargins->{{0, 0}, {0, 7}}], 
+          Offset[{0, -2}, {0., -0.043048128342245986}], ImageScaled[{0.5, 1}],
+          
+          BaseStyle->"Graphics"]}}}],
+     MouseAppearanceTag["NetworkGraphics"]],
+    AllowKernelInitialization->False]],
+  DefaultBaseStyle->"NetworkGraphics",
+  FormatType->TraditionalForm,
+  FrameTicks->None,
+  ImagePadding->40,
+  ImageSize->Large]], "Output",
+ CellLabel->"Out[1]=",
+ CellID->863343724,ExpressionUUID->"f12aa609-76cf-4a0d-b74d-4cb170b50925"]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  DynamicBox[ToBoxes[
+    If[CurrentValue[
+       EvaluationCell[], "CellGroupOpen"] =!= Closed, 
+     Style[
+      Graphics[{
+        Thickness[0.18], 
+        RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+        Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+       PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+      0.68 Inherited], 
+     Rotate[
+      Style[
+       Graphics[{
+         Thickness[0.18], 
+         RGBColor[0.8509803921568627, 0.396078431372549, 0], 
+         Line[{{-1.8, 0.5}, {0, 0}, {1.8, 0.5}}]}, AspectRatio -> 1, 
+        PlotRange -> {{-3, 4}, {-1, 1}}, ImageSize -> 20], Magnification -> 
+       0.68 Inherited], Rational[1, 2] Pi, {-1.65, -1}]]]]],ExpressionUUID->
+  "f0eb1d9c-7746-414b-ab59-259e387bda0a"],
+ Cell[BoxData[
+  TemplateBox[{1},
+   "Spacer1"]],ExpressionUUID->"753650c5-0bf3-448e-8b20-16325de0b4c6"],
+ "\"CheckCriticalPointValidity\"",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount",ExpressionUUID->
+  "9f2df7f9-3067-4956-a835-93e8c27f6f0e"]
+}], "ExampleSubsection", "ExampleSubsection",
+ WholeCellGroupOpener->True,
+ CacheGraphics->False,
+ CellID->108782753,ExpressionUUID->"072f558a-80a8-476b-8b5e-e4ba887cfe96"],
+
+Cell[TextData[{
+ "For very complicated examples where the regulated count from ",
+ Cell[BoxData[
+  TemplateBox[{
+    Cell[
+     TextData["CountSectorsRegulated"]], 
+    "paclet:DiscKosky/ref/CountSectorsRegulated", "DiscKosky Package Symbol"},
+   
+   "PackageLink",
+   BaseStyle->"InlineFormula"]], "InlineFormula",
+  FontFamily->"Source Sans Pro",ExpressionUUID->
+  "6ddc63b2-e535-4a9c-b2d5-ac2fb7517424"],
+ " stalls, skip the generic regulated-count comparison when building the \
+sector graph:"
+}], "ExampleText",
+ CellID->476958408,ExpressionUUID->"9414eab3-3d49-4e95-a0ea-86874baa2ef5"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SectorDropGraph", "[", 
+  RowBox[{"gpol", ",", "vars", ",", "rationalAlphabet", ",", 
+   RowBox[{"\"\<CheckCriticalPointValidity\>\"", "\[Rule]", "False"}]}], 
+  "]"}]], "Input",
+ CellProlog:>Needs["DiscKosky`"],
+ CellLabel->"In[1]:=",
+ CellID->1549570136,ExpressionUUID->"3e94626f-7c05-4577-ada1-2a97d9210cef"],
+
+Cell[BoxData[
+ GraphicsBox[
+  NamespaceBox["NetworkGraphics",
+   DynamicModuleBox[{Typeset`graph = HoldComplete[
+     Graph[{{1, 3}, {1, 4}, {2, 3}, {2, 4}, {1, 2, 3}, {1, 2, 4}, {1, 3, 4}, {
+       2, 3, 4}, {1, 2, 3, 4}}, {{{1, 5}, {1, 7}, {2, 6}, {2, 7}, {3, 5}, {3, 
+       8}, {4, 6}, {4, 8}, {5, 9}, {6, 9}, {7, 9}, {8, 9}}, Null}, {
+      GraphLayout -> "LayeredDigraphEmbedding", ImagePadding -> 40, ImageSize -> 
+       Large, VertexLabels -> {{1, 2, 3} -> Placed[{
+            Pane[
+             Style["{x1, x2, x3}", 10, 
+              GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], 
+            Pane[
+             Style["{6}", 10, Bold, 
+              RGBColor[0.55, 0.1, 0.08]], 
+             FrameMargins -> {{0, 0}, {0, 7}}]}, {Above, Below}], {2, 3, 4} -> 
+         Placed[{
+            Pane[
+             Style["{x2, x3, x4}", 10, 
+              GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], 
+            Pane[
+             Style["{7}", 10, Bold, 
+              RGBColor[0.55, 0.1, 0.08]], 
+             FrameMargins -> {{0, 0}, {0, 7}}]}, {Above, Below}], {1, 2, 4} -> 
+         Placed[{
+            Pane[
+             Style["{x1, x2, x4}", 10, 
+              GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], 
+            Pane[
+             Style["{8}", 10, Bold, 
+              RGBColor[0.55, 0.1, 0.08]], 
+             FrameMargins -> {{0, 0}, {0, 7}}]}, {Above, Below}], {2, 3} -> 
+         Placed[{
+            Pane[
+             Style["{x2, x3}", 10, 
+              GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], 
+            Pane[
+             Style["{3}", 10, Bold, 
+              RGBColor[0.55, 0.1, 0.08]], 
+             FrameMargins -> {{0, 0}, {0, 7}}]}, {Above, Below}], {2, 4} -> 
+         Placed[{
+            Pane[
+             Style["{x2, x4}", 10, 
+              GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], 
+            Pane[
+             Style["{4}", 10, Bold, 
+              RGBColor[0.55, 0.1, 0.08]], 
+             FrameMargins -> {{0, 0}, {0, 7}}]}, {Above, Below}], {1, 2, 3, 
+          4} -> Placed[{
+            Pane[
+             Style["{x1, x2, x3, x4}", 10, 
+              GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], 
+            Pane[
+             Style["{9, 10}", 10, Bold, 
+              RGBColor[0.55, 0.1, 0.08]], 
+             FrameMargins -> {{0, 0}, {0, 7}}]}, {Above, Below}], {1, 3, 4} -> 
+         Placed[{
+            Pane[
+             Style["{x1, x3, x4}", 10, 
+              GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], 
+            Pane[
+             Style["{5}", 10, Bold, 
+              RGBColor[0.55, 0.1, 0.08]], 
+             FrameMargins -> {{0, 0}, {0, 7}}]}, {Above, Below}], {1, 4} -> 
+         Placed[{
+            Pane[
+             Style["{x1, x4}", 10, 
+              GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], 
+            Pane[
+             Style["{2}", 10, Bold, 
+              RGBColor[0.55, 0.1, 0.08]], 
+             FrameMargins -> {{0, 0}, {0, 7}}]}, {Above, Below}], {1, 3} -> 
+         Placed[{
+            Pane[
+             Style["{x1, x3}", 10, 
+              GrayLevel[0.15]], FrameMargins -> {{0, 0}, {7, 0}}], 
+            Pane[
+             Style["{1}", 10, Bold, 
+              RGBColor[0.55, 0.1, 0.08]], 
+             FrameMargins -> {{0, 0}, {0, 7}}]}, {Above, Below}]}, 
+       VertexShapeFunction -> {"Circle"}, VertexStyle -> {
+         Directive[
+          GrayLevel[1], 
+          EdgeForm[
+           GrayLevel[0.35]]]}}]]}, 
+    TagBox[GraphicsGroupBox[{
+       {Hue[0.6, 0.7, 0.7], Opacity[0.7], CapForm["Round"], Arrowheads[
+        Medium], ArrowBox[{{0., 2.}, {1., 1.}}, 0.030239520958083826`], 
+        ArrowBox[{{0., 2.}, {0., 1.}}, 0.030239520958083826`], 
+        ArrowBox[{{1., 2.}, {2., 1.}}, 0.030239520958083826`], 
+        ArrowBox[{{1., 2.}, {0., 1.}}, 0.030239520958083826`], 
+        ArrowBox[{{2., 2.}, {1., 1.}}, 0.030239520958083826`], 
+        ArrowBox[{{2., 2.}, {3., 1.}}, 0.030239520958083826`], 
+        ArrowBox[{{3., 2.}, {2., 1.}}, 0.030239520958083826`], 
+        ArrowBox[{{3., 2.}, {3., 1.}}, 0.030239520958083826`], 
+        ArrowBox[{{1., 1.}, {2., 0.}}, 0.030239520958083826`], 
+        ArrowBox[{{2., 1.}, {2., 0.}}, 0.030239520958083826`], 
+        ArrowBox[{{0., 1.}, {2., 0.}}, 0.030239520958083826`], 
+        ArrowBox[{{3., 1.}, {2., 0.}}, 0.030239520958083826`]}, 
+       {GrayLevel[1], EdgeForm[{GrayLevel[0.35], Opacity[
+        0.7]}], {DiskBox[{0., 2.}, 0.030239520958083826], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x1, x3}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {0., 2.0302395209580837}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{1}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]],
+           FrameMargins->{{0, 0}, {0, 7}}], 
+          Offset[{0, -2}, {0., 1.969760479041916}], ImageScaled[{0.5, 1}],
+          BaseStyle->"Graphics"]}, {DiskBox[{1., 2.}, 0.030239520958083826], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x1, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {1., 2.0302395209580837}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{2}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]],
+           FrameMargins->{{0, 0}, {0, 7}}], 
+          Offset[{0, -2}, {1., 1.969760479041916}], ImageScaled[{0.5, 1}],
+          BaseStyle->"Graphics"]}, {DiskBox[{2., 2.}, 0.030239520958083826], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x2, x3}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {2., 2.0302395209580837}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{3}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]],
+           FrameMargins->{{0, 0}, {0, 7}}], 
+          Offset[{0, -2}, {2., 1.969760479041916}], ImageScaled[{0.5, 1}],
+          BaseStyle->"Graphics"]}, {DiskBox[{3., 2.}, 0.030239520958083826], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x2, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {3., 2.0302395209580837}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{4}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]],
+           FrameMargins->{{0, 0}, {0, 7}}], 
+          Offset[{0, -2}, {3., 1.969760479041916}], ImageScaled[{0.5, 1}],
+          BaseStyle->"Graphics"]}, {DiskBox[{1., 1.}, 0.030239520958083826], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x1, x2, x3}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {1., 1.030239520958084}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{6}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]],
+           FrameMargins->{{0, 0}, {0, 7}}], 
+          Offset[{0, -2}, {1., 0.9697604790419162}], ImageScaled[{0.5, 1}],
+          BaseStyle->"Graphics"]}, {DiskBox[{2., 1.}, 0.030239520958083826], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x1, x2, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {2., 1.030239520958084}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{8}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]],
+           FrameMargins->{{0, 0}, {0, 7}}], 
+          Offset[{0, -2}, {2., 0.9697604790419162}], ImageScaled[{0.5, 1}],
+          BaseStyle->"Graphics"]}, {DiskBox[{0., 1.}, 0.030239520958083826], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x1, x3, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {0., 1.030239520958084}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{5}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]],
+           FrameMargins->{{0, 0}, {0, 7}}], 
+          Offset[{0, -2}, {0., 0.9697604790419162}], ImageScaled[{0.5, 1}],
+          BaseStyle->"Graphics"]}, {DiskBox[{3., 1.}, 0.030239520958083826], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x2, x3, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {3., 1.030239520958084}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{7}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]],
+           FrameMargins->{{0, 0}, {0, 7}}], 
+          Offset[{0, -2}, {3., 0.9697604790419162}], ImageScaled[{0.5, 1}],
+          BaseStyle->"Graphics"]}, {DiskBox[{2., 0.}, 0.030239520958083826], 
+         InsetBox[
+          PaneBox[
+           StyleBox["\<\"{x1, x2, x3, x4}\"\>",
+            StripOnInput->False,
+            LineColor->GrayLevel[0.15],
+            FrontFaceColor->GrayLevel[0.15],
+            BackFaceColor->GrayLevel[0.15],
+            GraphicsColor->GrayLevel[0.15],
+            FontSize->10,
+            FontColor->GrayLevel[0.15]],
+           FrameMargins->{{0, 0}, {7, 0}}], 
+          Offset[{0, 2}, {2., 0.030239520958083826}], ImageScaled[{0.5, 0}],
+          BaseStyle->"Graphics"], InsetBox[
+          PaneBox[
+           StyleBox["\<\"{9, 10}\"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0.55, 0.1, 0.08],
+            FrontFaceColor->RGBColor[0.55, 0.1, 0.08],
+            BackFaceColor->RGBColor[0.55, 0.1, 0.08],
+            GraphicsColor->RGBColor[0.55, 0.1, 0.08],
+            FontSize->10,
+            FontWeight->Bold,
+            FontColor->RGBColor[0.55, 0.1, 0.08]],
+           FrameMargins->{{0, 0}, {0, 7}}], 
+          Offset[{0, -2}, {2., -0.030239520958083826}], ImageScaled[{0.5, 1}],
+          
+          BaseStyle->"Graphics"]}}}],
+     MouseAppearanceTag["NetworkGraphics"]],
+    AllowKernelInitialization->False]],
+  DefaultBaseStyle->"NetworkGraphics",
+  FormatType->TraditionalForm,
+  FrameTicks->None,
+  ImagePadding->40,
+  ImageSize->Large]], "Output",
+ CellLabel->"Out[1]=",
+ CellID->16217606,ExpressionUUID->"254f219a-0cef-4a38-8fba-1197dc19f124"]
+}, Open  ]]
+}, Closed]]
+}, Closed]]
+}, Open  ]],
+
+Cell[BoxData[GridBox[{
+   {
+    DynamicBox[FEPrivate`ImportImage[
+      FrontEnd`FileName[{"Documentation", "FooterIcons"}, 
+       "RelatedFunction.png"]],
+     ImageSizeCache->{50., {26.47265625, 33.52734375}}], GridBox[{
+      {
+       StyleBox[
+        RowBox[{"See", " ", "Also"}], "SeeAlsoSection"]},
+      {Cell[TextData[{
+        Cell[BoxData[
+         TemplateBox[{
+           Cell[
+            TextData["SectorDropGraphData"]], 
+           "paclet:DiscKosky/ref/SectorDropGraphData", 
+           "DiscKosky Package Symbol"},
+          "PackageLink",
+          BaseStyle->"InlineFormula"]], "InlineFormula",
+         FontFamily->"Source Sans Pro",ExpressionUUID->
+         "0e1da552-b539-47d9-b0be-754522a9f798"],
+        "\[NonBreakingSpace]",
+        StyleBox[
+        "\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+         "InlineSeparator"],
+        " ",
+        Cell[BoxData[
+         TemplateBox[{
+           Cell[
+            TextData["CheckDoubleDiscontinuities"]], 
+           "paclet:DiscKosky/ref/CheckDoubleDiscontinuities", 
+           "DiscKosky Package Symbol"},
+          "PackageLink",
+          BaseStyle->"InlineFormula"]], "InlineFormula",
+         FontFamily->"Source Sans Pro",
+         CellTags->"5d56bca6-4668-46b2-b8a1-edb2d6f79288",ExpressionUUID->
+         "94396a3d-0007-4d16-8cb1-b8bc67b46d20"],
+        "\[NonBreakingSpace]",
+        StyleBox[
+        "\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+         "InlineSeparator"],
+        " ",
+        Cell[BoxData[
+         TemplateBox[{
+           Cell[
+            TextData["CheckSequentialDiscontinuity"]], 
+           "paclet:DiscKosky/ref/CheckSequentialDiscontinuity", 
+           "DiscKosky Package Symbol"},
+          "PackageLink",
+          BaseStyle->"InlineFormula"]], "InlineFormula",
+         FontFamily->"Source Sans Pro",
+         CellTags->"f0b19365-e12c-43ac-abab-c0967f9a2414",ExpressionUUID->
+         "eb65b872-59a9-4427-8e66-75a8e29483f2"],
+        "\[NonBreakingSpace]",
+        StyleBox[
+        "\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+         "InlineSeparator"],
+        " ",
+        Cell[BoxData[
+         TemplateBox[{
+           Cell[
+            TextData["FindSingularitySectors"]], 
+           "paclet:DiscKosky/ref/FindSingularitySectors", 
+           "DiscKosky Package Symbol"},
+          "PackageLink",
+          BaseStyle->"InlineFormula"]], "InlineFormula",
+         FontFamily->"Source Sans Pro",ExpressionUUID->
+         "a87cfd99-cc3a-4f37-a091-1dc3bd2ad879"],
+        "\[NonBreakingSpace]",
+        StyleBox[
+        "\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+         "InlineSeparator"],
+        " ",
+        Cell[BoxData[
+         TemplateBox[{
+           Cell[
+            TextData["CountSectorsUnregulated"]], 
+           "paclet:DiscKosky/ref/CountSectorsUnregulated", 
+           "DiscKosky Package Symbol"},
+          "PackageLink",
+          BaseStyle->"InlineFormula"]], "InlineFormula",
+         FontFamily->"Source Sans Pro",
+         CellTags->"4d03e2e5-d54e-4720-81a6-53a2b21e49c2",ExpressionUUID->
+         "e7dab620-0d4a-4379-a443-5f9cad4b32bc"],
+        "\[NonBreakingSpace]",
+        StyleBox[
+        "\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+         "InlineSeparator"],
+        " ",
+        Cell[BoxData[
+         TemplateBox[{
+           Cell[
+            TextData["CountSectorsRegulated"]], 
+           "paclet:DiscKosky/ref/CountSectorsRegulated", 
+           "DiscKosky Package Symbol"},
+          "PackageLink",
+          BaseStyle->"InlineFormula"]], "InlineFormula",
+         FontFamily->"Source Sans Pro",ExpressionUUID->
+         "1dfbea0a-2bbc-4613-9659-a186ebf4bb4d"]
+       }], "SeeAlso",ExpressionUUID->"fa7f8288-dada-49c9-b8b6-b6aa030cfbf7"]}
+     }]}
+  }]], "SeeAlsoSection",ExpressionUUID->"b15493d4-cb09-4478-961a-\
+dd31aebea9f4"],
+
+Cell[BoxData[GridBox[{
+   {
+    DynamicBox[FEPrivate`ImportImage[
+      FrontEnd`FileName[{"Documentation", "FooterIcons"}, 
+       "RelatedTechNote.png"]],
+     ImageSizeCache->{50., {26.47265625, 33.52734375}}], GridBox[{
+      {
+       StyleBox[
+        RowBox[{"Tech", " ", "Notes"}], "TechNotesSection"]},
+      {
+       RowBox[{"\[FilledVerySmallSquare]", Cell[BoxData[
+         TemplateBox[{
+           Cell[
+            TextData["Using DiscKosky"]], 
+           "paclet:DiscKosky/tutorial/UsingDiscKosky"},
+          "RefLinkPlain",
+          BaseStyle->{"Tutorials"}]], "Tutorials",ExpressionUUID->
+         "92bf9b83-c48d-4f9f-a256-bb043148ed1b"]}]}
+     }]}
+  }]], "TechNotesSection",ExpressionUUID->"7f9327fd-bf62-4b95-91c5-\
+7f897939d421"],
+
+Cell[BoxData[GridBox[{
+   {
+    DynamicBox[FEPrivate`ImportImage[
+      FrontEnd`FileName[{"Documentation", "FooterIcons"}, "RelatedGuide.png"]],
+     ImageSizeCache->{50., {26.47265625, 33.52734375}}], GridBox[{
+      {
+       StyleBox[
+        RowBox[{"Related", " ", "Guides"}], "MoreAboutSection"]},
+      {
+       RowBox[{"\[FilledVerySmallSquare]", Cell[BoxData[
+         TemplateBox[{
+           Cell[
+            TextData["DiscKosky Documentation"]], 
+           "paclet:DiscKosky/guide/DiscKosky"},
+          "RefLinkPlain",
+          BaseStyle->{"MoreAbout"}]], "MoreAbout",ExpressionUUID->
+         "b9ac94f9-6ac2-4e29-b4e3-604fef47e6c1"]}]}
+     }]}
+  }]], "MoreAboutSection",ExpressionUUID->"a777a0dc-f77f-488c-b0fd-\
+a0aff67fca17"],
+
+Cell[" ", "FooterCell",ExpressionUUID->"c8e1870c-c4c5-48da-a8cf-a6f9b0089b8e"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{900, 830},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"SectorDropGraph",
+Visible->True,
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "", "LinkTrails" -> "", 
+  "ExampleCounter" -> 1, 
+  "Openers" -> {
+   "PrimaryExamplesSection" -> Open, "ExampleSection" -> {"0" -> Open}, 
+    "AllOptsTable" -> Closed}, "NewStyles" -> True, 
+  "CitationPopupData" -> $Failed, "ShowCitation" -> False, "HasOptions" -> 
+  True, "RootCaptions" -> "", "HeaderCoreAreaLink" -> {}, 
+  "Metadata" -> {
+   "built" -> "{2026, 10, 31, 13, 44, 40.429420}", 
+    "history" -> {"XX", "", "", ""}, "context" -> "DiscKosky`", 
+    "keywords" -> {
+     "sector graph", "sector drop", "singularities", "directed graph", 
+      "indeterminate", "labels"}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Disc Kosky Symbol", "language" -> "en", "paclet" -> "DiscKosky", 
+    "status" -> "None", "summary" -> 
+    "SectorDropGraph[gpol, vars, singList] draws a directed graph of the \
+sectors of gpol, labeled by the indices of the singularities in singList that \
+cause sector drops or Indeterminate sector counts.", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "SectorDropGraph", "titlemodifier" -> "", 
+    "metadescription" -> "", "windowtitle" -> "SectorDropGraph", "type" -> 
+    "Symbol", "uri" -> "DiscKosky/ref/SectorDropGraph"}},
+CellContext->"Global`",
+FrontEndVersion->"15.0 for Mac OS X ARM (64-bit) (July 2, 2026)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "15.0 for Mac OS X ARM (64-bit) (July 2, 2026)", 
+  StyleDefinitions -> "PrivateStylesheetFormatting.nb"],
+ExpressionUUID->"4b5af2fa-48b1-4305-bf2c-6d6813ce4eb1"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[583, 21, 6906, 169, 70, "AnchorBarGrid",ExpressionUUID->"47d99cb7-39a1-455d-b6e3-7df9e8f0a011",
+ CellID->1],
+Cell[7492, 192, 92, 0, 70, "ContextNameCell",ExpressionUUID->"658e9356-1dec-40db-b713-62f1615d2bf8"],
+Cell[CellGroupData[{
+Cell[7609, 196, 558, 14, 70, "ObjectNameGrid",ExpressionUUID->"ba85bd03-cd13-43f9-bfba-990c70117853"],
+Cell[8170, 212, 1536, 39, 70, "Usage",ExpressionUUID->"4bb9be90-45a7-47a4-98cf-1cc98b244bba",
+ CellID->1149527361]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9743, 256, 1443, 34, 70, "NotesSection",ExpressionUUID->"2c3cd770-e57b-405e-92ac-d70bd7e4ee42",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->386113552],
+Cell[11189, 292, 784, 18, 70, "Notes",ExpressionUUID->"6bcf0d75-80f7-43e5-bdfc-de5d97682b62",
+ CellID->1736969072],
+Cell[11976, 312, 1478, 42, 70, "Notes",ExpressionUUID->"3201bac1-e58f-46e6-9ddb-bed75f859022",
+ CellID->1500773682],
+Cell[13457, 356, 1038, 26, 70, "Notes",ExpressionUUID->"40a7bcc0-0b5f-4977-b3a2-b8c50ad81041",
+ CellID->1443405534],
+Cell[14498, 384, 1803, 46, 70, "Notes",ExpressionUUID->"f3ba9007-8a4d-4bda-94dd-9cc34e7b657d",
+ CellID->1156255091],
+Cell[16304, 432, 127, 1, 70, "Notes",ExpressionUUID->"2478f241-c6a7-47d9-affc-a85a0f77e3a0",
+ CellID->151494426],
+Cell[16434, 435, 2049, 46, 70, "3ColumnTableMod",ExpressionUUID->"8f010021-f4b5-4bce-b09d-db44f42af8c1",
+ CellID->438679867],
+Cell[18486, 483, 520, 14, 70, "Notes",ExpressionUUID->"4c8f7ee4-8bce-439e-ba8f-e03753c9bc54",
+ CellID->1845252834],
+Cell[19009, 499, 885, 23, 70, "Notes",ExpressionUUID->"80ee490e-cbbf-4da6-96fe-947652ce1da0",
+ CellID->1086880136]
+}, Closed]],
+Cell[19909, 525, 80, 0, 70, "PageDelimiter",ExpressionUUID->"8235cc54-7b41-4889-bf97-d764757d88c1"],
+Cell[CellGroupData[{
+Cell[20014, 529, 1401, 37, 70, "PrimaryExamplesSection",ExpressionUUID->"67d559dd-5443-4a71-a7f8-ce6e344a7eec",
+ CellID->1862370877],
+Cell[21418, 568, 199, 3, 70, "Input",ExpressionUUID->"773ae7de-6a5d-4385-ad44-be7a1e435e65",
+ CellID->1955965034],
+Cell[CellGroupData[{
+Cell[21642, 575, 1236, 31, 70, "ExampleSection",ExpressionUUID->"e25b8bbc-b757-45c1-b8a2-cb1503794074",
+ CellID->1293174714],
+Cell[22881, 608, 251, 4, 70, "ExampleText",ExpressionUUID->"b366d629-c84b-45d1-8e85-1928af25e298",
+ CellID->179208092],
+Cell[23135, 614, 1461, 42, 70, "Input",ExpressionUUID->"9f490047-f3d1-45e1-9ff8-ba17b61fdb05",
+ CellID->1910047670],
+Cell[24599, 658, 327, 5, 70, "ExampleText",ExpressionUUID->"26334266-977e-4449-9011-17b18498148a",
+ CellID->922319825],
+Cell[CellGroupData[{
+Cell[24951, 667, 254, 5, 70, "Input",ExpressionUUID->"84206648-4c1d-429d-a2cf-6e02a86a8e8a",
+ CellID->406658803],
+Cell[25208, 674, 14883, 343, 70, "Output",ExpressionUUID->"c4ad3fa7-2c8e-4d72-bd0f-b1908072cfee",
+ CellID->764713011]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[40140, 1023, 1228, 31, 70, "ExampleSection",ExpressionUUID->"9bcbff92-4c3f-4a07-98ab-e20f9776d3f3",
+ CellID->150298669],
+Cell[CellGroupData[{
+Cell[41393, 1058, 1251, 31, 70, "ExampleSubsection",ExpressionUUID->"72786b7f-8513-4877-a68b-ac40c92b1c77",
+ CellID->756015981],
+Cell[42647, 1091, 428, 7, 70, "ExampleText",ExpressionUUID->"cce91621-c64a-420b-a7e0-d9d428a19e83",
+ CellID->1250265471],
+Cell[CellGroupData[{
+Cell[43100, 1102, 328, 7, 70, "Input",ExpressionUUID->"306a2318-d8a0-4f0b-8ff9-9aba477c8c9c",
+ CellID->1903701423],
+Cell[43431, 1111, 14694, 336, 70, "Output",ExpressionUUID->"f89e65ca-46a6-48d8-ada0-f3844cdee608",
+ CellID->1499018051]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[58174, 1453, 1248, 31, 70, "ExampleSubsection",ExpressionUUID->"5d05d8fb-f0f9-4cad-86c3-32cf321207a2",
+ CellID->1187023014],
+Cell[59425, 1486, 233, 4, 70, "ExampleText",ExpressionUUID->"ea0c67a0-37e6-4260-95b6-62dd66ad9e5c",
+ CellID->342777323],
+Cell[CellGroupData[{
+Cell[59683, 1494, 324, 7, 70, "Input",ExpressionUUID->"3eaed31a-8e88-449b-9310-5c868c680d6a",
+ CellID->1179187067],
+Cell[60010, 1503, 21303, 484, 70, "Output",ExpressionUUID->"f12aa609-76cf-4a0d-b74d-4cb170b50925",
+ CellID->863343724]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[81362, 1993, 1257, 31, 70, "ExampleSubsection",ExpressionUUID->"072f558a-80a8-476b-8b5e-e4ba887cfe96",
+ CellID->108782753],
+Cell[82622, 2026, 591, 15, 70, "ExampleText",ExpressionUUID->"9414eab3-3d49-4e95-a0ea-86874baa2ef5",
+ CellID->476958408],
+Cell[CellGroupData[{
+Cell[83238, 2045, 335, 7, 70, "Input",ExpressionUUID->"3e94626f-7c05-4577-ada1-2a97d9210cef",
+ CellID->1549570136],
+Cell[83576, 2054, 14882, 343, 70, "Output",ExpressionUUID->"254f219a-0cef-4a38-8fba-1197dc19f124",
+ CellID->16217606]
+}, Open  ]]
+}, Closed]]
+}, Closed]]
+}, Open  ]],
+Cell[98509, 2403, 3862, 101, 70, "SeeAlsoSection",ExpressionUUID->"b15493d4-cb09-4478-961a-dd31aebea9f4"],
+Cell[102374, 2506, 752, 20, 70, "TechNotesSection",ExpressionUUID->"7f9327fd-bf62-4b95-91c5-7f897939d421"],
+Cell[103129, 2528, 745, 19, 70, "MoreAboutSection",ExpressionUUID->"a777a0dc-f77f-488c-b0fd-a0aff67fca17"],
+Cell[103877, 2549, 78, 0, 70, "FooterCell",ExpressionUUID->"c8e1870c-c4c5-48da-a8cf-a6f9b0089b8e"]
+}
+]
+*)
+
+(* End of internal cache information *)
