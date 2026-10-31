@@ -66,6 +66,22 @@ singularitiesComputedQ[fullCountings_,indices_List]:=Module[{failed},
 ];
 
 
+(*indices must be positions in singList*)
+singularityIndicesValidQ[singList_,indices_]:=Module[{valid},
+	valid = MatchQ[indices,{__Integer}] && AllTrue[indices,1<=#<=Length[singList]&];
+	If[!valid,Print["Error: index out of bounds"]];
+	valid
+];
+
+
+(*every singularity in singList is imposed as "Constraint" in turn, so a user constraint cannot be applied as well*)
+constraintOptionFreeQ[head_Symbol,opts_List]:=Module[{free},
+	free = FilterRules[opts,"Constraint"]==={};
+	If[!free,Print["Error: \"Constraint\" is not supported by ",SymbolName[head],", since each singularity in singList is imposed as a constraint in turn"]];
+	free
+];
+
+
 ClearAll[findCutsIndex];
 findCutsIndex[fullCountings_,index_]:=findCutsIndex[fullCountings,index]=Module[{ans1,ans2,positions,positions2,cuts,cuts2},
 	ans1=fullCountings // Last;
@@ -108,7 +124,8 @@ FindSingularitySectors[gpol_,variables_,singList_,index_,opts:OptionsPattern[]]:
 		data1,outTrueCut,fullCountings
 	},
 	
-	If[!(index<=Length[singList]//TrueQ),Print["Error: index out of bounds"]; Return[$Failed]];
+	If[!constraintOptionFreeQ[FindSingularitySectors,{opts}],Return[$Failed]];
+	If[!singularityIndicesValidQ[singList,{index}],Return[$Failed]];
 	
 	fullCountings = buildEulerChiData[gpol,variables,singList,Sequence@@FilterRules[{opts},Options[buildEulerChiData]]];
 	If[fullCountings===$Failed,Return[$Failed]];
@@ -126,7 +143,9 @@ CheckSequentialDiscontinuity[gpol_,variables_,singList_,indexList_,opts:OptionsP
 		data1,outTrueCut,fullCountings
 	},
 	
-	If[!((indexList//Max)<=Length[singList]//TrueQ),Print["Error: index out of bounds"]; Return[$Failed]];
+	If[!constraintOptionFreeQ[CheckSequentialDiscontinuity,{opts}],Return[$Failed]];
+	If[!MatchQ[indexList,{__}],Print["Error: indexList must be a non-empty list of indices"]; Return[$Failed]];
+	If[!singularityIndicesValidQ[singList,indexList],Return[$Failed]];
 	
 	fullCountings = buildEulerChiData[gpol,variables,singList,Sequence@@FilterRules[{opts},Options[buildEulerChiData]]];
 	If[fullCountings===$Failed,Return[$Failed]];
@@ -157,6 +176,7 @@ CheckDoubleDiscontinuities[gpol_,variables_,singList_,opts:OptionsPattern[]]:=Mo
 		eulerChi,index,i,j,singularitieseulerChi,fulleulerChi,dropMatrix,fullCountings,failed
 	},
 	
+	If[!constraintOptionFreeQ[CheckDoubleDiscontinuities,{opts}],Return[$Failed]];
 	fullCountings = buildEulerChiData[gpol,variables,singList,Sequence@@FilterRules[{opts},Options[buildEulerChiData]]];
 	If[fullCountings===$Failed,Return[$Failed]];
 	(*rows and columns of singularities whose counting failed are $Failed*)

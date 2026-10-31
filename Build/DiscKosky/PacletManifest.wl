@@ -24,7 +24,7 @@
             ,
             "Hash"
             ->
-            "02972cc09efb9f65044447d005bee991d82642bdbdeb1896afbadf0f53202796"
+            "cf9cd1d607c212d1e7e028374e7bfb626fbe1b2916f0f282980a9e463475130c"
                 
         |>
         ,
@@ -50,7 +50,7 @@
             ,
             "Hash"
             ->
-            "88e874a889954cd4eb6d74a1974e89fdf775cd689281fc7b80ee5655a81cf85d"
+            "c306152ec3a8a9dd169f178ffb18f1a3696711025c2f5a3f23e222a6f4073f5e"
                 
         |>
         ,
@@ -63,7 +63,7 @@
             ,
             "Hash"
             ->
-            "89ddf240152a79a50ef3e04287eedc27e91dfa32c8f6797d265e5152d358dae1"
+            "fbd9ad6bf609b85202828f68e7b73bc0afa31deed7264f8a3fb0aa646bdac8d0"
                 
         |>
         ,
@@ -115,7 +115,7 @@
             ,
             "Hash"
             ->
-            "90e94ccbfd2672dd52fa2f9fc2cfb1ccf9636b8aae2e2d59d5d57aa2a9dad055"
+            "41d778cdc14b266c5829805741a6f16f237b5ab1b336b132ff566ae4df9fccb3"
                 
         |>
         ,
@@ -129,7 +129,7 @@
             ,
             "Hash"
             ->
-            "212696543addad51e28efada2751972ba6de77dd8dc4ba172738c92b13a82201"
+            "1a9a702e580bf5178cafd03b693f6e10495a22b1d7901478127e5b389c97199c"
                 
         |>
         ,
@@ -143,7 +143,7 @@
             ,
             "Hash"
             ->
-            "bb01450988c383c85065d1f84dc3a18721291301018f7c7102a9b71bcecc6c4a"
+            "6dab9749928da77df1e9678c4a4299e603f14aa5ad55f8389fc0d198750175c4"
                 
         |>
         ,
@@ -157,7 +157,7 @@
             ,
             "Hash"
             ->
-            "6f7c620ff25f78fcf9247155e840a671952b7f957af2166ab4a64d36ee069e65"
+            "3b417ada4223889acc3d86e7fcee72fc03c86859badf08a8a3970ec03976a07a"
                 
         |>
         ,
@@ -171,7 +171,7 @@
             ,
             "Hash"
             ->
-            "b82f3b4a012498983d4512d50fda372801d727ef357037804ba31130dfc9c3be"
+            "26edf76cfc6979552a1bffc8024fd7536c1af705286fd4ad3d136734d0699b07"
                 
         |>
         ,
@@ -185,7 +185,7 @@
             ,
             "Hash"
             ->
-            "a594d1c165e17cf1e7cafcd95bb103bcac0167c327e29db0b7d0ee54439f642a"
+            "abff21573ee877e9ed9f8a0704c6f12bfa7d86d8f7fbf8f31e462fcfeb8e80f8"
                 
         |>
         ,
@@ -199,7 +199,21 @@
             ,
             "Hash"
             ->
-            "443fa78367327dc60fb0dd786a73570ffce4f1d471393b67279daf78172f8329"
+            "51b208c1fe35d22e461787d304085c7100c5fb52acc0cc18daecf814fef6fb95"
+                
+        |>
+        ,
+        <|
+            "File"
+            ->
+            File[
+                "Documentation/English/ReferencePages/Symbols/SectorDropGraphData.nb"
+                    
+            ]
+            ,
+            "Hash"
+            ->
+            "031b4c50ed12c8050300cd3a1df5c2b1492194e7088b2c2fb7d5db67e4bccead"
                 
         |>
         ,
@@ -213,7 +227,7 @@
             ,
             "Hash"
             ->
-            "6932766b5e05ee5121555f8bee1324e0029090c99fd1024745892d95500fd8d4"
+            "bd3b66892b5e8206cb6aeda061e2ed3ce7167fac2e07435c54d6d004849d9f33"
                 
         |>
         ,
@@ -226,7 +240,7 @@
             ,
             "Hash"
             ->
-            "9a4dd77c8f46c44b915ba96666e70cc23bf648ab3d577382dc2e28b40202a1f1"
+            "198ddef5abfaa11ae7ccb6385fd0f65264a30a829bd89f8e62c11c4302836d67"
                 
         |>
     }

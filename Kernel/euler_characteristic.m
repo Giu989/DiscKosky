@@ -267,6 +267,9 @@ CountSectorsUnregulated[lpPoly_,physicalPropagators_List,physicalPropagatorsCut_
 		]
 	];
 	If[And[useMsolve,OptionValue["MonomialOrder"]=!=DegreeReverseLexicographic],Print["Error: msolve only supports DegreeReverseLexicographic order"];Return[$Failed];];
+	(*validated for both paths, but only the msolve path uses one prime for all sectors*)
+	primeIndex = resolvePrimeIndex[OptionValue["PrimeIndex"]];
+	If[primeIndex===$Failed,Return[$Failed]];
 
 	If[useMsolve,
 		msolveParallelThreads = resolveCountSectorsMSolveParallelThreads[{opts}];
@@ -274,8 +277,6 @@ CountSectorsUnregulated[lpPoly_,physicalPropagators_List,physicalPropagatorsCut_
 		msolveJobs = resolveCountSectorsMSolveJobs[{opts}];
 		If[msolveJobs===$Failed,Return[$Failed]];
 		groebnerBasisMSOptions = countSectorsGroebnerBasisMSOptions[{opts},msolveParallelThreads,msolveJobs];
-		primeIndex = resolvePrimeIndex[OptionValue["PrimeIndex"]];
-		If[primeIndex===$Failed,Return[$Failed]];
 		prime = primeList[[1+primeIndex]];
 		specialization = prepareKinematicSpecializationMS[lpPoly,physicalPropagators,prime,Sequence@@FilterRules[{opts},Options[countInSector]]];
 		If[specialization===$Failed,Return[$Failed]];
@@ -356,8 +357,9 @@ CountSectorsUnregulated[lpPoly_,physicalPropagators_List,physicalPropagatorsCut_
 ];
 
 Options[CountSectorsRegulated]=Join[Options[CountSectorsUnregulated],{"UseSameRho"->False}];
-CountSectorsRegulated[lpPoly_,physicalPropagators_List]:=
-	CountSectorsRegulated[lpPoly,physicalPropagators,{}];
+(*options are matched as bare rules, since OptionsPattern[] would also match the cut list {} and recurse*)
+CountSectorsRegulated[lpPoly_,physicalPropagators_List,opts:(_Rule|_RuleDelayed)...]:=
+	CountSectorsRegulated[lpPoly,physicalPropagators,{},opts];
 CountSectorsRegulated[lpPoly_,physicalPropagators_List,physicalPropagatorsCut_List,opts : OptionsPattern[]]:=Module[
 	{
 	useMsolve,useSameRho,primeIndex,prime,specialization,specializedPoly,prepared,gb,monomialCount,msolveParallelThreads,msolveJobs,groebnerBasisMSOptions

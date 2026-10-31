@@ -1,8 +1,8 @@
 (* ::Package:: *)
 
 ClearAll[
-	sectorAssociation, sectorLookup, sectorRemoveLabels, sectorDropLabels,
-	sectorZeroIndeterminateLabels, sectorEdgeDropLabels, sectorCoverEdges,
+	sectorLookup, sectorRemoveLabels, sectorDropLabels,
+	sectorEdgeDropLabels, sectorCoverEdges,
 	sectorToIndexSector, sectorLabelText, sectorDropLabelText, sectorVertexLabel,
 	sectorFilterEmptyNodes
 ];
@@ -133,6 +133,7 @@ SectorDropGraphData[gpol_,variables_,singList_,opts:OptionsPattern[]]:=Module[
 		toIndexSector,vertices,indexLabels,indexKeepLabels,indexEdges,indexEdgeLabels,filteredData
 	},
 	
+	If[!constraintOptionFreeQ[SectorDropGraphData,{opts}],Return[$Failed]];
 	If[!MemberQ[{True,False},OptionValue["RefineIndeterminates"]],
 		Print["Error: \"RefineIndeterminates\" must be True or False"];
 		Return[$Failed];
@@ -190,6 +191,7 @@ SectorDropGraph[gpol_,variables_,singList_,opts:OptionsPattern[]]:=Module[
 		data,vertices,labels,sectorLabels,edgeLabelRules,edgeStyleRules
 	},
 	
+	If[!constraintOptionFreeQ[SectorDropGraph,{opts}],Return[$Failed]];
 	data = SectorDropGraphData[gpol,variables,singList,opts];
 	If[data===$Failed,Return[$Failed]];
 	

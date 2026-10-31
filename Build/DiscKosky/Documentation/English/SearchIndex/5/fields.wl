@@ -45,6 +45,21 @@
 		"BulkRetrievalOptimized" -> False
 	|>,
 	<|
+		"Name" -> "ExampleText",
+		"Type" -> "Text",
+		"Weight" -> 0.05,
+		"Tokenized" -> True,
+		"Stored" -> False,
+		"Searchable" -> True,
+		"Language" -> "English",
+		"IgnoreCase" -> True,
+		"StemmingMethod" -> Automatic,
+		"CamelCaseMatching" -> True,
+		"DeleteStopWords" -> True,
+		"StoreTermVectors" -> False,
+		"BulkRetrievalOptimized" -> False
+	|>,
+	<|
 		"Name" -> "SeeAlso",
 		"Type" -> "Text",
 		"LengthWeighted" -> False,
