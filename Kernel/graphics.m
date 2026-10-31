@@ -1,8 +1,8 @@
 (* ::Package:: *)
 
 ClearAll[
-	sectorAssociation, sectorLookup, sectorRemoveLabels, sectorDropLabels,
-	sectorZeroIndeterminateLabels, sectorEdgeDropLabels, sectorCoverEdges,
+	sectorLookup, sectorRemoveLabels, sectorDropLabels,
+	sectorEdgeDropLabels, sectorCoverEdges,
 	sectorToIndexSector, sectorLabelText, sectorDropLabelText, sectorVertexLabel,
 	sectorFilterEmptyNodes
 ];
