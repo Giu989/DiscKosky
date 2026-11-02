@@ -1,4 +1,4 @@
-# DiscKosky
+# DiscKosky [2610.40772](https://arxiv.org/abs/2610.40772v1)
 A package for analysing the repeated discontinuity structure of Feynman integrals.
 
 ### Authors
